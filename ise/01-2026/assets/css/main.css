@@ -1,0 +1,624 @@
+/* 
+ * ESTILOS moeve
+ */
+
+/* Variables CSS con prefijo para evitar conflictos */
+:root {
+  --ise-text-color: #fff;
+  --ise-bg-color-dark: #1B1466;
+  --ise-accent-color: #0AD2E3;
+  --ise-font-sans: "Inter", sans-serif;
+}
+
+/* ---------- BASE ---------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+.body-ise {
+  margin: 0;
+  font-family: var(--ise-font-sans);
+  color: var(--ise-text-color);
+  background-color: var(--ise-bg-color-dark);
+  overflow-x: hidden;
+}
+
+.body-ise {
+  min-height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--ise-accent-color);
+  color: var(--ise-text-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--ise-accent-color);
+  outline-offset: 2px;
+}
+
+/* ---------- HERO SECTION ---------------------------------- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/hero-ise.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1340px;
+  width: 100%;
+  padding: 30px 16px;
+  text-align: left;
+  color: var(--ise-text-color);
+}
+
+.hero-collaboration {
+  margin: 0 0 clamp(10px, 2vw, 12px) 0;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 700;
+  opacity: 0.9;
+  font-family: var(--ise-font-sans);
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0 0 clamp(18px, 3vw, 22px) 0;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 42px;
+  color: var(--ise-text-color);
+  font-family: var(--ise-font-sans);
+  letter-spacing: -0.96px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.7vw, 1.2rem);
+  line-height: 134%;
+  color: var(--ise-text-color);
+  opacity: 0.95;
+  font-family: var(--ise-font-sans);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 80vh;
+  }
+
+  .hero-content {
+    padding: clamp(32px, 6vw, 48px) clamp(20px, 5vw, 32px);
+  }
+
+  .hero-title {
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  .hero-content {
+    padding: 32px 16px;
+  }
+
+  .hero-collaboration {
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    margin-bottom: 20px;
+  }
+}
+
+/* ---------- SECCIÓN PÁRRAFOS ---------------------------------- */
+.paragraphs-section {
+  padding: clamp(24px, 4vw, 40px) clamp(24px, 6vw, 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+}
+
+/* Espacio extra para la última sección antes de los créditos */
+.paragraphs-section:last-of-type {
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.paragraphs-container {
+  max-width: 650px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.paragraph-text {
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--ise-text-color);
+  text-align: left;
+  font-family: var(--ise-font-sans);
+}
+
+/* ---------- TEXTO DESTACADO ---------------------------------- */
+.highlight-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  border: 2px solid var(--ise-accent-color);
+  border-radius: 43px;
+  padding: 42px 32px;
+  text-align: left;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.highlight-text img {
+  width: 72px;
+  height: 31px;
+  flex: 0 0 22px;
+  margin-top: 2px;
+}
+
+.highlight-text p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.9vw, 1.2rem); /* un poco más grande que .paragraph-text */
+  line-height: 1.65;
+  color: var(--ise-text-color);
+  text-align: left;
+  font-family: var(--ise-font-sans);
+}
+
+@media (max-width: 540px) {
+  .highlight-text {
+    padding: 14px 14px;
+    gap: 10px;
+  }
+}
+
+h2 {
+  margin: 0 0 clamp(20px, 3vw, 28px) 0;
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  line-height: 1.4;
+  letter-spacing: -0.96px;
+  color: var(--ise-text-color);
+  text-align: left;
+  font-family: var(--ise-font-sans);
+  font-weight: 700;
+}
+
+/* ---------- SECCIÓN DESPIECE ---------------------------------- */
+.despiece-section {
+  width: 100%;
+  background: #fff;
+  color: var(--ise-bg-color-dark);
+  padding: clamp(32px, 5vw, 56px) clamp(16px, 6vw, 64px);
+}
+
+.despiece-container {
+  margin-inline: auto;
+  max-width: 1340px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px); /* mismo ritmo que .paragraphs-container */
+}
+
+.despiece-section h2 {
+  color: var(--ise-bg-color-dark); /* “text-bg” (solo cambia el color) */
+  max-width: 650px;
+  width: 100%;
+  margin-inline: auto; /* contenedor centrado */
+}
+
+.despiece-intro {
+  color: var(--ise-bg-color-dark); /* respeta tamaños/espaciados de .paragraph-text */
+  max-width: 650px;
+  width: 100%;
+  margin-inline: auto; /* contenedor centrado */
+}
+
+.despiece-divider {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  border: 0;
+  border-top: 1px solid var(--ise-accent-color);
+}
+
+.despiece-divider--top {
+  margin-top: clamp(12px, 2vw, 24px); /* espacio por arriba */
+}
+
+.despiece-divider--bottom {
+  margin-bottom: clamp(12px, 2vw, 24px); /* espacio debajo */
+}
+
+.despiece-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2.4vw, 24px);
+}
+
+.despiece-card {
+  background: #F3F2F2;
+  border-radius: 18px;
+  padding: clamp(18px, 2.6vw, 28px);
+  min-height: clamp(120px, 18vw, 180px);
+  display: flex;              /* centra verticalmente */
+  align-items: center;
+  justify-content: flex-start; /* texto a la izquierda */
+}
+
+.despiece-card p {
+  margin: 0;
+  text-align: left;
+  color: var(--ise-bg-color-dark);
+  font-family: var(--ise-font-sans);
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .despiece-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .paragraphs-section {
+    padding: clamp(20px, 3vw, 32px) clamp(20px, 5vw, 32px);
+    min-height: auto;
+  }
+
+  .paragraphs-container {
+    gap: clamp(18px, 3vw, 24px);
+  }
+}
+
+@media (max-width: 540px) {
+  .paragraphs-section {
+    padding: 20px 16px;
+  }
+
+  .paragraphs-container {
+    gap: 16px;
+  }
+}
+
+/* ---------- SECCIÓN IMAGEN (FULL SCREEN) ---------------------------------- */
+.image-section {
+  width: 100%;
+  min-height: 100vh;   /* fallback */
+  min-height: 100svh;  /* mejor en móviles (evita saltos por barras del navegador) */
+  margin: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.image-section img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---------- GALERÍA DE IMÁGENES (2 COLUMNAS) ---------------------------------- */
+.images-gallery-section {
+  width: 100%;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.images-gallery-container {
+  display: flex;
+  width: 100%;
+  gap: 12px; /* Pequeño espacio entre las imágenes */
+}
+
+.images-gallery-section img {
+  display: block;
+  flex: 1 1 0; /* Cada imagen ocupa el mismo espacio, ajustándose al gap */
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .images-gallery-container {
+    flex-direction: column;
+  }
+
+  .images-gallery-section img {
+    width: 100%;
+  }
+}
+
+/* ---------- SLIDER/GALERÍA ---------------------------------- */
+.slider-section {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh; /* Altura máxima para ver imagen y paginadores */
+  min-height: 60vh;
+}
+
+.slider-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.slider-track {
+  display: flex;
+  width: 500%; /* 5 imágenes = 500% */
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+  flex: 1;
+  min-height: 0;
+}
+
+.slider-slide {
+  width: 20%; /* Cada slide ocupa 1/5 del track */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.slider-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  background-color: var(--ise-bg-color-dark);
+  flex-shrink: 0;
+}
+
+.slider-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.slider-indicator:hover,
+.slider-indicator:focus-visible {
+  border-color: var(--ise-accent-color);
+  outline: 2px solid var(--ise-accent-color);
+  outline-offset: 2px;
+}
+
+.slider-indicator.active {
+  background-color: var(--ise-accent-color);
+  border-color: var(--ise-accent-color);
+  width: 14px;
+  height: 14px;
+}
+
+.slider-indicator:focus-visible {
+  outline: 2px solid var(--ise-accent-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .slider-indicators {
+    padding: 20px 16px;
+    gap: 10px;
+  }
+
+  .slider-indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .slider-indicator.active {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-section {
+    max-height: 80vh;
+    min-height: 55vh;
+  }
+}
+
+@media (max-width: 540px) {
+  .slider-section {
+    max-height: 70vh;
+    min-height: 50vh;
+  }
+
+  .slider-indicators {
+    padding: 16px 12px;
+    gap: 8px;
+  }
+}
+
+/* Pausa el auto-play cuando el usuario interactúa */
+.slider-section:hover .slider-track {
+  transition-duration: 0.8s;
+}
+
+/* ---------- SECCIÓN CAJAS 4 COLUMNAS ---------------------------------- */
+.boxes-section {
+  width: 100%;
+  padding: clamp(32px, 5vw, 56px) clamp(24px, 6vw, 64px);
+  background-color: var(--ise-bg-color-dark);
+}
+
+.boxes-container {
+  max-width: 1340px;
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 24px);
+}
+
+.box-card {
+  background-color: #fff;
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vw, 16px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.box-card:focus-within {
+  outline: 2px solid var(--ise-accent-color);
+  outline-offset: 2px;
+}
+
+.box-title {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #000;
+  font-family: var(--ise-font-sans);
+  line-height: 1.3;
+}
+
+.box-subtitle {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 400;
+  color: #000;
+  font-family: var(--ise-font-sans);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+@media (max-width: 1024px) {
+  .boxes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .boxes-section {
+    padding: clamp(24px, 4vw, 40px) clamp(20px, 5vw, 32px);
+  }
+
+  .boxes-container {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 3vw, 20px);
+  }
+}
+
+@media (max-width: 540px) {
+  .boxes-section {
+    padding: 24px 16px;
+  }
+
+  .boxes-container {
+    gap: 16px;
+  }
+}
+
+/* ---------- CRÉDITOS ---------------------------------- */
+.footer-ise {
+  color: var(--ise-bg-color-dark);
+  background-color: #EDEDED;
+  font-size: 1em!important;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--ise-font-sans);
+  margin-top: 50px;
+}
+
+.container-fluid-ise {
+  margin-inline: auto;
+  padding-inline: 20px;
+
+}
+
+/* ---------- SOBRESCRIBIR ESTILOS DEL CMS ---------------------------------- */
+.article-default a:hover {
+  text-decoration: underline !important;
+  box-shadow: none !important;
+}
+.visual-article-free .col-12 {
+  padding: 0!important;
+}
