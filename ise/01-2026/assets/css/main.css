@@ -1,5 +1,5 @@
 /* 
- * ESTILOS moeve
+ * ESTILOS ISE 2026
  */
 
 /* Variables CSS con prefijo para evitar conflictos */
@@ -73,6 +73,10 @@ button:focus-visible {
   background-repeat: no-repeat;
 }
 
+.hero-image-mobile {
+  display: none; /* Oculto en desktop */
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -115,21 +119,67 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 80vh;
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-background {
+    display: none; /* Oculto el fondo en mobile */
+  }
+
+  .hero-image-mobile {
+    display: block;
+    width: 100%;
+    order: 1; /* Aparece primero */
+  }
+
+  .hero-image-mobile img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
   }
 
   .hero-content {
+    order: 2; /* Aparece después de la imagen */
+    position: relative;
+    z-index: 1;
+    background-color: var(--ise-bg-color-dark);
     padding: clamp(32px, 6vw, 48px) clamp(20px, 5vw, 32px);
+    max-width: 100%;
+  }
+
+  /* Mejores prácticas editoriales para mobile */
+  .hero-collaboration {
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
   }
 
   .hero-title {
-    line-height: 1.3;
+    font-size: clamp(1.5rem, 5vw, 1.875rem); /* 24px - 30px */
+    font-weight: 700; /* Más peso para jerarquía clara */
+    line-height: 1.25; /* Line-height ajustado para títulos */
+    margin: 0 0 20px 0; /* Espaciado consistente */
+    letter-spacing: -0.5px; /* Letter-spacing más sutil en mobile */
+    text-transform: uppercase;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.125rem); /* 16px - 18px */
+    line-height: 1.6; /* Line-height óptimo para lectura (1.5-1.7) */
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.95;
+    max-width: 100%; /* Asegura legibilidad */
   }
 }
 
 @media (max-width: 540px) {
   .hero-section {
-    min-height: 70vh;
+    min-height: auto;
   }
 
   .hero-content {
@@ -137,11 +187,20 @@ button:focus-visible {
   }
 
   .hero-collaboration {
-    margin-bottom: 12px;
+    font-size: 0.7rem;
+    margin-bottom: 14px;
   }
 
   .hero-title {
-    margin-bottom: 20px;
+    font-size: 1.5rem; /* 24px fijo en móviles pequeños */
+    line-height: 1.3;
+    margin-bottom: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem; /* 16px fijo en móviles pequeños */
+    line-height: 1.65; /* Ligeramente más espaciado para mejor lectura */
   }
 }
 
@@ -366,12 +425,14 @@ h2 {
   display: flex;
   width: 100%;
   gap: 12px; /* Pequeño espacio entre las imágenes */
+  align-items: stretch;
 }
 
 .images-gallery-section img {
   display: block;
   flex: 1 1 0; /* Cada imagen ocupa el mismo espacio, ajustándose al gap */
-  height: auto;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Proporción consistente para todas las imágenes */
   object-fit: cover;
   object-position: center;
 }
@@ -379,10 +440,18 @@ h2 {
 @media (max-width: 768px) {
   .images-gallery-container {
     flex-direction: column;
+    min-height: auto;
   }
 
   .images-gallery-section img {
     width: 100%;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 540px) {
+  .images-gallery-section img {
+    min-height: 250px;
   }
 }
 
