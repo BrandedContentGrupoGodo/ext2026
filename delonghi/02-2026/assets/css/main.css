@@ -116,6 +116,10 @@ a {
   .hero-video__content {
     padding-bottom: clamp(2rem, 10vw, 3rem);
   }
+    .body-delonghi {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -225,6 +229,7 @@ a {
 
   .section-text-image__content {
     order: 1;
+      margin: auto;
   }
 
   .section-text-image__media {
@@ -358,6 +363,8 @@ a {
 
   .section-dark__content {
     order: 2;
+    margin: auto;
+    max-width: 600px;
   }
 
   .section-dark__media {
@@ -481,6 +488,8 @@ a {
 
   .section-light__content {
     order: 1;
+    margin: auto;
+    max-width: 600px;
   }
 
   .section-light__media {
@@ -568,6 +577,8 @@ a {
 
   .section-gray__media {
     order: 1;
+    margin: auto;
+    max-width: 600px;
   }
 
   .section-gray__content {
@@ -643,3 +654,4 @@ button:focus {
 .no-show {
   opacity: 0;
 }
+
