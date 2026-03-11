@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Evita barra de URL en móvil al hacer scroll -->
+    <meta name="theme-color" content="#004862">
+    <!-- Para embeds externos: usa servidor local (Live Server, npx serve), no file:// -->
+    <!-- Origen crítico: imagen LCP del hero -->
+    <link rel="preload" as="image" href="assets/img/hero-andorra.jpg">
+    <!-- CSS propio antes que fuentes para pintar layout cuanto antes -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Fuentes: solo pesos usados (menos descarga que variable 100–900) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Scripts de terceros: resolver DNS antes -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://brandedcontentgrupogodo.github.io">
+</head>
+<body>
+    <div class="body-andorra">
+
+        <!-- Hero con imagen de fondo -->
+        <section class="hero-video" aria-label="Presentación del reportaje">
+            <div class="hero-video__media">
+                <img
+                    class="hero-video__img"
+                    src="assets/img/hero-andorra.jpg"
+                    alt=""
+                    width="1920"
+                    height="1080"
+                    fetchpriority="high"
+                    decoding="sync"
+                >
+                <div class="hero-video__veil" aria-hidden="true"></div>
+                <div class="hero-video__gradient" aria-hidden="true"></div>
+            </div>
+            <div class="hero-video__content">
+                <p class="hero-video__badge">En colaboración con Visit Andorra</p>
+                <h1 class="hero-video__title">Andorra acoge el congreso mundial que debate cómo la digitalización y la IA están cambiando el turismo de montaña</h1>
+                <p class="hero-video__subtitle">El 13.º Congreso Mundial de Turismo de Nieve, Montaña y Bienestar reúne en Andorra, del 25 al 27 de marzo, a profesionales de más de 20 países para analizar el impacto de la digitalización en los destinos de montaña</p>
+                <a href="#contenido" class="hero-video__scroll" aria-label="Desplazarse al contenido">
+                    <img src="assets/img/scroll.svg" alt="" width="40" height="40" decoding="async" fetchpriority="low" aria-hidden="true">
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Sección texto + imagen -->
+        <section id="contenido" class="section-text-image" aria-label="Contenido principal">
+            <div class="section-text-image__container">
+                <div class="section-text-image__content">
+                    <p class="section-text-image__lead">Andorra vuelve a ser el epicentro mundial del turismo de montaña. El Gobierno andorrano y los siete Comuns de Andorra, junto a ONU Turismo, organizan la decimotercera edición de <a class="link--external" href="https://mountainlikers.com/" target="_blank" rel="noopener noreferrer" aria-label="Mountainlikers, sitio oficial (abre en nueva pestaña)"> Mountainlikers</a>, un congreso bienal que desde 1998 reúne a instituciones, empresas y expertos internacionales para reflexionar sobre el futuro de los destinos de nieve y montaña.</p>
+                    <p class="section-text-image__lead">Este año el congreso se ha reinventado con la ayuda de una idea transversal que, tanto por el contenido como por los perfiles invitados, busca atraer a un público de todas las edades y llegar también a las nuevas generaciones. El eje temático es tan actual como inevitable: "El destino bajo la influencia digital".</p>
+                    <div class="callout-box">
+                        <div class="callout-box__row">
+                            <img class="callout-box__icon" src="assets/img/flechas.svg" alt="Turismo de Andorra" width="30" height="30" aria-hidden="true">
+                            <p class="callout-box__lead"><strong>¿Cómo aprovechar</strong> el potencial digital sin perder la esencia del territorio?</p>
+                        </div>
+                        <p class="callout-box__text">Esa es la pregunta que se plantea en El Congreso Mundial de Turismo de Nieve, Montaña y Bienestar en Andorra</p>
+                    </div>
+                </div>
+                <div class="section-text-image__media">
+                    <img
+                        src="assets/img/mapa-andorra.svg"
+                        alt="Mapa Andorra Ordino"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                        class="section-text-image__img"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <section class="section-light" aria-label="Contenido con vídeo Instagram">
+            <div class="section-light__container section-light__container--narrow">
+                <p class="section-light__para">La digitalización, la inteligencia artificial y las nuevas tecnologías están transformando la forma en que los viajeros descubren, eligen y viven los destinos. El congreso quiere explorar cómo aprovechar ese potencial sin perder la autenticidad de los territorios de montaña ni el factor humano que los define.</p>
+                <p class="section-light__para">En el reverso de la influencia digital, el Congreso Mundial de Turismo de Nieve, Montaña y Bienestar también abordará la hiperconectividad, y cómo el valor de la desconexión consciente y el bienestar emocional son ya tendencias en alza que los destinos de montaña pueden liderar de forma natural.</p>
+            </div>        
+        </section>
+
+                  <!-- Cinco columnas: icono + titular + subtítulo, fondo azul claro -->
+        <section class="features-row" aria-label="Pilares del congreso">
+            <div class="features-row__inner">
+                <div class="features-row__col">
+                    <img class="features-row__icon" src="assets/img/icono1.svg" alt="" width="60" height="60" aria-hidden="true">
+                    <p class="features-row__title">Lugar</p>
+                    <p class="features-row__sub">Centro de Congresos de Andorra la Vella, Andorra</p>
+                </div>
+                <div class="features-row__col">
+                    <img class="features-row__icon" src="assets/img/icono2.svg" alt="" width="60" height="60" aria-hidden="true">
+                    <p class="features-row__title">Parroquia anfitriona</p>
+                    <p class="features-row__sub">Ordino</p>
+                </div>
+                <div class="features-row__col">
+                    <img class="features-row__icon" src="assets/img/icono3.svg" alt="" width="60" height="60" aria-hidden="true">
+                    <p class="features-row__title">Fechas</p>
+                    <p class="features-row__sub">25–27 de marzo de 2026</p>
+                </div>
+                <div class="features-row__col">
+                    <img class="features-row__icon" src="assets/img/icono4.svg" alt="" width="60" height="60" aria-hidden="true">
+                    <p class="features-row__title">Países</p>
+                    <p class="features-row__sub">20</p>
+                </div>
+                <div class="features-row__col">
+                    <img class="features-row__icon" src="assets/img/icono5.svg" alt="" width="60" height="60" aria-hidden="true">
+                    <p class="features-row__title">Edición</p>
+                    <p class="features-row__sub">13.ª (desde 1998)</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="section-light" aria-label="Contenido con vídeo Instagram">
+            <div class="section-light__container section-light__container--narrow">
+                <p class="section-light__para">Pero la digitalización no es solo uno de los aspectos destacados que se debatirán en la cita. El cambio climático estará muy presente, porque obliga a los destinos de montaña a reinventarse y se analizará cómo superar el reto de la estacionalidad mediante experiencias auténticas que pongan en valor el patrimonio natural y cultural durante todo el año, equilibrando innovación turística y bienestar de las comunidades locales. Una de las sesiones presentará, además, las primeras conclusiones del informe <i>Cambio climático y el futuro de los destinos de turismo de nieve y de montaña</i>, encargado por la Comisión Regional de ONU Turismo para Europa.</p>
+                <h2 class="section-light__title">Ponentes destacados</h2> 
+            </div>
+        </section>
+
+        <!-- 3 columnas + 2 columnas, fondo azul claro, separadores -->
+        <section class="grid-text-section" aria-label="Bloques informativos">
+            <div class="grid-text-section__wrap">
+                <div class="grid-text-section__row grid-text-section__row--3">
+                    <div class="grid-text-section__col">
+                        <h3 class="grid-text-section__title">Dr. Alex Connock</h3>
+                        <p class="grid-text-section__text"><i>Senior Fellow</i> de la Saïd Business School (Universidad de Oxford). Especialista en inteligencia artificial y medios digitales. Ha codirigido el diploma de posgrado en IA para los negocios de Oxford</p>
+                    </div>
+                    <div class="grid-text-section__col">
+                        <h3 class="grid-text-section__title">Aradhana Khowala</h3>
+                        <p class="grid-text-section__text">CEO de Aptamind Partners. Una de las voces más influyentes del turismo de bienestar a nivel mundial. Ha asesorado a presidentes y primeros ministros sobre turismo regenerativo y sostenibilidad</p>
+                    </div>
+                    <div class="grid-text-section__col">
+                        <h3 class="grid-text-section__title">Jessica Fischer</h3>
+                        <p class="grid-text-section__text">Fundadora de GuestOS, plataforma de conserjería impulsada por IA para destinos turísticos y operadores hoteleros. Experta en comunicación resiliente en entornos complejos</p>
+                    </div>
+                </div>
+                <div class="grid-text-section__row grid-text-section__row--2">
+                    <div class="grid-text-section__col">
+                        <h3 class="grid-text-section__title">Bernat Casaña</h3>
+                        <p class="grid-text-section__text">CEO de Becama Consulting y cofundador de ENID, una de las academias de IA más importantes del mundo hispanohablante. Autor del <i>>bestseller IA: La Última Revolución Humana</i></p>
+                    </div>
+                    <div class="grid-text-section__col">
+                        <h3 class="grid-text-section__title">Jordi Urbea</h3>
+                        <p class="grid-text-section__text">CEO de Ogilvy Spain. Pionero de la publicidad digital en España y referente en transformación digital de marcas y empresas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-light" aria-label="Contenido con vídeo Instagram">
+            <div class="section-light__container section-light__container--narrow">
+                <p class="section-light__para">El Congreso conecta a profesionales y líderes internacionales del sector turístico, lo que permite generar intercambio de conocimientos y proyectos globales que marcan el futuro del turismo.</p>
+                <p class="section-light__para">La cita ayuda a descubrir soluciones prácticas e inspiradoras para los destinos naturales y consolida así su papel como punto de referencia internacional para el turismo de montaña.</p>
+            </div>        
+        </section>
+
+        <!-- Imagen destacada con texto centrado -->
+        <section class="featured-image" aria-label="Imagen destacada">
+            <div class="featured-image__media">
+                <img
+                    class="featured-image__img"
+                    src="assets/img/destacado1.jpg"
+                    alt="Paisaje de montaña en Andorra"
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
+                    decoding="async"
+                >
+                <div class="featured-image__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="featured-image__content">
+                <p class="featured-image__text">Más de <strong>300 profesionales</strong> de 20 países debatirán en Andorra el futuro del turismo de montaña en la era de la IA</p>
+            </div>
+        </section>
+
+        <section class="section-light" aria-label="Contenido con vídeo Instagram">
+            <div class="section-light__container section-light__container--narrow">
+                <p class="section-light__para">En esta nueva etapa del evento se ha repensado también su estructura, concentrando todas las ponencias durante la mañana y reservando las tardes a talleres experienciales. Así, la agenda combina conferencias de alto nivel con gastronomía de montaña, actividades de bienestar en entornos naturales y visitas culturales a Ordino. Un formato que convierte a Andorra en laboratorio vivo de innovación turística, donde tecnología, naturaleza y experiencia conviven.</p>
+                <p class="section-light__para">Más información e inscripciones: <a class="link--external cta-andorra" href="https://mountainlikers.com/" target="_blank" rel="noopener noreferrer" aria-label="Mountainlikers, sitio oficial (abre en nueva pestaña)">mountainlikers.com</a></p>
+            </div>        
+        </section>
+
+        <!-- Imagen destacada con texto centrado -->
+        <section class="featured-image" aria-label="Imagen destacada">
+            <div class="featured-image__media">
+                <img
+                    class="featured-image__img"
+                    src="assets/img/destacado2.jpg"
+                    alt="Paisaje de montaña en Andorra"
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
+        </section>
+        
+    
+        <!-- CRÉDITOS -->
+        <div class="authorship-f" aria-label="Créditos del proyecto">
+            <div class="container-fluid-f">
+                <span>Coordinación: Silvia Resola</span> |
+                <span>Redacción: Javier Martín</span> |
+                <span>Producto digital y front-end: Alejandra Santander</span> |
+                <span>Fotografía: Turismo de Andorra.</span> |
+                <span>Un proyecto de Brandslab. Godó Nexus.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram embed.js solo si hay bloques instagram en la página -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://brandedcontentgrupogodo.github.io/ext2026/delonghi/02-2026/assets/js/scripts.js"></script>
+</body>
+</html>
