@@ -344,6 +344,8 @@ a {
   line-height: 1;
   margin: 0;
   color: var(--color-principal);
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 @media (min-width: 48rem) {
@@ -719,7 +721,7 @@ a {
 
 .references-block__title {
   font-family: var(--font-secundaria);
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(1.25rem, 3vw, 1.9rem);
   font-weight: 600;
   line-height: 1.25;
   margin: 0 0 1rem;
@@ -851,4 +853,12 @@ button:focus {
 
 .no-show {
   opacity: 0;
+}
+
+.article-default blockquote {
+  margin-bottom: 2.5rem!important;
+}
+
+.article-default ol li, .article-default ul li {
+  font-size: clamp(0.9375rem, 2vw, 1rem)!important;
 }
