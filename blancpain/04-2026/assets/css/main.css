@@ -1151,3 +1151,160 @@ button:focus {
 .article-default ol li, .article-default ul li {
   font-size: clamp(0.9375rem, 2vw, 1rem)!important;
 }
+
+/* --- Hardening para CMS (Xalok) --- */
+.body-blancpain .section__quote,
+.body-blancpain .split__quote {
+  border-inline-start: 2px solid var(--accent-color) !important;
+  padding-inline-start: 2.25rem !important;
+  padding-inline-end: 1rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 2rem !important;
+  max-width: 680px !important;
+  font-family: var(--font-secundaria) !important;
+  font-size: 1.2rem !important;
+  line-height: 1.7 !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+}
+
+@media (min-width: 740px) {
+  .body-blancpain .section__quote,
+  .body-blancpain .split__quote {
+    margin-top: 4rem !important;
+    margin-bottom: 3rem !important;
+    padding-inline-start: 3.25rem !important;
+    padding-inline-end: 6rem !important;
+    font-size: 1.6rem !important;
+  }
+}
+
+.body-blancpain .feature-band {
+  background: #F5F5F5 !important;
+}
+
+.body-blancpain .feature-band__container {
+  width: min(100% - 2.5rem, 80rem) !important;
+  margin-inline: auto !important;
+}
+
+.body-blancpain .feature-band__grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  padding: 0.75rem 0 !important;
+}
+
+.body-blancpain .feature-band__item {
+  position: relative !important;
+  padding: 2.25rem 1.25rem !important;
+}
+
+.body-blancpain .feature-band__title,
+.body-blancpain .feature-band__text {
+  text-align: left !important;
+  color: #0a0f12 !important;
+}
+
+.body-blancpain .feature-band__text {
+  margin-top: 0.65rem !important;
+  line-height: 1.8 !important;
+  max-width: 48ch !important;
+}
+
+.body-blancpain .feature-band__item:not(:last-child)::after {
+  content: "" !important;
+  position: absolute !important;
+  inset-inline: 1.25rem !important;
+  inset-block-end: 0 !important;
+  height: 1px !important;
+  background: rgba(10,15,18,0.12) !important;
+}
+
+@media (min-width: 900px) {
+  .body-blancpain .feature-band__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    padding: 0 !important;
+  }
+
+  .body-blancpain .feature-band__item {
+    padding: 2.75rem 2rem !important;
+  }
+
+  .body-blancpain .feature-band__item:not(:last-child)::after {
+    inset: 1.75rem 0 1.75rem auto !important;
+    width: 1px !important;
+    height: auto !important;
+  }
+}
+
+/* Story fallback por defecto (si JS/CMS bloquea enhancement) */
+.body-blancpain .story {
+  background: #000;
+  color: #fff;
+  height: auto;
+}
+
+.body-blancpain .story__viewport {
+  position: relative;
+  height: 100svh;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.body-blancpain .story__track {
+  height: 100%;
+  display: flex;
+  transform: none;
+}
+
+.body-blancpain .story__panel {
+  flex: 0 0 100%;
+  min-width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+/* Modo mejorado activado por JS */
+.body-blancpain .story.story--enhanced {
+  --story-panels: 6;
+  height: calc(var(--story-panels) * 100vh);
+  height: calc(var(--story-panels) * 100svh);
+  position: relative;
+}
+
+.body-blancpain .story.story--enhanced .story__viewport {
+  position: sticky;
+  inset-block-start: 0;
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
+.body-blancpain .story.story--enhanced .story__panel {
+  scroll-snap-align: unset;
+}
+
+/* Split: sticky robusto dentro de CMS */
+.body-blancpain .split,
+.body-blancpain .split__grid {
+  overflow: visible !important;
+}
+
+@media (min-width: 900px) {
+  .body-blancpain .split__grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: start !important;
+  }
+
+  .body-blancpain .split__media {
+    position: sticky !important;
+    top: 0 !important;
+    align-self: start !important;
+    height: 100svh !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+}
