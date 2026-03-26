@@ -33,6 +33,7 @@ function initStoryHorizontalScroll() {
   const section = viewport.closest(".story");
   const track = viewport.querySelector(".story__track");
   if (!section || !track) return;
+  section.classList.add("story--enhanced");
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
