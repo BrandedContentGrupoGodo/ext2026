@@ -31,102 +31,51 @@ function initStoryHorizontalScroll() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const allowSmooth = !reducedMotion;
   const section = viewport.closest(".story");
-  if (!section) return;
+  const track = viewport.querySelector(".story__track");
+  if (!section || !track) return;
 
-  function canMove(delta) {
-    const max = viewport.scrollWidth - viewport.clientWidth;
-    if (max <= 0) return false;
-    if (delta > 0) return viewport.scrollLeft < max - 1;
-    return viewport.scrollLeft > 1;
-  }
+  section.classList.add("story--enhanced");
 
-  function normalizeDelta(event) {
-    const primary = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
-    if (event.deltaMode === 1) return primary * 16;
-    if (event.deltaMode === 2) return primary * window.innerHeight;
-    return primary;
-  }
-
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      const rect = section.getBoundingClientRect();
-      const active = rect.top < window.innerHeight && rect.bottom > 0;
-      if (!active) return;
-      const delta = normalizeDelta(event);
-      if (!delta || !canMove(delta)) return;
-      event.preventDefault();
-      viewport.scrollLeft += delta;
-    },
-    { passive: false, capture: true },
-  );
-
-  const hintBtn = section.querySelector(".story__hint");
-  hintBtn?.addEventListener("click", () => {
-    viewport.scrollBy({ left: viewport.clientWidth, behavior: allowSmooth ? "smooth" : "auto" });
-    viewport.focus({ preventScroll: true });
-  });
-}
-
-function initSplitStickyFallback() {
-  const split = document.querySelector(".split");
-  const media = split?.querySelector(".split__media");
-  if (!split || !media) return;
-
-  const mq = window.matchMedia("(min-width: 900px)");
-
-  function resetStyles() {
-    media.style.position = "";
-    media.style.top = "";
-    media.style.left = "";
-    media.style.bottom = "";
-    media.style.width = "";
-    media.style.height = "";
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
   }
 
   function update() {
-    if (!mq.matches) {
-      resetStyles();
-      return;
-    }
+    const rect = section.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const maxTravelY = section.offsetHeight - viewport.offsetHeight;
+    const progress = maxTravelY > 0 ? clamp((window.scrollY - sectionTop) / maxTravelY, 0, 1) : 0;
 
-    const splitRect = split.getBoundingClientRect();
-    const mediaRect = media.getBoundingClientRect();
-    const inPinRange = splitRect.top <= 0 && splitRect.bottom > window.innerHeight;
-    const afterPin = splitRect.bottom <= window.innerHeight;
+    const maxX = Math.max(0, track.scrollWidth - viewport.clientWidth);
+    const x = -progress * maxX;
+    track.style.transform = `translate3d(${x}px, 0, 0)`;
+  }
 
-    if (inPinRange) {
-      media.style.position = "fixed";
-      media.style.top = "0";
-      media.style.left = `${mediaRect.left}px`;
-      media.style.width = `${mediaRect.width}px`;
-      media.style.height = "100vh";
-      media.style.bottom = "";
-      return;
-    }
-
-    if (afterPin) {
-      media.style.position = "absolute";
-      media.style.top = "auto";
-      media.style.left = "0";
-      media.style.bottom = "0";
-      media.style.width = "50%";
-      media.style.height = "100vh";
-      return;
-    }
-
-    resetStyles();
+  let raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      update();
+    });
   }
 
   update();
-  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", update);
+
+  const hintBtn = section.querySelector(".story__hint");
+  hintBtn?.addEventListener("click", () => {
+    const panels = Number.parseInt(getComputedStyle(section).getPropertyValue("--story-panels"), 10) || 6;
+    const maxTravelY = section.offsetHeight - viewport.offsetHeight;
+    const step = panels > 1 ? maxTravelY / (panels - 1) : 0;
+    window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
   initStoryHorizontalScroll();
-  initSplitStickyFallback();
 
   const scrollLink = document.querySelector(".hero__scroll");
   if (scrollLink) {
