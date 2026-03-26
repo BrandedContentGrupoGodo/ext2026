@@ -1,0 +1,30 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen decorativa Villeret 2">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#070A0D"/>
+      <stop offset="0.45" stop-color="#16222A"/>
+      <stop offset="1" stop-color="#24333C"/>
+    </linearGradient>
+    <radialGradient id="accent" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1520 460) rotate(180) scale(840 640)">
+      <stop offset="0" stop-color="#B79A7E" stop-opacity="0.45"/>
+      <stop offset="0.6" stop-color="#9C8067" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 .14 0"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#accent)"/>
+  <g opacity="0.9">
+    <path d="M1180 290c110 0 220 42 302 126 86 88 122 206 104 342-28 214-196 368-418 368-148 0-276-74-352-202-74-126-74-276 0-402 78-132 210-232 364-232Z" fill="#000" opacity="0.22"/>
+    <path d="M1490 420c0 146-118 264-264 264s-264-118-264-264 118-264 264-264 264 118 264 264Z" fill="#fff" opacity="0.04"/>
+  </g>
+  <rect width="1920" height="1080" filter="url(#grain)"/>
+</svg>
+

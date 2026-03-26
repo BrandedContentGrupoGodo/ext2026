@@ -1,0 +1,30 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen decorativa a pantalla completa 4">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A0F12"/>
+      <stop offset="0.5" stop-color="#16222A"/>
+      <stop offset="1" stop-color="#24333C"/>
+    </linearGradient>
+    <radialGradient id="accent" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1500 500) rotate(180) scale(860 660)">
+      <stop offset="0" stop-color="#B79A7E" stop-opacity="0.45"/>
+      <stop offset="0.6" stop-color="#9C8067" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 .14 0"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#accent)"/>
+  <g opacity="0.9">
+    <path d="M1175 300c130 0 260 50 356 150 102 106 146 246 124 406-34 250-232 430-492 430-174 0-324-90-412-244-86-150-86-326 0-476 92-160 248-266 424-266Z" fill="#000" opacity="0.18"/>
+    <path d="M1510 420c0 144-116 260-260 260s-260-116-260-260 116-260 260-260 260 116 260 260Z" fill="#fff" opacity="0.04"/>
+  </g>
+  <rect width="1920" height="1080" filter="url(#grain)"/>
+</svg>
+

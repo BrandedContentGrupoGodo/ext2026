@@ -1,0 +1,14 @@
+<svg width="360" height="240" viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración decorativa 3">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="360" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFEFEF"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="360" height="240" rx="22" fill="url(#bg)"/>
+  <path d="M120 176c38 18 82 18 120 0" stroke="#0A0F12" stroke-opacity="0.14" stroke-width="2" stroke-linecap="round"/>
+  <path d="M112 92l68 28 68-28" stroke="#9C8067" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="180" cy="120" r="46" fill="#9C8067" fill-opacity="0.14"/>
+  <circle cx="180" cy="120" r="22" fill="#0A0F12" fill-opacity="0.08"/>
+</svg>
+
