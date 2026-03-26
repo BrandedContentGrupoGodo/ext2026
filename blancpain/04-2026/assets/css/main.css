@@ -554,6 +554,7 @@
 .split {
   background: #fff;
   color: #0a0f12;
+  position: relative;
 }
 
 .split__grid {
