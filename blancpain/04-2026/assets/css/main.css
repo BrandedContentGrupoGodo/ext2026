@@ -1253,6 +1253,11 @@ button:focus {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.body-blancpain .story__viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .body-blancpain .story__track {
