@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embed Blancpain (v3)</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .frame {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      display: block;
+      background: transparent;
+      height: 100svh; /* fallback inmediato */
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    id="bpFrame"
+    class="frame"
+    title="Blancpain - Landing"
+    src="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allow="autoplay; fullscreen"
+    scrolling="no"
+  ></iframe>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('bpFrame');
+      function onMessage(event) {
+        if (!event || !event.data || event.data.type !== 'bp-iframe-height') return;
+        var h = Number(event.data.height);
+        if (!Number.isFinite(h) || h < 100) return;
+        frame.style.height = (h + 2) + 'px';
+      }
+      window.addEventListener('message', onMessage);
+    })();
+  </script>
+</body>
+</html>
