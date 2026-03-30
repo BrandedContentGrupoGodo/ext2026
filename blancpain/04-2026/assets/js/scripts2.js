@@ -184,7 +184,6 @@ function initStoryWheelFallback() {
     return viewport.scrollLeft > 1;
   }
 
-  const scroller = getScrollParent(section);
   const wheelTarget = document;
 
   function clamp(value, min, max) {
@@ -210,13 +209,13 @@ function initStoryWheelFallback() {
   let lastLeft = NaN;
   let lastTop = NaN;
   function tick() {
-    const top = getScrollTop(scroller);
+    const top = Math.round(section.getBoundingClientRect().top);
     const left = viewport.scrollLeft;
     if (top !== lastTop || left !== lastLeft) {
       lastTop = top;
       lastLeft = left;
-      const rect = getRectInScroller(section, scroller);
-      const vh = getViewportHeight(scroller);
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
       const active = rect.top < vh && rect.bottom > 0;
       updateHintState(active);
     }
@@ -229,8 +228,8 @@ function initStoryWheelFallback() {
     (event) => {
       if (event.ctrlKey) return;
 
-      const rect = getRectInScroller(section, scroller);
-      const vh = getViewportHeight(scroller);
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
       const active = rect.top < vh && rect.bottom > 0;
       if (!active) {
         updateHintState(false);
@@ -254,8 +253,8 @@ function initStoryWheelFallback() {
   viewport.addEventListener(
     "scroll",
     () => {
-      const rect = getRectInScroller(section, scroller);
-      const vh = getViewportHeight(scroller);
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
       const active = rect.top < vh && rect.bottom > 0;
       updateHintState(active);
     },
@@ -318,7 +317,6 @@ function initSplitStickyFallback() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
-  initStoryHorizontalScroll();
   initStoryWheelFallback();
   initSplitStickyFallback();
 
