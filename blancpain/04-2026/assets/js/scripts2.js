@@ -1,5 +1,39 @@
 document.documentElement.classList.add("js");
 
+function getScrollParent(startEl) {
+  let el = startEl?.parentElement || null;
+  while (el && el !== document.body) {
+    const styles = window.getComputedStyle(el);
+    const overflowY = styles.overflowY;
+    const canScrollY = (overflowY === "auto" || overflowY === "scroll") && el.scrollHeight > el.clientHeight + 2;
+    if (canScrollY) return el;
+    el = el.parentElement;
+  }
+  return window;
+}
+
+function getScrollTop(scroller) {
+  return scroller === window ? window.scrollY : scroller.scrollTop;
+}
+
+function getViewportHeight(scroller) {
+  return scroller === window ? window.innerHeight : scroller.clientHeight;
+}
+
+function getRectInScroller(el, scroller) {
+  const elRect = el.getBoundingClientRect();
+  if (scroller === window) return elRect;
+  const scrollerRect = scroller.getBoundingClientRect();
+  return {
+    top: elRect.top - scrollerRect.top,
+    bottom: elRect.bottom - scrollerRect.top,
+    left: elRect.left - scrollerRect.left,
+    right: elRect.right - scrollerRect.left,
+    width: elRect.width,
+    height: elRect.height,
+  };
+}
+
 function initRevealOnScroll() {
   document.documentElement.classList.add("js-loaded");
 
@@ -35,16 +69,18 @@ function initStoryHorizontalScroll() {
   if (!section || !track) return;
 
   section.classList.add("story--enhanced");
+  const scroller = getScrollParent(section);
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
 
   function update() {
-    const rect = section.getBoundingClientRect();
-    const sectionTop = window.scrollY + rect.top;
+    const rect = getRectInScroller(section, scroller);
+    const sectionTop = getScrollTop(scroller) + rect.top;
     const maxTravelY = section.offsetHeight - viewport.offsetHeight;
-    const progress = maxTravelY > 0 ? clamp((window.scrollY - sectionTop) / maxTravelY, 0, 1) : 0;
+    const progress =
+      maxTravelY > 0 ? clamp((getScrollTop(scroller) - sectionTop) / maxTravelY, 0, 1) : 0;
 
     const maxX = Math.max(0, track.scrollWidth - viewport.clientWidth);
     const x = -progress * maxX;
@@ -61,7 +97,7 @@ function initStoryHorizontalScroll() {
   }
 
   update();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  (scroller === window ? window : scroller).addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", update);
 
   const hintBtn = section.querySelector(".story__hint");
@@ -69,7 +105,11 @@ function initStoryHorizontalScroll() {
     const panels = Number.parseInt(getComputedStyle(section).getPropertyValue("--story-panels"), 10) || 6;
     const maxTravelY = section.offsetHeight - viewport.offsetHeight;
     const step = panels > 1 ? maxTravelY / (panels - 1) : 0;
-    window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
+    if (scroller === window) {
+      window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
+    } else {
+      scroller.scrollTo({ top: scroller.scrollTop + step, behavior: allowSmooth ? "smooth" : "auto" });
+    }
   });
 }
 
@@ -79,12 +119,14 @@ function initSplitStickyFallback() {
   if (!split || !media) return;
 
   const mq = window.matchMedia("(min-width: 900px)");
+  const scroller = getScrollParent(split);
 
   // Fallback SOLO si sticky no funciona (muchos CMS rompen sticky por overflow/containers)
   function stickySeemsBroken() {
     if (!mq.matches) return false;
-    const rect = split.getBoundingClientRect();
-    if (!(rect.top < 0 && rect.bottom > window.innerHeight)) return false;
+    const rect = getRectInScroller(split, scroller);
+    const vh = getViewportHeight(scroller);
+    if (!(rect.top < 0 && rect.bottom > vh)) return false;
     // Si sticky funcionara, el top del media estaría muy cerca de 0 cuando el split está “pinneado”
     const mediaRect = media.getBoundingClientRect();
     return Math.abs(mediaRect.top) > 24;
@@ -118,10 +160,11 @@ function initSplitStickyFallback() {
       return;
     }
 
-    const splitRect = split.getBoundingClientRect();
+    const splitRect = getRectInScroller(split, scroller);
     const mediaRect = media.getBoundingClientRect();
-    const inPinRange = splitRect.top <= 0 && splitRect.bottom > window.innerHeight;
-    const afterPin = splitRect.bottom <= window.innerHeight;
+    const vh = getViewportHeight(scroller);
+    const inPinRange = splitRect.top <= 0 && splitRect.bottom > vh;
+    const afterPin = splitRect.bottom <= vh;
 
     if (inPinRange) {
       if (!pin.active) {
@@ -153,7 +196,7 @@ function initSplitStickyFallback() {
   }
 
   update();
-  window.addEventListener("scroll", update, { passive: true });
+  (scroller === window ? window : scroller).addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", () => {
     pin.active = false;
     update();
