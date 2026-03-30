@@ -159,6 +159,7 @@ function initStoryWheelFallback() {
   // Este modo NO depende de sticky; es el más compatible en CMS con transforms.
   section.classList.remove("story--enhanced");
   section.classList.add("story--wheel");
+  const hintBtn = section.querySelector(".story__hint");
 
   function normalizeDelta(event) {
     // Prioriza scroll vertical (rueda) para “automatic horizontal”
@@ -179,6 +180,22 @@ function initStoryWheelFallback() {
   const scroller = getScrollParent(section);
   const wheelTarget = document;
 
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function updateHintState(active) {
+    if (!hintBtn) return;
+
+    // Mantener el hint “fijo” mientras la story está activa (fallback).
+    section.classList.toggle("story--hint-fixed", Boolean(active));
+
+    // En la última slide, atenuarlo mucho para indicar “fin”.
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    const progress = max > 0 ? clamp(viewport.scrollLeft / max, 0, 1) : 0;
+    section.classList.toggle("story--hint-dim", progress > 0.97);
+  }
+
   wheelTarget.addEventListener(
     "wheel",
     (event) => {
@@ -187,7 +204,11 @@ function initStoryWheelFallback() {
       const rect = getRectInScroller(section, scroller);
       const vh = getViewportHeight(scroller);
       const active = rect.top < vh && rect.bottom > 0;
-      if (!active) return;
+      if (!active) {
+        updateHintState(false);
+        return;
+      }
+      updateHintState(true);
 
       // Solo intercepta si la intención principal es vertical (rueda/scroll normal)
       if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
@@ -197,9 +218,24 @@ function initStoryWheelFallback() {
 
       event.preventDefault();
       viewport.scrollLeft += delta;
+      updateHintState(true);
     },
     { passive: false, capture: true },
   );
+
+  viewport.addEventListener(
+    "scroll",
+    () => {
+      const rect = getRectInScroller(section, scroller);
+      const vh = getViewportHeight(scroller);
+      const active = rect.top < vh && rect.bottom > 0;
+      updateHintState(active);
+    },
+    { passive: true },
+  );
+
+  // Estado inicial
+  updateHintState(false);
 }
 
 function initSplitStickyFallback() {
