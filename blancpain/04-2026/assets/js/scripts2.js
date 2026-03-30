@@ -190,13 +190,8 @@ function initStoryWheelFallback() {
     return Math.min(max, Math.max(min, value));
   }
 
-  function updateHintState(active) {
-    if (!hintBtn) return;
-
-    // Mantener el hint “fijo” mientras la story está activa (fallback).
-    section.classList.toggle("story--hint-fixed", Boolean(active));
-
-    // En la última slide, atenuarlo mucho para indicar “fin”.
+  function updateHintState() {
+    // En la última slide, atenuarlo para indicar “fin” (pero no ocultarlo).
     const max = viewport.scrollWidth - viewport.clientWidth;
     const progress = max > 0 ? clamp(viewport.scrollLeft / max, 0, 1) : 0;
     section.classList.toggle("story--hint-dim", progress > 0.97);
@@ -209,6 +204,7 @@ function initStoryWheelFallback() {
     if (remaining > 2) {
       viewport.scrollBy({ left: viewport.clientWidth, behavior: "smooth" });
       viewport.focus({ preventScroll: true });
+      updateHintState();
       return;
     }
 
@@ -219,7 +215,6 @@ function initStoryWheelFallback() {
   });
 
   // En CMS, los eventos pueden fallar; mantenemos un loop rAF barato para:
-  // - mostrar/ocultar hint solo en su sección
   // - atenuar en la última slide
   let raf = 0;
   let lastLeft = NaN;
@@ -230,14 +225,29 @@ function initStoryWheelFallback() {
     if (top !== lastTop || left !== lastLeft) {
       lastTop = top;
       lastLeft = left;
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const active = rect.top < vh && rect.bottom > 0;
-      updateHintState(active);
+      updateHintState();
     }
     raf = window.requestAnimationFrame(tick);
   }
   raf = window.requestAnimationFrame(tick);
+
+  // Listener principal: engancha la rueda DIRECTO en el viewport.
+  // Así funciona aunque Xalok bloquee wheel en document/window.
+  viewport.addEventListener(
+    "wheel",
+    (event) => {
+      if (event.ctrlKey) return;
+      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+      const delta = normalizeDelta(event);
+      if (!delta || !canMove(delta)) return;
+
+      event.preventDefault();
+      viewport.scrollLeft += delta;
+      updateHintState();
+    },
+    { passive: false },
+  );
 
   wheelTarget.addEventListener(
     "wheel",
@@ -247,11 +257,7 @@ function initStoryWheelFallback() {
       const rect = section.getBoundingClientRect();
       const vh = window.innerHeight;
       const active = rect.top < vh && rect.bottom > 0;
-      if (!active) {
-        updateHintState(false);
-        return;
-      }
-      updateHintState(true);
+      if (!active) return;
 
       // Solo intercepta si la intención principal es vertical (rueda/scroll normal)
       if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
@@ -261,7 +267,7 @@ function initStoryWheelFallback() {
 
       event.preventDefault();
       viewport.scrollLeft += delta;
-      updateHintState(true);
+      updateHintState();
     },
     { passive: false, capture: true },
   );
@@ -269,16 +275,13 @@ function initStoryWheelFallback() {
   viewport.addEventListener(
     "scroll",
     () => {
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const active = rect.top < vh && rect.bottom > 0;
-      updateHintState(active);
+      updateHintState();
     },
     { passive: true },
   );
 
   // Estado inicial
-  updateHintState(false);
+  updateHintState();
 }
 
 function initSplitStickyFallback() {
