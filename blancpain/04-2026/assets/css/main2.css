@@ -326,10 +326,11 @@
 
 .story__panel--image-2 {
   background-image: url("../img/origen-2.jpg");
-  /* La imagen fuente se percibe “baja calidad” en horizontal:
-     hacemos un encuadre más vertical con un zoom suave. */
-  background-position: 55% 40%;
-  background-size: 140% auto;
+  /* Pillarbox: menos horizontal, más vertical (bandas negras si hace falta) */
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: 50% 50% !important;
+  background-size: contain !important;
 }
 
 .story__panel--image-3 {
@@ -696,14 +697,14 @@
 
 @media (max-aspect-ratio: 3/4) {
   .story__panel--image-2 {
-    /* En pantallas más verticales, prioriza altura para un encuadre más “vertical” */
-    background-size: auto 145%;
-    background-position: 55% 30%;
+    background-size: contain !important;
+    background-position: 50% 50% !important;
   }
 }
 
 /* Hint fijo en modo fallback (wheel) */
-.body-blancpain .story.story--wheel.story--hint-fixed .story__hint {
+.body-blancpain .story.story--wheel.story--hint-fixed .story__hint,
+.story.story--wheel.story--hint-fixed .story__hint {
   position: fixed !important;
   inset: auto 1rem 1rem auto !important;
   z-index: 50;
@@ -711,14 +712,117 @@
 }
 
 @media (min-width: 740px) {
-  .body-blancpain .story.story--wheel.story--hint-fixed .story__hint {
+  .body-blancpain .story.story--wheel.story--hint-fixed .story__hint,
+  .story.story--wheel.story--hint-fixed .story__hint {
     inset: auto 2.25rem 2.25rem auto !important;
   }
 }
 
-.body-blancpain .story.story--wheel.story--hint-dim .story__hint {
+.body-blancpain .story.story--wheel.story--hint-dim .story__hint,
+.story.story--wheel.story--hint-dim .story__hint {
   opacity: 0.14 !important;
   filter: saturate(0.85);
+}
+
+/* Duplicado sin wrapper .body-blancpain (por si el CMS lo elimina) */
+.story {
+  background: #000;
+  color: #fff;
+  height: auto;
+}
+
+.story__viewport {
+  position: relative;
+  height: 100svh;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+
+.story__viewport::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.story__viewport {
+  -ms-overflow-style: none;
+}
+
+.story__track {
+  height: 100%;
+  display: flex;
+  transform: none;
+}
+
+.story__panel {
+  flex: 0 0 100%;
+  min-width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.story.story--enhanced {
+  --story-panels: 6;
+  height: calc(var(--story-panels) * 100vh) !important;
+  height: calc(var(--story-panels) * 100svh) !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.story.story--wheel {
+  height: auto !important;
+}
+
+.story.story--wheel .story__viewport {
+  position: relative !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+.story.story--wheel .story__track {
+  transform: none !important;
+  will-change: auto !important;
+}
+
+.story.story--enhanced .story__viewport {
+  position: sticky !important;
+  inset-block-start: 0 !important;
+  overflow: hidden !important;
+  scroll-snap-type: none !important;
+}
+
+.story.story--enhanced .story__panel {
+  scroll-snap-align: unset;
+}
+
+.split,
+.split__grid {
+  overflow: visible !important;
+}
+
+@media (min-width: 900px) {
+  .split.split--scrollpin .split__grid {
+    position: relative;
+    grid-template-columns: 0.88fr 1.12fr;
+  }
+
+  .split.split--scrollpin .split__media {
+    position: absolute !important;
+    inset-block-start: 0 !important;
+    inset-inline-start: 0 !important;
+    width: 44% !important;
+    height: 100vh !important;
+    will-change: transform;
+  }
+
+  .split.split--scrollpin .split__content {
+    grid-column: 2;
+  }
 }
 
 .fullbleed-image {
