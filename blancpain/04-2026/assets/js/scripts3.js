@@ -6,11 +6,14 @@ function postHeightToParent() {
   try {
     const doc = document.documentElement;
     const body = document.body;
-    const height = Math.max(
-      doc?.scrollHeight || 0,
-      body?.scrollHeight || 0,
-      doc?.offsetHeight || 0,
-      body?.offsetHeight || 0,
+    const height = Math.ceil(
+      Math.max(
+        doc?.scrollHeight || 0,
+        body?.scrollHeight || 0,
+        doc?.offsetHeight || 0,
+        body?.offsetHeight || 0,
+        doc?.getBoundingClientRect?.().height || 0,
+      ),
     );
     window.parent.postMessage({ type: "bp-iframe-height", height }, "*");
   } catch {
@@ -21,11 +24,16 @@ function postHeightToParent() {
 function pumpHeightForAWhile() {
   // Tras cargar fuentes/imágenes, la altura puede cambiar varias veces.
   const start = Date.now();
+  let timer = 0;
   function tick() {
     postHeightToParent();
-    if (Date.now() - start < 3000) window.requestAnimationFrame(tick);
+    if (Date.now() - start < 5000) window.requestAnimationFrame(tick);
   }
   window.requestAnimationFrame(tick);
+
+  // Además, un “heartbeat” corto por si rAF se pausa en el CMS.
+  timer = window.setInterval(() => postHeightToParent(), 250);
+  window.setTimeout(() => window.clearInterval(timer), 5000);
 }
 
 function initRevealOnScroll() {
