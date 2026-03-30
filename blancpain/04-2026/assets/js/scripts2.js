@@ -1,4 +1,5 @@
 document.documentElement.classList.add("js");
+document.documentElement.dataset.bpLanding = "1";
 
 function getScrollParent(startEl) {
   let el = startEl?.parentElement || null;
