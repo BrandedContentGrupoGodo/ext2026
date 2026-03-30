@@ -2,23 +2,36 @@ document.documentElement.classList.add("js");
 document.documentElement.dataset.bpLanding = "1";
 
 function getScrollParent(startEl) {
+  const scrollingElement = document.scrollingElement || document.documentElement;
   let el = startEl?.parentElement || null;
-  while (el && el !== document.body) {
+  while (el) {
     const styles = window.getComputedStyle(el);
     const overflowY = styles.overflowY;
     const canScrollY = (overflowY === "auto" || overflowY === "scroll") && el.scrollHeight > el.clientHeight + 2;
     if (canScrollY) return el;
     el = el.parentElement;
   }
+
+  // En muchos CMS el scroll ocurre en body/html (scrollingElement)
+  if (scrollingElement && scrollingElement.scrollHeight > scrollingElement.clientHeight + 2) {
+    return scrollingElement;
+  }
+
+  if (document.body && document.body.scrollHeight > document.body.clientHeight + 2) {
+    return document.body;
+  }
+
   return window;
 }
 
 function getScrollTop(scroller) {
-  return scroller === window ? window.scrollY : scroller.scrollTop;
+  if (scroller === window) return window.scrollY;
+  return scroller.scrollTop || 0;
 }
 
 function getViewportHeight(scroller) {
-  return scroller === window ? window.innerHeight : scroller.clientHeight;
+  if (scroller === window) return window.innerHeight;
+  return scroller.clientHeight || window.innerHeight;
 }
 
 function getRectInScroller(el, scroller) {
