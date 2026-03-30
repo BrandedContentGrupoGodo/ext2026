@@ -303,6 +303,8 @@
   display: flex;
   will-change: transform;
   transform: translate3d(0, 0, 0);
+  /* Garantiza overflow horizontal incluso si el CMS manipula tamaños */
+  width: calc(var(--story-panels, 6) * 100%);
 }
 
 .story__panel {
@@ -312,6 +314,7 @@
   height: 100%;
   min-height: 100%;
   flex: 0 0 100%;
+  flex-shrink: 0;
 }
 
 .story__panel--image {
@@ -787,6 +790,21 @@
 .story.story--wheel .story__track {
   transform: none !important;
   will-change: auto !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+/* En modo wheel, el hint siempre fijo aunque JS no corra */
+.story.story--wheel .story__hint {
+  position: fixed !important;
+  inset: auto 1rem 1rem auto !important;
+  z-index: 50;
+}
+
+@media (min-width: 740px) {
+  .story.story--wheel .story__hint {
+    inset: auto 2.25rem 2.25rem auto !important;
+  }
 }
 
 .story.story--enhanced .story__viewport {
@@ -1224,6 +1242,17 @@
 .js .reveal-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Excepción crítica:
+   El CMS / animations añaden transform (aunque sea 0) y eso rompe fixed/sticky/pinning.
+   En split/story desactivamos transform y animamos solo opacity. */
+.js .split.reveal-on-scroll,
+.js .story.reveal-on-scroll,
+.js .split.reveal-on-scroll.is-visible,
+.js .story.reveal-on-scroll.is-visible {
+  transform: none !important;
+  will-change: opacity !important;
 }
 
 html {
