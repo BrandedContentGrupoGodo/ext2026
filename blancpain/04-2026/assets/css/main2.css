@@ -730,6 +730,13 @@
   opacity: 0.92;
 }
 
+/* Solo visible dentro de su sección (Xalok): si no está activa, se oculta */
+.story.story--wheel:not(.story--hint-fixed) .story__hint,
+.body-blancpain .story.story--wheel:not(.story--hint-fixed) .story__hint {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 @media (min-width: 740px) {
   .body-blancpain .story.story--wheel.story--hint-fixed .story__hint,
   .story.story--wheel.story--hint-fixed .story__hint {
