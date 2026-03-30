@@ -203,6 +203,27 @@ function initStoryWheelFallback() {
     section.classList.toggle("story--hint-dim", progress > 0.97);
   }
 
+  // En CMS, los eventos pueden fallar; mantenemos un loop rAF barato para:
+  // - mostrar/ocultar hint solo en su sección
+  // - atenuar en la última slide
+  let raf = 0;
+  let lastLeft = NaN;
+  let lastTop = NaN;
+  function tick() {
+    const top = getScrollTop(scroller);
+    const left = viewport.scrollLeft;
+    if (top !== lastTop || left !== lastLeft) {
+      lastTop = top;
+      lastLeft = left;
+      const rect = getRectInScroller(section, scroller);
+      const vh = getViewportHeight(scroller);
+      const active = rect.top < vh && rect.bottom > 0;
+      updateHintState(active);
+    }
+    raf = window.requestAnimationFrame(tick);
+  }
+  raf = window.requestAnimationFrame(tick);
+
   wheelTarget.addEventListener(
     "wheel",
     (event) => {
