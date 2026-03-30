@@ -11,6 +11,7 @@
       background: #fff;
       height: 100%;
       overflow: hidden; /* evita scrollbar del propio embed */
+      color-scheme: light;
     }
     .frame {
       width: 100%;
@@ -40,6 +41,8 @@
       color: #111;
       font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+
+    .loading a { color: inherit; text-decoration: underline; text-underline-offset: 0.15em; }
   </style>
 </head>
 <body>
@@ -49,7 +52,7 @@
     id="bpFrame"
     class="frame"
     title="Blancpain - Landing"
-    src="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html"
+    src="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html?v=3"
     loading="eager"
     referrerpolicy="no-referrer-when-downgrade"
     allow="autoplay; fullscreen"
@@ -64,6 +67,10 @@
       frame.addEventListener('load', function () {
         if (loading) loading.style.display = 'none';
       });
+      frame.addEventListener('error', function () {
+        if (!loading) return;
+        loading.innerHTML = 'No se pudo cargar la pieza. Abre <a href="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html" target="_blank" rel="noopener noreferrer">la versión completa</a>.';
+      });
 
       function onMessage(event) {
         if (!event || !event.data || event.data.type !== 'bp-iframe-height') return;
@@ -74,6 +81,12 @@
         if (loading) loading.style.display = 'none';
       }
       window.addEventListener('message', onMessage);
+
+      // Timeout: si el iframe queda bloqueado por políticas, muestra enlace.
+      window.setTimeout(function () {
+        if (!loading || loading.style.display === 'none') return;
+        loading.innerHTML = 'Si ves esta pantalla en negro o no carga, abre <a href="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html" target="_blank" rel="noopener noreferrer">index3</a> directamente.';
+      }, 2500);
     })();
   </script>
 </body>
