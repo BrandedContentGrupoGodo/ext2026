@@ -151,6 +151,51 @@ function initStoryHorizontalScroll() {
   });
 }
 
+function initStoryWheelFallback() {
+  const viewport = document.querySelector(".story__viewport");
+  const section = viewport?.closest?.(".story");
+  if (!viewport || !section) return;
+
+  // Este modo NO depende de sticky; es el más compatible en CMS con transforms.
+  section.classList.remove("story--enhanced");
+  section.classList.add("story--wheel");
+
+  function normalizeDelta(event) {
+    const primary = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (!primary) return 0;
+    if (event.deltaMode === 1) return primary * 16;
+    if (event.deltaMode === 2) return primary * window.innerHeight;
+    return primary;
+  }
+
+  function canMove(delta) {
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    if (max <= 0) return false;
+    if (delta > 0) return viewport.scrollLeft < max - 1;
+    return viewport.scrollLeft > 1;
+  }
+
+  const scroller = getScrollParent(section);
+  const target = scroller === window ? window : scroller;
+
+  target.addEventListener(
+    "wheel",
+    (event) => {
+      const rect = getRectInScroller(section, scroller);
+      const vh = getViewportHeight(scroller);
+      const active = rect.top < vh && rect.bottom > 0;
+      if (!active) return;
+      if (event.ctrlKey) return;
+
+      const delta = normalizeDelta(event);
+      if (!delta || !canMove(delta)) return;
+      event.preventDefault();
+      viewport.scrollLeft += delta;
+    },
+    { passive: false, capture: true },
+  );
+}
+
 function initSplitStickyFallback() {
   const split = document.querySelector(".split");
   const media = split?.querySelector(".split__media");
@@ -192,11 +237,8 @@ function initSplitStickyFallback() {
       return;
     }
 
-    if (!stickySeemsBroken()) {
-      // Si sticky va bien, no tocar estilos inline.
-      reset();
-      return;
-    }
+    // En CMS con transforms, sticky suele romperse aunque a veces "parezca" funcionar.
+    // Forzamos el fallback cuando el split entra en rango de pin.
 
     const splitRect = getRectInScroller(split, scroller);
     const mediaRect = media.getBoundingClientRect();
@@ -244,6 +286,7 @@ function initSplitStickyFallback() {
 document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
   initStoryHorizontalScroll();
+  initStoryWheelFallback();
   initSplitStickyFallback();
 
   const scrollLink = document.querySelector(".hero__scroll");
