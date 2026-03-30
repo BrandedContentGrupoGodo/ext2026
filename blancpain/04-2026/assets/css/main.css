@@ -325,11 +325,11 @@
 }
 
 .story__panel--image-2 {
-  background-image: url("../img/oigen-2.webp");
+  background-image: url("../img/origen-2.jpg");
 }
 
 .story__panel--image-3 {
-  background-image: url("../img/origen-3.webp");
+  background-image: url("../img/origen-3.jpg");
 }
 
 .story__panel--image::before {
