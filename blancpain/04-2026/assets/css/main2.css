@@ -412,6 +412,7 @@
   cursor: pointer;
   padding: 0.25rem 0.35rem;
   border-radius: 10px;
+  z-index: 5;
 }
 
 .story__hint:focus,
@@ -789,6 +790,8 @@
   position: relative !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
+  /* Overlay del botón dentro de su sección */
+  position: relative !important;
 }
 
 .story.story--wheel .story__track {
@@ -802,6 +805,30 @@
 .story.story--wheel:not(.story--hint-fixed) .story__hint {
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+/* En wheel: el hint vive como overlay del viewport (no fixed global) */
+.story.story--wheel .story__hint {
+  position: absolute !important;
+  inset: auto 1rem 1rem auto !important;
+  z-index: 10;
+}
+
+@media (min-width: 740px) {
+  .story.story--wheel .story__hint {
+    inset: auto 2.25rem 2.25rem auto !important;
+  }
+}
+
+/* Evita “zoom raro” por overrides del CMS */
+.story__panel--image {
+  background-size: cover !important;
+  background-position: 70% 50% !important;
+}
+
+.story__panel--image-2 {
+  background-size: contain !important;
+  background-position: 50% 50% !important;
 }
 
 .story.story--enhanced .story__viewport {
