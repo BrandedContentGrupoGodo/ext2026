@@ -790,21 +790,14 @@
 .story.story--wheel .story__track {
   transform: none !important;
   will-change: auto !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
+  /* El scroller real es el viewport; no forzamos overflow aquí */
+  overflow: visible !important;
 }
 
-/* En modo wheel, el hint siempre fijo aunque JS no corra */
-.story.story--wheel .story__hint {
-  position: fixed !important;
-  inset: auto 1rem 1rem auto !important;
-  z-index: 50;
-}
-
-@media (min-width: 740px) {
-  .story.story--wheel .story__hint {
-    inset: auto 2.25rem 2.25rem auto !important;
-  }
+/* El hint solo debe verse cuando la sección esté activa */
+.story.story--wheel:not(.story--hint-fixed) .story__hint {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .story.story--enhanced .story__viewport {
