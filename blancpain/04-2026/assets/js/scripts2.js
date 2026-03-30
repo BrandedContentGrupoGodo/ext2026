@@ -119,17 +119,24 @@ function initStoryHorizontalScroll() {
     track.style.transform = `translate3d(${x}px, 0, 0)`;
   }
 
+  // En algunos CMS los eventos de scroll pueden no dispararse de forma fiable:
+  // mantenemos un loop suave por rAF (barato) para sincronizar el track.
   let raf = 0;
-  function onScroll() {
-    if (raf) return;
-    raf = window.requestAnimationFrame(() => {
-      raf = 0;
+  let lastTop = NaN;
+  let lastW = -1;
+  function tick() {
+    const top = getScrollTop(scroller);
+    const w = viewport.clientWidth;
+    if (top !== lastTop || w !== lastW) {
+      lastTop = top;
+      lastW = w;
       update();
-    });
+    }
+    raf = window.requestAnimationFrame(tick);
   }
 
   update();
-  (scroller === window ? window : scroller).addEventListener("scroll", onScroll, { passive: true });
+  raf = window.requestAnimationFrame(tick);
   window.addEventListener("resize", update);
 
   const hintBtn = section.querySelector(".story__hint");
@@ -268,7 +275,22 @@ function initSplitStickyFallback() {
   }
 
   update();
-  (scroller === window ? window : scroller).addEventListener("scroll", update, { passive: true });
+  // Loop rAF para CMS donde scroll listeners fallan o el scroller es “especial”.
+  let raf = 0;
+  let lastTop = NaN;
+  let lastH = -1;
+  function tick() {
+    const top = getScrollTop(scroller);
+    const h = split.offsetHeight;
+    if (top !== lastTop || h !== lastH) {
+      lastTop = top;
+      lastH = h;
+      update();
+    }
+    raf = window.requestAnimationFrame(tick);
+  }
+
+  raf = window.requestAnimationFrame(tick);
   window.addEventListener("resize", update);
 }
 
