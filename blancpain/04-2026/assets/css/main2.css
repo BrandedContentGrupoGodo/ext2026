@@ -801,11 +801,8 @@
   overflow: visible !important;
 }
 
-/* El hint solo debe verse cuando la sección esté activa */
-.story.story--wheel:not(.story--hint-fixed) .story__hint {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+/* El hint NO debe desaparecer por CSS: en CMS a veces JS no puede togglear a tiempo.
+   Solo lo atenuamos al final (story--hint-dim). */
 
 /* En wheel: el hint vive como overlay del viewport (no fixed global) */
 .story.story--wheel .story__hint {
