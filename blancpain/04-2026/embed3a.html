@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embed Blancpain (v3a)</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #ffffff;
+      color: #111;
+      color-scheme: light;
+    }
+
+    #bpFrame {
+      width: 100%;
+      height: 100vh;
+      border: 0;
+      outline: 0;
+      display: block;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    #bpLoading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="bpLoading">Cargando…</div>
+  <iframe
+    id="bpFrame"
+    title="Blancpain - Landing"
+    src="https://brandedcontentgrupogodo.github.io/ext2026/blancpain/04-2026/index3.html?embed=1&v=3a"
+    loading="eager"
+    referrerpolicy="no-referrer-when-downgrade"
+    allow="autoplay; fullscreen"
+    scrolling="no"
+  ></iframe>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('bpFrame');
+      var loading = document.getElementById('bpLoading');
+
+      frame.addEventListener('load', function () {
+        if (loading) loading.style.display = 'none';
+      });
+
+      function onMessage(event) {
+        if (!event || !event.data || event.data.type !== 'bp-iframe-height') return;
+        var h = Number(event.data.height);
+        if (!Number.isFinite(h) || h < 100) return;
+        frame.style.height = (h + 2) + 'px';
+        if (loading) loading.style.display = 'none';
+      }
+
+      window.addEventListener('message', onMessage);
+
+      window.setTimeout(function () {
+        if (!loading || loading.style.display === 'none') return;
+        loading.textContent = 'No se pudo ajustar la altura todavía (esperando…).';
+      }, 2500);
+    })();
+  </script>
+</body>
+</html>
