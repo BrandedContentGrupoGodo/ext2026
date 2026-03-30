@@ -9,6 +9,8 @@
       margin: 0;
       padding: 0;
       background: #fff;
+      height: 100%;
+      overflow: hidden; /* evita scrollbar del propio embed */
     }
     .frame {
       width: 100%;
@@ -16,8 +18,9 @@
       outline: 0;
       display: block;
       background: #fff;
-      height: 100svh; /* fallback inmediato */
+      height: 100vh; /* fallback inmediato */
       min-height: 100vh;
+      overflow: hidden;
     }
     .fallback {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -27,9 +30,20 @@
       color: #111;
       background: #fff;
     }
+
+    .loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: #111;
+      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
   </style>
 </head>
 <body>
+  <div id="bpLoading" class="loading">Cargando…</div>
   <noscript class="fallback">Esta pieza requiere JavaScript para ajustarse en altura.</noscript>
   <iframe
     id="bpFrame"
@@ -45,11 +59,19 @@
   <script>
     (function () {
       var frame = document.getElementById('bpFrame');
+      var loading = document.getElementById('bpLoading');
+
+      frame.addEventListener('load', function () {
+        if (loading) loading.style.display = 'none';
+      });
+
       function onMessage(event) {
         if (!event || !event.data || event.data.type !== 'bp-iframe-height') return;
         var h = Number(event.data.height);
         if (!Number.isFinite(h) || h < 100) return;
         frame.style.height = (h + 2) + 'px';
+        // Si ya recibimos altura, podemos ocultar el loader aunque el load tarde.
+        if (loading) loading.style.display = 'none';
       }
       window.addEventListener('message', onMessage);
     })();
