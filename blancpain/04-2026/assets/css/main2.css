@@ -1254,6 +1254,7 @@ button:focus {
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  overscroll-behavior: contain;
 }
 
 .body-blancpain .story__viewport::-webkit-scrollbar {
@@ -1290,6 +1291,22 @@ button:focus {
   height: calc(var(--story-panels) * 100svh) !important;
   position: relative !important;
   overflow: visible !important;
+}
+
+/* Modo wheel-fallback (no sticky, sin barras, compatible CMS con transforms) */
+.body-blancpain .story.story--wheel {
+  height: auto !important;
+}
+
+.body-blancpain .story.story--wheel .story__viewport {
+  position: relative !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+.body-blancpain .story.story--wheel .story__track {
+  transform: none !important;
+  will-change: auto !important;
 }
 
 .body-blancpain .story.story--enhanced .story__viewport {
