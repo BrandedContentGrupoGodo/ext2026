@@ -82,8 +82,6 @@ function initStoryHorizontalScroll() {
   const track = viewport.querySelector(".story__track");
   if (!section || !track) return;
 
-  const scroller = getScrollParent(section);
-
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
@@ -108,11 +106,11 @@ function initStoryHorizontalScroll() {
     }
 
     setEnhanced(true);
-    const rect = getRectInScroller(section, scroller);
-    const sectionTop = getScrollTop(scroller) + rect.top;
-    const maxTravelY = section.offsetHeight - viewport.offsetHeight;
-    const progress =
-      maxTravelY > 0 ? clamp((getScrollTop(scroller) - sectionTop) / maxTravelY, 0, 1) : 0;
+    // Basado en viewport: no depende del contenedor de scroll del CMS.
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const maxTravelY = Math.max(1, section.offsetHeight - vh);
+    const progress = clamp((-rect.top) / maxTravelY, 0, 1);
 
     const maxX = Math.max(0, track.scrollWidth - viewport.clientWidth);
     const x = -progress * maxX;
@@ -125,7 +123,7 @@ function initStoryHorizontalScroll() {
   let lastTop = NaN;
   let lastW = -1;
   function tick() {
-    const top = getScrollTop(scroller);
+    const top = window.scrollY;
     const w = viewport.clientWidth;
     if (top !== lastTop || w !== lastW) {
       lastTop = top;
@@ -144,13 +142,9 @@ function initStoryHorizontalScroll() {
     // Si estamos en modo enhanced, avanzamos “un panel” en vertical; si no, scroll horizontal real
     if (section.classList.contains("story--enhanced") && canEnhance()) {
       const panels = Number.parseInt(getComputedStyle(section).getPropertyValue("--story-panels"), 10) || 6;
-      const maxTravelY = section.offsetHeight - viewport.offsetHeight;
+      const maxTravelY = Math.max(0, section.offsetHeight - window.innerHeight);
       const step = panels > 1 ? maxTravelY / (panels - 1) : 0;
-      if (scroller === window) {
-        window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
-      } else {
-        scroller.scrollTo({ top: scroller.scrollTop + step, behavior: allowSmooth ? "smooth" : "auto" });
-      }
+      window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
     } else {
       viewport.scrollBy({ left: viewport.clientWidth, behavior: allowSmooth ? "smooth" : "auto" });
       viewport.focus({ preventScroll: true });
@@ -273,7 +267,6 @@ function initSplitStickyFallback() {
 
   // Scrollpin por translateY (estable y sin “huecos” en el layout).
   const mq = window.matchMedia("(min-width: 900px)");
-  const scroller = getScrollParent(split);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function update() {
@@ -285,12 +278,11 @@ function initSplitStickyFallback() {
 
     split.classList.add("split--scrollpin");
 
-    const rect = getRectInScroller(split, scroller);
-    const vh = getViewportHeight(scroller);
-
-    const splitTop = getScrollTop(scroller) + rect.top;
+    // Basado en viewport: no depende del contenedor de scroll del CMS.
+    const rect = split.getBoundingClientRect();
+    const vh = window.innerHeight;
     const maxTravel = Math.max(0, split.offsetHeight - vh);
-    const y = Math.min(maxTravel, Math.max(0, getScrollTop(scroller) - splitTop));
+    const y = Math.min(maxTravel, Math.max(0, -rect.top));
 
     media.style.transform = `translate3d(0, ${y}px, 0)`;
   }
@@ -300,7 +292,7 @@ function initSplitStickyFallback() {
   let lastTop = NaN;
   let lastH = -1;
   function tick() {
-    const top = getScrollTop(scroller);
+    const top = window.scrollY;
     const h = split.offsetHeight;
     if (top !== lastTop || h !== lastH) {
       lastTop = top;
