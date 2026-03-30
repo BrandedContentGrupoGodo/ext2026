@@ -161,6 +161,7 @@ function initStoryWheelFallback() {
   section.classList.add("story--wheel");
 
   function normalizeDelta(event) {
+    // Prioriza scroll vertical (rueda) para “automatic horizontal”
     const primary = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
     if (!primary) return 0;
     if (event.deltaMode === 1) return primary * 16;
@@ -176,19 +177,24 @@ function initStoryWheelFallback() {
   }
 
   const scroller = getScrollParent(section);
-  const target = scroller === window ? window : scroller;
+  const wheelTarget = document;
 
-  target.addEventListener(
+  wheelTarget.addEventListener(
     "wheel",
     (event) => {
+      if (event.ctrlKey) return;
+
       const rect = getRectInScroller(section, scroller);
       const vh = getViewportHeight(scroller);
       const active = rect.top < vh && rect.bottom > 0;
       if (!active) return;
-      if (event.ctrlKey) return;
+
+      // Solo intercepta si la intención principal es vertical (rueda/scroll normal)
+      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
 
       const delta = normalizeDelta(event);
       if (!delta || !canMove(delta)) return;
+
       event.preventDefault();
       viewport.scrollLeft += delta;
     },
@@ -201,86 +207,33 @@ function initSplitStickyFallback() {
   const media = split?.querySelector(".split__media");
   if (!split || !media) return;
 
+  // Simulación de sticky SIN position:sticky/fixed (CMS-friendly con transforms):
+  // movemos el media dentro del split según el scroll del contenedor real.
   const mq = window.matchMedia("(min-width: 900px)");
   const scroller = getScrollParent(split);
 
-  // Fallback SOLO si sticky no funciona (muchos CMS rompen sticky por overflow/containers)
-  function stickySeemsBroken() {
-    if (!mq.matches) return false;
-    const rect = getRectInScroller(split, scroller);
-    const vh = getViewportHeight(scroller);
-    if (!(rect.top < 0 && rect.bottom > vh)) return false;
-    // Si sticky funcionara, el top del media estaría muy cerca de 0 cuando el split está “pinneado”
-    const mediaRect = media.getBoundingClientRect();
-    return Math.abs(mediaRect.top) > 24;
-  }
-
-  let pin = {
-    active: false,
-    left: 0,
-    width: 0,
-  };
-
-  function reset() {
-    pin.active = false;
-    media.style.position = "";
-    media.style.top = "";
-    media.style.left = "";
-    media.style.width = "";
-    media.style.height = "";
-    media.style.bottom = "";
-  }
-
   function update() {
     if (!mq.matches) {
-      reset();
+      split.classList.remove("split--scrollpin");
+      media.style.transform = "";
       return;
     }
 
-    // En CMS con transforms, sticky suele romperse aunque a veces "parezca" funcionar.
-    // Forzamos el fallback cuando el split entra en rango de pin.
+    split.classList.add("split--scrollpin");
 
-    const splitRect = getRectInScroller(split, scroller);
-    const mediaRect = media.getBoundingClientRect();
+    const rect = getRectInScroller(split, scroller);
     const vh = getViewportHeight(scroller);
-    const inPinRange = splitRect.top <= 0 && splitRect.bottom > vh;
-    const afterPin = splitRect.bottom <= vh;
 
-    if (inPinRange) {
-      if (!pin.active) {
-        pin.active = true;
-        pin.left = mediaRect.left;
-        pin.width = mediaRect.width;
-      }
-      media.style.position = "fixed";
-      media.style.top = "0";
-      media.style.left = `${pin.left}px`;
-      media.style.width = `${pin.width}px`;
-      media.style.height = "100vh";
-      media.style.bottom = "";
-      return;
-    }
+    const splitTop = getScrollTop(scroller) + rect.top;
+    const maxTravel = Math.max(0, split.offsetHeight - vh);
+    const y = Math.min(maxTravel, Math.max(0, getScrollTop(scroller) - splitTop));
 
-    if (afterPin) {
-      // Ancla al final del split sin desplazar lateralmente
-      reset();
-      media.style.position = "absolute";
-      media.style.left = "0";
-      media.style.bottom = "0";
-      media.style.width = "100%";
-      media.style.height = "100vh";
-      return;
-    }
-
-    reset();
+    media.style.transform = `translate3d(0, ${y}px, 0)`;
   }
 
   update();
   (scroller === window ? window : scroller).addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", () => {
-    pin.active = false;
-    update();
-  });
+  window.addEventListener("resize", update);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
