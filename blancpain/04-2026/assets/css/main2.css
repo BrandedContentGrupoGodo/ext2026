@@ -326,6 +326,10 @@
 
 .story__panel--image-2 {
   background-image: url("../img/origen-2.jpg");
+  /* La imagen fuente se percibe “baja calidad” en horizontal:
+     hacemos un encuadre más vertical con un zoom suave. */
+  background-position: 55% 40%;
+  background-size: 140% auto;
 }
 
 .story__panel--image-3 {
@@ -652,7 +656,8 @@
 
 @media (min-width: 900px) {
   .split__grid {
-    grid-template-columns: 1fr 1fr;
+    /* Hacemos el vídeo un poco más angosto */
+    grid-template-columns: 0.88fr 1.12fr;
   }
 
   .split__media {
@@ -672,14 +677,14 @@
 @media (min-width: 900px) {
   .body-blancpain .split.split--scrollpin .split__grid {
     position: relative;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.88fr 1.12fr;
   }
 
   .body-blancpain .split.split--scrollpin .split__media {
     position: absolute !important;
     inset-block-start: 0 !important;
     inset-inline-start: 0 !important;
-    width: 50% !important;
+    width: 44% !important;
     height: 100vh !important;
     will-change: transform;
   }
@@ -687,6 +692,33 @@
   .body-blancpain .split.split--scrollpin .split__content {
     grid-column: 2;
   }
+}
+
+@media (max-aspect-ratio: 3/4) {
+  .story__panel--image-2 {
+    /* En pantallas más verticales, prioriza altura para un encuadre más “vertical” */
+    background-size: auto 145%;
+    background-position: 55% 30%;
+  }
+}
+
+/* Hint fijo en modo fallback (wheel) */
+.body-blancpain .story.story--wheel.story--hint-fixed .story__hint {
+  position: fixed !important;
+  inset: auto 1rem 1rem auto !important;
+  z-index: 50;
+  opacity: 0.92;
+}
+
+@media (min-width: 740px) {
+  .body-blancpain .story.story--wheel.story--hint-fixed .story__hint {
+    inset: auto 2.25rem 2.25rem auto !important;
+  }
+}
+
+.body-blancpain .story.story--wheel.story--hint-dim .story__hint {
+  opacity: 0.14 !important;
+  filter: saturate(0.85);
 }
 
 .fullbleed-image {
