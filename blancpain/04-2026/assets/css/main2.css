@@ -46,7 +46,7 @@
 .hero {
   position: relative;
   min-height: 100svh;
-  min-height: 100vh;
+  min-height: 90vh;
   display: grid;
   align-items: end;
   padding: 0.9rem 1rem 1.6rem;
@@ -321,6 +321,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 70% 50%;
+}
+
+/* Si el CMS aplica “zoom” por transform/scale en ancestros, forzamos a no escalar el track */
+.story__track {
+  transform: translate3d(0,0,0);
 }
 
 .story__panel--origin {
