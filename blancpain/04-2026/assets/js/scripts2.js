@@ -93,8 +93,12 @@ function initStoryHorizontalScroll() {
   }
 
   function setEnhanced(enabled) {
-    if (enabled) section.classList.add("story--enhanced");
-    else section.classList.remove("story--enhanced");
+    if (enabled) {
+      section.classList.add("story--enhanced");
+      section.classList.remove("story--wheel");
+    } else {
+      section.classList.remove("story--enhanced");
+    }
   }
 
   function update() {
@@ -282,9 +286,11 @@ function initSplitStickyFallback() {
     const rect = split.getBoundingClientRect();
     const vh = window.innerHeight;
     const maxTravel = Math.max(0, split.offsetHeight - vh);
-    const y = Math.min(maxTravel, Math.max(0, -rect.top));
+    const rawY = Math.min(maxTravel, Math.max(0, -rect.top));
+    const y = Math.round(rawY); // evita “micro saltos” por subpíxeles
 
-    media.style.transform = `translate3d(0, ${y}px, 0)`;
+    const next = `translate3d(0, ${y}px, 0)`;
+    if (media.style.transform !== next) media.style.transform = next;
   }
 
   // Loop rAF (CMS-safe)
