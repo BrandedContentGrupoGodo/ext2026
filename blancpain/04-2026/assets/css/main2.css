@@ -668,6 +668,27 @@
   }
 }
 
+/* Split scroll-pin (sin sticky/fixed; compatible con CMS con transforms) */
+@media (min-width: 900px) {
+  .body-blancpain .split.split--scrollpin .split__grid {
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .body-blancpain .split.split--scrollpin .split__media {
+    position: absolute !important;
+    inset-block-start: 0 !important;
+    inset-inline-start: 0 !important;
+    width: 50% !important;
+    height: 100vh !important;
+    will-change: transform;
+  }
+
+  .body-blancpain .split.split--scrollpin .split__content {
+    grid-column: 2;
+  }
+}
+
 .fullbleed-image {
   height: 100svh;
   height: 100vh;
