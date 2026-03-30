@@ -722,19 +722,22 @@
 }
 
 /* Hint fijo en modo fallback (wheel) */
-.body-blancpain .story.story--wheel.story--hint-fixed .story__hint,
-.story.story--wheel.story--hint-fixed .story__hint {
-  position: fixed !important;
+/* En Xalok: el hint NO debe ser fixed global.
+   Debe vivir como overlay del viewport para no “escaparse” a la siguiente sección. */
+.story.story--wheel .story__hint,
+.body-blancpain .story.story--wheel .story__hint {
+  position: absolute !important;
   inset: auto 1rem 1rem auto !important;
-  z-index: 50;
+  z-index: 10;
   opacity: 0.92;
+  pointer-events: auto;
 }
 
-/* Solo visible dentro de su sección (Xalok): si no está activa, se oculta */
-.story.story--wheel:not(.story--hint-fixed) .story__hint,
-.body-blancpain .story.story--wheel:not(.story--hint-fixed) .story__hint {
-  opacity: 0 !important;
-  pointer-events: none !important;
+@media (min-width: 740px) {
+  .story.story--wheel .story__hint,
+  .body-blancpain .story.story--wheel .story__hint {
+    inset: auto 2.25rem 2.25rem auto !important;
+  }
 }
 
 @media (min-width: 740px) {
@@ -746,7 +749,7 @@
 
 .body-blancpain .story.story--wheel.story--hint-dim .story__hint,
 .story.story--wheel.story--hint-dim .story__hint {
-  opacity: 0.14 !important;
+  opacity: 0.25 !important;
   filter: saturate(0.85);
 }
 
