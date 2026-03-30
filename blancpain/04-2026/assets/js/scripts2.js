@@ -1,6 +1,72 @@
 document.documentElement.classList.add("js");
 document.documentElement.dataset.bpLanding = "1";
 
+function neutralizeXalokScrollHijack() {
+  // Intento best-effort (solo v2): Xalok a veces bloquea el scroll con overflow:hidden o body fixed,
+  // o instala manejadores wheel que impiden preventDefault. Aquí revertimos scroll-lock y evitamos
+  // “smooth scroll” que suele interferir con wheel/scroll.
+  try {
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body && (document.body.style.scrollBehavior = "auto");
+
+    const htmlStyles = window.getComputedStyle(document.documentElement);
+    const bodyStyles = document.body ? window.getComputedStyle(document.body) : null;
+
+    if (htmlStyles.overflowY === "hidden") {
+      document.documentElement.style.overflowY = "auto";
+    }
+    if (bodyStyles && bodyStyles.overflowY === "hidden") {
+      document.body.style.overflowY = "auto";
+    }
+
+    // Si el CMS “congela” el scroll poniendo body fixed, lo revertimos conservando posición.
+    if (bodyStyles && bodyStyles.position === "fixed") {
+      const top = Number.parseInt(bodyStyles.top || "0", 10) || 0;
+      const y = Math.abs(top);
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      window.scrollTo(0, y);
+    }
+
+    // Style guard: reduce interferencias de scroll managers
+    const id = "bp-scroll-unlock";
+    if (!document.getElementById(id)) {
+      const style = document.createElement("style");
+      style.id = id;
+      style.textContent = `
+        html, body { scroll-behavior: auto !important; }
+        html { overscroll-behavior: auto !important; }
+        body { overscroll-behavior: auto !important; }
+        .body-blancpain { overscroll-behavior: auto !important; touch-action: pan-y !important; }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Monkey-patch: evita que scripts cargados DESPUÉS capturen la rueda globalmente.
+    // No afecta a listeners ya instalados (si existen), pero ayuda en Xalok cuando inyecta tarde.
+    const key = "__bp_patched_addEventListener__";
+    if (!window[key]) {
+      window[key] = true;
+      const original = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function (type, listener, options) {
+        if (type === "wheel" && (this === window || this === document || this === document.documentElement || this === document.body)) {
+          // Permitimos nuestro propio listener (marcado) y el resto lo degradamos a no-capture.
+          const isBp = typeof listener === "function" && listener.__bp === true;
+          if (!isBp) {
+            const nextOptions = typeof options === "boolean" ? false : { ...(options || {}), capture: false, passive: true };
+            return original.call(this, type, listener, nextOptions);
+          }
+        }
+        return original.call(this, type, listener, options);
+      };
+    }
+  } catch {
+    // noop
+  }
+}
+
 function getScrollParent(startEl) {
   const scrollingElement = document.scrollingElement || document.documentElement;
   let el = startEl?.parentElement || null;
@@ -185,6 +251,15 @@ function initStoryWheelFallback() {
   }
 
   const wheelTarget = document;
+  // Marcar handler BP para que el patch no lo degrade.
+  function mark(fn) {
+    try {
+      fn.__bp = true;
+    } catch {
+      // noop
+    }
+    return fn;
+  }
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
@@ -235,7 +310,7 @@ function initStoryWheelFallback() {
   // Así funciona aunque Xalok bloquee wheel en document/window.
   viewport.addEventListener(
     "wheel",
-    (event) => {
+    mark((event) => {
       if (event.ctrlKey) return;
       if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
 
@@ -245,13 +320,13 @@ function initStoryWheelFallback() {
       event.preventDefault();
       viewport.scrollLeft += delta;
       updateHintState();
-    },
+    }),
     { passive: false },
   );
 
   wheelTarget.addEventListener(
     "wheel",
-    (event) => {
+    mark((event) => {
       if (event.ctrlKey) return;
 
       const rect = section.getBoundingClientRect();
@@ -268,7 +343,7 @@ function initStoryWheelFallback() {
       event.preventDefault();
       viewport.scrollLeft += delta;
       updateHintState();
-    },
+    }),
     { passive: false, capture: true },
   );
 
@@ -335,6 +410,7 @@ function initSplitStickyFallback() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  neutralizeXalokScrollHijack();
   initRevealOnScroll();
   initStoryWheelFallback();
   initSplitStickyFallback();
