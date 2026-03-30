@@ -271,46 +271,86 @@ function initSplitStickyFallback() {
   const media = split?.querySelector(".split__media");
   if (!split || !media) return;
 
-  // Simulación de sticky SIN position:sticky/fixed (CMS-friendly con transforms):
-  // movemos el media dentro del split según el scroll del contenedor real.
+  // Portal pin (ultra robusto en CMS):
+  // movemos el media al <body> durante el rango “sticky” y lo ponemos fixed real.
+  // Esto evita que transforms en ancestros rompan fixed/sticky.
   const mq = window.matchMedia("(min-width: 900px)");
   const scroller = getScrollParent(split);
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const placeholder = document.createElement("div");
+  placeholder.setAttribute("data-split-placeholder", "1");
+  let portaled = false;
+
+  function setPortaled(enabled) {
+    if (enabled === portaled) return;
+    portaled = enabled;
+
+    if (enabled) {
+      // Inserta placeholder para mantener el layout
+      if (!placeholder.parentNode) media.parentNode?.insertBefore(placeholder, media);
+      document.body.appendChild(media);
+      media.style.position = "fixed";
+      media.style.top = "0";
+      media.style.left = "0";
+      media.style.margin = "0";
+      media.style.transform = "none";
+      media.style.zIndex = "20";
+      media.style.willChange = "left, width";
+    } else {
+      media.style.position = "";
+      media.style.top = "";
+      media.style.left = "";
+      media.style.width = "";
+      media.style.height = "";
+      media.style.zIndex = "";
+      media.style.willChange = "";
+      media.style.transform = "";
+      placeholder.parentNode?.insertBefore(media, placeholder);
+      placeholder.remove();
+    }
+  }
 
   function update() {
-    if (!mq.matches) {
+    if (!mq.matches || reducedMotion) {
       split.classList.remove("split--scrollpin");
-      media.style.transform = "";
+      setPortaled(false);
       return;
     }
 
     split.classList.add("split--scrollpin");
 
-    const rect = getRectInScroller(split, scroller);
-    const vh = getViewportHeight(scroller);
+    // Activo cuando el split está “entre” top y bottom del viewport
+    const rect = split.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const active = rect.top <= 0 && rect.bottom >= vh;
 
-    const splitTop = getScrollTop(scroller) + rect.top;
-    const maxTravel = Math.max(0, split.offsetHeight - vh);
-    const y = Math.min(maxTravel, Math.max(0, getScrollTop(scroller) - splitTop));
+    setPortaled(active);
+    if (!active) return;
 
-    media.style.transform = `translate3d(0, ${y}px, 0)`;
+    const phRect = placeholder.getBoundingClientRect();
+    // Fija el media al tamaño/posición del hueco izquierdo
+    media.style.left = `${phRect.left}px`;
+    media.style.width = `${phRect.width}px`;
+    media.style.height = `${vh}px`;
   }
 
-  update();
-  // Loop rAF para CMS donde scroll listeners fallan o el scroller es “especial”.
+  // Loop rAF (CMS-safe)
   let raf = 0;
   let lastTop = NaN;
-  let lastH = -1;
+  let lastW = -1;
   function tick() {
     const top = getScrollTop(scroller);
-    const h = split.offsetHeight;
-    if (top !== lastTop || h !== lastH) {
+    const w = window.innerWidth;
+    if (top !== lastTop || w !== lastW) {
       lastTop = top;
-      lastH = h;
+      lastW = w;
       update();
     }
     raf = window.requestAnimationFrame(tick);
   }
 
+  update();
   raf = window.requestAnimationFrame(tick);
   window.addEventListener("resize", update);
 }
