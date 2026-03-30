@@ -127,7 +127,9 @@ function initStoryHorizontalScroll() {
   let lastTop = NaN;
   let lastW = -1;
   function tick() {
-    const top = window.scrollY;
+    // En CMS el scroll puede ocurrir en un contenedor (window.scrollY no cambia).
+    // Usamos la geometría real en viewport.
+    const top = Math.round(section.getBoundingClientRect().top);
     const w = viewport.clientWidth;
     if (top !== lastTop || w !== lastW) {
       lastTop = top;
@@ -287,7 +289,8 @@ function initSplitStickyFallback() {
     const vh = window.innerHeight;
     const maxTravel = Math.max(0, split.offsetHeight - vh);
     const rawY = Math.min(maxTravel, Math.max(0, -rect.top));
-    const y = Math.round(rawY); // evita “micro saltos” por subpíxeles
+    // Evita vibración en umbrales de píxel: monotónico hacia abajo.
+    const y = Math.floor(rawY);
 
     const next = `translate3d(0, ${y}px, 0)`;
     if (media.style.transform !== next) media.style.transform = next;
@@ -298,7 +301,7 @@ function initSplitStickyFallback() {
   let lastTop = NaN;
   let lastH = -1;
   function tick() {
-    const top = window.scrollY;
+    const top = Math.round(split.getBoundingClientRect().top);
     const h = split.offsetHeight;
     if (top !== lastTop || h !== lastH) {
       lastTop = top;
