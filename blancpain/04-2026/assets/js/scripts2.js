@@ -68,14 +68,32 @@ function initStoryHorizontalScroll() {
   const track = viewport.querySelector(".story__track");
   if (!section || !track) return;
 
-  section.classList.add("story--enhanced");
   const scroller = getScrollParent(section);
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
 
+  function canEnhance() {
+    const maxTravelY = section.offsetHeight - viewport.offsetHeight;
+    const maxX = Math.max(0, track.scrollWidth - viewport.clientWidth);
+    return maxTravelY > 8 && maxX > 8;
+  }
+
+  function setEnhanced(enabled) {
+    if (enabled) section.classList.add("story--enhanced");
+    else section.classList.remove("story--enhanced");
+  }
+
   function update() {
+    if (!canEnhance()) {
+      // Si el CMS rompe alturas/scroll, volvemos al fallback nativo horizontal
+      setEnhanced(false);
+      track.style.transform = "";
+      return;
+    }
+
+    setEnhanced(true);
     const rect = getRectInScroller(section, scroller);
     const sectionTop = getScrollTop(scroller) + rect.top;
     const maxTravelY = section.offsetHeight - viewport.offsetHeight;
@@ -102,13 +120,19 @@ function initStoryHorizontalScroll() {
 
   const hintBtn = section.querySelector(".story__hint");
   hintBtn?.addEventListener("click", () => {
-    const panels = Number.parseInt(getComputedStyle(section).getPropertyValue("--story-panels"), 10) || 6;
-    const maxTravelY = section.offsetHeight - viewport.offsetHeight;
-    const step = panels > 1 ? maxTravelY / (panels - 1) : 0;
-    if (scroller === window) {
-      window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
+    // Si estamos en modo enhanced, avanzamos “un panel” en vertical; si no, scroll horizontal real
+    if (section.classList.contains("story--enhanced") && canEnhance()) {
+      const panels = Number.parseInt(getComputedStyle(section).getPropertyValue("--story-panels"), 10) || 6;
+      const maxTravelY = section.offsetHeight - viewport.offsetHeight;
+      const step = panels > 1 ? maxTravelY / (panels - 1) : 0;
+      if (scroller === window) {
+        window.scrollTo({ top: window.scrollY + step, behavior: allowSmooth ? "smooth" : "auto" });
+      } else {
+        scroller.scrollTo({ top: scroller.scrollTop + step, behavior: allowSmooth ? "smooth" : "auto" });
+      }
     } else {
-      scroller.scrollTo({ top: scroller.scrollTop + step, behavior: allowSmooth ? "smooth" : "auto" });
+      viewport.scrollBy({ left: viewport.clientWidth, behavior: allowSmooth ? "smooth" : "auto" });
+      viewport.focus({ preventScroll: true });
     }
   });
 }
