@@ -202,6 +202,22 @@ function initStoryWheelFallback() {
     section.classList.toggle("story--hint-dim", progress > 0.97);
   }
 
+  // Click: avanza un panel; si ya estás al final, baja a la siguiente sección.
+  hintBtn?.addEventListener("click", () => {
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    const remaining = max - viewport.scrollLeft;
+    if (remaining > 2) {
+      viewport.scrollBy({ left: viewport.clientWidth, behavior: "smooth" });
+      viewport.focus({ preventScroll: true });
+      return;
+    }
+
+    const next = section.nextElementSibling;
+    if (next && typeof next.scrollIntoView === "function") {
+      next.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+
   // En CMS, los eventos pueden fallar; mantenemos un loop rAF barato para:
   // - mostrar/ocultar hint solo en su sección
   // - atenuar en la última slide
