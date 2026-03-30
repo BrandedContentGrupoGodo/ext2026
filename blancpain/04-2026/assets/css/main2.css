@@ -779,6 +779,10 @@
 
 .story.story--wheel {
   height: auto !important;
+  /* Evita que el CMS “clippee” el scroll interno */
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
 }
 
 .story.story--wheel .story__viewport {
@@ -1475,6 +1479,9 @@ button:focus {
 /* Modo wheel-fallback (no sticky, sin barras, compatible CMS con transforms) */
 .body-blancpain .story.story--wheel {
   height: auto !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
 }
 
 .body-blancpain .story.story--wheel .story__viewport {
