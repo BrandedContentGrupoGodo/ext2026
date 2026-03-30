@@ -18,6 +18,16 @@ function postHeightToParent() {
   }
 }
 
+function pumpHeightForAWhile() {
+  // Tras cargar fuentes/imágenes, la altura puede cambiar varias veces.
+  const start = Date.now();
+  function tick() {
+    postHeightToParent();
+    if (Date.now() - start < 3000) window.requestAnimationFrame(tick);
+  }
+  window.requestAnimationFrame(tick);
+}
+
 function initRevealOnScroll() {
   document.documentElement.classList.add("js-loaded");
 
@@ -95,7 +105,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
   initStoryHorizontalScroll();
   postHeightToParent();
+  pumpHeightForAWhile();
   window.addEventListener("resize", postHeightToParent, { passive: true });
+  window.addEventListener("load", () => {
+    postHeightToParent();
+    pumpHeightForAWhile();
+  });
+
+  // Cuando carguen imágenes, vuelve a notificar altura
+  try {
+    document.querySelectorAll("img").forEach((img) => {
+      img.addEventListener("load", postHeightToParent, { passive: true });
+      img.addEventListener("error", postHeightToParent, { passive: true });
+    });
+  } catch {
+    // noop
+  }
   // Observa cambios de layout (fuentes, imágenes, etc.)
   try {
     const mo = new MutationObserver(() => postHeightToParent());
