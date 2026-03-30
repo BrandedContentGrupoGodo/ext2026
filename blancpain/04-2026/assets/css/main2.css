@@ -1279,6 +1279,7 @@ button:focus {
   height: calc(var(--story-panels) * 100vh) !important;
   height: calc(var(--story-panels) * 100svh) !important;
   position: relative !important;
+  overflow: visible !important;
 }
 
 .body-blancpain .story.story--enhanced .story__viewport {
