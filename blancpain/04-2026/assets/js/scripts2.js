@@ -233,6 +233,8 @@ function initStoryWheelFallback() {
   section.classList.remove("story--enhanced");
   section.classList.add("story--wheel");
   const hintBtn = section.querySelector(".story__hint");
+  const btnLeft = section.querySelector(".story__nav-btn--left");
+  const btnRight = section.querySelector(".story__nav-btn--right");
 
   function normalizeDelta(event) {
     // Prioriza scroll vertical (rueda) para “automatic horizontal”
@@ -270,6 +272,10 @@ function initStoryWheelFallback() {
     const max = viewport.scrollWidth - viewport.clientWidth;
     const progress = max > 0 ? clamp(viewport.scrollLeft / max, 0, 1) : 0;
     section.classList.toggle("story--hint-dim", progress > 0.97);
+
+    // Estado de botones
+    if (btnLeft) btnLeft.disabled = viewport.scrollLeft <= 1;
+    if (btnRight) btnRight.disabled = viewport.scrollLeft >= max - 1;
   }
 
   // Click: avanza un panel; si ya estás al final, baja a la siguiente sección.
@@ -287,6 +293,18 @@ function initStoryWheelFallback() {
     if (next && typeof next.scrollIntoView === "function") {
       next.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  });
+
+  btnLeft?.addEventListener("click", () => {
+    viewport.scrollBy({ left: -viewport.clientWidth, behavior: "smooth" });
+    viewport.focus({ preventScroll: true });
+    updateHintState();
+  });
+
+  btnRight?.addEventListener("click", () => {
+    viewport.scrollBy({ left: viewport.clientWidth, behavior: "smooth" });
+    viewport.focus({ preventScroll: true });
+    updateHintState();
   });
 
   // En CMS, los eventos pueden fallar; mantenemos un loop rAF barato para:
