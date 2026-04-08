@@ -341,29 +341,8 @@ function initStoryWheelFallback() {
     }),
     { passive: false },
   );
-
-  wheelTarget.addEventListener(
-    "wheel",
-    mark((event) => {
-      if (event.ctrlKey) return;
-
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const active = rect.top < vh && rect.bottom > 0;
-      if (!active) return;
-
-      // Solo intercepta si la intención principal es vertical (rueda/scroll normal)
-      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
-
-      const delta = normalizeDelta(event);
-      if (!delta || !canMove(delta)) return;
-
-      event.preventDefault();
-      viewport.scrollLeft += delta;
-      updateHintState();
-    }),
-    { passive: false, capture: true },
-  );
+  // Importante en Xalok: evitamos interceptar wheel globalmente (puede bloquear el scroll vertical
+  // de la página al entrar/salir de la sección). Nos quedamos con el listener del viewport.
 
   viewport.addEventListener(
     "scroll",
