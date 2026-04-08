@@ -141,6 +141,11 @@
       line-height: 1.55;
   }
 }
+@media (max-width: 739px) {
+  .hero__content {
+    padding:0 1rem;
+  }
+}
 
 @media (hover: hover) and (pointer: fine) {
   .hero__scroll:hover {
@@ -453,6 +458,7 @@
   width: min(100% - 0rem, 48rem);
   margin-inline: auto;
   text-shadow: 0 2px 18px rgba(0,0,0,0.55);
+  padding:0 1rem;
 }
 
 .story__text p {
@@ -604,7 +610,7 @@
 .split__content {
   background: #fff;
   color: inherit;
-  padding: 2.5rem 1.25rem 3rem;
+  padding: 2.5rem 2.5rem 3rem;
 }
 
 .split__inner {
@@ -737,6 +743,57 @@
   .story.story--wheel .story__hint,
   .body-blancpain .story.story--wheel .story__hint {
     inset: auto 2.25rem 2.25rem auto !important;
+  }
+}
+
+/* Controles izquierda/derecha (fallback garantizado) */
+.story__nav {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  z-index: 12;
+  pointer-events: none; /* solo los botones clicables */
+}
+
+.story__nav-btn {
+  pointer-events: auto;
+  inline-size: 44px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(0,0,0,0.38);
+  color: #fff;
+  font: 600 18px/1 var(--font-principal);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms ease, background-color 160ms ease, opacity 160ms ease;
+}
+
+.story__nav-btn:focus,
+.story__nav-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .story__nav-btn:hover {
+    transform: translateY(1px);
+    background: rgba(0,0,0,0.52);
+  }
+}
+
+.story__nav-btn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (min-width: 740px) {
+  .story__nav {
+    inset: auto 2.25rem 2.25rem 2.25rem;
   }
 }
 
@@ -1564,7 +1621,7 @@ button:focus {
 @media (min-width: 900px) {
   .body-blancpain .split__grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 0.80fr 1.20fr !important;
     align-items: start !important;
   }
 
