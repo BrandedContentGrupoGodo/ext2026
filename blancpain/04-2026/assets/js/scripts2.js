@@ -341,6 +341,26 @@ function initStoryWheelFallback() {
     }),
     { passive: false },
   );
+
+  // Listener extra en window(capture): se ejecuta antes que listeners del CMS en document.
+  // Solo actúa si el wheel ocurrió dentro del viewport.
+  window.addEventListener(
+    "wheel",
+    mark((event) => {
+      if (event.ctrlKey) return;
+      const inside = viewport.contains(event.target);
+      if (!inside) return;
+
+      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+      const delta = normalizeDelta(event);
+      if (!delta || !canMove(delta)) return;
+
+      event.preventDefault();
+      viewport.scrollLeft += delta;
+      updateHintState();
+    }),
+    { passive: false, capture: true },
+  );
   // Importante en Xalok: evitamos interceptar wheel globalmente (puede bloquear el scroll vertical
   // de la página al entrar/salir de la sección). Nos quedamos con el listener del viewport.
 
