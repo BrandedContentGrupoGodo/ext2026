@@ -758,6 +758,15 @@
   pointer-events: none; /* solo los botones clicables */
 }
 
+.story {
+  position: relative;
+}
+
+.story__viewport {
+  position: relative;
+  z-index: 1;
+}
+
 .story__nav-btn {
   pointer-events: auto;
   inline-size: 44px;
