@@ -275,7 +275,14 @@ function initStoryWheelFallback() {
 
     // Estado de botones
     if (btnLeft) btnLeft.disabled = viewport.scrollLeft <= 1;
-    if (btnRight) btnRight.disabled = viewport.scrollLeft >= max - 1;
+    if (btnRight) {
+      const atEnd = viewport.scrollLeft >= max - 1;
+      // La derecha nunca se desactiva: al final pasa a “↓” y baja a la siguiente sección.
+      btnRight.disabled = false;
+      btnRight.textContent = atEnd ? "↓" : "→";
+      btnRight.setAttribute("aria-label", atEnd ? "Bajar a la siguiente sección" : "Deslizar a la derecha");
+      btnRight.dataset.mode = atEnd ? "down" : "right";
+    }
   }
 
   // Click: avanza un panel; si ya estás al final, baja a la siguiente sección.
@@ -302,6 +309,13 @@ function initStoryWheelFallback() {
   });
 
   btnRight?.addEventListener("click", () => {
+    const mode = btnRight?.dataset?.mode;
+    if (mode === "down") {
+      const next = section.nextElementSibling;
+      next?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     viewport.scrollBy({ left: viewport.clientWidth, behavior: "smooth" });
     viewport.focus({ preventScroll: true });
     updateHintState();
@@ -330,6 +344,7 @@ function initStoryWheelFallback() {
     "wheel",
     mark((event) => {
       if (event.ctrlKey) return;
+      if (!event.cancelable) return;
       if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
 
       const delta = normalizeDelta(event);
@@ -348,7 +363,10 @@ function initStoryWheelFallback() {
     "wheel",
     mark((event) => {
       if (event.ctrlKey) return;
-      const inside = viewport.contains(event.target);
+      if (!event.cancelable) return;
+      // En Xalok, el wheel puede caer sobre overlays (flechas) que están fuera del viewport.
+      // Consideramos “dentro” si ocurrió dentro de la sección story.
+      const inside = section.contains(event.target);
       if (!inside) return;
 
       if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
