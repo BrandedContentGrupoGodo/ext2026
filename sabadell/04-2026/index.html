@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Evita barra de URL en móvil al hacer scroll -->
+    <meta name="theme-color" content="#004862">
+    <!-- Para embeds externos: usa servidor local (Live Server, npx serve), no file:// -->
+    <!-- Origen crítico: imagen LCP del hero -->
+    <link rel="preload" as="image" href="assets/img/hero-sabadell.jpg">
+    <!-- CSS propio antes que fuentes para pintar layout cuanto antes -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Fuentes: solo pesos usados (menos descarga que variable 100–900) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Andada+Pro:ital,wght@0,400..840;1,400..840&display=swap" rel="stylesheet">
+    <!-- Scripts de terceros: resolver DNS antes -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://brandedcontentgrupogodo.github.io">
+</head>
+<body>
+    <div class="body-sabadell">
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+        <div class="hero" role="banner" aria-label="Introducción">
+            <div class="hero__media" aria-hidden="true"></div>
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <p class="hero__eyebrow">En colaboración con Banco Sabadell</p>
+                </div>
+
+                <h1 class="hero__title">Barcelona Open Banc Sabadell – Trofeo Conde de Godó: el legado de una leyenda del tenis</h1>
+                <p class="hero__subtitle">Un recorrido por la historia del torneo, sus protagonistas y los momentos que lo convirtieron en un referente del tenis.</p>
+
+                <a class="hero__cta" href="#contenido" aria-describedby="cta-ayuda">
+                    <span class="hero__ctaText">Descubrir la historia</span>
+                    <img class="hero__ctaIcon" src="assets/img/scroll.svg" width="20" height="20" alt="Desplazar al contenido">
+                </a>
+                <span id="cta-ayuda" class="sr-only">Una mirada a los hitos y protagonistas de un torneo que forma parte de la historia de Barcelona</span>
+            </div>
+        </div>
+
+        <div id="contenido" class="content" tabindex="-1">
+            <section class="content__section" aria-labelledby="contenido-titulo">
+                <div class="content__inner">
+                    <h2 id="contenido-titulo" class="content__title">El nacimiento de un icono</h2>
+                    <p class="content__text">Hay acontecimientos que acaban formando parte de la identidad de una ciudad. No solo porque regresan cada año, sino porque con el tiempo se fijan en el imaginario colectivo como algo propio. El Barcelona Open Banc Sabadell – Trofeo Conde de Godó es uno de ellos. Desde 1953, su historia discurre en paralelo a la de Barcelona como una cita que ha sabido reunir prestigio deportivo, vida social y proyección internacional hasta convertirse en mucho más que un torneo de tenis.</p>
+                </div>
+            </section>
+
+            <section class="marquee" aria-label="Galería de imágenes del torneo">
+                <div class="marquee__inner">
+                    <div class="marquee__track" aria-hidden="false">
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-1.jpg" width="300" height="200" loading="lazy" decoding="async" alt="Imagen del torneo Barcelona Open Banc Sabadell">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-2.jpg" width="300" height="200" loading="lazy" decoding="async" alt="Imagen del Real Club de Tenis Barcelona">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-3.jpg" width="300" height="200" loading="lazy" decoding="async" alt="Imagen histórica del torneo">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-4.jpg" width="300" height="200" loading="lazy" decoding="async" alt="Imagen de una pista de tenis durante el torneo">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-5.jpg" width="300" height="200" loading="lazy" decoding="async" alt="Imagen del ambiente en las gradas del torneo">
+                        </figure>
+                    </div>
+
+                    <div class="marquee__track" aria-hidden="true">
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-1.jpg" width="300" height="200" loading="lazy" decoding="async" alt="">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-2.jpg" width="300" height="200" loading="lazy" decoding="async" alt="">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-3.jpg" width="300" height="200" loading="lazy" decoding="async" alt="">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-4.jpg" width="300" height="200" loading="lazy" decoding="async" alt="">
+                        </figure>
+                        <figure class="marquee__item">
+                            <img class="marquee__img" src="assets/img/torneo-sabadell-5.jpg" width="300" height="200" loading="lazy" decoding="async" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content__section content__section" aria-labelledby="destacado-titulo">
+                <h2 id="destacado-titulo" class="sr-only">Contexto y símbolos del torneo</h2>
+                <div class="content__inner">
+                    <p class="content__text content__text">Su origen está ligado a un momento decisivo para el Real Club de Tenis Barcelona-1899: la apertura de la nueva sede en Pedralbes, un hito que impulsó la creación de una gran competición capaz de reflejar la vocación internacional de la entidad y de acompañar el comienzo de una nueva etapa. Así nació el Trofeo Conde de Godó, heredero de la tradición tenística que el club venía cultivando desde principios del siglo XX y concebido, desde el primer momento, como una cita capaz de situar a Barcelona en el mapa del gran tenis europeo. La respuesta del público en aquella primera edición confirmó que el torneo nacía con algo más que ambición deportiva: llenó las gradas y empezó a construir un vínculo emocional con la ciudad.</p>
+                </div>
+
+                <div class="quote" aria-label="Texto destacado">
+                    <p class="quote__text">Desde <span class="quote__accent">1953</span>, el Trofeo Conde de Godó forma parte de la historia de Barcelona</p>
+                </div>
+                <div class="shortBlock" aria-label="Vídeo y contexto">
+                    <div class="shortBlock__media" aria-label="Vídeo de YouTube">
+                        <iframe
+                            class="shortBlock__iframe"
+                            src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0&modestbranding=1&playsinline=1"
+                            title="YouTube Short"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <div class="shortBlock__text">
+                        <p class="content__text content__text">También el propio trofeo contribuía a esa voluntad de permanencia. Diseñado en 1953 por los joyeros Soler Cabot, con su silueta de plata, su base de roble americano y la figura de un tenista coronando la pieza, se convirtió desde el inicio en un símbolo reconocible del torneo. Con los años, esa imagen ha acompañado a campeones, generaciones y épocas distintas, reforzando la idea de que el Godó no solo premia una victoria: custodia una herencia. Y es precisamente ahí, en esa suma de deporte, memoria y ciudad, donde empieza a forjarse su condición de icono.</p>
+                    </div>
+                </div>
+                
+                <div class="fullBleedMedia" aria-label="Imagen destacada">
+                    <img class="fullBleedMedia__img" src="assets/img/destacado1.jpg" alt="Trofeo Conde de Godó">
+                </div>
+
+                <div class="content__inner pb-3 pt-2">
+                    <h2 id="torneo-hoy-titulo" class="content__title">El torneo hoy: la continuidad del legado</h2>
+                    <p class="content__text">Más de siete décadas después de aquella primera edición, el Barcelona Open Banc Sabadell – Trofeo Conde de Godó mantiene intacta su capacidad de convocar a la ciudad en torno a una cita que trasciende lo estrictamente deportivo. Convertido hoy en una referencia consolidada del calendario internacional de tenis sobre tierra batida, el torneo ha sabido preservar aquello que lo hizo singular desde el principio: su condición de gran evento de club, su estrecho vínculo con Barcelona y una personalidad propia que lo distingue dentro del circuito.</p>
+                </div>
+
+                <div class="fullBleedMedia" aria-label="Imagen destacada">
+                    <img class="fullBleedMedia__img" src="assets/img/destacado2.png" alt="Trofeo Conde de Godó">
+                </div>
+
+                <div class="content__inner pt-2">
+                    <p class="content__text">Esa continuidad no se explica solo por su prestigio competitivo o por los grandes nombres que han dejado huella en sus pistas, sino también por su manera de seguir formando parte del pulso de la ciudad. Cada primavera, el Godó vuelve a activar un ritual reconocible: el encuentro entre tradición y presente, entre memoria y actualidad, entre la historia de un torneo legendario y la vigencia de una cita que sigue escribiéndose año tras año. En esa evolución, Banc Sabadell se ha integrado en una etapa clave de la historia reciente del torneo. Su presencia como patrocinador principal ha coincidido con años de consolidación internacional y ha reforzado la continuidad de una cita que ha sabido crecer sin perder aquello que la distingue: su vínculo con Barcelona, su prestigio deportivo y su condición de gran torneo de club.</p>
+                </div>
+
+            </section>
+
+
+            <section class="timeline" aria-labelledby="timeline-title">
+                <div class="timeline__inner">
+                    <h2 id="timeline-title" class="timeline__title">Momentos clave</h2>
+
+                    <div class="timeline__shell" aria-label="Navegación del carrusel">
+                        <button class="timeline__nav timeline__nav--prev" type="button" aria-controls="timeline-track" disabled>
+                            <span class="sr-only">Anterior</span>
+                            <span aria-hidden="true">‹</span>
+                        </button>
+
+                        <div class="timeline__viewport" role="region" aria-roledescription="carrusel" aria-label="Carrusel de momentos">
+                            <ol id="timeline-track" class="timeline__track">
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="1 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">1953</p>
+                                        <h3 class="timelineCard__headline">NACE EL TROFEO</h3>
+                                        <p class="timelineCard__text">El torneo inicia su historia como una gran cita del tenis europeo en Barcelona.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en 1953">
+                                            <img src="assets/img/slider-1.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en 1953">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">1960</p>
+                                        <h3 class="timelineCard__headline">CONSOLIDACIÓN</h3>
+                                        <p class="timelineCard__text">Una década de crecimiento que fija el torneo en el calendario y en la ciudad.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 60">
+                                            <img src="assets/img/slider-2.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 60">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">1970</p>
+                                        <h3 class="timelineCard__headline">NUEVAS FIGURAS</h3>
+                                        <p class="timelineCard__text">La pista se convierte en escaparate de estilos y rivalidades que marcan época.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 70">
+                                            <img src="assets/img/slider-3.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 70">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="4 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">1980</p>
+                                        <h3 class="timelineCard__headline">PRESTIGIO</h3>
+                                        <p class="timelineCard__text">Barcelona refuerza su proyección internacional con un torneo cada vez más seguido.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 80">
+                                            <img src="assets/img/slider-4.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 80">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="5 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">1990</p>
+                                        <h3 class="timelineCard__headline">UNA ERA</h3>
+                                        <p class="timelineCard__text">El torneo vive grandes finales y consolida una identidad propia en tierra batida.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 90">
+                                            <img src="assets/img/slider-5.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 90">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="6 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">2000</p>
+                                        <h3 class="timelineCard__headline">NUEVO SIGLO</h3>
+                                        <p class="timelineCard__text">La cita se moderniza sin perder la tradición del club y la ciudad.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 2000">
+                                            <img src="assets/img/slider-6.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 2000">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="7 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">2010</p>
+                                        <h3 class="timelineCard__headline">NUEVA GENERACIÓN</h3>
+                                        <p class="timelineCard__text">Surgen referentes que conectan el torneo con nuevas audiencias y momentos.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 2010">
+                                            <img src="assets/img/slider-7.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 2010">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="8 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">2020</p>
+                                        <h3 class="timelineCard__headline">CONTINUIDAD</h3>
+                                        <p class="timelineCard__text">El legado se renueva edición tras edición en un torneo ya imprescindible.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: torneo en los años 2020">
+                                            <img src="assets/img/slider-8.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen del torneo en los años 2020">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline__slide" role="group" aria-roledescription="diapositiva" aria-label="9 de 9">
+                                <div class="timelineCard">
+                                    <div class="timelineCard__copy">
+                                        <p class="timelineCard__year">HOY</p>
+                                        <h3 class="timelineCard__headline">EL LEGADO SIGUE</h3>
+                                        <p class="timelineCard__text">Una historia viva que continúa escribiéndose en Barcelona cada primavera.</p>
+                                    </div>
+                                    <div class="timelineCard__media">
+                                        <button class="timelineCard__zoom" type="button" aria-label="Ampliar imagen: imagen actual del torneo">
+                                            <img src="assets/img/slider-9.jpg" width="640" height="420" loading="lazy" decoding="async" alt="Imagen actual del torneo">
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            </ol>
+                        </div>
+
+                        <button class="timeline__nav timeline__nav--next" type="button" aria-controls="timeline-track">
+                            <span class="sr-only">Siguiente</span>
+                            <span aria-hidden="true">›</span>
+                        </button>
+                    </div>
+
+                    <dialog class="imgModal" aria-label="Vista ampliada de imagen">
+                        <button class="imgModal__close" type="button">
+                            <span class="sr-only">Cerrar</span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <figure class="imgModal__figure">
+                            <img class="imgModal__img" alt="">
+                            <figcaption class="imgModal__caption sr-only"></figcaption>
+                        </figure>
+                    </dialog>
+                </div>
+            </section>
+
+            <section class="darkSection" aria-labelledby="darkSection-title">
+                <div class="content__inner pb-3">
+                    <h2 id="darkSection-title" class="content__title content__title--light">Jugadores que han marcado el torneo</h2>
+                    <p class="content__text content__text--light">La historia del Barcelona Open Banc Sabadell – Trofeo Conde de Godó también se escribe a través de sus grandes campeones. Sus victorias no solo marcaron el palmarés del torneo, sino además algunas de sus etapas más reconocibles.</p>
+                </div>
+
+                <div class="playersGrid" aria-label="Tarjetas de jugadores destacados">
+                    <ul class="playersGrid__list">
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-1.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Rafael Nadal</p>
+                                <p class="playerCard__titles">12 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">2005, 2006, 2007, 2008, 2009, 2011, 2012, 2013, 2016, 2017, 2018 y 2021</p>
+                            <p class="playerCard__text">El gran dominador de la historia del torneo. Sus doce títulos hicieron del Godó uno de los escenarios más reconocibles de su carrera y reforzaron la proyección internacional del torneo en el siglo XXI.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-2.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Roy Emerson</p>
+                                <p class="playerCard__titles">3 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1961, 1963 y 1964</p>
+                            <p class="playerCard__text">Uno de los grandes nombres de la primera etapa internacional del torneo y el primer tricampeón de su historia.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-3.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Manuel Orantes</p>
+                                <p class="playerCard__titles">3 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1969, 1971 y 1976</p>
+                            <p class="playerCard__text">Figura decisiva en la consolidación del tenis español y protagonista de algunas de las imágenes más recordadas del torneo.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-4.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Mats Wilander</p>
+                                <p class="playerCard__titles">3 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1982, 1983 y 1984</p>
+                            <p class="playerCard__text">Su dominio en los años ochenta reforzó la proyección internacional del torneo sobre tierra batida.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-5.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Ilie Nastase</p>
+                                <p class="playerCard__titles">2 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1973 y 1974</p>
+                            <p class="playerCard__text">El rumano llevó al Godó la presencia de una gran figura mundial en plena apertura del torneo al gran circuito profesional.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-6.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Manuel Santana</p>
+                                <p class="playerCard__titles">2 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1962 y 1970</p>
+                            <p class="playerCard__text">Su nombre está ligado a la etapa en la que el torneo ganó prestigio y se proyectó como una gran cita del tenis.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-7.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Andrés Gómez</p>
+                                <p class="playerCard__titles">2 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">1989 y 1990</p>
+                            <p class="playerCard__text">El ecuatoriano firmó dos triunfos consecutivos en una etapa de fuerte competitividad internacional sobre tierra batida.</p>
+                        </li>
+                        <li class="playerCard">
+                            <img class="playerCard__img" src="assets/img/jugador-8.jpg" width="215" height="135" loading="lazy" decoding="async" alt="Jugador destacado">
+                            <div class="playerCard__head">
+                                <p class="playerCard__name">Carlos Alcaraz</p>
+                                <p class="playerCard__titles">2 títulos</p>
+                            </div>
+                            <p class="playerCard__lead">2022 y 2023</p>
+                            <p class="playerCard__text">La gran figura del presente ya forma parte del palmarés de referencia del torneo y encarna el relevo generacional del Barcelona Open Banc Sabadell – Trofeo Conde de Godó.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="splitGallery" aria-labelledby="splitGallery-title">
+                <div class="splitGallery__inner">
+                    <div class="splitGallery__copy">
+                        <h2 id="splitGallery-title" class="content__title">Barcelona y el torneo: un vínculo que es mucho más que deporte</h2>
+                        <p class="content__text">Cada ciudad tiene sus propios rituales: momentos del año que regresan y, al hacerlo, reafirman una forma de estar en el tiempo y en la memoria. En Barcelona, el Open Banc Sabadell – Trofeo Conde de Godó ocupa desde hace décadas ese lugar. No solo como gran cita deportiva, sino como una de las imágenes más reconocibles de la primavera barcelonesa, un acontecimiento que ha sabido enlazar el prestigio del tenis internacional con una sensibilidad muy propia de la ciudad.</p>
+                        <p class="content__text">Su historia no se mide únicamente en títulos, campeones o finales memorables. También se percibe en todo lo que lo rodea: el ambiente de Pedralbes, la tierra batida, las gradas, las imágenes de archivo y la continuidad de un evento que ha acompañado a distintas generaciones. El torneo ha sido, en ese sentido, también un punto de encuentro entre deporte, ciudad y memoria compartida.</p>
+                    </div>
+
+                    <div class="miniGallery" aria-label="Galería de imágenes">
+                        <div class="miniGallery__frame" role="region" aria-roledescription="carrusel" aria-label="Carrusel de galería">
+                            <ul class="miniGallery__slides">
+                                <li class="miniGallery__slide" data-mini-slide="0">
+                                    <button class="miniGallery__zoom" type="button" aria-label="Ampliar imagen de la galería (1 de 5)">
+                                        <img src="assets/img/portada1.jpg" width="800" height="520" loading="lazy" decoding="async" alt="Imagen de la galería 1">
+                                    </button>
+                                </li>
+                                <li class="miniGallery__slide" data-mini-slide="1">
+                                    <button class="miniGallery__zoom" type="button" aria-label="Ampliar imagen de la galería (2 de 5)">
+                                        <img src="assets/img/portada2.jpg" width="800" height="520" loading="lazy" decoding="async" alt="Imagen de la galería 2">
+                                    </button>
+                                </li>
+                                <li class="miniGallery__slide" data-mini-slide="2">
+                                    <button class="miniGallery__zoom" type="button" aria-label="Ampliar imagen de la galería (3 de 5)">
+                                        <img src="assets/img/portada3.jpg" width="800" height="520" loading="lazy" decoding="async" alt="Imagen de la galería 3">
+                                    </button>
+                                </li>
+                                <li class="miniGallery__slide" data-mini-slide="3">
+                                    <button class="miniGallery__zoom" type="button" aria-label="Ampliar imagen de la galería (4 de 5)">
+                                        <img src="assets/img/portada4.jpg" width="800" height="520" loading="lazy" decoding="async" alt="Imagen de la galería 4">
+                                    </button>
+                                </li>
+                                <li class="miniGallery__slide" data-mini-slide="4">
+                                    <button class="miniGallery__zoom" type="button" aria-label="Ampliar imagen de la galería (5 de 5)">
+                                        <img src="assets/img/portada5.jpg" width="800" height="520" loading="lazy" decoding="async" alt="Imagen de la galería 5">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="miniGallery__pagers" aria-label="Paginadores de la galería">
+                            <button class="miniGallery__dot" type="button" aria-label="Ver imagen 1" aria-current="true" data-mini-dot="0"></button>
+                            <button class="miniGallery__dot" type="button" aria-label="Ver imagen 2" data-mini-dot="1"></button>
+                            <button class="miniGallery__dot" type="button" aria-label="Ver imagen 3" data-mini-dot="2"></button>
+                            <button class="miniGallery__dot" type="button" aria-label="Ver imagen 4" data-mini-dot="3"></button>
+                            <button class="miniGallery__dot" type="button" aria-label="Ver imagen 5" data-mini-dot="4"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fullQuoteHero" aria-labelledby="fullQuoteHero-text">
+                <div class="fullQuoteHero__media" aria-hidden="true"></div>
+                <div class="fullQuoteHero__inner">
+                    <p id="fullQuoteHero-text" class="fullQuoteHero__text">La singularidad del torneo reside en haber sabido convertirse, con el paso del tiempo, en un símbolo compartido de la ciudad</p>
+                </div>
+            </section>
+
+            <section class="finalSection" aria-labelledby="finalSection-title">
+                <div class="finalSection__inner">
+                    <h2 id="finalSection-title" class="content__title">Un legado que sigue en juego</h2>
+                    <p class="content__text">La historia del torneo no pertenece solo al pasado. Sigue latiendo cada primavera, en la pista, en las imágenes que regresan, en los jugadores que han dejado su huella y en la ciudad que lo reconoce como parte de sí misma. Ahí reside quizá su singularidad: en haber sabido convertirse, con el paso del tiempo, en un símbolo compartido.</p>
+                    <p class="content__text pb-3">Desde 1953, el Barcelona Open Banc Sabadell - Trofeo Conde de Godó ha unido deporte y prestigio hasta convertirse en uno de esos símbolos que perduran porque siguen teniendo sentido. Su historia continúa viva en cada nueva edición, enlazando legado y presente sin dejar de mirar hacia el futuro.</p>
+
+                    <a class="finalSection__cta" href="https://www.instagram.com/bcnopenbs/" target="_blank" rel="noopener noreferrer nofollow">
+                        Descubre las últimas novedades del torneo
+                    </a>
+
+                    <div class="finalSection__logoWrap pt-2" aria-label="Logo">
+                        <img class="finalSection__logo" src="assets/img/logo.png" width="120" height="40" loading="lazy" decoding="async" alt="Logo del torneo">
+                    </div>
+                </div>
+            </section>
+
+
+
+        </div>
+
+       
+        
+    
+        <!-- CRÉDITOS -->
+        <div class="authorship-f-sabadell" aria-label="Créditos del proyecto">
+            <div class="container-fluid-f-sabadell">
+                <span>Coordinación: Helena Moreno</span> |
+                <span>Diseño y front-end: Alejandra Santander</span> |
+                <span>Redacción: Digital NarrativeAlejandra Muñoz</span> |
+                <span>Fotografía: Archivo del RCTB y Hemeroteca La Vanguardia</span> |
+                <span>Producción audiovisual: Linkvids.</span>
+                <span>Un proyecto de Brandslab. Godó Nexus.</span>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="assets/js/scripts.js"></script>
+</body>
+</html>
