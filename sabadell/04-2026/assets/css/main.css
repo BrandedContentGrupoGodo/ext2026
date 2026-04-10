@@ -96,6 +96,12 @@ html, body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 768px) {
+  .hero__media {
+    background-position: right;
+  }
+}
+
 .hero__content {
   width: min(100%, 1350px);
   margin-inline: auto;
@@ -130,6 +136,7 @@ html, body {
   font-size: clamp(1rem, 1.7vw, 1.2rem);
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
 }
 
 .hero__cta {
@@ -332,10 +339,15 @@ html, body {
 .fullBleedMedia__img {
   display: block;
   width: 100%;
-  height: 88svh;
+  height: 28svh;
   max-height: 920px;
   object-fit: cover;
   object-position: center;
+}
+@media (min-width: 900px) {
+  .fullBleedMedia__img  {
+    height: 88svh;
+  }
 }
 
 /* ---------- SLIDER (TIMELINE) ---------- */
@@ -822,7 +834,7 @@ html, body {
 .finalSection__logo {
   display: block;
   height: auto;
-  max-width: 160px;
+  max-width: 220px;
   width: 100%;
 }
 
