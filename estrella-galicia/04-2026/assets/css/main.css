@@ -217,7 +217,7 @@ a:hover {
 .eg-intro__text {
   margin: 0 0 14px;
   text-align: left;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -321,7 +321,7 @@ a:hover {
 .eg-split__text {
   margin: 0 0 14px;
   text-align: left;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -609,7 +609,7 @@ a:hover {
 .eg-text__text {
   margin: 0 0 14px;
   text-align: left;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -763,7 +763,7 @@ a:hover {
 /* ---------- CRÉDITOS ---------------------------------- */
 .footer-estrella {
   color: #B1B1B1;
-  font-size: 1em!important;
+  font-size: 0.9em!important;
   text-align: center;
   padding: 20px;
   font-family: var(--ise-font-sans);
