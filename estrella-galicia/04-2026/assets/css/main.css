@@ -201,7 +201,7 @@ a:hover {
 
 .section-intro__title,
 .eg-intro__title {
-  margin: 0 0 58px;
+  margin: 0 0 30px;
   padding: 14px 16px;
   display: block;
   width: 100%;
@@ -215,7 +215,7 @@ a:hover {
 
 .section-intro__text,
 .eg-intro__text {
-  margin: 0 0 14px;
+  margin: 0 0 30px;
   text-align: left;
   font-size: 1.12rem;
   line-height: 1.7;
@@ -319,7 +319,7 @@ a:hover {
 
 .section-split__text,
 .eg-split__text {
-  margin: 0 0 14px;
+  margin: 0 0 30px!important;
   text-align: left;
   font-size: 1.12rem;
   line-height: 1.7;
@@ -607,7 +607,7 @@ a:hover {
 
 .section-text__text,
 .eg-text__text {
-  margin: 0 0 14px;
+  margin: 0 0 30px;
   text-align: left;
   font-size: 1.12rem;
   line-height: 1.7;
@@ -621,7 +621,8 @@ a:hover {
 
 .section-text--afterMarquee,
 .eg-text--afterMarquee {
-  padding-top: 36px;
+  padding-top: 66px;
+  padding-bottom: 66px;
 }
 
 /* ---------- IMAGEN DESTACADA FULL WIDTH ---------------------------------- */
@@ -654,7 +655,7 @@ a:hover {
   display: flex;
   width: max-content;
   gap: 40px;
-  padding: 16px 0;
+  padding: 26px 0;
   will-change: transform;
   animation: marquee-left 18s linear infinite;
 }
@@ -663,9 +664,8 @@ a:hover {
 .eg-marquee__item {
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
   font-weight: 800;
-  font-size: 1.95rem;
+  font-size: 2.05rem;
   padding-inline: 20px;
 }
 
