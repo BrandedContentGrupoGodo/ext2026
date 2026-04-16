@@ -68,13 +68,13 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-a {
+.body-estrella a {
   color: var(--accent-color)!important;
   text-decoration-thickness: 1px!important;
   text-underline-offset: 3px!important;
 }
 
-a:hover {
+.body-estrella a:hover {
   text-decoration-thickness: 2px!important;
   color: var(--accent-color)!important;
 }
@@ -802,6 +802,10 @@ a:hover {
 }
 .visual__story--icon .content-free-html, .visual__story--square .content-free-html, .visual__story--panoramic .content-free-html, .visual__story--free .content-free-html {
   margin:0 !important;
+}
+.container-fluid {
+  padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 @media (min-width: 768px) {
   .visual-article-free .col-12 {
