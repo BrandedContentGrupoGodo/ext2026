@@ -78,6 +78,14 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+.eg-divider {
+  width: min(140px, 40vw);
+  height: 3px;
+  margin: 0 auto 18px;
+  border: 0;
+  background: var(--bg-color-gray);
+}
+
 /* ---------- HERO ---------------------------------- */
 .hero,
 .eg-hero {
@@ -227,6 +235,13 @@ a:hover {
   margin-bottom: 28px;
 }
 
+.eg-intro__text--spaced {
+  font-size: 1.25rem;
+  max-width:65rem;
+  text-align: center;
+  margin: 60px auto 80px auto;
+}
+
 .section-intro__highlights,
 .eg-intro__highlights {
   width: min(52rem, 100%);
@@ -301,6 +316,7 @@ a:hover {
 .eg-split__content {
   width: 100%;
   max-width: 46rem;
+  margin-top: 80px;
 }
 
 .section-split__title,
@@ -332,8 +348,7 @@ a:hover {
 }
 
 @media (min-width: 900px) {
-  .section-split,
-  .eg-split {
+  .section-split {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
     padding: 80px 28px;
