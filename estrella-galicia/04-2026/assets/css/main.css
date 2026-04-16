@@ -245,7 +245,7 @@ button:focus-visible {
 
 .section-intro__highlights,
 .eg-intro__highlights {
-  width: min(52rem, 100%);
+  width: min(56rem, 100%);
   margin-inline: auto;
   background: var(--accent-color);
   color: #000;
