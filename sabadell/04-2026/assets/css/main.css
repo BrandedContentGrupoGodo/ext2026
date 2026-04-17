@@ -135,7 +135,7 @@ html, body {
   font-weight: 400;
   line-height: 1.07;
   font-size: clamp(1.7rem, 3.8vw, 3rem);
-   text-align: left!important;
+  text-align: left!important;
 }
 
 .hero__subtitle {
@@ -143,7 +143,7 @@ html, body {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
-   text-align: left!important;
+  text-align: left!important;
 }
 
 .hero__cta {
@@ -300,16 +300,19 @@ html, body {
 
 /* ---------- YOUTUBE SHORT + TEXTO ---------- */
 .shortBlock {
-  width: min(100%, 1100px);
+  width: min(100%, var(--max-content));
   margin-inline: auto;
   margin-top: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: 4rem;
   display: grid;
   gap: 18px;
   align-items: start;
 }
 
 .shortBlock__media {
+  width: 100%;
+  max-width: 320px;
+  justify-self: center;
   border-radius: 14px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.22);
@@ -324,7 +327,7 @@ html, body {
 
 .shortBlock__text {
   display: grid;
-  width: min(100%, var(--max-content));
+  width: 100%;
 }
 
 .shortBlock--textOnly {
@@ -338,9 +341,27 @@ html, body {
 
 @media (min-width: 900px) {
   .shortBlock {
-    grid-template-columns: 340px 1fr;
+    width: min(100%, 1100px);
+    grid-template-columns: 300px 1fr;
     gap: 32px;
     align-items: center;
+  }
+
+  .shortBlock--mediaRight {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .shortBlock--mediaRight .shortBlock__media {
+    grid-column: 2;
+  }
+
+  .shortBlock--mediaRight .shortBlock__text {
+    grid-column: 1;
+  }
+
+  .shortBlock__media {
+    max-width: none;
+    justify-self: stretch;
   }
 }
 
@@ -956,7 +977,11 @@ html, body {
   .visual__story--free .content-free-html {
     margin: 0px !important;
   }
-
+  .row>* {
+    padding-right: 0!important;
+    padding-left: 0!important;
+    margin-top: 0!important;
+  }
   .article-default a:hover {
     text-decoration: none;
     box-shadow: none;
