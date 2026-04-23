@@ -555,12 +555,12 @@ a {
 }
 
 .omoda-links {
-  color: var(--color-secundario);
-  text-decoration: underline;
+  color: var(--color-secundario)!important;
+  text-decoration: underline!important;
 }
 .omoda-links:hover {
-  color: var(--color-secundario);
-  text-decoration: underline;
+  color: var(--color-secundario)!important;
+  text-decoration: underline!important;
 }
 .omoda-links:focus,
 .omoda-links:focus-visible {
