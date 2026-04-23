@@ -20,11 +20,11 @@
   --focus-ring-offset: 3px;
 
   --text-xs: 0.875rem;
-  --text-sm: 1rem;
-  --text-md: 1.125rem;
-  --text-xl: clamp(1.75rem, 4.5vw, 2.75rem);
+  --text-sm: 1.1rem;
+  --text-md: 1.25rem;
+  --text-xl: clamp(1.75rem, 4.5vw, 2.9rem);
   --leading-tight: 1.15;
-  --leading-normal: 1.55;
+  --leading-normal: 1.8;
 
   --anim-fast: 160ms;
   --anim-med: 260ms;
@@ -65,15 +65,13 @@
 }
 
 .omoda-hero__inner {
-  width: min(100% - (var(--page-gutter) * 2), 56rem);
+  width: min(100% - (var(--page-gutter) * 2), 36rem);
   margin-inline: auto;
   text-align: center;
 }
 
 .omoda-hero__kicker {
   font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   opacity: 0.85;
 }
 
@@ -139,7 +137,7 @@
 .omoda-parallax__media {
   height: 80svh;
   background-color: rgba(255, 255, 255, 0.06);
-  background-image: url(../img/hero-omoda.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/hero-omoda.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -170,7 +168,7 @@
 
 .omoda-intro__lead {
   font-size: var(--text-md);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-tight);
 }
 
 .omoda-separator {
@@ -244,7 +242,7 @@
   height: 100%;
   min-height: 100svh;
   background-color: rgba(255, 255, 255, 0.06);
-  background-image: url(../img/omoda-1.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-1.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -397,19 +395,19 @@
 }
 
 .omoda-slide__media--1 {
-  background-image: url(../img/omoda-slide-1.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-slide-1.jpg);
 }
 
 .omoda-slide__media--2 {
-  background-image: url(../img/omoda-slide-2.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-slide-2.jpg);
 }
 
 .omoda-slide__media--3 {
-  background-image: url(../img/omoda-slide-3.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-slide-3.jpg);
 }
 
 .omoda-slide__media--4 {
-  background-image: url(../img/omoda-slide-4.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-slide-4.jpg);
 }
 
 .omoda-slide__caption {
@@ -521,7 +519,7 @@
 .omoda-highlightSection__parallaxMedia {
   height: 80svh;
   background-color: rgba(255, 255, 255, 0.06);
-  background-image: url(../img/omoda-2.jpg);
+  background-image: url(https://brandedcontentgrupogodo.github.io/ext2026/omoda-jaecoo/04-2026/assets/img/omoda-2.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
