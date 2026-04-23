@@ -554,6 +554,20 @@ a {
   text-decoration: none;
 }
 
+.omoda-links {
+  color: var(--color-secundario);
+  text-decoration: underline;
+}
+.omoda-links:hover {
+  color: var(--color-secundario);
+  text-decoration: underline;
+}
+.omoda-links:focus,
+.omoda-links:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
 /* ---------- ACCESIBILIDAD / UTILIDADES LOCALES ---------- */
 .omoda-skiplink {
   position: absolute;
