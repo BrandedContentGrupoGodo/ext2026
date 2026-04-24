@@ -607,22 +607,22 @@ body {
 }
 
 /* ---------- SOBRESCRIBIR ESTILOS DEL CMS ---------------------------------- */
-.eg-delonghi .article-default a:hover {
+.article-default a:hover {
   text-decoration: underline !important;
   box-shadow: none !important;
 }
-.eg-delonghi .visual-article-free .col-12 {
+.visual-article-free .col-12 {
   padding: 0!important;
 }
-.eg-delonghi .visual__story--icon .content-free-html, .eg-delonghi .visual__story--square .content-free-html, .eg-delonghi .visual__story--panoramic .content-free-html, .eg-delonghi .visual__story--free .content-free-html {
+.visual__story--icon .content-free-html, .visual__story--square .content-free-html, .visual__story--panoramic .content-free-html, .visual__story--free .content-free-html {
   margin:0 !important;
 }
-.eg-delonghi .container-fluid {
+.container-fluid {
   padding-right: 0 !important;
     padding-left: 0 !important;
 }
 @media (min-width: 768px) {
-  .eg-delonghi .visual-article-free .col-12 {
+  .visual-article-free .col-12 {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
