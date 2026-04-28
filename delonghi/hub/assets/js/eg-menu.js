@@ -15,6 +15,7 @@
     if (!root || !hero || !menu) return;
 
     const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    const docEl = document.documentElement;
 
     // Spacer para evitar salto de layout cuando el menú pasa a fixed
     const spacer = document.createElement('div');
@@ -37,20 +38,24 @@
       // Consideramos "contenido visible" cuando el hero ya no está en viewport
       const shouldFix = heroBottomY() <= 0;
 
-      if (shouldFix === lastFixed) return;
-      lastFixed = shouldFix;
-
       if (shouldFix) {
         const h = menu.getBoundingClientRect().height;
         spacer.style.height = `${h}px`;
         spacer.style.display = 'block';
         menu.classList.add('eg-menu--fixed');
-        if (!prefersReducedMotion) menu.classList.add('eg-menu--fixed-anim');
-      } else {
+        docEl.style.setProperty('--eg-menu-height', `${Math.round(h)}px`);
+
+        if (shouldFix !== lastFixed) {
+          if (!prefersReducedMotion) menu.classList.add('eg-menu--fixed-anim');
+        }
+      } else if (shouldFix !== lastFixed) {
         menu.classList.remove('eg-menu--fixed', 'eg-menu--fixed-anim');
         spacer.style.display = 'none';
         spacer.style.height = '0px';
+        docEl.style.setProperty('--eg-menu-height', '0px');
       }
+
+      lastFixed = shouldFix;
     }
 
     function onScrollOrResize() {
