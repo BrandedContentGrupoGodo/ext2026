@@ -68,7 +68,7 @@ a {
   padding: 56px 20px;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.55)),
-    url("../img/hero-fiatc.jpg");
+    url("https://brandedcontentgrupogodo.github.io/ext2026/fiatc/04-2026/assets/img/hero-fiatc.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
@@ -123,7 +123,7 @@ a {
   line-height: 1.55;
   opacity: 0.95;
   text-wrap: pretty;
-    font-weight: 600;
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
@@ -289,6 +289,7 @@ a {
   line-height: 1.55;
   text-align: left;
   text-wrap: pretty;
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
@@ -375,6 +376,7 @@ a {
   text-align: left;
   margin-top: 14px;
   text-wrap: pretty;
+  font-weight: 500;
 }
 
 @media (min-width: 1024px) {
@@ -416,6 +418,7 @@ a {
   text-align: center;
   text-wrap: pretty;
   opacity: 0.92;
+  font-weight: 500;
 }
 
 .fiatc-cards__list {
@@ -449,6 +452,7 @@ a {
   line-height: 1.6;
   text-align: left;
   text-wrap: pretty;
+  font-weight: 500;
 }
 
 .fiatc-cards__tags {
@@ -468,7 +472,7 @@ a {
   color: var(--color-blanco);
   font-size: 0.95rem;
   line-height: 1;
-  font-weight: 720;
+  font-weight: 500;
   letter-spacing: 0.01em;
 }
 
@@ -491,11 +495,9 @@ a {
 }
 
 .fiatc-textblock__inner {
-  width: min(100%, var(--container-max));
+  width: min(100%, var(--prose-max));
   margin-inline: auto;
   padding-inline: 20px;
-  display: grid;
-  justify-items: center;
 }
 
 .fiatc-textblock__title {
@@ -515,6 +517,7 @@ a {
   margin-top: 14px;
   margin-inline: auto;
   text-wrap: pretty;
+  font-weight: 500;
 }
 
 /* ---------- TEXTO DESTACADO: ANCHO COMPLETO ---------- */
