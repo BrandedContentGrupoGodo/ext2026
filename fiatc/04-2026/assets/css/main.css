@@ -123,6 +123,7 @@ a {
   line-height: 1.55;
   opacity: 0.95;
   text-wrap: pretty;
+    font-weight: 600;
 }
 
 @media (min-width: 768px) {
