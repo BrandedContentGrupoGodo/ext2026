@@ -6,6 +6,10 @@
   --bg-color-light-blue: #C9E3F9;
   --font-sans: "Inter", sans-serif;
   --font-playfair: "Playfair", serif;
+  /* Offset superior cuando el embed vive bajo un header fijo del CMS */
+  --eg-cms-header-height: 0px;
+  /* Altura del menú propio cuando pasa a fixed (seteada por JS) */
+  --eg-menu-height: 0px;
 }
 
 /* ---------- BASE ---------------------------------- */
@@ -114,9 +118,9 @@ body {
   margin: 0;
   font-family: var(--font-playfair);
   font-weight: 600;
-  font-size: clamp(34px, 7vw, 116px);
-  line-height: 0.9;
-  max-width: 720px;
+  font-size: clamp(34px, 7vw, 96px);
+  line-height: 1.05;
+  max-width: 650px;
   text-wrap: balance;
   color: var(--bg-color-dark-blue);
 }
@@ -239,11 +243,16 @@ body {
 
 .eg-delonghi .eg-menu.eg-menu--fixed {
   position: fixed;
-  top: 0;
+  top: var(--eg-cms-header-height);
   left: 0;
   right: 0;
   z-index: 9998;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Evita que los anclajes queden tapados por header CMS + menú fijo */
+.eg-delonghi [id] {
+  scroll-margin-top: calc(var(--eg-cms-header-height) + var(--eg-menu-height) + 14px);
 }
 
 .eg-delonghi .eg-menu.eg-menu--fixed.eg-menu--fixed-anim {
@@ -592,8 +601,8 @@ body {
 
 /* ---------- CRÉDITOS ---------------------------------- */
 .eg-delonghi .eg-footer {
-  color: #9aaebe;
-  font-size: 0.8em!important;
+  color: #EAE3DC;
+  font-size: 0.9em!important;
   text-align: center;
   padding: 20px;
   font-family: var(--font-sans);
