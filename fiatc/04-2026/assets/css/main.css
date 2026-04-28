@@ -367,7 +367,7 @@ a {
   line-height: var(--fiatc-h2-line);
   font-weight: var(--fiatc-h2-weight);
   margin-bottom: 14px;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .fiatc-split__paragraph {
@@ -504,7 +504,7 @@ a {
   font-size: var(--fiatc-h2-size);
   line-height: var(--fiatc-h2-line);
   font-weight: var(--fiatc-h2-weight);
-  text-wrap: balance;
+  text-wrap: pretty;
   width: min(100%, var(--prose-max));
   margin-inline: auto;
 }
