@@ -536,7 +536,7 @@ a {
 .fiatc-highlight__text {
   width: min(100%, 80ch);
   margin-inline: auto;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.55;
   font-weight: 650;
   text-align: center;
@@ -599,11 +599,11 @@ a {
 
 .fiatc-deep__lead {
   width: min(100%, var(--prose-max));
-  font-size: 1.075rem;
+  font-size: 1.2rem;
   line-height: 1.65;
   font-weight: 820;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  margin-top: 42px;
+  margin-bottom: 42px;
   text-align: left;
   margin-inline: auto;
   text-wrap: pretty;
