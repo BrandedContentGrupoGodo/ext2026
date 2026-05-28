@@ -1,0 +1,910 @@
+    :root {
+  --color-principal: #000000;
+  --color-secundario: #EDE6CF;
+  --color-blanco: #fff;
+  --color-texto: var(--color-principal);
+  --background-color: var(--color-secundario);
+  --font-principal: "Archivo", sans-serif;
+  --reading-max: 51.875rem; /* 830px */
+  --space-1: clamp(0.75rem, 1.5vw, 1.25rem);
+  --space-2: clamp(1.25rem, 2.6vw, 2rem);
+  --space-3: clamp(2rem, 4.5vw, 3.5rem);
+  --space-4: clamp(3rem, 7vw, 5.5rem);
+  --radius-pill: 999px;
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-secundario) 85%, transparent);
+  --shadow-soft: 0 24px 90px rgba(0, 0, 0, 0.35);
+    }
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-movistar {
+  font-family: var(--font-principal);
+  color: var(--color-principal);
+  min-height: 100svh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- HERO EDITORIAL CINEMATOGRÁFICO ---------- */
+.cmp-heroCine {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: var(--space-4);
+  padding-inline: var(--space-2);
+  color: var(--color-blanco);
+  background: #050505;
+  text-align: center;
+}
+
+@supports (height: 100dvh) {
+  .cmp-heroCine {
+    min-height: 100dvh;
+  }
+}
+
+.cmp-heroCine__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background:
+    radial-gradient(110% 80% at 50% 20%, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.82) 100%),
+    #050505;
+}
+
+.cmp-heroCine__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  filter: saturate(1.05) contrast(1.05);
+  opacity: 0.92;
+}
+
+.cmp-heroCine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+  radial-gradient(120% 90% at 12% 20%, rgb(0 0 0 / 16%) 0%, rgb(0 0 0 / 30%) 55%, rgb(0 0 0 / 23%) 100%), linear-gradient(to bottom, rgb(0 0 0 / 30%), rgb(0 0 0 / 45%));
+}
+
+.cmp-heroCine__content {
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+.cmp-heroCine__kicker {
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-blanco) 90%, transparent);
+}
+
+.cmp-heroCine__title {
+  font-size: clamp(1.95rem, 4.9vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.cmp-heroCine__dek {
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-blanco) 86%, transparent);
+  text-wrap: pretty;
+  max-inline-size: 75ch;
+}
+
+.cmp-heroCine__cta {
+  justify-self: center;
+  margin-top: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0.85rem;
+  padding-inline: 1.2rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-blanco);
+  color: #0b0b0b;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  min-height: 44px;
+}
+
+.cmp-heroCine__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 28px 110px rgba(0, 0, 0, 0.45);
+}
+
+.cmp-heroCine__cta:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-soft), var(--focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-heroCine__cta {
+    transition: none;
+  }
+  .cmp-heroCine__cta:hover {
+    transform: none;
+  }
+}
+
+/* ---------- SECCIÓN EDITORIAL: HISTORIAL REAL ---------- */
+.cmp-editorialHistoria {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-secundario);
+  color: var(--color-principal);
+  padding-top: 0;
+  padding-bottom: var(--space-4);
+  overflow-x: clip;
+}
+
+.cmp-editorialHistoria::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../img/fondo-movistar.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.cmp-editorialHistoria__inner {
+  max-inline-size: var(--reading-max);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.cmp-editorialHistoria__subtitleWrap {
+  background: var(--color-principal);
+  margin-inline: calc(50% - 50vw);
+  padding-inline: var(--space-2);
+  padding-top: clamp(2.25rem, 7vw, 4rem);
+  padding-bottom: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cmp-editorialHistoria__subtitle {
+  font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+  letter-spacing: 0.06em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-secundario);
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 0;
+  height: 29px;
+}
+
+.cmp-editorialHistoria__columns {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cmp-editorialHistoria__paragraph {
+  font-size: clamp(1.05rem, 2.15vw, 1.15rem);
+  line-height: 1.8;
+}
+
+.cmp-editorialHistoria__paragraph a {
+  color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+  transition: text-decoration-color 160ms ease, background-color 160ms ease;
+}
+
+.cmp-editorialHistoria__paragraph a:hover {
+  text-decoration-color: currentColor;
+  background-color: color-mix(in srgb, var(--color-principal) 8%, transparent);
+}
+
+.cmp-editorialHistoria__paragraph a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-editorialHistoria__paragraph a {
+    transition: none;
+  }
+}
+
+.cmp-galeriaEditorial__paragraph a {
+  color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+  transition: text-decoration-color 160ms ease, background-color 160ms ease;
+}
+
+.cmp-galeriaEditorial__paragraph a:hover {
+  text-decoration-color: currentColor;
+  background-color: color-mix(in srgb, var(--color-principal) 8%, transparent);
+}
+
+.cmp-galeriaEditorial__paragraph a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-galeriaEditorial__paragraph a {
+    transition: none;
+  }
+}
+
+/* ---------- IMAGEN + CITA DESTACADA ---------- */
+.cmp-citaFrame {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(26rem, 80svh, 44rem);
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+.cmp-citaFrame__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.00) 37.74%, rgba(0, 0, 0, 0.30) 76.11%),
+    var(--citaFrame-image);
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+  transform: scale(1.01);
+}
+
+.cmp-citaFrame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(90% 80% at 80% 20%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0.05) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.08));
+}
+
+.cmp-citaFrame__inner {
+  min-height: inherit;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--space-2);
+}
+
+.cmp-citaFrame__quote {
+  margin: 0;
+  max-inline-size: min(34rem, 92vw);
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+  color: var(--color-blanco);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.cmp-citaFrame__quoteMark {
+  inline-size: clamp(2.25rem, 6vw, 6rem);
+  block-size: auto;
+  opacity: 0.9;
+  margin-bottom: 1.75rem;
+} 
+
+.cmp-citaFrame__cite {
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-blanco) 78%, transparent);
+  margin-bottom: 0.75rem;
+}
+
+.cmp-citaFrame__text {
+  font-size: clamp(1.1rem, 2.8vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 0;
+  font-weight: 900;
+}
+
+@media (max-width: 36rem) {
+  .cmp-citaFrame::before {
+    background:
+      radial-gradient(120% 90% at 50% 15%, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.08) 55%, rgba(0, 0, 0, 0.02) 100%),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04));
+  }
+
+  .cmp-citaFrame__inner {
+    align-items: flex-end;
+    justify-content: center;
+    padding: var(--space-2);
+  }
+
+  .cmp-citaFrame__quote {
+    max-inline-size: 96vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-citaFrame__media {
+    transform: none;
+  }
+}
+
+/* ---------- SECCIÓN: CONTENEDOR + GALERÍA ---------- */
+.cmp-galeriaEditorial {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-secundario);
+  color: var(--color-principal);
+  padding-block: var(--space-4);
+  overflow-x: clip;
+}
+
+.cmp-galeriaEditorial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../img/fondo-movistar.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.cmp-galeriaEditorial__inner {
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+.cmp-galeriaEditorial__panel {
+  margin-inline: auto;
+  padding: var(--space-3);
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--color-principal) 15%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cmp-galeriaEditorial__title {
+  font-size: clamp(1.35rem, 3.6vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-wrap: balance;
+  font-weight: 900;
+}
+
+.cmp-galeriaEditorial__body {
+  display: grid;
+  gap: var(--space-1);
+  max-inline-size: var(--reading-max);
+  margin: auto;
+}
+
+.cmp-galeriaEditorial__paragraph {
+  font-size: clamp(1.05rem, 2.15vw, 1.15rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+  margin: 0;
+  max-inline-size: var(--reading-max);
+    margin: auto;
+}
+
+.cmp-galeriaEditorial__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.cmp-galeriaEditorial__thumb {
+  display: block;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 55px rgba(0, 0, 0, 0.12);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  outline: none;
+}
+
+.cmp-galeriaEditorial__thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cmp-galeriaEditorial__thumb:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.16);
+}
+
+.cmp-galeriaEditorial__thumb:focus-visible {
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.16), var(--focus-ring);
+}
+
+@media (min-width: 48rem) {
+  .cmp-galeriaEditorial__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-galeriaEditorial__thumb {
+    transition: none;
+  }
+  .cmp-galeriaEditorial__thumb:hover {
+    transform: none;
+  }
+}
+
+.cmp-galeriaEditorial__dialog {
+  width: min(92vw, 62rem);
+  border: 0;
+  padding: 0;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.92);
+  color: var(--color-blanco);
+  box-shadow: 0 30px 140px rgba(0, 0, 0, 0.55);
+  margin: auto;
+}
+
+.cmp-galeriaEditorial__dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cmp-galeriaEditorial__dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.cmp-galeriaEditorial__dialogClose {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--color-blanco);
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 0.95rem;
+  margin: 0.9rem;
+  font: inherit;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.cmp-galeriaEditorial__dialogClose:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.cmp-galeriaEditorial__dialogImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(78vh, 52rem);
+  object-fit: contain;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+/* ---------- SECCIÓN: VIDEO YOUTUBE FULL-BLEED ---------- */
+.cmp-videoYoutube {
+  background: #000;
+}
+
+.cmp-videoYoutube__frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.cmp-videoYoutube__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ---------- SECCIÓN: EDITORIAL + GRILLA 2+2 ---------- */
+.cmp-editorialMedia {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-secundario);
+  color: var(--color-principal);
+  padding-block: var(--space-4);
+  overflow-x: clip;
+  padding-top: 0;
+}
+
+.cmp-editorialMedia::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../img/fondo-movistar.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.cmp-editorialMedia__inner {
+  max-inline-size: min(68.75rem, 100%); /* más ancho que el texto */
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.cmp-editorialMedia__subtitleWrap {
+  background: var(--color-principal);
+  margin-inline: calc(50% - 50vw);
+  padding-inline: var(--space-2);
+  padding-top: clamp(2.25rem, 7vw, 4rem);
+  padding-bottom: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cmp-editorialMedia__subtitle {
+  font-size: clamp(1.25rem, 3.4vw, 2.3rem);
+  letter-spacing: 0.06em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-secundario);
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 0;
+  height: 29px;
+}
+
+@media (max-width: 36rem) {
+  .cmp-editorialMedia__subtitle {
+    height: auto;
+  }
+}
+
+/* ---------- SECCIÓN: TITULARES + GALERÍA VERTICAL + CITA + CTA ---------- */
+.cmp-editorialDoble {
+  background: #0b0b0b;
+  color: var(--color-blanco);
+  padding-bottom: var(--space-4);
+  overflow-x: clip;
+}
+
+.cmp-editorialDoble__headingBand {
+  background: var(--color-secundario);
+  margin-inline: calc(50% - 50vw);
+  padding-inline: var(--space-2);
+  padding-top: clamp(2.25rem, 7vw, 4rem);
+  padding-bottom: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cmp-editorialDoble__heading {
+  font-size: clamp(1.25rem, 3.4vw, 2.3rem);
+  letter-spacing: 0.06em;
+  font-weight: 900;
+  line-height: 1;
+  text-wrap: balance;
+  text-align: left;
+  color: var(--color-principal);
+  text-transform: uppercase;
+  height: 29px;
+}
+
+@media (max-width: 36rem) {
+  .cmp-editorialDoble__heading {
+    height: auto;
+  }
+}
+
+.cmp-editorialDoble__inner {
+  max-inline-size: min(68.75rem, 100%);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+  padding-top: var(--space-2);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cmp-editorialDoble__darkPanel {
+  color: var(--color-blanco);
+  padding: var(--space-2);
+}
+
+.cmp-editorialDoble__paragraph {
+  max-inline-size: var(--reading-max);
+  margin-inline: auto;
+  font-size: clamp(1.05rem, 2.15vw, 1.15rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+  margin-block: 0;
+}
+
+.cmp-editorialDoble__darkPanel .cmp-editorialDoble__paragraph {
+  color: color-mix(in srgb, var(--color-blanco) 92%, transparent);
+}
+
+.cmp-editorialDoble__gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  margin-inline: auto;
+  margin-block: var(--space-2);
+  margin-bottom: var(--space-3);
+  width: 100%;
+}
+
+/* separa la imagen-cita del texto alrededor dentro de este bloque */
+.cmp-editorialDoble .cmp-citaFrame {
+  margin-block: var(--space-3);
+}
+
+.cmp-editorialDoble__thumb {
+  display: block;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  outline: none;
+}
+
+.cmp-editorialDoble__thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.cmp-editorialDoble__thumb:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 90px rgba(0, 0, 0, 0.55);
+}
+
+.cmp-editorialDoble__thumb:focus-visible {
+  box-shadow: 0 22px 90px rgba(0, 0, 0, 0.55), var(--focus-ring);
+}
+
+@media (min-width: 48rem) {
+  .cmp-editorialDoble__gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+}
+
+.cmp-editorialDoble__spacer {
+  height: var(--space-3);
+}
+
+.cmp-editorialDoble__headingBand--moreTop {
+  padding-top: clamp(3rem, 9vw, 5rem);
+}
+
+.cmp-editorialDoble__paragraph--spaced {
+  margin-block: var(--space-3);
+}
+
+.cmp-editorialDoble__after {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.cmp-editorialDoble__extCta {
+  justify-self: center;
+  margin-top: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0.85rem;
+  padding-inline: 1.2rem;
+  background: var(--color-secundario);
+  color: #0b0b0b;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  box-shadow: 0 22px 90px rgba(0, 0, 0, 0.45);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  min-height: 44px;
+}
+
+.cmp-editorialDoble__extCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 26px 110px rgba(0, 0, 0, 0.55);
+}
+
+.cmp-editorialDoble__extCta:focus-visible {
+  outline: none;
+  box-shadow: 0 26px 110px rgba(0, 0, 0, 0.55), var(--focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-editorialDoble__thumb,
+  .cmp-editorialDoble__extCta {
+    transition: none;
+  }
+  .cmp-editorialDoble__thumb:hover,
+  .cmp-editorialDoble__extCta:hover {
+    transform: none;
+  }
+}
+.cmp-editorialMedia__content {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cmp-editorialMedia__paragraph {
+  font-size: clamp(1.05rem, 2.15vw, 1.15rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+  margin: 0;
+  max-inline-size: var(--reading-max);
+  margin-inline: auto;
+}
+
+.cmp-editorialMedia__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.cmp-editorialMedia__thumb {
+  display: block;
+  overflow: hidden;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  outline: none;
+}
+
+.cmp-editorialMedia__thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cmp-editorialMedia__thumb:hover {
+  transform: translateY(-1px);
+}
+
+.cmp-editorialMedia__thumb:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+@media (min-width: 48rem) {
+  .cmp-editorialMedia__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  .cmp-editorialMedia__thumb--stagger {
+    padding-top: var(--space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-editorialMedia__thumb {
+    transition: none;
+  }
+  .cmp-editorialMedia__thumb:hover {
+    transform: none;
+  }
+}
+
+/* ---------- MOD: CITA CENTRADA Y MÁS ANCHA ---------- */
+.cmp-citaFrame--centered .cmp-citaFrame__inner {
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+}
+
+.cmp-citaFrame--centered .cmp-citaFrame__quote {
+  max-inline-size: min(52rem, 94vw);
+}
+
+/* Ajuste puntual: baja la cita sin afectar a otras */
+.cmp-citaFrame--lowerQuote .cmp-citaFrame__quote {
+  transform: translateY(clamp(1.5rem, 3vw, 2.5rem));
+}
+
+
+
+
+
+/* ---------- CRÉDITOS ---------- */
+.creditos {
+  color: var(--color-principal);
+  background-color: var(--color-secundario);
+  opacity: 0.8;
+  font-size: 0.8em;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.container-fluid-cred {
+  width: calc(100% - 40px);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+/* estilos para que en LV se muestre el contenido sin margenes */
+.wallpaper-inverted-ad{
+    display: none!important;
+  }
+  
+  .visual-article-free .col-12 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+  }
+  .content-free-html {
+    margin:0 !important;
+  }
+  .container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .visual__story--free .content-free-html {
+    margin: 0px !important;
+  }
+  .row>* {
+    margin-top: 0!important;
+  }
+  .article-default a:hover {
+    text-decoration: none;
+    box-shadow: none;
+  }
+button:focus {
+    outline: 1px dotted var(--background-color);
+    outline: 5px auto var(--background-color) -webkit-focus-ring-color;
+}
+
+.no-show {
+  opacity: 0;
+}
