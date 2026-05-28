@@ -603,9 +603,11 @@ a {
   height: 29px;
 }
 
-@media (max-width: 36rem) {
+@media (max-width: 48rem) {
   .cmp-editorialMedia__subtitle {
     height: auto;
+    min-height: 0;
+    line-height: 1.1;
   }
 }
 
