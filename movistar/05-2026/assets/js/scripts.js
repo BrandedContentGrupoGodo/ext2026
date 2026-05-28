@@ -112,6 +112,35 @@
 })();
 
 (() => {
+  const v = document.querySelector(".cmp-heroCine__video");
+  if (!v) return;
+
+  const tryPlay = () => {
+    const p = v.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  };
+
+  // Intento inicial
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", tryPlay, { once: true });
+  } else {
+    tryPlay();
+  }
+
+  // Si el navegador bloquea autoplay (battery/data saver), se activará al primer gesto
+  const onFirstUserGesture = () => {
+    tryPlay();
+    window.removeEventListener("pointerdown", onFirstUserGesture, true);
+    window.removeEventListener("keydown", onFirstUserGesture, true);
+    window.removeEventListener("touchstart", onFirstUserGesture, true);
+  };
+
+  window.addEventListener("pointerdown", onFirstUserGesture, true);
+  window.addEventListener("keydown", onFirstUserGesture, true);
+  window.addEventListener("touchstart", onFirstUserGesture, true);
+})();
+
+(() => {
   const dialog = document.querySelector(".cmp-galeriaEditorial__dialog");
   if (!dialog || typeof dialog.showModal !== "function") return;
 
