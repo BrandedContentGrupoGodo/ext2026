@@ -148,18 +148,32 @@
   const closeBtn = dialog.querySelector(".cmp-galeriaEditorial__dialogClose");
   if (!dialogImg || !closeBtn) return;
 
+  const resolveImageUrl = (trigger) => {
+    const img = trigger.querySelector("img");
+    const imgSrc = img && (img.currentSrc || img.getAttribute("src"));
+    if (imgSrc) return imgSrc;
+
+    const href = trigger.getAttribute("href");
+    if (!href) return "";
+    try {
+      return new URL(href, document.baseURI).href;
+    } catch {
+      return href;
+    }
+  };
+
   document.addEventListener("click", (event) => {
     const trigger = event.target && event.target.closest && event.target.closest('a[data-lightbox="true"]');
     if (!trigger) return;
 
-    const href = trigger.getAttribute("href");
-    if (!href) return;
+    const imageUrl = resolveImageUrl(trigger);
+    if (!imageUrl) return;
 
     const img = trigger.querySelector("img");
     const alt = img ? img.getAttribute("alt") : "";
 
     event.preventDefault();
-    dialogImg.src = href;
+    dialogImg.src = imageUrl;
     dialogImg.alt = alt || "";
     dialog.showModal();
   });
