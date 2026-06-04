@@ -1,0 +1,873 @@
+    :root {
+  --color-fondo: #0A1013;
+  --color-accent:#AA9B6F;
+  --color-texto: #002A5C;
+  --color-secundario: #0F2A40;
+  --color-gris: #808080;
+  --color-blanco: #FFFFFF;
+  --color-live:#A60505;
+
+  --font-principal:Cormorant Garamond , serif;
+  --font-secuandria: "Albert Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+
+  /* Accesibilidad: anillo de foco reutilizable */
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-ring-offset: 3px;
+
+  /* Escala de espaciado fluida y reutilizable */
+  --espacio-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --espacio-s: clamp(0.75rem, 2vw, 1.25rem);
+  --espacio-m: clamp(1.25rem, 3vw, 2rem);
+  --espacio-l: clamp(2rem, 6vw, 4rem);
+  --espacio-xl: clamp(3.5rem, 10vw, 8rem);
+
+  /* Anchos de lectura editorial */
+  --ancho-contenido: min(100% - 2 * var(--espacio-m), 72rem);
+  --ancho-lectura: 56ch;
+
+  --radio-s: 8px;
+  --radio-m: 14px;
+
+  /* Altura aproximada de la barra fija de capítulos */
+  --chapter-nav-h: 4.5rem;
+    }
+
+/* Los anclajes no quedan ocultos tras la barra fija inferior */
+html {
+  scroll-padding-bottom: var(--chapter-nav-h);
+}
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-hemeroteca {
+  color: var(--color-blanco);
+  background-color: var(--color-fondo);
+  min-height: 100svh;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Foco visible coherente para navegación por teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 2px;
+}
+
+/* Texto solo para lectores de pantalla */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Scroll suave solo si el usuario no pide reducir movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+
+/* ---------- CRÉDITOS ---------- */
+.creditos-fiatc {
+  color: var(--color-blanco);
+  opacity: 0.8;
+  font-size: 0.8em;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.container-fluid-cred {
+  width: calc(100% - 40px);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+/* estilos para que en LV se muestre el contenido sin margenes */
+.wallpaper-inverted-ad{
+    display: none!important;
+  }
+  
+  .visual-article-free .col-12 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+  }
+  .content-free-html {
+    margin:0 !important;
+  }
+  .container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .visual__story--free .content-free-html {
+    margin: 0px !important;
+  }
+  .row>* {
+    margin-top: 0!important;
+  }
+  .article-default a:hover {
+    text-decoration: none;
+    box-shadow: none;
+  }
+button:focus {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.no-show {
+  opacity: 0;
+}
+
+/* =====================================================================
+   HERO CINEMATOGRÁFICO
+   ===================================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: var(--espacio-l) var(--espacio-m) var(--espacio-m);
+  overflow: clip;
+  isolation: isolate;
+  font-family: var(--font-secuandria);
+}
+
+/* Capa de vídeo: cubre todo el hero y no recibe interacción */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-color: var(--color-fondo);
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* En móvil priorizamos el encuadre central del vídeo */
+  object-position: center;
+}
+
+/* Velo para mantener legible el contenido sobre el vídeo */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 16, 19, 0.55) 0%, rgba(10, 16, 19, 0.25) 35%, rgba(10, 16, 19, 0.85) 100%);
+}
+
+/* Bloque central: logo + subtítulo + CTA, alineados a la derecha */
+.hero__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  gap: var(--espacio-m);
+  width: 100%;
+}
+
+.hero__logo {
+  width: min(78%, 30rem);
+  height: auto;
+}
+
+.hero__subtitle {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--color-blanco);
+  font-family: var(--font-secuandria);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1rem + 2.2vw, 1.4rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* CTA: fondo oscuro translúcido + icono play con círculo */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-s);
+  padding: 0.7em 0.9em 0.7em 1.4em;
+  color: var(--color-blanco);
+  font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: rgba(10, 16, 19, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  background-color: rgba(10, 16, 19, 0.78);
+  border-color: var(--color-accent);
+}
+
+.hero__cta-icon {
+  display: inline-flex;
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+.hero__cta:hover .hero__cta-icon,
+.hero__cta:focus-visible .hero__cta-icon {
+  transform: scale(1.08);
+}
+
+/* ---- Entrada cinematográfica del hero (al cargar, escalonada) ----
+   Solo transform/opacity. Si el usuario reduce movimiento, aparece
+   directamente sin animación. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__logo {
+    animation: heroLogoIn 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero__subtitle {
+    animation: heroRiseIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both;
+  }
+
+  .hero__cta {
+    animation: heroRiseIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.7s both;
+  }
+}
+
+@keyframes heroLogoIn {
+  from { opacity: 0; transform: translateY(-14px) scale(1.06); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes heroRiseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* =====================================================================
+   MENÚ FIJO DE CAPÍTULOS (barra inferior persistente, sin sticky)
+   ===================================================================== */
+.chapter-nav {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: var(--espacio-xs) var(--espacio-s);
+  padding-bottom: max(var(--espacio-xs), env(safe-area-inset-bottom));
+  background-color: rgba(10, 16, 19, 0.82);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-secuandria);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform;
+}
+
+/* Se oculta deslizándose hacia abajo cuando aparece algún footer */
+.chapter-nav--hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chapter-nav__list {
+  display: flex;
+  gap: var(--espacio-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* En móvil: scroll horizontal con snap en lugar de comprimir 6 enlaces */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  justify-content: flex-start;
+}
+
+.chapter-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.chapter-nav__item {
+  scroll-snap-align: center;
+}
+
+.chapter-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0.65em 1.1em;
+  color: var(--color-blanco);
+  font-size: clamp(0.8rem, 0.75rem + 0.3vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: var(--color-secundario);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.chapter-nav__link:hover,
+.chapter-nav__link:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-fondo);
+  transform: translateY(-2px);
+}
+
+/* Notificación del tercer capítulo */
+.chapter-nav__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: var(--color-live);
+  border: 2px solid var(--color-fondo);
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chapter-nav__link--alert .chapter-nav__badge {
+    animation: heroBadgePulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes heroBadgePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.7; }
+}
+
+/* A partir de tablet: el menú se reparte centrado en una sola fila */
+@media (min-width: 48em) {
+  .chapter-nav__list {
+    justify-content: center;
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+}
+
+/* =====================================================================
+   INTRO EDITORIAL
+   ===================================================================== */
+.editorial {
+  position: relative;
+  width: 100%;
+  padding-block: var(--espacio-xl);
+  background-color: var(--color-fondo);
+  isolation: isolate;
+}
+
+/* Ruido sutil estático como textura, sin afectar legibilidad */
+.editorial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+.editorial__inner {
+  width: var(--ancho-contenido);
+  max-width: 110ch;
+  margin-inline: auto;
+}
+
+.editorial__text {
+  margin: 0;
+  color: var(--color-blanco);
+  font-family: var(--font-principal);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 1.1rem + 1.6vw, 2.1rem);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.editorial__accent {
+  color: var(--color-accent);
+}
+
+/* Imagen inicial: acompaña al texto sin interrumpir la lectura */
+.editorial__lead-img {
+  float: left;
+  width: clamp(72px, 14vw, 120px);
+  height: auto;
+  margin: 0.35em var(--espacio-s) 0.2em 0;
+  border-radius: var(--radio-s);
+  shape-outside: margin-box;
+}
+
+/* Imagen pequeña intercalada en medio del párrafo */
+.editorial__inline-img {
+  display: inline-block;
+  width: clamp(72px, 14vw, 120px);
+  height: auto;
+  margin-inline: 0.3em;
+  vertical-align: middle;
+  border-radius: var(--radio-s);
+}
+
+/* Salto de bloque interno sin <br>, para separar las dos ideas */
+.editorial__break {
+  display: block;
+  height: var(--espacio-m);
+}
+
+/* ---- Animación cinematográfica ligada al scroll (CSS puro) ----
+   Solo se activa si el usuario no pide reducir movimiento y el navegador
+   soporta scroll-driven animations. En cualquier otro caso, el contenido
+   se muestra estático y legible: degradación total. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .editorial__text {
+      animation: editorialRise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 40%;
+    }
+
+    .editorial__lead-img {
+      animation: editorialZoom linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 32%;
+    }
+
+    .editorial__inline-img {
+      animation: editorialPop linear both;
+      animation-timeline: view();
+      animation-range: entry 24% cover 52%;
+    }
+
+    /* Las frases en accent se "encienden" con un leve retardo */
+    .editorial__accent {
+      animation: editorialGlow linear both;
+      animation-timeline: view();
+      animation-range: entry 18% cover 50%;
+    }
+  }
+}
+
+@keyframes editorialRise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes editorialZoom {
+  from { opacity: 0; transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes editorialPop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes editorialGlow {
+  from { opacity: 0.25; }
+  to   { opacity: 1; }
+}
+
+/* =====================================================================
+   EPISODIOS
+   ===================================================================== */
+.episodes {
+  width: 100%;
+  padding-block: var(--espacio-xl);
+  background-color: var(--color-fondo);
+}
+
+.episodes__inner {
+  width: var(--ancho-contenido);
+  margin-inline: auto;
+}
+
+.episodes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--espacio-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Espacio para que el scroll de los anclajes no quede pegado al borde */
+.episode {
+  scroll-margin-top: var(--espacio-l);
+}
+
+/* Revelado inmersivo de cada caja al entrar en pantalla (CSS puro).
+   Se aplica al <li> para no interferir con el hover de la tarjeta.
+   Degrada a contenido visible si no hay soporte o se reduce el movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .episode {
+      animation: episodeReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 30%;
+    }
+  }
+}
+
+@keyframes episodeReveal {
+  from { opacity: 0; transform: translateY(42px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.episode__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Formato vertical (retrato), coherente en todos los anchos.
+     min-height garantiza que el contenido nunca se comprima. */
+  aspect-ratio: 3 / 4;
+  min-height: clamp(24rem, 42vh, 34rem);
+  padding: var(--espacio-m);
+  overflow: clip;
+  border-radius: var(--radio-m);
+  isolation: isolate;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* En escritorio las cajas son notablemente más verticales */
+@media (min-width: 64em) {
+  .episode__card {
+    aspect-ratio: 9 / 16;
+    min-height: clamp(34rem, 64vh, 50rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .episode__card:hover,
+  .episode__card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Media: foto en b/n por defecto, vídeo al hacer hover/focus */
+.episode__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-color: var(--color-secundario);
+}
+
+.episode__poster,
+.episode__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode__poster {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.episode__video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* En hover/focus la foto pasa a color (vale también sin vídeo) */
+.episode__card:hover .episode__poster,
+.episode__card:focus-within .episode__poster {
+  filter: grayscale(0);
+}
+
+/* Solo las cajas que tienen vídeo cambian la foto por el vídeo */
+.episode__card:has(.episode__video):hover .episode__poster,
+.episode__card:has(.episode__video):focus-within .episode__poster {
+  opacity: 0;
+}
+
+.episode__card:hover .episode__video,
+.episode__card:focus-within .episode__video {
+  opacity: 1;
+}
+
+/* Velo inferior reforzado para garantizar legibilidad sobre la imagen */
+.episode__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 19, 0) 28%,
+    rgba(10, 16, 19, 0.45) 52%,
+    rgba(10, 16, 19, 0.78) 74%,
+    rgba(10, 16, 19, 0.95) 100%
+  );
+}
+
+.episode__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-xs);
+  font-family: var(--font-secuandria);
+  /* Sombra sutil para asegurar contraste en cualquier foto */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+.episode__badge {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.3em 0.9em;
+  color: var(--color-blanco);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: var(--color-live);
+  border-radius: 999px;
+}
+
+.episode__title {
+  margin: 0;
+  color: var(--color-accent);
+  font-family: var(--font-principal);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.episode__date {
+  margin: 0;
+  color: var(--color-blanco);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+.episode__desc {
+  margin: 0;
+  color: var(--color-blanco);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+.episode__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  width: 100%;
+  margin-top: var(--espacio-xs);
+  padding: 0.85em 1.2em;
+  color: var(--color-blanco);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: var(--color-accent);
+  border-radius: var(--radio-s);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.episode__link:hover,
+.episode__link:focus-visible {
+  background-color: #c0b184;
+  transform: translateY(-2px);
+}
+
+.episode__icon {
+  width: 1.25em;
+  height: 1.25em;
+  transition: transform 0.3s ease;
+}
+
+.episode__link:hover .episode__icon,
+.episode__link:focus-visible .episode__icon {
+  transform: translateX(3px);
+}
+
+/* Resaltado del capítulo seleccionado desde el menú (CSS puro) */
+.episode:target .episode__card {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .episode:target .episode__card {
+    animation: episodeHighlight 1.8s ease;
+  }
+}
+
+@keyframes episodeHighlight {
+  0% { box-shadow: 0 0 0 0 rgba(170, 155, 111, 0.7); }
+  100% { box-shadow: 0 0 0 18px rgba(170, 155, 111, 0); }
+}
+
+/* =====================================================================
+   OUTRO / CTA HEMEROTECA
+   ===================================================================== */
+.outro {
+  width: 100%;
+  padding-block: var(--espacio-xl);
+  background-color: var(--color-fondo);
+}
+
+.outro__inner {
+  width: var(--ancho-contenido);
+  max-width:110ch;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-l);
+  text-align: center;
+}
+
+.outro__text {
+  margin: 0;
+  color: var(--color-blanco);
+  font-family: var(--font-principal);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 1.1rem + 1.6vw, 2.1rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.outro__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.9em 1.6em;
+  color: var(--color-blanco);
+  font-family: var(--font-secuandria);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: var(--color-accent);
+  border-radius: var(--radio-s);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.outro__cta:hover,
+.outro__cta:focus-visible {
+  background-color: #c0b184;
+  transform: translateY(-2px);
+}
+
+.outro__icon {
+  width: 1.25em;
+  height: 1.25em;
+  transition: transform 0.3s ease;
+}
+
+.outro__cta:hover .outro__icon,
+.outro__cta:focus-visible .outro__icon {
+  transform: translateX(3px);
+}
+
+/* =====================================================================
+   CRÉDITOS
+   ===================================================================== */
+.creditos-hemeroteca {
+  width: 100%;
+  padding-block: var(--espacio-xs) var(--espacio-xs);
+  background-color: var(--color-fondo);
+  color: var(--color-blanco);
+  text-align: center;
+}
+
+.creditos-hemeroteca__title {
+  margin: 0 0 var(--espacio-s);
+  font-family: var(--font-principal);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 1.3rem + 1.6vw, 2rem);
+  color: var(--color-accent);
+}
+
+.creditos-hemeroteca .container-fluid-cred {
+  font-family: var(--font-secuandria);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* =====================================================================
+   FOOTER (fondo blanco)
+   ===================================================================== */
+.site-footer {
+  width: 100%;
+  padding-block: var(--espacio-s);
+  background-color: var(--color-blanco);
+  color: var(--color-gris);
+}
+
+.site-footer__inner {
+  width: var(--ancho-contenido);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-s);
+  text-align: center;
+}
+
+.site-footer__disclaimer {
+  margin: 0;
+  font-family: var(--font-secuandria);
+  font-size: 0.78rem;
+  line-height: 1;
+  color: var(--color-gris);
+}
+
+.site-footer__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__logos img {
+  width: auto;
+  height: clamp(2rem, 4vw, 3rem);
+  object-fit: contain;
+}
+
+/* A partir de tablet los 4 logos se distribuyen a lo ancho */
+@media (min-width: 40em) {
+  .site-footer__logos {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
