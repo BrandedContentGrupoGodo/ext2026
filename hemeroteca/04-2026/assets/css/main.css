@@ -200,14 +200,14 @@ button:focus {
 }
 
 .hero__subtitle {
-  max-width: 32ch;
+  max-width: 42ch;
   margin: 0;
   color: var(--color-blanco);
   font-family: var(--font-secuandria);
   font-weight: 300;
-  font-size: clamp(1.25rem, 1rem + 2.2vw, 1.4rem);
-  line-height: 1.3;
-  text-wrap: balance;
+  font-size: clamp(1.25rem, 1rem + 2.2vw, 1.3rem);
+  line-height: 1.45;
+  text-wrap: pretty;
 }
 
 /* CTA: fondo oscuro translúcido + icono play con círculo */
@@ -400,7 +400,7 @@ button:focus {
 
 .editorial__inner {
   width: var(--ancho-contenido);
-  max-width: 110ch;
+  max-width: 113ch;
   margin-inline: auto;
 }
 
@@ -418,14 +418,27 @@ button:focus {
   color: var(--color-accent);
 }
 
-/* Imagen inicial: acompaña al texto sin interrumpir la lectura */
+/* Párrafo secundario: texto largo con medida e interlineado para leer mejor */
+.editorial__body {
+  max-width: 68ch;
+  margin: var(--espacio-xl) auto 0;
+  color: var(--color-blanco);
+  font-family: var(--font-principal);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1rem + 0.7vw, 1.45rem);
+  line-height: 1.65;
+  text-align: center;
+  opacity: 0.92;
+}
+
+/* Imagen inicial: en línea con el texto para no romper el centrado */
 .editorial__lead-img {
-  float: left;
+  display: inline-block;
   width: clamp(72px, 14vw, 120px);
   height: auto;
-  margin: 0.35em var(--espacio-s) 0.2em 0;
+  margin-inline: 0.3em;
+  vertical-align: middle;
   border-radius: var(--radio-s);
-  shape-outside: margin-box;
 }
 
 /* Imagen pequeña intercalada en medio del párrafo */
@@ -454,6 +467,12 @@ button:focus {
       animation: editorialRise linear both;
       animation-timeline: view();
       animation-range: entry 8% cover 40%;
+    }
+
+    .editorial__body {
+      animation: editorialRise linear both;
+      animation-timeline: view();
+      animation-range: entry 16% cover 50%;
     }
 
     .editorial__lead-img {
@@ -502,7 +521,7 @@ button:focus {
    ===================================================================== */
 .episodes {
   width: 100%;
-  padding-block: var(--espacio-xl);
+  padding-block: var(--espacio-xl) var(--espacio-m);
   background-color: var(--color-fondo);
 }
 
@@ -619,6 +638,21 @@ button:focus {
   opacity: 1;
 }
 
+/* Sensación de "vídeo" también en las cajas sin vídeo: la foto cobra vida
+   con un sutil zoom + paneo lento (Ken Burns) al hacer hover/focus.
+   Solo transform: sin repaints costosos. Respeta prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .episode__card:not(:has(.episode__video)):hover .episode__poster,
+  .episode__card:not(:has(.episode__video)):focus-within .episode__poster {
+    animation: posterKenBurns 9s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes posterKenBurns {
+  0%   { transform: scale(1.04) translate(0, 0); }
+  100% { transform: scale(1.14) translate(-2.5%, -2%); }
+}
+
 /* Velo inferior reforzado para garantizar legibilidad sobre la imagen */
 .episode__media::after {
   content: "";
@@ -626,10 +660,11 @@ button:focus {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 16, 19, 0) 28%,
-    rgba(10, 16, 19, 0.45) 52%,
-    rgba(10, 16, 19, 0.78) 74%,
-    rgba(10, 16, 19, 0.95) 100%
+    rgba(10, 16, 19, 0) 12%,
+    rgba(10, 16, 19, 0.35) 38%,
+    rgba(10, 16, 19, 0.7) 60%,
+    rgba(10, 16, 19, 0.92) 80%,
+    rgba(10, 16, 19, 0.97) 100%
   );
 }
 
@@ -639,8 +674,8 @@ button:focus {
   flex-direction: column;
   gap: var(--espacio-xs);
   font-family: var(--font-secuandria);
-  /* Sombra sutil para asegurar contraste en cualquier foto */
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  /* Sombra nítida (no difuminada) para no emborronar el texto */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .episode__badge {
@@ -658,20 +693,23 @@ button:focus {
 
 .episode__title {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-blanco);
   font-family: var(--font-principal);
   font-weight: 600;
-  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  line-height: 1.18;
+  text-wrap: balance;
 }
 
+/* La fecha actúa como antetítulo (kicker) dorado, orden visual encima */
 .episode__date {
+  order: -1;
   margin: 0;
-  color: var(--color-blanco);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  opacity: 0.85;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .episode__desc {
@@ -737,7 +775,7 @@ button:focus {
    ===================================================================== */
 .outro {
   width: 100%;
-  padding-block: var(--espacio-xl);
+  padding-block: var(--espacio-m) var(--espacio-xl);
   background-color: var(--color-fondo);
 }
 
@@ -794,30 +832,286 @@ button:focus {
   transform: translateX(3px);
 }
 
+.outro__platforms {
+  margin: 0;
+  color: var(--color-blanco);
+  font-family: var(--font-secuandria);
+  font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.outro__platform-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.25s ease;
+}
+
+.outro__platform-link:hover,
+.outro__platform-link:focus-visible {
+  opacity: 0.75;
+}
+
+/* Mismas animaciones de subida/fade que el bloque editorial inicial */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .outro__text {
+      animation: editorialRise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 40%;
+    }
+
+    .outro__platforms {
+      animation: editorialRise linear both;
+      animation-timeline: view();
+      animation-range: entry 14% cover 46%;
+    }
+
+    .outro__cta {
+      animation: editorialRise linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 52%;
+    }
+  }
+}
+
+/* =====================================================================
+   CONSULTAS DE NUESTROS LECTORES (fondo accent)
+   ===================================================================== */
+.lectores {
+  width: 100%;
+  padding-block: var(--espacio-xl);
+  background-color: var(--color-accent);
+  color: var(--color-fondo);
+}
+
+.lectores__inner {
+  width: var(--ancho-contenido);
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.lectores__title {
+  margin: 0 0 var(--espacio-l);
+  font-family: var(--font-principal);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.8vw, 2.4rem);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.lectores__list {
+  display: grid;
+  gap: var(--espacio-xl);
+}
+
+/* ---- Conversación tipo chat ---- */
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-s);
+}
+
+.chat__message {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--espacio-xs);
+  max-width: min(46rem, 100%);
+}
+
+/* Consulta del lector: burbuja entrante (izquierda) */
+.chat__message--in {
+  align-self: flex-start;
+}
+
+/* Respuesta: burbuja saliente clicable (derecha) */
+.chat__message--out {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat__avatar {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background-color: var(--color-fondo);
+  color: var(--color-accent);
+  font-family: var(--font-secuandria);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.chat__bubble {
+  padding: var(--espacio-s) var(--espacio-m);
+  background-color: var(--color-blanco);
+  color: var(--color-fondo);
+  /* Cola de burbuja en la esquina inferior izquierda */
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 6px 18px rgba(10, 16, 19, 0.12);
+}
+
+.chat__name {
+  margin: 0 0 0.25em;
+  font-family: var(--font-secuandria);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-texto);
+}
+
+.chat__text {
+  margin: 0;
+  font-family: var(--font-principal);
+  font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.6rem);
+  line-height: 1.4;
+}
+
+/* Botón-respuesta: claramente clicable, estilo burbuja saliente */
+.chat__answer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.8em 1.3em;
+  color: var(--color-blanco);
+  font-family: var(--font-secuandria);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: var(--color-fondo);
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 8px 20px rgba(10, 16, 19, 0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.chat__answer:hover,
+.chat__answer:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(10, 16, 19, 0.38);
+  background-color: #14222b;
+}
+
+.chat__answer:focus-visible {
+  outline: 2px solid var(--color-fondo);
+  outline-offset: 3px;
+}
+
+.chat__answer-icon {
+  width: 1.15em;
+  height: 1.15em;
+  transition: transform 0.3s ease;
+}
+
+.chat__answer:hover .chat__answer-icon,
+.chat__answer:focus-visible .chat__answer-icon {
+  transform: translateX(3px);
+}
+
+/* Entrada dinámica del chat ligada al scroll:
+   la consulta entra desde la izquierda y la respuesta desde la derecha. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chat__message--in {
+      animation: chatInLeft linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 36%;
+    }
+
+    .chat__message--out {
+      animation: chatInRight linear both;
+      animation-timeline: view();
+      animation-range: entry 16% cover 48%;
+    }
+  }
+}
+
+@keyframes chatInLeft {
+  from { opacity: 0; transform: translateX(-26px) translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes chatInRight {
+  from { opacity: 0; transform: translateX(26px) translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* =====================================================================
    CRÉDITOS
    ===================================================================== */
 .creditos-hemeroteca {
   width: 100%;
-  padding-block: var(--espacio-xs) var(--espacio-xs);
+  padding-block: var(--espacio-l) var(--espacio-m);
   background-color: var(--color-fondo);
   color: var(--color-blanco);
   text-align: center;
 }
 
+/* Título sutil tipo etiqueta, con fina línea divisoria */
 .creditos-hemeroteca__title {
-  margin: 0 0 var(--espacio-s);
-  font-family: var(--font-principal);
-  font-weight: 800;
-  font-size: clamp(1.6rem, 1.3rem + 1.6vw, 2rem);
-  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-s);
+  margin: 0 0 var(--espacio-l);
+  font-family: var(--font-secuandria);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-gris);
 }
 
-.creditos-hemeroteca .container-fluid-cred {
+.creditos-hemeroteca__title::before,
+.creditos-hemeroteca__title::after {
+  content: "";
+  width: clamp(1.5rem, 6vw, 3rem);
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Lista de créditos: rol + nombre apilados (estilo créditos) */
+.creditos-hemeroteca__list {
+  display: grid;
+  gap: var(--espacio-m);
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.creditos-hemeroteca__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.creditos-hemeroteca__role {
   font-family: var(--font-secuandria);
-  font-size: 0.85rem;
-  line-height: 1.8;
-  opacity: 0.85;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-gris);
+}
+
+.creditos-hemeroteca__name {
+  margin: 0;
+  font-family: var(--font-principal);
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.3;
+  color: var(--color-blanco);
+}
+
+.creditos-hemeroteca__signature {
+  margin: var(--espacio-l) 0 0;
+  font-family: var(--font-secuandria);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--color-gris);
 }
 
 /* =====================================================================
