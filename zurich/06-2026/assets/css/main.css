@@ -1,0 +1,574 @@
+    :root {
+  --color-secundario: #D3E5F4;
+  --color-texto: #23366F;
+  --color-accent: #5E75B9;
+  --color-blanco: #FFFFFF;
+  --color-secundario-claro:#F3F9FF;
+
+  --font-principal: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+
+  --radius-12: 12px;
+  --radius-pill: 999px;
+
+  --focus-ring: 3px solid rgba(0, 42, 92, 0.55);
+  --focus-ring-offset: 3px;
+
+  --anim-fast: 160ms;
+
+  --container-max: 1100px;
+  --prose-max: 64ch;
+  --media-max: 76ch;
+
+  --zurich-reading-max: 1024px;
+  --zurich-wide-max: 1280px;
+
+  --zurich-h2-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  --zurich-h2-line: 1.15;
+  --zurich-h2-weight: 860;
+    }
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.body-zurich {
+  font-family: var(--font-principal);
+  color: var(--color-texto);
+  background-color: var(--color-blanco);
+  min-height: 100svh;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ---------- CRÉDITOS ---------- */
+.creditos-zurich {
+  color: var(--color-texto);
+  opacity: 0.8;
+  font-size: 0.8em;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.container-fluid-cred {
+  width: calc(100% - 40px);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+/* estilos para que en LV se muestre el contenido sin margenes */
+.wallpaper-inverted-ad{
+    display: none!important;
+  }
+  
+  .visual-article-free .col-12 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+  }
+  .content-free-html {
+    margin:0 !important;
+  }
+  .container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .visual__story--free .content-free-html {
+    margin: 0px !important;
+  }
+  .row>* {
+    margin-top: 0!important;
+  }
+  .article-default a:hover {
+    text-decoration: none;
+    box-shadow: none;
+  }
+button:focus {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.no-show {
+  opacity: 0;
+}
+
+/* ---------- HERO ---------- */
+.hero-zurich {
+  --hero-zurich-inset: clamp(0.75rem, 2.5vw, 1.5rem);
+  --hero-zurich-radius: clamp(16px, 3vw, 28px);
+  --hero-zurich-pad: clamp(1.5rem, 5vw, 4rem);
+
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: var(--hero-zurich-inset);
+}
+
+.hero-zurich__media {
+  position: relative;
+  display: grid;
+  min-height: calc(100svh - (var(--hero-zurich-inset) * 2));
+  overflow: hidden;
+  border-radius: var(--hero-zurich-radius);
+  isolation: isolate;
+}
+
+/* Imagen y contenido comparten la misma celda (overlay sin position absolute) */
+.hero-zurich__image,
+.hero-zurich__content {
+  grid-area: 1 / 1;
+}
+
+.hero-zurich__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scrim para asegurar contraste del texto sobre cualquier foto */
+.hero-zurich__media::after {
+  content: "";
+  grid-area: 1 / 1;
+  background: linear-gradient(
+    100deg,
+    rgba(35, 54, 111, 0.75) 0%,
+    rgba(35, 54, 111, 0.45) 45%,
+    rgba(35, 54, 111, 0.05) 80%
+  );
+}
+
+.hero-zurich__content {
+  z-index: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 120ch;
+  padding: var(--hero-zurich-pad);
+  color: var(--color-blanco);
+}
+
+.hero-zurich__eyebrow {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.hero-zurich__title {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.hero-zurich__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.hero-zurich__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.25rem, 1vw, 0.5rem);
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-blanco);
+  color: var(--color-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  transition: transform var(--anim-fast) ease, opacity var(--anim-fast) ease;
+}
+
+.hero-zurich__cta:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.hero-zurich__cta:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zurich__cta {
+    transition: none;
+  }
+
+  .hero-zurich__cta:hover {
+    transform: none;
+  }
+}
+
+/* ---------- INTRO ---------- */
+.intro-zurich {
+  --intro-zurich-text-max: var(--zurich-reading-max);
+  --intro-zurich-stats-max: var(--zurich-wide-max);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(3rem, 9vw, 6rem) clamp(1.25rem, 5vw, 2rem);
+  scroll-margin-top: clamp(1rem, 4vw, 2rem);
+}
+
+.intro-zurich__text {
+  width: 100%;
+  max-width: var(--intro-zurich-text-max);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  text-align: left;
+}
+
+.intro-zurich__text p {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.intro-zurich__heading {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.intro-zurich__stats {
+  width: 100%;
+  max-width: var(--intro-zurich-stats-max);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.stat-zurich {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.5vw, 0.75rem);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background-color: var(--color-secundario);
+  border-radius: var(--radius-12);
+}
+
+.stat-zurich__number {
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat-zurich__label {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* ---------- HIGHLIGHTS (panel destacado) ---------- */
+.highlights-zurich {
+  padding: clamp(1rem, 4vw, 2rem) clamp(1.25rem, 5vw, 2rem);
+}
+
+.highlights-zurich__panel {
+  max-width: var(--zurich-wide-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  background-color: var(--color-secundario-claro);
+  border-radius: var(--radius-12);
+}
+
+.highlights-zurich__heading {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.highlights-zurich__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.highlight-zurich {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background-color: var(--color-secundario);
+  border-radius: var(--radius-12);
+  text-align: center;
+}
+
+.highlight-zurich__icon {
+  width: clamp(2.5rem, 6vw, 3.5rem);
+  height: auto;
+}
+
+.highlight-zurich__label {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+/* ---------- COMPROMISO ---------- */
+.commitment-zurich {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(3rem, 9vw, 6rem) clamp(1.25rem, 5vw, 2rem);
+}
+
+.commitment-zurich__text {
+  width: 100%;
+  max-width: var(--zurich-reading-max);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  text-align: left;
+}
+
+.commitment-zurich__text p {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.intro-zurich__text a,
+.commitment-zurich__text a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  border-radius: 2px;
+  transition: color var(--anim-fast) ease, text-decoration-color var(--anim-fast) ease;
+}
+
+.intro-zurich__text a:hover,
+.commitment-zurich__text a:hover {
+  color: var(--color-texto);
+  text-decoration-color: currentColor;
+}
+
+.intro-zurich__text a:focus-visible,
+.commitment-zurich__text a:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  text-decoration-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-zurich__text a,
+  .commitment-zurich__text a {
+    transition: none;
+  }
+}
+
+.commitment-zurich__heading {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.commitment-zurich__cards {
+  width: 100%;
+  max-width: var(--zurich-wide-max);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.pledge-zurich {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(2rem, 5vw, 3rem);
+  border: 2px solid var(--color-texto);
+  border-radius: var(--radius-12);
+  text-align: left;
+}
+
+.pledge-zurich__icon {
+  width: clamp(3rem, 7vw, 4rem);
+  height: auto;
+}
+
+.pledge-zurich__label {
+  font-size: clamp(1.125rem, 2.6vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+/* ---------- DESTACADO (banner) ---------- */
+.feature-banner-zurich {
+  width: 100%;
+  max-width: var(--zurich-wide-max);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(8rem, 22vw, 12rem);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  background-color: var(--color-secundario);
+  border-radius: var(--radius-12);
+}
+
+.feature-banner-zurich__text {
+  margin: 0;
+  font-size: clamp(1.25rem, 3.5vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.feature-banner-zurich__content {
+  width: 100%;
+  max-width: var(--zurich-reading-max);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  text-align: left;
+}
+
+.feature-banner-zurich__heading {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.feature-banner-zurich__paragraph {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* ---------- CITA DESTACADA ---------- */
+.pullquote-zurich {
+  width: 100%;
+  max-width: var(--zurich-reading-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin: 0;
+  text-align: center;
+}
+
+.pullquote-zurich__icon {
+  width: clamp(3rem, 10vw, 8rem);
+  height: auto;
+}
+
+.pullquote-zurich__text {
+  margin: 0;
+  font-size: clamp(1.25rem, 3.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.pullquote-zurich__cite {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* ---------- IMAGEN (media ancha) ---------- */
+.media-zurich {
+  width: 100%;
+  max-width: var(--zurich-wide-max);
+  margin: 0;
+}
+
+.media-zurich__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-12);
+}
+
+/* ---------- VÍDEO (YouTube) ---------- */
+.video-zurich {
+  width: 100%;
+  max-width: var(--zurich-wide-max);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-12);
+}
+
+.video-zurich__frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ---------- REVEAL (scroll) ---------- */
+/* El estado inicial oculto solo se aplica si hay JS, para no esconder
+   contenido cuando el script no carga. */
+.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.has-js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Escalonado sutil de las cajas de datos */
+.has-js .stat-zurich[data-reveal]:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.has-js .stat-zurich[data-reveal]:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
