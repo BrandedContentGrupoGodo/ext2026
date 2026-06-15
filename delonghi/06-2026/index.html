@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Para que el embed de Instagram funcione y reproduzca en la página, abre el sitio con un servidor local (Live Server, "npx serve", etc.), no con file:// -->
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Preload LCP: poster del hero para que la primera vista cargue antes -->
+    <link rel="preload" as="image" href="https://brandedcontentgrupogodo.github.io/ext2026/delonghi/02-2026/assets/img/hero-delonghi.jpg">
+</head>
+<body>
+    <div class="body-delonghi">
+
+        <!-- Hero con vídeo de fondo -->
+        <section class="hero-video" aria-label="Presentación del reportaje">
+            <div class="hero-video__media">
+                <video
+                    class="hero-video__video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-hidden="true"
+                    poster="assets/img/hero-delonghi.jpg"
+                >
+                    <source src="assets/img/intro-delonghi.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video__veil" aria-hidden="true"></div>
+                <div class="hero-video__gradient" aria-hidden="true"></div>
+            </div>
+            <div class="hero-video__content">
+                <p class="hero-video__badge">En colaboración con De'Longhi</p>
+                <h1 class="hero-video__title">Del Cold Brew al Iced Latte: el café de verano ya no se toma solo fuera de casa</h1>
+                <p class="hero-video__subtitle">La llegada del calor transforma pequeños rituales cotidianos. También el del café. Con sus soluciones Hot & Cold, De’Longhi invita a disfrutar en casa de bebidas refrescantes con acabado profesional</p>
+            </div>
+        </section>
+
+        <!-- Bloque línea + texto destacado -->
+        <section class="block-line-quote" aria-label="Texto destacado">
+            <span class="block-line-quote__line" aria-hidden="true"></span>
+            <p class="block-line-quote__text">El café tiene algo de ritual. No es solo una bebida: es una pausa, una forma de empezar el día, un pequeño gesto que acompaña la sobremesa o ese momento de desconexión a media tarde</p>
+        </section>
+
+        <!-- Sección texto + imagen -->
+        <section class="section-text-image" aria-label="Contenido principal">
+            <div class="section-text-image__container">
+                <div class="section-text-image__media">
+                    <img
+                        src="assets/img/delonghi-1.jpg"
+                        alt="Coffee Fest 2026 De'Longhi"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                        class="section-text-image__img"
+                    >
+                </div>
+                <div class="section-text-image__content">
+                    <p class="section-text-image__lead">
+                        Pero cuando llega el verano, el ritual cambia. Apetecen bebidas más ligeras, más frescas, con hielo, con leche fría, con espuma cremosa o con ese punto sofisticado que antes parecía reservado a las cafeterías de especialidad.
+                    </p>
+                    <p class="section-text-image__lead">
+                        Ahí es donde el café frío ha dejado de ser una tendencia puntual para convertirse en una nueva manera de disfrutar del café en casa.
+                    </p>
+                    <p class="section-text-image__lead">
+                        Con ese cambio de temporada como punto de partida, De’Longhi propone elevar la experiencia cafetera doméstica con sus soluciones Hot & Cold: máquinas capaces de preparar bebidas calientes y frías con resultados cuidados, pensadas tanto para quienes buscan comodidad absoluta como para quienes disfrutan del proceso más barista.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Sección destacado -->
+        <section class="section-highlight" aria-label="Texto destacado">
+            <blockquote class="section-highlight__quote">
+                El Cold Brew, el Iced Latte, el cappuccino frío o incluso combinaciones más actuales como el Espresso Tonic responden a una misma idea: el café también puede ser refrescante, versátil y sorprendente
+            </blockquote>
+        </section>
+
+        <!-- Sección fondo principal: imagen + título/párrafo, luego dos párrafos -->
+        <section class="section-dark" aria-label="Contenido destacado">
+            <div class="section-dark__container">
+                <div class="section-dark__row">
+                    <div class="section-dark__media">
+                        <img
+                            src="assets/img/delonghi-2.png"
+                            alt="De'Longhi"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                            class="section-dark__img"
+                        >
+                    </div>
+                    <div class="section-dark__content">
+                        <h2 class="section-dark__title">El verano cambia la forma de tomar café</h2>
+                        <p class="section-dark__lead">Durante años, el café ha estado asociado al calor de una taza recién hecha. Sin embargo, los hábitos de consumo han evolucionado y las bebidas frías han ganado terreno, especialmente en los meses de verano. El café con hielo sigue siendo un clásico, pero ahora convive con elaboraciones más sofisticadas: Cold Brew, Iced Latte, cappuccinos fríos, cafés con espuma fría o recetas inspiradas en la coctelería sin alcohol.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-dark__container section-dark__container--text">
+                <p class="section-dark__para">Este cambio responde a una búsqueda muy clara: mantener el placer del café, pero adaptarlo al clima, al momento del día y a nuevas formas de consumo. El café frío permite alargar la experiencia, jugar con texturas y convertir una bebida cotidiana en una propuesta más refrescante y sensorial.</p>
+                <h3 class="section-dark__subtitle">Café frío, pero con intención</h3>
+                <ul class="section-dark__list">
+                    <li class="section-dark__list-item">Cold Brew: extracción en frío, suave y aromática</li>
+                    <li class="section-dark__list-item">Iced Latte: espresso, hielo y leche fría cremosa</li>
+                    <li class="section-dark__list-item">Cappuccino frío: espuma sedosa y temperatura justa</li>
+                    <li class="section-dark__list-item">Espresso Tonic: el contraste fresco y burbujeante</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección fondo gris claro: imagen izquierda, titular + párrafo derecha, luego un párrafo -->
+        <section class="section-gray" aria-label="Contenido destacado">
+            <div class="section-gray__container">
+                <div class="section-gray__row">
+                    <div class="section-gray__media">
+                        <img
+                            src="assets/img/delonghi-3.png"
+                            alt="De'Longhi"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                            class="section-gray__img"
+                        >
+                    </div>
+                    <div class="section-gray__content">
+                        <h2 class="section-gray__title">La cafetería de especialidad se queda en casa</h2>
+                        <p class="section-gray__lead">Uno de los grandes cambios de los últimos años está en la manera en la que entendemos la cocina. Ya no es solo un espacio funcional: también es un lugar donde disfrutar, experimentar y cuidar los pequeños detalles. En ese contexto, preparar un buen café en casa se ha convertido en una experiencia cada vez más completa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-gray__container section-gray__container--narrow">
+                <p class="section-gray__para">La gama Hot & Cold de De’Longhi conecta precisamente con esa idea: llevar al hogar la variedad y el acabado de una cafetería de especialidad. La clave está en poder elegir entre bebidas calientes o frías sin renunciar a la comodidad, la precisión ni la textura. Porque el café de verano no consiste solo en añadir hielo a un espresso; también importa la extracción, la temperatura, la leche, la espuma y el equilibrio final de la receta.</p>
+            </div>
+        </section>
+
+        <!-- Sección destacado -->
+        <section class="section-highlight" aria-label="Texto destacado">
+            <blockquote class="section-highlight__quote">
+                La idea Hot & Cold permite disfrutar del café todo el año: espresso caliente en invierno, Cold Brew o Iced Latte cuando suben las temperaturas
+            </blockquote>
+        </section>
+
+        <!-- Sección imagen a pantalla completa -->
+        <section class="block-fullimage" aria-label="Imagen destacada">
+            <img
+                src="assets/img/delonghi-4.jpg"
+                alt="Coffee Fest 2026 De'Longhi"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+                class="block-fullimage__img"
+            >
+        </section>
+
+        <!-- Sección bloques + tabla -->
+        <section class="section-cards" aria-label="Soluciones Hot & Cold">
+            <div class="section-cards__intro">
+                <h2 class="section-cards__title">Superautomática o manual: dos formas de vivir el café</h2>
+                <p class="section-cards__lead">Dos formas de preparar café en casa: la comodidad de una superautomática o la experiencia guiada de una cafetera manual</p>
+            </div>
+
+            <div class="section-cards__list">
+                <article class="section-cards__block">
+                    <div class="section-cards__media">
+                        <img
+                            src="assets/img/delonghi-5.jpg"
+                            alt="Cafetera De'Longhi"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                            class="section-cards__img"
+                        >
+                        <p class="section-cards__caption">Rivelia permite alternar entre distintos granos de café con el sistema Bean Switch y personalizar la experiencia desde su pantalla táctil</p>
+                    </div>
+                    <div class="section-cards__content">
+                        <h3 class="section-cards__block-title">Si buscas comodidad: cafeteras superautomáticas</h3>
+                        <p class="section-cards__text">Las cafeteras superautomáticas están pensadas para quienes quieren disfrutar de un café bien preparado con la máxima facilidad. Modelos como Rivelia o Eletta Ultra permiten acceder a distintas bebidas de forma intuitiva y con un resultado constante, algo especialmente útil cuando se busca variedad sin complicarse. La idea es conseguir un café Perfetto con solo pulsar un botón, manteniendo la comodidad sin renunciar a un resultado cuidado..</p>
+                        <p class="section-cards__text">En el caso de Rivelia, el sistema Bean Switch permite alternar entre distintos granos de café, mientras que su pantalla táctil a color facilita moverse entre recetas y personalizar la experiencia. Además, con la jarra LatteCrema Cool, disponible como accesorio adicional, se desbloquean recetas frías automáticas con espuma de leche fría densa y cremosa. </p>
+                        <h4 class="section-cards__block-subtitle">Ideal para…</h4>
+                        <div class="section-cards__boxes">
+                            <div class="section-cards__box">Quienes quieren preparar bebidas con solo un toque</div>
+                            <div class="section-cards__box">Hogares donde cada persona toma un café diferente</div>
+                            <div class="section-cards__box">Amantes del cappuccino frío, el Iced Latte o las recetas con leche</div>
+                            <div class="section-cards__box">Quienes valoran diseño, comodidad y personalización</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="section-cards__block section-cards__block--reverse">
+                    <div class="section-cards__media">
+                        <img
+                            src="assets/img/delonghi-6.jpg"
+                            alt="Cafetera De'Longhi"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                            class="section-cards__img"
+                        >
+                        <p class="section-cards__caption">La Specialista Touch combina experiencia manual, guía en pantalla y precisión para preparar cafés fríos y calientes en casa</p>
+                    </div>
+                    <div class="section-cards__content">
+                        <h3 class="section-cards__block-title">Si disfrutas del proceso: cafeteras manuales</h3>
+                        <p class="section-cards__text">Para quienes prefieren implicarse más en la preparación, la experiencia de las cafeteras manuales tiene otro atractivo. La Specialista Touch está pensada para ese perfil de usuario que disfruta del proceso barista, pero agradece una guía clara. Su pantalla táctil de 3,5 pulgadas acompaña paso a paso la preparación de espressos, cappuccinos y bebidas frías.</p>
+                        <p class="section-cards__text">En el caso de Rivelia, el sistema Bean Switch permite alternar entre distintos granos de café, mientras que su pantalla táctil a color facilita moverse entre recetas y personalizar la experiencia. Además, con la jarra LatteCrema Cool, disponible como accesorio adicional, se desbloquean recetas frías automáticas con espuma de leche fría densa y cremosa.</p>
+                        <p class="section-cards__text">Además, la pantalla acompaña al usuario durante el proceso, facilitando una preparación más precisa sin perder la experiencia manual propia de una cafetera barista.</p>
+                        <h4 class="section-cards__block-subtitle">Ideal para…</h4>
+                        <div class="section-cards__boxes">
+                            <div class="section-cards__box">Quienes disfrutan moliendo, prensando y ajustando el café</div>
+                            <div class="section-cards__box">Amantes del Cold Brew y de las bebidas de cafetería</div>
+                            <div class="section-cards__box">Usuarios que buscan precisión, pero también acompañamiento</div>
+                            <div class="section-cards__box">Personas que quieren experimentar con recetas frías y calientes</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-cards__table-block">
+                <table class="section-cards__table">
+                    <thead>
+                        <tr>
+                            <th class="section-cards__th" scope="col">Si eres más de…</th>
+                            <th class="section-cards__th" scope="col">Tu cafetera puede ser…</th>
+                            <th class="section-cards__th" scope="col">Por qué encaja contigo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="section-cards__td">Comodidad y rapidez</td>
+                            <td class="section-cards__td">Superautomática </td>
+                            <td class="section-cards__td">Prepara distintas bebidas con solo un toque </td>
+                        </tr>
+                        <tr>
+                            <td class="section-cards__td">Espuma fría cremosa</td>
+                            <td class="section-cards__td">Rivelia o Eletta Ultra con LatteCrema Cool </td>
+                            <td class="section-cards__td">Permite recetas frías con leche y textura profesional</td>
+                        </tr>
+                        <tr>
+                            <td class="section-cards__td">Ritual barista </td>
+                            <td class="section-cards__td">La Specialista Touch </td>
+                            <td class="section-cards__td">Guía paso a paso y permite controlar el proceso </td>
+                        </tr>
+                        <tr>
+                            <td class="section-cards__td"> Cold Brew en casa </td>
+                            <td class="section-cards__td">La Specialista Touch o Eletta Ultra </td>
+                            <td class="section-cards__td">Permiten preparar Cold Brew en casa con dos experiencias distintas (manual guiada o superautomática) </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sección fondo principal: imagen + título/párrafo, luego párrafo centrado -->
+        <section class="section-dark section-dark--navy" aria-label="Contenido destacado">
+            <div class="section-dark__container">
+                <div class="section-dark__row">
+                    <div class="section-dark__media">
+                        <img
+                            src="assets/img/delonghi-7.png"
+                            alt="Coffee Fest 2026 De'Longhi"
+                            width="800"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                            class="section-dark__img"
+                        >
+                    </div>
+                    <div class="section-dark__content">
+                        <h2 class="section-dark__title">La textura también importa: espuma fría, leche y recetas con hielo</h2>
+                        <p class="section-dark__lead">En el café frío, la textura es clave. No basta con enfriar una bebida caliente: el equilibrio cambia cuando entran en juego el hielo, la leche fría o la espuma. Por eso, tecnologías como LatteCrema Cool resultan especialmente interesantes para quienes quieren preparar cappuccinos fríos o Iced Lattes con una capa cremosa y estable. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-dark__container section-dark__container--text">
+                <p class="section-dark__para section-dark__para--center">Este tipo de soluciones permiten acercar al hogar uno de los elementos más reconocibles de la cafetería de especialidad: esa textura sedosa que convierte una receta sencilla en una bebida más sofisticada. En verano, ese detalle marca la diferencia entre un café con hielo correcto y una experiencia realmente pensada para disfrutarse fría. </p>
+            </div>
+        </section>
+
+        <!-- Sección destacado -->
+        <section class="section-highlight section-highlight--light" aria-label="Texto destacado">
+            <blockquote class="section-highlight__quote">
+                No se trata solo de enfriar el café. Se trata de prepararlo para que funcione en frío
+            </blockquote>
+        </section>
+
+        <section class="section-light section-light--dark" aria-label="Contenido destacado">
+            <div class="section-light__container section-light__container--narrow">
+                <h2 class="section-light__title">Recetas que refrescan el ritual</h2>
+                <p class="section-light__para">El verano abre la puerta a nuevas formas de disfrutar el café. Algunas recetas mantienen la intensidad del espresso; otras apuestan por una extracción más suave, leche fría, hielo o combinaciones más inesperadas. La clave está en encontrar el equilibrio entre temperatura, aroma, textura y presentación.</p>
+            </div>
+            
+            <div class="recipe-tabs">
+                <h3 class="recipe-tabs__title">4 recetas / 4 momentos</h3>
+
+                <div class="recipe-tabs__nav" role="tablist" aria-label="Recetas">
+                    <button class="recipe-tabs__tab is-active" role="tab" id="recipe-tab-1" aria-controls="recipe-panel-1" aria-selected="true" type="button">
+                        <span class="recipe-tabs__tab-tag">Para sorprender</span>
+                        <span class="recipe-tabs__tab-name">Espresso Tonic</span>
+                    </button>
+                    <button class="recipe-tabs__tab" role="tab" id="recipe-tab-2" aria-controls="recipe-panel-2" aria-selected="false" type="button">
+                        <span class="recipe-tabs__tab-tag">Para una tarde de verano</span>
+                        <span class="recipe-tabs__tab-name">Cold Brew con melocotón y limonada</span>
+                    </button>
+                    <button class="recipe-tabs__tab" role="tab" id="recipe-tab-3" aria-controls="recipe-panel-3" aria-selected="false" type="button">
+                        <span class="recipe-tabs__tab-tag">Para un capricho dulce</span>
+                        <span class="recipe-tabs__tab-name">Tiramisú Iced Coffee</span>
+                    </button>
+                    <button class="recipe-tabs__tab" role="tab" id="recipe-tab-4" aria-controls="recipe-panel-4" aria-selected="false" type="button">
+                        <span class="recipe-tabs__tab-tag">Para un momento cremoso</span>
+                        <span class="recipe-tabs__tab-name">Iced Latte de avellana</span>
+                    </button>
+                </div>
+
+                <div class="recipe-tabs__panel is-active" role="tabpanel" id="recipe-panel-1" aria-labelledby="recipe-tab-1">
+                    <div class="recipe-tabs__info">
+                        <h4 class="recipe-tabs__info-title">Ingredientes:</h4>
+                        <ul class="recipe-tabs__list">
+                            <li>Abundante hielo</li>
+                            <li>150 ml de tónica</li>
+                            <li>1 espresso doble recién preparado </li>
+                            <li>1 rodaja de limón </li>
+                            <li>1 rama de romero </li>
+                        </ul>
+                        <p class="recipe-tabs__instructions">Cómo prepararlo: Llena un vaso con hielo, añade la tónica y vierte lentamente el espresso doble recién extraído. Termina con una rodaja de limón y una rama de romero para aportar un punto aromático y refrescante. </p>
+                    </div>
+                    <div class="recipe-tabs__media">
+                        <img src="assets/img/delonghi-8.jpg" alt="Espresso Tonic" width="800" height="600" loading="lazy" decoding="async" class="recipe-tabs__img">
+                    </div>
+                </div>
+
+                <div class="recipe-tabs__panel" role="tabpanel" id="recipe-panel-2" aria-labelledby="recipe-tab-2" hidden>
+                    <div class="recipe-tabs__info">
+                        <h4 class="recipe-tabs__info-title">Ingredientes:</h4>
+                        <ul class="recipe-tabs__list">
+                            <li>2 o 3 cucharadas de sirope de melocotón</li>
+                            <li>Abundante hielo</li>
+                            <li>120 ml de limonada fría</li>
+                            <li>1 Cold Brew recién preparado</li>
+                            <li>1 rodaja de melocotón</li>
+                        </ul>
+                        <p class="recipe-tabs__instructions">Cómo prepararlo: Coloca el sirope de melocotón en el fondo de un vaso alto, añade hielo y vierte la limonada fría. Después, incorpora lentamente el Cold Brew sobre el hielo para crear un efecto en capas. Decora con una rodaja de melocotón.</p>
+                    </div>
+                    <div class="recipe-tabs__media">
+                        <img src="assets/img/delonghi-10.jpg" alt="Cold Brew" width="800" height="600" loading="lazy" decoding="async" class="recipe-tabs__img">
+                    </div>
+                </div>
+
+                <div class="recipe-tabs__panel" role="tabpanel" id="recipe-panel-3" aria-labelledby="recipe-tab-3" hidden>
+                    <div class="recipe-tabs__info">
+                        <h4 class="recipe-tabs__info-title">Ingredientes:</h4>
+                        <ul class="recipe-tabs__list">
+                            <li>2 cucharadas de queso mascarpone</li>
+                            <li>50 ml de leche o bebida vegetal</li>
+                            <li>1 cucharadita de azúcar</li>
+                            <li>3 o 4 cubitos de hielo</li>
+                            <li>1 Iced Coffee recién preparado</li>
+                            <li>Cacao puro en polvo</li>
+                            <li>1 bizcocho de soletilla, opcional</li>
+                        </ul>
+                        <p class="recipe-tabs__instructions">Cómo prepararlo: Mezcla el mascarpone con la leche y el azúcar hasta conseguir una crema suave. Sirve el Iced Coffee sobre hielo y vierte la crema lentamente por encima. Termina con cacao puro espolvoreado y, si se desea, un bizcocho de soletilla.</p>
+                    </div>
+                    <div class="recipe-tabs__media">
+                        <img src="assets/img/delonghi-11.jpg" alt="Iced Latte" width="800" height="600" loading="lazy" decoding="async" class="recipe-tabs__img">
+                    </div>
+                </div>
+
+                <div class="recipe-tabs__panel" role="tabpanel" id="recipe-panel-4" aria-labelledby="recipe-tab-4" hidden>
+                    <div class="recipe-tabs__info">
+                        <h4 class="recipe-tabs__info-title">Ingredientes:</h4>
+                        <ul class="recipe-tabs__list">
+                            <li>Leche bien fría, preferiblemente desnatada o bebida de avena</li>
+                            <li>15-20 ml de sirope de avellana</li>
+                            <li>Cubitos de hielo</li>
+                            <li>1 espresso</li>
+                            <li>Avellanas tostadas picadas, opcional</li>
+                        </ul>
+                        <p class="recipe-tabs__instructions">Cómo prepararlo: Añade el sirope de avellana en el fondo de un vaso alto, incorpora hielo y prepara el Iced Latte con espuma de leche fría y espresso. Para terminar, añade unas avellanas tostadas picadas y remueve antes de beber para integrar el sirope.</p>
+                    </div>
+                    <div class="recipe-tabs__media">
+                        <img src="assets/img/delonghi-12.jpg" alt="Cappuccino Frío" width="800" height="600" loading="lazy" decoding="async" class="recipe-tabs__img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-light__container section-light__container--narrow">
+                <h2 class="section-light__title">Pequeños gestos para un café frío mejor</h2>
+                <p class="section-light__para">El café frío tiene sus propias reglas. La temperatura, el hielo, la intensidad del espresso, la textura de la leche y el vaso en el que se sirve pueden cambiar mucho el resultado final. No se trata solo de enfriar el café, sino de prepararlo para que mantenga aroma, cuerpo y equilibrio.</p>
+            </div>
+
+            <div class="tips">
+                <div class="tips__content">
+                    <h3 class="tips__title">Guía práctica para prepararlo en casa/4 secretos de barista para prepararlo en casa</h3>
+                    <ul class="tips__list">
+                        <li class="tips__item"><strong>Usar hielos grandes.</strong> Enfrían la bebida al instante y tardan más en derretirse, evitando que el café quede aguado demasiado rápido.</li>
+                        <li class="tips__item"><strong>Ajustar la intensidad del espresso.</strong>  Al combinarlo con hielo y leche, el café puede perder presencia. Un espresso más intenso ayuda a mantener el sabor y el aroma de la bebida. </li>
+                        <li class="tips__item"><strong>Cuidar la textura de la leche.</strong>En recetas como el Iced Latte, una microespuma fría y sedosa aporta cuerpo y un acabado más cremoso. Con LatteCrema Cool, De’Longhi permite conseguir esa textura de forma automática.</li>
+                        <li class="tips__item"><strong>Elegir el vaso adecuado.</strong> Los vasos de doble pared térmica ayudan a conservar mejor la temperatura y a disfrutar durante más tiempo de la bebida fría.</li>
+                    </ul>
+                </div>
+                <div class="tips__media">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/reel/DU524ZdDHiu/?utm_source=ig_embed&amp;utm_campaign=loading"
+                        data-instgrm-version="14"
+                        style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:100%;"
+                    ></blockquote>
+                </div>
+            </div>
+
+            <div class="section-light__container section-light__container--narrow">
+                <h2 class="section-light__title">Un kit para empezar el verano cafetero</h2>
+                <p class="section-light__para">La experiencia se completa con el De’Longhi Coffee Club, que acompaña la compra de las cafeteras incluidas en la promoción con un Kit Hot & Cold valorado en 99 euros. Una forma de empezar a disfrutar desde el primer día de las posibilidades del café frío y caliente en casa. El kit incluye vasos para cappuccino y Cold Brew, una selección de café y productos de cuidado experto, como descalcificadores, pensados para mantener la cafetera en buen estado y preservar el sabor de cada preparación.</p>
+            </div>
+
+            <div class="kit-cols">
+                <div class="kit-cols__content">
+                    <ul class="kit-cols__list">
+                        <li class="kit-cols__item">Vasos térmicos para cappuccino y Cold Brew</li>
+                        <li class="kit-cols__item">Selección de café</li>
+                        <li class="kit-cols__item">Productos de cuidado experto</li>
+                        <li class="kit-cols__item">Valorado en 99 euros</li>
+                    </ul>
+                </div>
+                <div class="kit-cols__media">
+                    <img
+                        src="assets/img/delonghi-9.png"
+                        alt="Un kit para empezar el verano cafetero"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                        class="kit-cols__img"
+                    >
+                </div>
+            </div>
+            <div class="section-light__spacer"></div>
+            <div class="section-light__container section-light__container--narrow">
+                <p class="section-light__para">El café de verano ya no se limita a añadir hielo al espresso de siempre. Hoy tiene recetas, texturas y momentos propios: del Cold Brew al Iced Latte, de la espuma fría al café solo con hielo. </p>
+                <a class="cta-button" href="https://www.delonghi.com/es-es/e/perfetto-campaign?utm_source=acuerdos&utm_medium=acuerdos&utm_campaign=es_2026-Q1_LaVanguardia_De%27Longhi&utm_term=LaVanguardia" target="_blank" rel="noopener noreferrer">Descubre muchas más formas de disfrutar del café aquí</a>
+            </div>
+        </section>   
+    
+        <!-- CRÉDITOS -->
+        <div class="authorship-f" aria-label="Créditos del proyecto">
+            <div class="container-fluid-f">
+                <span>Coordinación: Kevin Casas</span> |
+                <span>Redacción: Javier Martín</span> |
+                <span>Producto digital y front-end: Alejandra Santander</span> |
+                <span>Vídeo y fotografía: De'Longhi</span> |
+                <span>Un proyecto de Brandslab. Godó Nexus.</span>
+            </div>
+        </div>
+    </div>
+
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="assets/js/scripts.js"></script>
+</body>
+</html>
