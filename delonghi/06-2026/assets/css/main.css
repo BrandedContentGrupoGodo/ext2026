@@ -250,7 +250,7 @@ a {
   position: relative;
   max-width: 520px;
   margin: 0;
-  padding-left: 1.5rem;
+  padding-left: 1.5rem !important;
   border-left: 0;
   font-family: var(--font-secundaria);
   font-size: clamp(1.25rem, 3vw, 1.75rem);
