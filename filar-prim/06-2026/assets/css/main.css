@@ -724,6 +724,7 @@ button:focus {
   line-height: 1.15;
   text-align: left;
   text-wrap: balance;
+    text-transform: uppercase;
 }
 
 .context-fp__rule {
