@@ -1157,10 +1157,11 @@ button:focus {
 }
 
 .site-footer__disclaimer {
-  margin: 0;
+  max-width: 70ch;
+  margin: 0 auto;
   font-family: var(--font-secuandria);
   font-size: 0.78rem;
-  line-height: 1;
+  line-height: 1.5;
   color: var(--color-gris);
 }
 
