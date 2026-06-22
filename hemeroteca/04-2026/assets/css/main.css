@@ -1157,7 +1157,6 @@ button:focus {
 }
 
 .site-footer__disclaimer {
-  max-width: 70ch;
   margin: 0 auto;
   font-family: var(--font-secuandria);
   font-size: 0.78rem;
