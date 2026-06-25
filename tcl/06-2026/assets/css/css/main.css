@@ -1,0 +1,436 @@
+/* 
+ * ESTILOS ISE 2026
+ */
+
+/* Variables CSS con prefijo para evitar conflictos */
+:root {
+  --text-color: #fff;
+  --text-color-dark: #000000;
+  --bg-color-dark: #000000;
+  --bg-color-light: #ffffff;
+  --accent-color: #E64C3D;
+  --font-sans: "Roboto", sans-serif;
+
+  /* Medida de lectura editorial */
+  --measure-tcl: 800px;
+  --measure-tcl-wide: 1200px;
+  --measure-tcl-2: 1000px;
+
+  /* Ritmo vertical fluido */
+  --space-2xs-tcl: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-xs-tcl: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --space-sm-tcl: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-md-tcl: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  --space-lg-tcl: clamp(2.5rem, 1.8rem + 3.5vw, 5rem);
+}
+
+/* ---------- BASE ---------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-dark);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.body-tcl {
+  margin: 0;
+  padding: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-block-size: 100vh;
+  font-family: var(--font-sans);
+  color: var(--text-color);
+  background-color: var(--bg-color-dark);
+  overflow-x: clip;
+}
+
+.body-tcl main {
+  margin: 0;
+  padding: 0;
+  inline-size: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--accent-color);
+  color: var(--text-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+
+/* ---------- SCROLL SUAVE ---------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+
+/* ---------- HERO EDITORIAL ---------------------------------- */
+.hero-tcl {
+  display: grid;
+  grid-template-areas: "stack";
+  min-block-size: 100svh;
+  inline-size: 100%;
+  isolation: isolate;
+  background-color: var(--bg-color-dark);
+}
+
+/* Apilamos imagen, degradado y texto en la misma celda (sin position absolute) */
+.hero-tcl > * {
+  grid-area: stack;
+  min-width: 0;
+}
+
+.hero-tcl__media {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-tcl__scrim {
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.55) 70%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+}
+
+.hero-tcl__content {
+  align-self: end;
+  justify-self: center;
+  inline-size: 100%;
+  max-inline-size: var(--measure-tcl-2);
+  padding-inline: var(--space-sm-tcl);
+  padding-block-end: var(--space-lg-tcl);
+  text-align: left;
+}
+
+.hero-tcl__eyebrow {
+  margin: 0 0 var(--space-xs-tcl);
+  font-size: clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hero-tcl__title {
+  margin: 0 0 var(--space-sm-tcl);
+  font-size: clamp(1.85rem, 1.2rem + 3.2vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.hero-tcl__subtitle {
+  margin: 0 0 var(--space-md-tcl);
+  max-inline-size: 60ch;
+  font-size: clamp(1rem, 0.95rem + 0.6vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.hero-tcl__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85em 1.75em;
+  background-color: #fff;
+  color: var(--bg-color-dark);
+  font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1rem);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-tcl__cta:hover {
+  background-color: #ededed;
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tcl__cta {
+    transition: none;
+  }
+  .hero-tcl__cta:hover {
+    transform: none;
+  }
+}
+
+
+/* ---------- RELATO EDITORIAL ---------------------------------- */
+.relato-tcl {
+  padding-block: var(--space-lg-tcl);
+  padding-inline: var(--space-sm-tcl);
+  scroll-margin-block-start: var(--space-md-tcl);
+  inline-size: 100%;
+}
+
+.relato-tcl__inner {
+  max-inline-size: var(--measure-tcl);
+  margin-inline: auto;
+}
+
+.relato-tcl p {
+  margin: 0 0 var(--space-sm-tcl);
+  font-size: clamp(1rem, 0.96rem + 0.4vw, 1.1875rem);
+  line-height: 1.7;
+}
+
+.relato-tcl__lead {
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.relato-tcl__title,
+.cuerpo-tcl__title,
+.bloque-claro-tcl__title {
+  margin-block-start: var(--space-md-tcl);
+  margin-block-end: var(--space-sm-tcl);
+  margin-inline: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+
+/* ---------- CUERPO EDITORIAL ---------------------------------- */
+.cuerpo-tcl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md-tcl);
+  inline-size: 100%;
+}
+
+.cuerpo-tcl__figure {
+  margin: 0;
+  inline-size: 100%;
+}
+
+.cuerpo-tcl__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 100%;
+}
+
+.cuerpo-tcl__inner {
+  max-inline-size: var(--measure-tcl);
+  margin-inline: auto;
+  padding-inline: var(--space-sm-tcl);
+}
+
+.cuerpo-tcl__inner p {
+  margin: 0 0 var(--space-sm-tcl);
+  font-size: clamp(1rem, 0.96rem + 0.4vw, 1.1875rem);
+  line-height: 1.7;
+}
+
+.cuerpo-tcl__inner p:last-child {
+  margin-block-end: 0;
+}
+
+.cuerpo-tcl__pullquote {
+  margin: var(--space-lg-tcl) 0;
+  padding-block-start: var(--space-sm-tcl);
+  border-block-start: 3px solid var(--accent-color);
+}
+
+.cuerpo-tcl__pullquote p {
+  margin: 0;
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.cuerpo-tcl__link {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: opacity 0.2s ease;
+}
+
+.cuerpo-tcl__link:hover {
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cuerpo-tcl__link {
+    transition: none;
+  }
+}
+
+
+/* ---------- BLOQUE CLARO ---------------------------------- */
+.bloque-claro-tcl {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-dark);
+  padding-block: var(--space-lg-tcl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md-tcl);
+  inline-size: 100%;
+}
+
+.bloque-claro-tcl__inner {
+  max-inline-size: var(--measure-tcl);
+  margin-inline: auto;
+  padding-inline: var(--space-sm-tcl);
+  inline-size: 100%;
+}
+
+.bloque-claro-tcl__inner--wide {
+  max-inline-size: 1380px;
+  margin-block: var(--space-md-tcl);
+}
+
+.bloque-claro-tcl__inner--media {
+  margin-block: var(--space-md-tcl);
+  padding-inline: var(--space-md-tcl);
+}
+
+.bloque-claro-tcl__inner p {
+  margin: 0 0 var(--space-sm-tcl);
+  font-size: clamp(1rem, 0.96rem + 0.4vw, 1.1875rem);
+  line-height: 1.7;
+}
+
+.bloque-claro-tcl__inner p:last-child {
+  margin-block-end: 0;
+}
+
+.bloque-claro-tcl__split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md-tcl);
+  align-items: start;
+}
+
+@media (min-width: 48rem) {
+  .bloque-claro-tcl__split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bloque-claro-tcl__figure {
+  margin: 0;
+}
+
+.bloque-claro-tcl__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-inline-size: 100%;
+}
+
+.bloque-claro-tcl__col-texto p {
+  margin: 0 0 var(--space-sm-tcl);
+}
+
+.bloque-claro-tcl__col-texto p:last-child {
+  margin-block-end: 0;
+}
+
+.bloque-claro-tcl__pullquote {
+  margin: var(--space-lg-tcl) 0;
+  padding-block-start: var(--space-sm-tcl);
+  border-block-start: 3px solid var(--accent-color);
+}
+
+.bloque-claro-tcl__pullquote p {
+  margin: 0;
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.bloque-claro-tcl__figure--inset {
+  margin: 0;
+}
+
+.bloque-claro-tcl a {
+  color: var(--accent-color);
+}
+
+
+/* ---------- CRÉDITOS ---------------------------------- */
+.footer-tcl {
+  color: var(--bg-color-light);
+  background-color: var(--bg-color-dark);
+  font-size: 1em;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-sans);
+}
+
+.container-fluid-tcl {
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+
+/* ---------- CRÉDITOS (legacy) ---------------------------------- */
+.footer-ise {
+  color: var(--bg-color-dark);
+  background-color: #EDEDED;
+  font-size: 1em!important;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-sans);
+  margin-top: 50px;
+}
+
+.container-fluid-ise {
+  margin-inline: auto;
+  padding-inline: 20px;
+
+}
+
+/* ---------- SOBRESCRIBIR ESTILOS DEL CMS ---------------------------------- */
+.visual-article-free .col-12,
+.visual-article-free .row,
+.article-default .article-body,
+.article-default .content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.article-default a:hover {
+  text-decoration: underline !important;
+  box-shadow: none !important;
+}
+.visual-article-free .col-12 {
+  padding: 0!important;
+}
