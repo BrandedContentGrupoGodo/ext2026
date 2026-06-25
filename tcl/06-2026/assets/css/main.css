@@ -1,5 +1,5 @@
 /* 
- * ESTILOS ISE 2026
+ * ESTILOS TCL 2026
  */
 
 /* Variables CSS con prefijo para evitar conflictos */
@@ -58,6 +58,7 @@ body {
   margin: 0;
   padding: 0;
   inline-size: 100%;
+  text-align: left;
 }
 
 .skip-link {
@@ -198,6 +199,7 @@ button:focus-visible {
 .relato-tcl__inner {
   max-inline-size: var(--measure-tcl);
   margin-inline: auto;
+  text-align: left;
 }
 
 .relato-tcl p {
@@ -250,6 +252,7 @@ button:focus-visible {
   max-inline-size: var(--measure-tcl);
   margin-inline: auto;
   padding-inline: var(--space-sm-tcl);
+  text-align: left;
 }
 
 .cuerpo-tcl__inner p {
@@ -266,6 +269,7 @@ button:focus-visible {
   margin: var(--space-lg-tcl) 0;
   padding-block-start: var(--space-sm-tcl);
   border-block-start: 3px solid var(--accent-color);
+  text-align: left;
 }
 
 .cuerpo-tcl__pullquote p {
@@ -309,6 +313,7 @@ button:focus-visible {
   margin-inline: auto;
   padding-inline: var(--space-sm-tcl);
   inline-size: 100%;
+  text-align: left;
 }
 
 .bloque-claro-tcl__inner--wide {
@@ -357,6 +362,7 @@ button:focus-visible {
 
 .bloque-claro-tcl__col-texto p {
   margin: 0 0 var(--space-sm-tcl);
+  text-align: left;
 }
 
 .bloque-claro-tcl__col-texto p:last-child {
@@ -367,6 +373,7 @@ button:focus-visible {
   margin: var(--space-lg-tcl) 0;
   padding-block-start: var(--space-sm-tcl);
   border-block-start: 3px solid var(--accent-color);
+  text-align: left;
 }
 
 .bloque-claro-tcl__pullquote p {
@@ -425,6 +432,31 @@ button:focus-visible {
 .article-default .content {
   padding: 0 !important;
   margin: 0 !important;
+}
+
+/* Alineación editorial: el CMS suele centrar p, h2 y blockquote */
+.body-tcl p,
+.body-tcl h2,
+.body-tcl blockquote,
+.body-tcl .relato-tcl__inner,
+.body-tcl .cuerpo-tcl__inner,
+.body-tcl .bloque-claro-tcl__inner,
+.body-tcl .bloque-claro-tcl__col-texto,
+.body-tcl .cuerpo-tcl__pullquote,
+.body-tcl .bloque-claro-tcl__pullquote,
+.article-default .body-tcl p,
+.article-default .body-tcl h2,
+.article-default .body-tcl blockquote,
+.visual-article-free .body-tcl p,
+.visual-article-free .body-tcl h2,
+.visual-article-free .body-tcl blockquote {
+  text-align: left !important;
+}
+
+.body-tcl blockquote,
+.article-default .body-tcl blockquote,
+.visual-article-free .body-tcl blockquote {
+  margin-inline: 0 !important;
 }
 
 .article-default a:hover {
