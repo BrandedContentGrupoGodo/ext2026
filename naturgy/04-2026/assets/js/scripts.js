@@ -24,6 +24,18 @@ function initRevealOnScroll() {
   elementsToReveal.forEach((item) => observer.observe(item));
 }
 
+function initHeroScroll() {
+  const scrollLink = document.querySelector(".hero__scroll");
+  const target = document.querySelector("#capitulos");
+  if (!scrollLink || !target) return;
+
+  scrollLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  });
+}
+
 function initSocialCarousel() {
   const track = document.querySelector(".social-carousel__track");
   const viewport = document.querySelector(".social-carousel__viewport");
@@ -33,66 +45,8 @@ function initSocialCarousel() {
   const nextBtn = document.querySelector(".social-btn--next");
   let index = 0;
   let visibleSlides = 1;
-  let sdkReadyPromise = null;
-  const isLocalFileProtocol = window.location.protocol === "file:";
 
   const getSlides = () => Array.from(track.children);
-
-  function loadScriptOnce(src) {
-    const existing = document.querySelector(`script[src="${src}"]`);
-    if (existing) {
-      return existing.dataset.loaded === "1"
-        ? Promise.resolve()
-        : new Promise((resolve) => existing.addEventListener("load", resolve, { once: true }));
-    }
-
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.async = true;
-      script.addEventListener(
-        "load",
-        () => {
-          script.dataset.loaded = "1";
-          resolve();
-        },
-        { once: true },
-      );
-      document.body.appendChild(script);
-    });
-  }
-
-  function ensureSocialSdkLoaded() {
-    if (isLocalFileProtocol) return Promise.resolve();
-    if (sdkReadyPromise) return sdkReadyPromise;
-    sdkReadyPromise = Promise.all([
-      loadScriptOnce("https://www.instagram.com/embed.js"),
-      loadScriptOnce("https://www.tiktok.com/embed.js"),
-    ]);
-    return sdkReadyPromise;
-  }
-
-  function processEmbeds() {
-    if (isLocalFileProtocol) return;
-    ensureSocialSdkLoaded().then(() => {
-      if (window.instgrm?.Embeds?.process) window.instgrm.Embeds.process();
-      if (window.tiktok?.embed?.init) window.tiktok.embed.init();
-    });
-  }
-
-  function renderAround(currentIndex) {
-    const slideEls = getSlides();
-    const toRender = new Set([currentIndex, currentIndex + 1]);
-    if (visibleSlides > 1) toRender.add(currentIndex + 2);
-
-    toRender.forEach((i) => {
-      const slide = slideEls[i];
-      if (!slide) return;
-      slide.querySelectorAll(".embed").forEach((embed) => {
-        if (!embed.dataset.rendered) embed.dataset.rendered = "1";
-      });
-    });
-  }
 
   function update() {
     const slides = getSlides();
@@ -109,14 +63,12 @@ function initSocialCarousel() {
     const max = maxIndex();
     index = index + 1 > max ? 0 : index + 1;
     update();
-    renderAround(index);
   }
 
   function goPrev() {
     const max = maxIndex();
     index = index - 1 < 0 ? max : index - 1;
     update();
-    renderAround(index);
   }
 
   function splitToSingleEmbeds() {
@@ -139,8 +91,6 @@ function initSocialCarousel() {
     track.dataset.mobileMode = "1";
     index = 0;
     update();
-    renderAround(0);
-    setTimeout(processEmbeds, 250);
   }
 
   function groupToPairs() {
@@ -164,8 +114,6 @@ function initSocialCarousel() {
     delete track.dataset.mobileMode;
     index = 0;
     update();
-    renderAround(0);
-    setTimeout(processEmbeds, 250);
   }
 
   function measureVisible() {
@@ -207,37 +155,11 @@ function initSocialCarousel() {
 
   measureVisible();
   update();
-  renderAround(0);
-
-  if (isLocalFileProtocol) {
-    return;
-  }
 
   window.addEventListener("resize", () => {
     measureVisible();
     update();
   });
-
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(() => processEmbeds(), { timeout: 2000 });
-  } else {
-    window.addEventListener("load", () => setTimeout(processEmbeds, 600), { once: true });
-  }
-
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            renderAround(index);
-            processEmbeds();
-          }
-        });
-      },
-      { root: null, threshold: 0.1 },
-    );
-    io.observe(viewport);
-  }
 }
 
 function initVideoPlaceholder() {
@@ -338,6 +260,7 @@ function initActionsCarousel() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initRevealOnScroll();
+  initHeroScroll();
   initSocialCarousel();
   initVideoPlaceholder();
   initActionsCarousel();
