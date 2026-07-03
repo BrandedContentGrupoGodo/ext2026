@@ -854,6 +854,9 @@ a {
     text-decoration: none;
     box-shadow: none;
   }
+  a:hover {
+    color:inherit!important;
+  }
 button:focus {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
