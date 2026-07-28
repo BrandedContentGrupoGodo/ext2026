@@ -47,10 +47,22 @@ function initSocialCarousel() {
   let visibleSlides = 1;
 
   const getSlides = () => Array.from(track.children);
+  const isCompactViewport = () => !window.matchMedia("(min-width: 1025px)").matches;
 
   function update() {
     const slides = getSlides();
     if (!slides.length) return;
+
+    if (isCompactViewport()) {
+      track.style.transform = "none";
+      slides[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+      return;
+    }
+
     const slideWidth = 100 / visibleSlides;
     track.style.transform = `translateX(${-index * slideWidth}%)`;
   }
@@ -117,15 +129,15 @@ function initSocialCarousel() {
   }
 
   function measureVisible() {
-    if (window.matchMedia("(min-width: 1200px)").matches) {
+    if (window.matchMedia("(min-width: 1440px)").matches) {
       visibleSlides = 2;
-    } else if (window.matchMedia("(min-width: 900px)").matches) {
+    } else if (window.matchMedia("(min-width: 1025px)").matches) {
       visibleSlides = 1.5;
     } else {
       visibleSlides = 1;
     }
 
-    const isMobile = !window.matchMedia("(min-width: 900px)").matches;
+    const isMobile = !window.matchMedia("(min-width: 1025px)").matches;
     if (isMobile) splitToSingleEmbeds();
     else groupToPairs();
   }
