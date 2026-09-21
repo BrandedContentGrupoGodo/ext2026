@@ -28,15 +28,15 @@
   const episodes = [
     {
       number: "01",
-      title: "La era de la inteligencia artificial",
-      description: "Cómo la IA está transformando la manera en que trabajamos y qué habilidades marcarán la diferencia. (Texto provisional.)",
+      title: "Las habilidades que pide el nuevo mercado laboral: por qué será clave aprender a aprender",
+      description: "Silvia Leal aconseja identificar las tareas que la inteligencia artificial ya está transformando, aprender nuevas herramientas y apostar por la formación continua.",
       image: "assets/img/episode-01-silvia.webp",
       href: "#",
       available: true
     },
     {
       number: "02",
-      title: "Nuevas profesiones, nuevas habilidades",
+      title: "Tu próximo ascenso puede empezar con una nueva habilidad: así funciona el ‘upskilling’",
       description: "Los perfiles que están surgiendo y las competencias que piden las empresas hoy. (Texto provisional.)",
       image: "assets/img/episode-02-silvia.webp",
       href: "#",
@@ -44,7 +44,7 @@
     },
     {
       number: "03",
-      title: "Aprender a lo largo de toda la vida",
+      title: "Cómo aprender a trabajar con la inteligencia artificial en el día a día",
       description: "Por qué la formación continua se ha vuelto esencial para cualquier carrera. (Texto provisional.)",
       image: null,
       href: "#",
@@ -52,7 +52,7 @@
     },
     {
       number: "04",
-      title: "El valor de las habilidades humanas",
+      title: "¿Jefe o líder? Estas son las habilidades que debe tener un buen 'manager' de equipo",
       description: "Empatía, creatividad y pensamiento crítico en un mundo automatizado. (Texto provisional.)",
       image: null,
       href: "#",
@@ -60,7 +60,7 @@
     },
     {
       number: "05",
-      title: "Tecnología con propósito",
+      title: "Por qué la formación online gratuita es tu llave para acceder a un empleo mejor",
       description: "Innovar para mejorar la vida de las personas y el impacto social. (Texto provisional.)",
       image: null,
       href: "#",
@@ -68,7 +68,7 @@
     },
     {
       number: "06",
-      title: "El futuro del trabajo",
+      title: "¿Quieres cambiar de sector en mitad te carrera? Cómo adquirir nuevas habilidades",
       description: "Una mirada a cómo serán los empleos y los equipos en los próximos años. (Texto provisional.)",
       image: null,
       href: "#",
@@ -79,15 +79,15 @@
   const stories = [
     {
       number: "01",
-      title: "De la hostelería a los datos",
-      description: "Dejó la cocina para convertirse en analista de datos tras formarse por su cuenta. (Texto provisional.)",
+      title: "¿Cómo pasar de gestor a líder? La fórmula de Eva para crecer en su trabajo",
+      description: "Dejó la gestión de equipos para asumir nuevos retos, desarrollar su liderazgo y transformar la cultura de su organización desde dentro.",
       image: "assets/img/story-01.webp",
       href: "#",
       available: true
     },
     {
       number: "02",
-      title: "Reinventarse a los 50",
+      title: "Del miedo a la confianza: el camino de Mario hacia el liderazgo",
       description: "Una nueva etapa profesional cuando parecía que todo estaba decidido. (Texto provisional.)",
       image: "assets/img/story-02.webp",
       href: "#",
@@ -95,7 +95,7 @@
     },
     {
       number: "03",
-      title: "Del aula al laboratorio",
+      title: "De Humanidades a la programación: el ‘bootcamp’ con el que Irene reinventó su carrera",
       description: "De enseñar ciencia a investigarla gracias a la formación continua. (Texto provisional.)",
       image: "assets/img/story-03.webp",
       href: "#",
@@ -103,7 +103,7 @@
     },
     {
       number: "04",
-      title: "Emprender con propósito",
+      title: "Antonio, el arquitecto que cambió los planos por el aula para enseñar de forma diferente",
       description: "Montó un proyecto con impacto social tras aprender nuevas habilidades. (Texto provisional.)",
       image: "assets/img/story-04.webp",
       href: "#",
@@ -111,7 +111,7 @@
     },
     {
       number: "05",
-      title: "Programar una segunda oportunidad",
+      title: "La beca que abrió nuevas puertas en el futuro de Gisela como escritora",
       description: "Descubrió el desarrollo de software y cambió por completo su rumbo. (Texto provisional.)",
       image: "assets/img/story-05.webp",
       href: "#",
@@ -119,7 +119,7 @@
     },
     {
       number: "06",
-      title: "Liderar equipos del futuro",
+      title: "Aprender para enseñar mejor: Christa y su viaje hacia la innovación educativa",
       description: "Aprendió a dirigir personas combinando tecnología y habilidades humanas. (Texto provisional.)",
       image: "assets/img/story-06.webp",
       href: "#",
@@ -175,10 +175,10 @@
     }
   }
 
-  /* Tras seleccionar una historia desde una card: si el destacado no está
+  /* Tras seleccionar una card (episodio / historia): si el destacado no está
      cómodamente visible (p. ej. el usuario ha bajado a las cards 5–6),
-     hacer scroll suave hasta él. No se aplica a episodios ni a la carga inicial. */
-  function ensureStoryFeaturedInView(featuredEl) {
+     hacer scroll hasta él. No se aplica a la carga inicial ni en desktop ≥1024. */
+  function ensureFeaturedInView(featuredEl) {
     if (!featuredEl) return;
 
     const rect = featuredEl.getBoundingClientRect();
@@ -290,18 +290,27 @@
     return { select: select, isAvailable: isAvailable };
   }
 
-  const episodeCtrl = buildSelector(episodes, "ep", ".bc-episode-card", {
-    featuredSelector: ".bc-episode-featured"
-  });
+  const episodeFeatured = root.querySelector(".bc-episode-featured");
   const storyFeatured = root.querySelector(".bc-story-featured");
+
+  function afterFeaturedCardSelect(featuredEl) {
+    // En desktop (≥1024) no hace falta scroll automático (Historias es sticky).
+    // En tablet/mobile sí reenfocamos el detalle si no está visible.
+    if (!window.matchMedia("(min-width: 1024px)").matches) {
+      ensureFeaturedInView(featuredEl);
+    }
+  }
+
+  const episodeCtrl = buildSelector(episodes, "ep", ".bc-episode-card", {
+    featuredSelector: ".bc-episode-featured",
+    afterCardSelect: function () {
+      afterFeaturedCardSelect(episodeFeatured);
+    }
+  });
   const storyCtrl = buildSelector(stories, "story", ".bc-story-card", {
     featuredSelector: ".bc-story-featured",
     afterCardSelect: function () {
-      // En desktop (≥1024) el destacado es sticky: no hace falta scroll automático.
-      // En tablet/mobile sí reenfocamos el detalle si no está visible.
-      if (!window.matchMedia("(min-width: 1024px)").matches) {
-        ensureStoryFeaturedInView(storyFeatured);
-      }
+      afterFeaturedCardSelect(storyFeatured);
     }
   });
 
