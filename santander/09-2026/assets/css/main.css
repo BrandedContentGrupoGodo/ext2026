@@ -1,0 +1,1117 @@
+/* ==========================================================================
+   Branded Content — Santander Hub
+   Todo acotado al root .bc-santander. Sin reset global, sin tocar html/body.
+   ========================================================================== */
+
+.bc-santander {
+  /* ---- Tokens definitivos ---- */
+  --bc-color-text: #212529;
+  --bc-color-red: #ec0000;
+  --bc-color-blue: #deedf2;
+  --bc-color-light-gray: #f8f8f8;
+  --bc-color-border: #82bed3;
+  --bc-color-border-disabled: #d6d9dc;
+
+  /* ---- Neutros funcionales (no marca) ---- */
+  --bc-white: #ffffff;
+  --bc-color-text-muted: #5a6169;
+  --bc-color-blue-050: #f2f8fb;
+
+  /* ---- Superficies / texto ---- */
+  --bc-bg: var(--bc-white);
+  --bc-text: var(--bc-color-text);
+
+  /* ---- Tipografía: Open Sans (solo dentro del root) ---- */
+  --bc-font-base: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* ---- Escala tipográfica fluida ---- */
+  --bc-fs-h1: clamp(2.4rem, 6vw, 4.5rem);
+  --bc-fs-h2: clamp(1.9rem, 4vw, 3.2rem);
+  --bc-fs-h3: clamp(1.4rem, 2.5vw, 2rem);
+  --bc-fs-lead: clamp(1.05rem, 1.6vw, 1.35rem);
+  --bc-fs-body: 1.0625rem;
+  --bc-fs-eyebrow: 0.8125rem;
+
+  /* ---- Espaciado / radios ---- */
+  --bc-space-section: clamp(3.5rem, 8vw, 7rem);
+  --bc-space: 1.5rem;
+  --bc-radius: 8px;
+  --bc-radius-btn: 5px;
+  --bc-container: 1200px;
+
+  /* ---- Fondos gráficos reales ---- */
+  --bc-hero-bg: url("../img/hero-bg.png");
+  --bc-season1-bg: url("../img/season-1-bg.png");
+
+  font-family: var(--bc-font-base);
+  color: var(--bc-text);
+  background-color: var(--bc-bg);
+  line-height: 1.55;
+  /* clip (no hidden): evita scroll horizontal sin crear contenedor de scroll
+     que rompería position: sticky en Historias Reales */
+  overflow-x: clip;
+}
+
+.bc-santander,
+.bc-santander *,
+.bc-santander *::before,
+.bc-santander *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Utilidades ---- */
+.bc-santander .bc-container {
+  width: 100%;
+  max-width: var(--bc-container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.bc-santander .bc-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bc-santander .bc-svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.bc-santander .bc-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: var(--bc-fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bc-color-red);
+}
+.bc-santander .bc-eyebrow--chip {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  color: var(--bc-white);
+  background-color: var(--bc-color-red);
+  border-radius: var(--bc-radius-btn);
+  letter-spacing: 0.1em;
+}
+
+/* ---- Imágenes reales (object-fit cover) ---- */
+.bc-santander .bc-featured-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--bc-radius);
+}
+.bc-santander .bc-featured-img--wide {
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+.bc-santander .bc-featured-img--story {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: clamp(220px, 34vh, 340px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--bc-radius);
+}
+
+/* Placeholders residuales (si quedara alguno) */
+.bc-santander .bc-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 12px,
+    #e3e3e3 12px,
+    #e3e3e3 24px
+  );
+  color: var(--bc-color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--bc-radius);
+}
+.bc-santander .bc-ph--portrait { aspect-ratio: 3 / 4; }
+.bc-santander .bc-ph--wide { aspect-ratio: 16 / 10; }
+
+/* ---- CTAs / enlaces ---- */
+.bc-santander .bc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--bc-color-text);
+  text-decoration: none;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--bc-radius-btn);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease, filter 0.2s ease;
+}
+.bc-santander .bc-cta__icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bc-santander .bc-cta--solid {
+  color: var(--bc-white);
+  background-color: var(--bc-color-red);
+  border-color: var(--bc-color-red);
+}
+.bc-santander .bc-cta--solid:hover { filter: brightness(0.92); }
+
+.bc-santander .bc-cta--outline {
+  color: var(--bc-color-red);
+  border-color: var(--bc-color-red);
+}
+.bc-santander .bc-cta--outline:hover {
+  color: var(--bc-white);
+  background-color: var(--bc-color-red);
+}
+
+.bc-santander .bc-cta--ghost-light {
+  color: var(--bc-white);
+  border-color: var(--bc-white);
+}
+.bc-santander .bc-cta--ghost-light:hover {
+  color: var(--bc-color-red);
+  background-color: var(--bc-white);
+}
+
+.bc-santander .bc-cta--text {
+  padding-inline: 0;
+  color: var(--bc-color-text-muted);
+  border-color: transparent;
+}
+.bc-santander .bc-cta--text:hover { color: var(--bc-color-red); }
+
+.bc-santander a:focus-visible,
+.bc-santander button:focus-visible {
+  outline: 3px solid var(--bc-color-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Cabeceras de sección: ancho real, párrafo con max-width de lectura ---- */
+.bc-santander .bc-section-head {
+  width: 100%;
+  max-width: none;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.bc-santander .bc-section-title {
+  margin: 0 0 1rem;
+  max-width: 28ch;
+  font-size: var(--bc-fs-h2);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.bc-santander .bc-section-intro {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--bc-fs-lead);
+  color: var(--bc-color-text-muted);
+}
+
+/* ==========================================================================
+   0. COLABORACIÓN (dentro del hero)
+   ========================================================================== */
+.bc-santander .bc-collab {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(0.4rem, 1.4vw, 0.75rem);
+  text-align: center;
+}
+.bc-santander .bc-collab__text {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bc-color-text-muted);
+}
+
+/* ==========================================================================
+   1. HERO
+   ========================================================================== */
+.bc-santander .bc-hero {
+  position: relative;
+  padding-block: 0;
+  overflow: hidden;
+}
+.bc-santander .bc-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--bc-color-light-gray);
+  background-image: var(--bc-hero-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.bc-santander .bc-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  /* Más peso a la columna de retratos en desktop */
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding-block: var(--bc-space-section);
+}
+.bc-santander .bc-hero__content { min-width: 0; }
+.bc-santander .bc-hero__title {
+  margin: 0 0 1.25rem;
+  font-size: var(--bc-fs-h1);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.bc-santander .bc-hero__lead {
+  margin: 0;
+  max-width: 34ch;
+  font-size: var(--bc-fs-lead);
+  color: var(--bc-color-text-muted);
+}
+.bc-santander .bc-hero__cta {
+  margin-top: 2.5rem;
+}
+
+/* Retratos escalonados — más presencia */
+.bc-santander .bc-hero__portraits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.6rem, 1.6vw, 1.1rem);
+  align-items: start;
+  min-width: 0;
+  width: 100%;
+  max-width: clamp(420px, 46vw, 620px);
+  margin-inline: auto 0;
+}
+.bc-santander .bc-portrait {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.bc-santander .bc-portrait__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--bc-radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+/* Nudge de layout vía variable: permite componer con la entrada del hero */
+.bc-santander .bc-hero__portraits .bc-portrait {
+  --bc-nudge-y: 0px;
+  transform: translateY(var(--bc-nudge-y));
+}
+.bc-santander .bc-hero__portraits .bc-portrait:nth-child(2) {
+  --bc-nudge-y: clamp(20px, 2.5vw, 36px);
+}
+.bc-santander .bc-hero__portraits .bc-portrait:nth-child(3) {
+  --bc-nudge-y: clamp(40px, 5vw, 72px);
+}
+.bc-santander .bc-portrait:hover .bc-portrait__img,
+.bc-santander .bc-portrait:focus-visible .bc-portrait__img {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* Play: círculo transparente, borde blanco, triángulo blanco */
+.bc-santander .bc-play {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 3.2vw, 40px);
+  height: clamp(32px, 3.2vw, 40px);
+  background: transparent;
+  border: 2px solid var(--bc-white);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.bc-santander .bc-play svg {
+  width: 42%;
+  height: 42%;
+  margin-left: 2px; /* óptica del triángulo */
+  fill: var(--bc-white);
+}
+
+/* ==========================================================================
+   2. MANIFIESTO
+   ========================================================================== */
+.bc-santander .bc-manifesto {
+  padding-block: clamp(4.5rem, 11vw, 9.5rem);
+}
+.bc-santander .bc-manifesto__inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: start;
+}
+.bc-santander .bc-manifesto__title {
+  margin: 0;
+  font-size: var(--bc-fs-h2);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.bc-santander .bc-manifesto__body p {
+  margin: 0 0 1.35rem;
+  max-width: 46ch;
+  font-size: var(--bc-fs-lead);
+  color: var(--bc-color-text-muted);
+}
+.bc-santander .bc-manifesto__body .bc-cta--text {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   3. EPISODIOS
+   ========================================================================== */
+.bc-santander .bc-episodes {
+  padding-block: var(--bc-space-section);
+  background-color: var(--bc-color-blue);
+  scroll-margin-top: 1rem;
+}
+.bc-santander .bc-episode-featured {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--bc-white);
+  border: 1px solid var(--bc-color-border);
+  border-radius: 10px;
+}
+.bc-santander .bc-episode-featured__media {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--bc-radius);
+}
+.bc-santander .bc-episode-featured__title {
+  margin: 0.25rem 0 1rem;
+  font-size: var(--bc-fs-h3);
+  line-height: 1.15;
+  font-weight: 800;
+}
+.bc-santander .bc-episode-featured__desc {
+  margin: 0 0 1.75rem;
+  color: var(--bc-color-text-muted);
+}
+.bc-santander .bc-episode-featured__content {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(200px, 22vw, 260px);
+  min-width: 0;
+}
+/* El padre flex estira hijos en el eje cruzado (ancho). Forzar fit-content
+   para que "Ver episodio" no ocupe todo el panel. */
+.bc-santander .bc-episode-featured__content .bc-cta {
+  align-self: flex-start;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   CARDS (convención común: episodios + historias)
+   ========================================================================== */
+.bc-santander .bc-cards {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bc-santander .bc-cards--episodes {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.bc-santander .bc-cards--stories {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.6rem, 1.2vw, 0.9rem);
+}
+.bc-santander .bc-cards > li {
+  display: flex;
+  min-width: 0;
+}
+.bc-santander .bc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  padding: 1.25rem;
+  text-align: left;
+  background: var(--bc-color-blue-050);
+  border: 1px solid var(--bc-color-border);
+  border-radius: var(--bc-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.bc-santander .bc-card:hover {
+  border-color: var(--bc-color-red);
+}
+.bc-santander .bc-card__num {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--bc-color-red);
+  line-height: 1;
+}
+.bc-santander .bc-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--bc-color-text);
+  min-height: 2.6em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Miniatura base (sobrescrita en story-card horizontal) */
+.bc-santander .bc-card__media {
+  display: block;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.bc-santander .bc-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: inherit;
+}
+
+/* Cards de historias: layout HORIZONTAL [foto | contenido] */
+.bc-santander .bc-story-card {
+  display: grid;
+  grid-template-columns: clamp(90px, 9.5vw, 110px) minmax(0, 1fr);
+  grid-template-areas:
+    "media num"
+    "media title"
+    "media status";
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  align-items: start;
+  padding: 0.6rem;
+  background: var(--bc-white);
+  height: auto;
+  min-height: 0;
+}
+.bc-santander .bc-story-card .bc-card__media {
+  grid-area: media;
+  width: 100%;
+  height: clamp(120px, 12vw, 148px);
+  align-self: stretch;
+}
+.bc-santander .bc-story-card .bc-card__num {
+  grid-area: num;
+  font-size: 1.15rem;
+  padding-top: 0.1rem;
+}
+.bc-santander .bc-story-card .bc-card__title {
+  grid-area: title;
+  font-size: 0.8125rem;
+  min-height: 2.4em;
+  align-self: start;
+}
+.bc-santander .bc-story-card .bc-card__status {
+  grid-area: status;
+  margin-top: auto;
+  align-self: end;
+  font-size: 0.65rem;
+}
+
+.bc-santander .bc-card__status {
+  display: block;
+  margin-top: auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  min-height: 1.2em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bc-color-text-muted);
+}
+
+.bc-santander .bc-card.is-active,
+.bc-santander .bc-card[aria-pressed="true"] {
+  border-color: var(--bc-color-red);
+  background: var(--bc-color-red);
+}
+.bc-santander .bc-card.is-active .bc-card__num,
+.bc-santander .bc-card.is-active .bc-card__title,
+.bc-santander .bc-card[aria-pressed="true"] .bc-card__num,
+.bc-santander .bc-card[aria-pressed="true"] .bc-card__title {
+  color: var(--bc-white);
+}
+
+.bc-santander .bc-card:disabled { opacity: 1; }
+.bc-santander .bc-card.is-upcoming {
+  background: var(--bc-color-light-gray);
+  border-color: var(--bc-color-border-disabled);
+  cursor: default;
+}
+.bc-santander .bc-card.is-upcoming:hover {
+  border-color: var(--bc-color-border-disabled);
+}
+.bc-santander .bc-card.is-upcoming .bc-card__num,
+.bc-santander .bc-card.is-upcoming .bc-card__title {
+  color: var(--bc-color-text-muted);
+}
+.bc-santander .bc-card.is-upcoming .bc-card__media {
+  opacity: 0.72;
+}
+.bc-santander .bc-card.is-upcoming .bc-card__status {
+  color: var(--bc-color-text-muted);
+}
+
+/* ==========================================================================
+   4. ESTADÍSTICAS
+   ========================================================================== */
+.bc-santander .bc-stats {
+  padding-block: var(--bc-space-section);
+  background-color: var(--bc-color-red);
+  color: var(--bc-white);
+}
+.bc-santander .bc-stats__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+.bc-santander .bc-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0 0 1.25rem;
+}
+.bc-santander .bc-person {
+  width: clamp(18px, 2.6vw, 26px);
+  height: clamp(18px, 2.6vw, 26px);
+}
+.bc-santander .bc-person.is-on { fill: var(--bc-white); }
+.bc-santander .bc-person.is-dim { fill: rgba(255, 255, 255, 0.35); }
+.bc-santander .bc-stat__figure {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+.bc-santander .bc-stat__text {
+  margin: 0;
+  font-size: var(--bc-fs-lead);
+  max-width: 34ch;
+}
+.bc-santander .bc-stats__source {
+  margin: clamp(1.75rem, 4vw, 2.75rem) 0 0;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.bc-santander .bc-stats__source-link {
+  color: var(--bc-white);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.bc-santander .bc-stats__source-link:hover,
+.bc-santander .bc-stats__source-link:focus-visible {
+  color: var(--bc-white);
+  text-decoration-thickness: 2px;
+}
+
+/* ==========================================================================
+   5. HISTORIAS — desktop: destacada sticky | selector
+   ========================================================================== */
+.bc-santander .bc-stories {
+  padding-block: var(--bc-space-section);
+  scroll-margin-top: 1rem;
+}
+
+.bc-santander .bc-stories__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  align-items: start;
+}
+
+/* Destacada: [foto | texto] en desktop; sticky solo ≥1024 */
+.bc-santander .bc-story-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: center;
+  margin: 0;
+  min-width: 0;
+  scroll-margin-top: 1.25rem;
+}
+.bc-santander .bc-story-featured__media {
+  display: block;
+  min-width: 0;
+  align-self: start;
+}
+.bc-santander .bc-story-featured__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bc-santander .bc-story-featured__title {
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  line-height: 1.15;
+  font-weight: 800;
+}
+.bc-santander .bc-story-featured__desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--bc-color-text-muted);
+}
+.bc-santander .bc-story-featured__content .bc-cta {
+  align-self: flex-start;
+  width: fit-content;
+}
+
+@media (min-width: 1024px) {
+  .bc-santander .bc-story-featured {
+    position: sticky;
+    top: clamp(1rem, 3vh, 2rem);
+    align-self: start;
+  }
+}
+
+/* ==========================================================================
+   6. SANTANDER OPEN ACADEMY
+   ========================================================================== */
+.bc-santander .bc-academy {
+  padding-block: var(--bc-space-section);
+  background: var(--bc-color-light-gray);
+  color: var(--bc-color-text);
+}
+.bc-santander .bc-academy__inner {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+.bc-santander .bc-academy__text {
+  margin: 0 0 2rem;
+  font-size: var(--bc-fs-lead);
+}
+.bc-santander .bc-academy .bc-cta--outline {
+  justify-content: center;
+}
+
+/* ==========================================================================
+   7. TEMPORADA 1
+   ========================================================================== */
+.bc-santander .bc-season1 {
+  position: relative;
+  padding-block: var(--bc-space-section);
+  color: var(--bc-white);
+  overflow: hidden;
+}
+.bc-santander .bc-season1__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #9f0606;
+  background-image: var(--bc-season1-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.bc-santander .bc-season1__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  /* Equilibrio texto / retratos (no sobreponderar la derecha) */
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 3.5vw, 2.75rem);
+  align-items: center;
+}
+.bc-santander .bc-season1 .bc-eyebrow { color: var(--bc-white); }
+.bc-santander .bc-season1__title {
+  margin: 0 0 1rem;
+  font-size: var(--bc-fs-h2);
+  line-height: 1.08;
+  font-weight: 800;
+}
+.bc-santander .bc-season1__text {
+  margin: 0 0 2rem;
+  font-size: var(--bc-fs-lead);
+  max-width: 38ch;
+}
+.bc-santander .bc-season1__portraits {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.35rem, 0.8vw, 0.6rem);
+  align-items: start;
+  min-width: 0;
+}
+.bc-santander .bc-season1__img {
+  display: block;
+  width: 100%;
+  height: auto; /* evita que el height HTML fije la caja */
+  /* Tiras verticales altas y estrechas (mismo ancho, más altura) */
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 6px;
+}
+/* Escalonado sutil en desktop (variable para componer con reveals) */
+.bc-santander .bc-season1__portraits .bc-season1__img {
+  --bc-nudge-y: 0px;
+  transform: translateY(var(--bc-nudge-y));
+}
+.bc-santander .bc-season1__portraits .bc-season1__img:nth-child(odd) {
+  --bc-nudge-y: 8px;
+}
+.bc-santander .bc-season1__portraits .bc-season1__img:nth-child(even) {
+  --bc-nudge-y: -8px;
+}
+
+/* ==========================================================================
+   8. CIERRE SANTANDER
+   ========================================================================== */
+.bc-santander .bc-closing {
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+}
+.bc-santander .bc-logo {
+  display: inline-block;
+  width: auto;
+  max-width: clamp(140px, 22vw, 220px);
+  height: auto;
+}
+
+/* ==========================================================================
+   9. CRÉDITOS
+   ========================================================================== */
+.bc-santander .bc-credits {
+  margin: 0;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 3rem)
+    clamp(2rem, 4vw, 3rem);
+  background: var(--bc-white);
+  border-top: 1px solid rgba(33, 37, 41, 0.12);
+  color: var(--bc-color-text-muted);
+  font-family: var(--bc-font-base);
+  font-size: clamp(0.75rem, 1.2vw, 0.8125rem);
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Tablet / ≤1023px: historias apiladas (sin sticky); episodios 2 cols */
+@media (max-width: 1023px) {
+  .bc-santander .bc-stories__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-santander .bc-story-featured {
+    position: static; /* sin sticky fuera de desktop */
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  }
+
+  .bc-santander .bc-featured-img--story {
+    max-height: clamp(200px, 40vw, 300px);
+  }
+
+  .bc-santander .bc-cards--episodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bc-santander .bc-cards--stories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bc-santander .bc-story-card {
+    grid-template-columns: clamp(84px, 18vw, 100px) minmax(0, 1fr);
+  }
+
+  .bc-santander .bc-story-card .bc-card__media {
+    height: clamp(112px, 26vw, 140px);
+  }
+
+  .bc-santander .bc-season1__inner {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .bc-santander .bc-season1__portraits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .bc-santander .bc-season1__portraits .bc-season1__img:nth-child(odd),
+  .bc-santander .bc-season1__portraits .bc-season1__img:nth-child(even) {
+    --bc-nudge-y: 0px;
+  }
+}
+
+/* ≤768px */
+@media (max-width: 768px) {
+  .bc-santander .bc-hero__inner,
+  .bc-santander .bc-manifesto__inner,
+  .bc-santander .bc-episode-featured,
+  .bc-santander .bc-story-featured,
+  .bc-santander .bc-stats__inner,
+  .bc-santander .bc-season1__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-santander .bc-hero__portraits {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .bc-santander .bc-hero__portraits .bc-portrait:nth-child(1),
+  .bc-santander .bc-hero__portraits .bc-portrait:nth-child(2),
+  .bc-santander .bc-hero__portraits .bc-portrait:nth-child(3) {
+    --bc-nudge-y: 0px;
+  }
+
+  .bc-santander .bc-featured-img--story {
+    max-width: min(220px, 55vw);
+    max-height: 280px;
+    margin-inline: auto;
+  }
+
+  .bc-santander .bc-story-featured__media {
+    justify-self: center;
+  }
+
+  .bc-santander .bc-season1__portraits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile / ≤480px */
+@media (max-width: 480px) {
+  .bc-santander .bc-cards--episodes,
+  .bc-santander .bc-cards--stories {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-santander .bc-story-card .bc-card__media {
+    height: clamp(120px, 34vw, 150px);
+  }
+
+  .bc-santander .bc-season1__portraits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   MOTION — progressive enhancement (opacity + transform only)
+   Sticky-safe: nunca transform en .bc-story-featured ni en ancestros sticky.
+   ========================================================================== */
+
+.bc-santander {
+  --bc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --bc-reveal-duration: 680ms;
+  --bc-reveal-y: 24px;
+  --bc-enter-duration: 620ms;
+  --bc-swap-duration: 180ms;
+}
+
+/* ---- Reveals: visibles por defecto; solo se ocultan con .is-enhanced ---- */
+.bc-santander .reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--bc-reveal-duration) var(--bc-ease-out),
+    transform var(--bc-reveal-duration) var(--bc-ease-out);
+  transition-delay: var(--bc-reveal-delay, 0ms);
+}
+
+.bc-santander.is-enhanced .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(var(--bc-reveal-y));
+}
+
+.bc-santander.is-enhanced .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retratos con nudge de layout: conservar escalonado al revelar */
+.bc-santander.is-enhanced .bc-season1__img.reveal:not(.is-visible) {
+  transform: translateY(calc(var(--bc-nudge-y, 0px) + var(--bc-reveal-y)));
+}
+
+.bc-santander.is-enhanced .bc-season1__img.reveal.is-visible {
+  transform: translateY(var(--bc-nudge-y, 0px));
+}
+
+/* Grupo de personas: el contenedor no se mueve; stagger en iconos */
+.bc-santander.is-enhanced .reveal--people:not(.is-visible),
+.bc-santander.is-enhanced .reveal--people.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.bc-santander.is-enhanced .reveal--people .bc-person {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--bc-reveal-duration) var(--bc-ease-out),
+    transform var(--bc-reveal-duration) var(--bc-ease-out);
+}
+
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person {
+  opacity: 1;
+  transform: none;
+}
+
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(1) { transition-delay: 0ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(2) { transition-delay: 45ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(3) { transition-delay: 90ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(4) { transition-delay: 135ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(5) { transition-delay: 180ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(6) { transition-delay: 225ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(7) { transition-delay: 270ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(8) { transition-delay: 315ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(9) { transition-delay: 360ms; }
+.bc-santander.is-enhanced .reveal--people.is-visible .bc-person:nth-child(10) { transition-delay: 405ms; }
+
+/* Stagger cards episodios / historias */
+.bc-santander .bc-cards--episodes > .reveal:nth-child(1),
+.bc-santander .bc-cards--stories > .reveal:nth-child(1) { --bc-reveal-delay: 0ms; }
+.bc-santander .bc-cards--episodes > .reveal:nth-child(2),
+.bc-santander .bc-cards--stories > .reveal:nth-child(2) { --bc-reveal-delay: 80ms; }
+.bc-santander .bc-cards--episodes > .reveal:nth-child(3),
+.bc-santander .bc-cards--stories > .reveal:nth-child(3) { --bc-reveal-delay: 160ms; }
+.bc-santander .bc-cards--episodes > .reveal:nth-child(4),
+.bc-santander .bc-cards--stories > .reveal:nth-child(4) { --bc-reveal-delay: 240ms; }
+.bc-santander .bc-cards--episodes > .reveal:nth-child(5),
+.bc-santander .bc-cards--stories > .reveal:nth-child(5) { --bc-reveal-delay: 320ms; }
+.bc-santander .bc-cards--episodes > .reveal:nth-child(6),
+.bc-santander .bc-cards--stories > .reveal:nth-child(6) { --bc-reveal-delay: 400ms; }
+
+/* Stagger retratos Temporada 1 (tras el bloque de texto) */
+.bc-santander .bc-season1__portraits > .reveal:nth-child(1) { --bc-reveal-delay: 90ms; }
+.bc-santander .bc-season1__portraits > .reveal:nth-child(2) { --bc-reveal-delay: 170ms; }
+.bc-santander .bc-season1__portraits > .reveal:nth-child(3) { --bc-reveal-delay: 250ms; }
+.bc-santander .bc-season1__portraits > .reveal:nth-child(4) { --bc-reveal-delay: 330ms; }
+.bc-santander .bc-season1__portraits > .reveal:nth-child(5) { --bc-reveal-delay: 410ms; }
+.bc-santander .bc-season1__portraits > .reveal:nth-child(6) { --bc-reveal-delay: 490ms; }
+
+/* ---- Hero entrada (no scroll) ---- */
+.bc-santander .bc-hero-enter {
+  opacity: 1;
+  transition:
+    opacity var(--bc-enter-duration) var(--bc-ease-out),
+    transform var(--bc-enter-duration) var(--bc-ease-out);
+  transition-delay: var(--bc-enter-delay, 0ms);
+}
+
+.bc-santander.is-enhanced .bc-hero-enter:not(.bc-hero-enter--fade) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.bc-santander.is-enhanced .bc-hero-enter--fade {
+  opacity: 0;
+}
+
+.bc-santander.is-enhanced .bc-hero__portraits .bc-portrait.bc-hero-enter {
+  opacity: 0;
+  transform: translateY(calc(var(--bc-nudge-y, 0px) + 32px));
+}
+
+.bc-santander.is-enhanced.bc-hero-ready .bc-hero-enter {
+  opacity: 1;
+  transform: none;
+}
+
+.bc-santander.is-enhanced.bc-hero-ready .bc-hero__portraits .bc-portrait.bc-hero-enter {
+  opacity: 1;
+  transform: translateY(var(--bc-nudge-y, 0px));
+}
+
+/* ---- Microfade al cambiar episodio / historia ---- */
+.bc-santander .bc-swap-target {
+  transition: opacity var(--bc-swap-duration) ease;
+}
+
+.bc-santander .bc-swap-target.bc-is-swapping {
+  opacity: 0.65;
+}
+
+/* ---- prefers-reduced-motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .bc-santander *,
+  .bc-santander *::before,
+  .bc-santander *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .bc-santander .reveal,
+  .bc-santander.is-enhanced .reveal,
+  .bc-santander.is-enhanced .reveal:not(.is-visible),
+  .bc-santander.is-enhanced .reveal.is-visible,
+  .bc-santander .bc-hero-enter,
+  .bc-santander.is-enhanced .bc-hero-enter,
+  .bc-santander.is-enhanced .bc-hero-enter--fade,
+  .bc-santander.is-enhanced .bc-hero__portraits .bc-portrait.bc-hero-enter,
+  .bc-santander.is-enhanced.bc-hero-ready .bc-hero-enter,
+  .bc-santander.is-enhanced.bc-hero-ready .bc-hero__portraits .bc-portrait.bc-hero-enter,
+  .bc-santander .bc-swap-target,
+  .bc-santander .bc-swap-target.bc-is-swapping,
+  .bc-santander.is-enhanced .reveal--people .bc-person,
+  .bc-santander.is-enhanced .reveal--people.is-visible .bc-person {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Restaurar nudges de layout (no son motion) */
+  .bc-santander .bc-hero__portraits .bc-portrait {
+    transform: translateY(var(--bc-nudge-y, 0px)) !important;
+  }
+
+  .bc-santander .bc-season1__portraits .bc-season1__img {
+    transform: translateY(var(--bc-nudge-y, 0px)) !important;
+  }
+}

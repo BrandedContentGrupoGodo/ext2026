@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santander Hub — Aprender cambia todo</title>
+  <!-- Open Sans para el preview (Google Fonts). Aplicada solo dentro de .bc-santander vía CSS. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div class="bc-santander" data-bc-project="santander">
+
+    <!-- Símbolo SVG reutilizable: persona (decorativo, usado en estadísticas) -->
+    <svg width="0" height="0" class="bc-svg-sprite" aria-hidden="true" focusable="false">
+      <symbol id="bc-person" viewBox="0 0 24 24">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5.33 0-9 2.67-9 6v2h18v-2c0-3.33-3.67-6-9-6z"/>
+      </symbol>
+    </svg>
+
+    <!-- ================================================================
+         1. HERO (incluye la franja de colaboración como parte del hero)
+         ================================================================ -->
+    <header class="bc-hero">
+      <div class="bc-hero__bg" aria-hidden="true"></div>
+
+      <div class="bc-collab bc-hero-enter bc-hero-enter--fade" style="--bc-enter-delay: 0ms">
+        <p class="bc-collab__text">EN COLABORACIÓN CON BANCO SANTANDER</p>
+      </div>
+
+      <div class="bc-container bc-hero__inner">
+        <div class="bc-hero__content">
+          <p class="bc-eyebrow bc-eyebrow--chip bc-hero-enter" style="--bc-enter-delay: 0ms">SEGUNDA TEMPORADA</p>
+          <h1 class="bc-hero__title bc-hero-enter" style="--bc-enter-delay: 80ms">Aprender cambia todo</h1>
+          <p class="bc-hero__lead bc-hero-enter" style="--bc-enter-delay: 160ms">
+            Nuevas historias, ideas y aprendizajes para afrontar un mundo profesional que no deja de transformarse
+          </p>
+          <a class="bc-cta bc-cta--outline bc-hero__cta bc-hero-enter" style="--bc-enter-delay: 240ms" href="#episodios">
+            <span>Descubre la nueva temporada</span>
+            <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="bc-hero__portraits">
+          <button type="button" class="bc-portrait bc-hero-enter"
+                  style="--bc-enter-delay: 320ms"
+                  data-target="episodios" data-type="episode" data-index="0">
+            <img class="bc-portrait__img" src="assets/img/hero-silvia.webp" alt="" width="320" height="427" decoding="async">
+            <span class="bc-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="bc-visually-hidden">Ver el episodio destacado en la sección de nueva temporada</span>
+          </button>
+          <button type="button" class="bc-portrait bc-hero-enter"
+                  style="--bc-enter-delay: 400ms"
+                  data-target="historias" data-type="story" data-index="0">
+            <img class="bc-portrait__img" src="assets/img/hero-story-01.webp" alt="" width="320" height="427" decoding="async">
+            <span class="bc-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="bc-visually-hidden">Ver una historia real en la sección de historias</span>
+          </button>
+          <button type="button" class="bc-portrait bc-hero-enter"
+                  style="--bc-enter-delay: 480ms"
+                  data-target="historias" data-type="story" data-index="1">
+            <img class="bc-portrait__img" src="assets/img/hero-story-02.webp" alt="" width="320" height="427" decoding="async">
+            <span class="bc-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="bc-visually-hidden">Ver otra historia real en la sección de historias</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================================================
+         2. EL FUTURO TAMBIÉN SE APRENDE
+         ================================================================ -->
+    <section class="bc-manifesto">
+      <div class="bc-container bc-manifesto__inner">
+        <div class="bc-manifesto__head reveal">
+          <h2 class="bc-manifesto__title">El futuro también<br>se aprende</h2>
+        </div>
+        <div class="bc-manifesto__body reveal" style="--bc-reveal-delay: 90ms">
+          <p>
+            Un lugar para descubrir nuevas habilidades, adaptarse y seguir creciendo en un mundo donde el trabajo está en constante cambio. Porque el futuro se construye poco a poco, incorporando conocimientos, explorando nuevos caminos y manteniendo viva la curiosidad.
+          </p>
+          <a class="bc-cta bc-cta--text" href="#episodios">
+            <span>Desliza para descubrir más</span>
+            <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         3. NUEVA TEMPORADA / SILVIA LEAL (EPISODIOS)
+         ================================================================ -->
+    <section id="episodios" class="bc-episodes">
+      <div class="bc-container">
+        <header class="bc-section-head reveal">
+          <p class="bc-eyebrow">NUEVA TEMPORADA · 6 EPISODIOS</p>
+          <h2 class="bc-section-title">Prepárate hoy para el trabajo del mañana con Silvia Leal</h2>
+          <p class="bc-section-intro">
+            ¿Qué habilidades necesitas aprender para cambiar de trabajo? ¿Cómo usar la inteligencia artificial en tu día a día? Silvia Leal, experta en IA y tendencias del futuro, nos da las claves para seguir creciendo en el mundo laboral.
+          </p>
+        </header>
+
+        <div class="bc-episode-featured reveal" style="--bc-reveal-delay: 90ms" aria-live="polite">
+          <div class="bc-episode-featured__media bc-swap-target">
+            <img class="bc-featured-img bc-featured-img--wide"
+                 data-ep-thumb
+                 src="assets/img/episode-01-silvia.webp"
+                 alt="Episodio 01"
+                 width="800" height="500" decoding="async">
+          </div>
+          <div class="bc-episode-featured__content bc-swap-target">
+            <p class="bc-eyebrow" data-ep-eyebrow>EPISODIO 01</p>
+            <h3 class="bc-episode-featured__title" data-ep-title></h3>
+            <p class="bc-episode-featured__desc" data-ep-desc></p>
+            <a class="bc-cta bc-cta--solid" data-ep-link href="#">
+              <span>Ver episodio</span>
+              <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <ul class="bc-cards bc-cards--episodes">
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="0" aria-pressed="true">
+              <span class="bc-card__num">01</span>
+              <span class="bc-card__title">Las habilidades que pide el nuevo mercado laboral: por qué será clave aprender a aprender</span>
+            </button>
+          </li>
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="1" aria-pressed="false">
+              <span class="bc-card__num">02</span>
+              <span class="bc-card__title">Tu próximo ascenso puede empezar con una nueva habilidad: así funciona el ‘upskilling’</span>
+            </button>
+          </li>
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="2" aria-pressed="false">
+              <span class="bc-card__num">03</span>
+              <span class="bc-card__title">Cómo aprender a trabajar con la inteligencia artificial en el día a día</span>
+            </button>
+          </li>
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="3" aria-pressed="false">
+              <span class="bc-card__num">04</span>
+              <span class="bc-card__title">¿Jefe o líder? Estas son las habilidades que debe tener un buen 'manager' de equipo</span>
+            </button>
+          </li>
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="4" aria-pressed="false">
+              <span class="bc-card__num">05</span>
+              <span class="bc-card__title">Por qué la formación online gratuita es tu llave para acceder a un empleo mejor</span>
+            </button>
+          </li>
+          <li class="reveal">
+            <button type="button" class="bc-card bc-episode-card" data-index="5" aria-pressed="false">
+              <span class="bc-card__num">06</span>
+              <span class="bc-card__title">¿Quieres cambiar de sector en mitad te carrera? Cómo adquirir nuevas habilidades</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         4. BLOQUE DE ESTADÍSTICAS
+         ================================================================ -->
+    <section class="bc-stats">
+      <div class="bc-container">
+        <div class="bc-stats__inner">
+          <div class="bc-stat">
+            <p class="bc-people reveal reveal--people" aria-hidden="true">
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+            </p>
+            <p class="bc-stat__figure reveal" style="--bc-reveal-delay: 420ms">6 de cada 10 personas*</p>
+            <p class="bc-stat__text reveal" style="--bc-reveal-delay: 500ms">
+              consideran que saber utilizar la inteligencia artificial será imprescindible para mantener su empleabilidad
+            </p>
+          </div>
+          <div class="bc-stat">
+            <p class="bc-people reveal reveal--people" style="--bc-reveal-delay: 90ms" aria-hidden="true">
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-on"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+              <svg class="bc-person is-dim"><use href="#bc-person"></use></svg>
+            </p>
+            <p class="bc-stat__figure reveal" style="--bc-reveal-delay: 510ms">8 de cada 10 personas*</p>
+            <p class="bc-stat__text reveal" style="--bc-reveal-delay: 590ms">
+              creen que necesitarán seguir formándose durante toda su vida profesional
+            </p>
+          </div>
+        </div>
+        <p class="bc-stats__source reveal" style="--bc-reveal-delay: 640ms">
+          * Según el informe Habilidades del Futuro de Banco Santander. Accede
+          <a class="bc-stats__source-link"
+             href="https://www.santander.com/es/sala-de-comunicacion/informe-habilidades-futuro"
+             target="_blank" rel="noopener noreferrer">aquí</a>
+          al informe completo
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         5. HISTORIAS REALES
+         ================================================================ -->
+    <section id="historias" class="bc-stories">
+      <div class="bc-container">
+        <header class="bc-section-head reveal">
+          <p class="bc-eyebrow">6 PERSONAS · 6 HISTORIAS</p>
+          <h2 class="bc-section-title">Historias reales de quienes decidieron cambiar</h2>
+          <p class="bc-section-intro">
+            Seis personas que se atrevieron a salir de lo conocido, adquirir nuevas habilidades y transformar su futuro profesional.
+          </p>
+        </header>
+
+        <!-- Desktop: destacada izquierda + selector derecha.
+             Sticky en .bc-story-featured: NO aplicar transform al sticky root. -->
+        <div class="bc-stories__layout">
+          <div class="bc-story-featured" aria-live="polite">
+            <div class="bc-story-featured__media reveal bc-swap-target" style="--bc-reveal-delay: 80ms">
+              <img class="bc-featured-img bc-featured-img--story"
+                   data-story-thumb
+                   src="assets/img/story-01.webp"
+                   alt="Historia 01"
+                   width="360" height="640" decoding="async">
+            </div>
+            <div class="bc-story-featured__content reveal bc-swap-target" style="--bc-reveal-delay: 80ms">
+              <p class="bc-eyebrow" data-story-eyebrow>HISTORIA 01</p>
+              <h3 class="bc-story-featured__title" data-story-title></h3>
+              <p class="bc-story-featured__desc" data-story-desc></p>
+              <a class="bc-cta bc-cta--solid" data-story-link href="#">
+                <span>Leer la historia</span>
+                <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <ul class="bc-cards bc-cards--stories">
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="0" aria-pressed="true">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-01.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">01</span>
+                <span class="bc-card__title">¿Cómo pasar de gestor a líder? La fórmula de Eva para crecer en su trabajo</span>
+              </button>
+            </li>
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="1" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-02.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">02</span>
+                <span class="bc-card__title">Del miedo a la confianza: el camino de Mario hacia el liderazgo</span>
+              </button>
+            </li>
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="2" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-03.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">03</span>
+                <span class="bc-card__title">De Humanidades a la programación: el ‘bootcamp’ con el que Irene reinventó su carrera</span>
+              </button>
+            </li>
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="3" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-04.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">04</span>
+                <span class="bc-card__title">Antonio, el arquitecto que cambió los planos por el aula para enseñar de forma diferente</span>
+              </button>
+            </li>
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="4" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-05.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">05</span>
+                <span class="bc-card__title">La beca que abrió nuevas puertas en el futuro de Gisela como escritora</span>
+              </button>
+            </li>
+            <li class="reveal">
+              <button type="button" class="bc-card bc-story-card" data-index="5" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-06.webp" alt="" width="110" height="140" decoding="async">
+                </span>
+                <span class="bc-card__num">06</span>
+                <span class="bc-card__title">Aprender para enseñar mejor: Christa y su viaje hacia la innovación educativa</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         6. SANTANDER OPEN ACADEMY
+         ================================================================ -->
+    <section class="bc-academy">
+      <div class="bc-container bc-academy__inner reveal">
+        <p class="bc-eyebrow">SANTANDER OPEN ACADEMY</p>
+        <p class="bc-academy__text">
+          Mantenerse al día requiere seguir adquiriendo nuevos conocimientos y habilidades. Santander Open Academy es una plataforma global global de aprendizaje de Banco Santander que pone a disposición de cualquier persona formación gratuita para desarrollar competencias profesionales y mejorar su empleabilidad, a través de cursos, becas y otros contenidos formativos.
+        </p>
+        <a class="bc-cta bc-cta--outline" href="http://www.santanderopenacademy.com/?utm_source=Press&utm_medium=Referral&utm_campaign=HomeSOA2026_Corporativo_Branded" data-external="pending">
+          <span>Descubre Santander Open Academy</span>
+          <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         7. TEMPORADA 1
+         ================================================================ -->
+    <section class="bc-season1">
+      <div class="bc-season1__bg" aria-hidden="true"></div>
+      <div class="bc-container bc-season1__inner">
+        <div class="bc-season1__content reveal">
+          <p class="bc-eyebrow">TEMPORADA 1</p>
+          <h2 class="bc-season1__title">Vuelve a la primera temporada</h2>
+          <p class="bc-season1__text">
+            Descubre los episodios y las historias con los que comenzó Aprender cambia todo: nuevas habilidades, transformación profesional e inspiración para avanzar en un mundo en constante cambio.
+          </p>
+          <a class="bc-cta bc-cta--ghost-light" href="https://www.lavanguardia.com/vida/20251105/11228136/aprender-cambia-todo-habilidades-del-futuro-brl.html">
+            <span>Descubrir la primera temporada</span>
+            <svg class="bc-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+        <div class="bc-season1__portraits">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-01.webp" alt="" width="160" height="240" decoding="async">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-02.webp" alt="" width="160" height="240" decoding="async">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-03.webp" alt="" width="160" height="240" decoding="async">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-04.webp" alt="" width="160" height="240" decoding="async">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-05.webp" alt="" width="160" height="240" decoding="async">
+          <img class="bc-season1__img reveal" src="assets/img/season-1-06.webp" alt="" width="160" height="240" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         8. CIERRE SANTANDER
+         ================================================================ -->
+    <footer class="bc-closing">
+      <div class="bc-container">
+        <img class="bc-logo reveal" src="assets/img/santander-logo.png" alt="Banco Santander" width="200" height="48" decoding="async">
+      </div>
+    </footer>
+
+    <!-- Créditos del branded content (no es el footer de La Vanguardia) -->
+    <p class="bc-credits reveal" style="--bc-reveal-delay: 80ms">
+      Coordinación: Silvia Resola | Diseño y maquetación: Alejandra Santander | Fotografía: Getty Images | Vídeo: Getty Images. Un proyecto de Brandslab. Godó Nexus.
+    </p>
+
+  </div>
+
+  <script src="assets/js/scripts.js" defer></script>
+</body>
+</html>
