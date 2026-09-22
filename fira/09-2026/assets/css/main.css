@@ -259,6 +259,19 @@
   border-bottom: 1px solid rgba(17, 17, 17, 0.14);
 }
 
+.bc-fira.bc-fira--motion-ready .bc-fira-episode--awaiting:not(.bc-fira-episode--in) {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.bc-fira.bc-fira--motion-ready .bc-fira-episode--in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.35s ease-out,
+    transform 0.35s ease-out;
+}
+
 .bc-fira .bc-fira-episode--pending {
   display: grid;
   grid-template-columns:
@@ -490,6 +503,13 @@
   .bc-fira .bc-fira-episode__link:hover .bc-fira-episode__cta-icon,
   .bc-fira .bc-fira-episode__link:focus-visible .bc-fira-episode__cta-icon {
     transform: none;
+  }
+
+  .bc-fira.bc-fira--motion-ready .bc-fira-episode--awaiting:not(.bc-fira-episode--in),
+  .bc-fira.bc-fira--motion-ready .bc-fira-episode--in {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
