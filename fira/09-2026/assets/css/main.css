@@ -11,6 +11,9 @@
   --bc-fira-gutter: clamp(1.25rem, 2.5vw, 1.5rem);
 
   box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   background-color: var(--bc-fira-bg);
   color: var(--bc-fira-text);
   font-family: var(--bc-fira-font);
