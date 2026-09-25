@@ -611,8 +611,8 @@
    ========================================================================== */
 .bc-santander .bc-stats {
   padding-block: var(--bc-space-section);
-  background-color: var(--bc-color-red);
-  color: var(--bc-white);
+  background-color: #f6f6f6;
+  color: var(--bc-color-text);
 }
 .bc-santander .bc-stats__inner {
   display: grid;
@@ -629,11 +629,11 @@
   width: clamp(18px, 2.6vw, 26px);
   height: clamp(18px, 2.6vw, 26px);
 }
-.bc-santander .bc-person.is-on { fill: var(--bc-white); }
-.bc-santander .bc-person.is-dim { fill: rgba(255, 255, 255, 0.35); }
+.bc-santander .bc-person.is-on { fill: var(--bc-color-text); }
+.bc-santander .bc-person.is-dim { fill: rgba(70, 70, 70, 0.35); }
 .bc-santander .bc-stat__figure {
   margin: 0 0 0.75rem;
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 800;
   line-height: 1.05;
 }
@@ -645,17 +645,17 @@
 .bc-santander .bc-stats__source {
   margin: clamp(1.75rem, 4vw, 2.75rem) 0 0;
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--bc-color-text);
 }
 .bc-santander .bc-stats__source-link {
-  color: var(--bc-white);
+  color: var(--bc-color-text);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
 }
 .bc-santander .bc-stats__source-link:hover,
 .bc-santander .bc-stats__source-link:focus-visible {
-  color: var(--bc-white);
+  color: var(--bc-color-text);
   text-decoration-thickness: 2px;
 }
 
