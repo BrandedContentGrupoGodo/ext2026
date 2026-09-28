@@ -28,48 +28,48 @@
   const episodes = [
     {
       number: "01",
-      title: "Las habilidades que pide el nuevo mercado laboral: por qué será clave aprender a aprender",
+      title: "El futuro ya está aquí: cómo el 'reskilling' o reciclaje profesional ayuda a adaptarse a la era de la IA",
       description: "Silvia Leal aconseja identificar las tareas que la inteligencia artificial ya está transformando, aprender nuevas herramientas y apostar por la formación continua.",
       image: "assets/img/episode-01-silvia.webp",
-      href: "#",
+      href: "https://www.lavanguardia.com/economia/20260915/11624779/futuro-esta-como-reskilling-reciclaje-profesional-ayuda-adaptarse-inteligencia-artificial-brl.html",
       available: true
     },
     {
       number: "02",
-      title: "Tu próximo ascenso puede empezar con una nueva habilidad: así funciona el ‘upskilling’",
-      description: "Los perfiles que están surgiendo y las competencias que piden las empresas hoy. (Texto provisional.)",
+      title: "Las competencias que te ayudarán a crecer en tu puesto de trabajo antes de 2030",
+      description: "Silvia Leal, experta en tendencias de futuro, aconseja aprovechar la formación online para aprender idiomas, habilidades digitales o inteligencia artificial",
       image: "assets/img/episode-02-silvia.webp",
       href: "#",
       available: true
     },
     {
       number: "03",
-      title: "Cómo aprender a trabajar con la inteligencia artificial en el día a día",
-      description: "Por qué la formación continua se ha vuelto esencial para cualquier carrera. (Texto provisional.)",
+      title: "Próximamente: episodio 3 con Silvia Leal",
+      description: "",
       image: null,
       href: "#",
       available: false
     },
     {
       number: "04",
-      title: "¿Jefe o líder? Estas son las habilidades que debe tener un buen 'manager' de equipo",
-      description: "Empatía, creatividad y pensamiento crítico en un mundo automatizado. (Texto provisional.)",
+      title: "Próximamente: episodio 4 con Silvia Leal",
+      description: "",
       image: null,
       href: "#",
       available: false
     },
     {
       number: "05",
-      title: "Por qué la formación online gratuita es tu llave para acceder a un empleo mejor",
-      description: "Innovar para mejorar la vida de las personas y el impacto social. (Texto provisional.)",
+      title: "Próximamente: episodio 5 con Silvia Leal",
+      description: "",
       image: null,
       href: "#",
       available: false
     },
     {
       number: "06",
-      title: "¿Quieres cambiar de sector en mitad te carrera? Cómo adquirir nuevas habilidades",
-      description: "Una mirada a cómo serán los empleos y los equipos en los próximos años. (Texto provisional.)",
+      title: "Próximamente: episodio 6 con Silvia Leal",
+      description: "",
       image: null,
       href: "#",
       available: false
@@ -79,49 +79,49 @@
   const stories = [
     {
       number: "01",
-      title: "¿Cómo pasar de gestor a líder? La fórmula de Eva para crecer en su trabajo",
-      description: "Dejó la gestión de equipos para asumir nuevos retos, desarrollar su liderazgo y transformar la cultura de su organización desde dentro.",
+      title: "De dirigir RRHH a reinventarse como consultora: María y la importancia de seguir aprendiendo",
+      description: "María es un ejemplo de cómo el aprendizaje constante permite rediseñar la propia carrera profesional ante el cambio de paradigma actual",
       image: "assets/img/story-01.webp",
-      href: "#",
+      href: "https://www.lavanguardia.com/vida/20260922/11635295/dirigir-recursos-humanos-reinventarse-consultora-maria-llosent-importancia-seguir-aprendiendo-brl.html",
       available: true
     },
     {
       number: "02",
-      title: "Del miedo a la confianza: el camino de Mario hacia el liderazgo",
-      description: "Una nueva etapa profesional cuando parecía que todo estaba decidido. (Texto provisional.)",
+      title: "¿Qué puede aprender un ingeniero aeroespacial de un diplomático? Esta es la experiencia de Juan",
+      description: "El Curso Santander | Jóvenes Líderes Iberoamericanos permitió a Juan Garrido salir de su entorno técnico y compartir experiencias con profesionales de otras disciplinas",
       image: "assets/img/story-02.webp",
       href: "#",
       available: true
     },
     {
       number: "03",
-      title: "De Humanidades a la programación: el ‘bootcamp’ con el que Irene reinventó su carrera",
-      description: "De enseñar ciencia a investigarla gracias a la formación continua. (Texto provisional.)",
+      title: "Próximamente: la historia de Eva",
+      description: "",
       image: "assets/img/story-03.webp",
       href: "#",
       available: false
     },
     {
       number: "04",
-      title: "Antonio, el arquitecto que cambió los planos por el aula para enseñar de forma diferente",
-      description: "Montó un proyecto con impacto social tras aprender nuevas habilidades. (Texto provisional.)",
-      image: "assets/img/story-04.webp",
+      title: "Próximamente: la historia de María Cudeiro",
+      description: "",
+      image: null,
       href: "#",
       available: false
     },
     {
       number: "05",
-      title: "La beca que abrió nuevas puertas en el futuro de Gisela como escritora",
-      description: "Descubrió el desarrollo de software y cambió por completo su rumbo. (Texto provisional.)",
-      image: "assets/img/story-05.webp",
+      title: "Próximamente: la historia de Susana",
+      description: "",
+      image: null,
       href: "#",
       available: false
     },
     {
       number: "06",
-      title: "Aprender para enseñar mejor: Christa y su viaje hacia la innovación educativa",
-      description: "Aprendió a dirigir personas combinando tecnología y habilidades humanas. (Texto provisional.)",
-      image: "assets/img/story-06.webp",
+      title: "Próximamente: la historia de Javier",
+      description: "",
+      image: null,
       href: "#",
       available: false
     }
@@ -257,6 +257,8 @@
 
     cards.forEach(function (card, i) {
       const item = data[i];
+      const titleEl = card.querySelector(".bc-card__title");
+      if (titleEl && item) titleEl.textContent = item.title;
 
       let status = card.querySelector(".bc-card__status");
       if (!status) {
@@ -265,8 +267,26 @@
         card.appendChild(status);
       }
 
+      /* Historias bloqueadas: nunca mostrar foto (aunque el asset exista). */
+      const media = card.querySelector(".bc-card__media");
+      if (media && item && !item.available) {
+        media.classList.add("bc-card__media--locked");
+        const img = media.querySelector("img");
+        if (img) img.remove();
+        if (!media.querySelector(".bc-lock")) {
+          media.insertAdjacentHTML(
+            "beforeend",
+            '<svg class="bc-lock" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+              '<path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>' +
+              '<rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>' +
+              "</svg>"
+          );
+        }
+      }
+
       if (item && item.available) {
         status.textContent = "";
+        status.hidden = true;
         card.addEventListener("click", function () {
           select(i, { animate: true });
           if (typeof options.afterCardSelect === "function") {
@@ -277,8 +297,36 @@
         card.classList.add("is-upcoming");
         card.disabled = true;
         card.setAttribute("aria-disabled", "true");
+        card.setAttribute("tabindex", "-1");
         card.removeAttribute("aria-pressed");
-        status.textContent = UPCOMING_LABEL;
+
+        const titleHasUpcoming =
+          item && /^pr[oó]ximamente\s*:/i.test(String(item.title || ""));
+        if (titleHasUpcoming) {
+          /* Evitar duplicar "PRÓXIMAMENTE" si el título ya lo dice. */
+          status.textContent = "";
+          status.hidden = true;
+        } else {
+          status.textContent = UPCOMING_LABEL;
+          status.hidden = false;
+        }
+
+        if (prefix === "ep" && !card.querySelector(".bc-card__lock")) {
+          const lock = document.createElement("span");
+          lock.className = "bc-card__lock";
+          lock.setAttribute("aria-hidden", "true");
+          lock.innerHTML =
+            '<svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">' +
+            '<path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>' +
+            '<rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>' +
+            "</svg>";
+          const num = card.querySelector(".bc-card__num");
+          if (num && num.parentNode === card) {
+            card.insertBefore(lock, num.nextSibling);
+          } else {
+            card.appendChild(lock);
+          }
+        }
       }
     });
 
@@ -312,6 +360,24 @@
     afterCardSelect: function () {
       afterFeaturedCardSelect(storyFeatured);
     }
+  });
+
+  /* ----------------------------------------------------------------------
+     Anchors internos → #episodios: scroll suave (hero + manifiesto)
+     ---------------------------------------------------------------------- */
+
+  function scrollToEpisodes(event) {
+    const episodesSection = root.querySelector("#episodios");
+    if (!episodesSection) return;
+    event.preventDefault();
+    episodesSection.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start"
+    });
+  }
+
+  root.querySelectorAll('a.bc-cta[href="#episodios"]').forEach(function (cta) {
+    cta.addEventListener("click", scrollToEpisodes);
   });
 
   /* ----------------------------------------------------------------------

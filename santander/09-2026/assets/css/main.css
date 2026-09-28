@@ -16,6 +16,8 @@
   --bc-white: #ffffff;
   --bc-color-text-muted: #5a6169;
   --bc-color-blue-050: #f2f8fb;
+  --bc-color-upcoming: #f6f6f6;
+  --bc-color-lock: #9aa0a6;
 
   /* ---- Superficies / texto ---- */
   --bc-bg: var(--bc-white);
@@ -37,7 +39,7 @@
   --bc-space: 1.5rem;
   --bc-radius: 8px;
   --bc-radius-btn: 5px;
-  --bc-container: 1200px;
+  --bc-container: 1320px;
 
   /* ---- Fondos gráficos reales ---- */
   --bc-hero-bg: url("../img/hero-bg.png");
@@ -64,7 +66,7 @@
   width: 100%;
   max-width: var(--bc-container);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5vw, 3rem);
+  padding-inline: clamp(1.25rem, 3vw, 2.25rem);
 }
 
 .bc-santander .bc-visually-hidden {
@@ -218,24 +220,29 @@
   border-radius: 4px;
 }
 
-/* ---- Cabeceras de sección: ancho real, párrafo con max-width de lectura ---- */
+/* ---- Cabeceras de sección (Silvia + Historias): un nivel más compactas ---- */
 .bc-santander .bc-section-head {
   width: 100%;
   max-width: none;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+}
+.bc-santander .bc-section-head .bc-eyebrow {
+  margin-bottom: 0.5rem;
 }
 .bc-santander .bc-section-title {
-  margin: 0 0 1rem;
+  margin: 0 0 0.7rem;
   max-width: 28ch;
-  font-size: var(--bc-fs-h2);
-  line-height: 1.1;
+  /* Un peldaño bajo --bc-fs-h2; no afecta al H1 del hero */
+  font-size: clamp(1.65rem, 3.2vw, 2.55rem);
+  line-height: 1.12;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
 .bc-santander .bc-section-intro {
   margin: 0;
   max-width: 62ch;
-  font-size: var(--bc-fs-lead);
+  font-size: clamp(1rem, 1.35vw, 1.175rem);
+  line-height: 1.5;
   color: var(--bc-color-text-muted);
 }
 
@@ -376,46 +383,47 @@
    2. MANIFIESTO
    ========================================================================== */
 .bc-santander .bc-manifesto {
-  padding-block: clamp(4.5rem, 11vw, 9.5rem);
+  padding-block: clamp(2.75rem, 6.5vw, 4.75rem);
 }
 .bc-santander .bc-manifesto__inner {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(2.5rem, 7vw, 6rem);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
 .bc-santander .bc-manifesto__title {
   margin: 0;
-  font-size: var(--bc-fs-h2);
-  line-height: 1.05;
+  font-size: clamp(1.7rem, 3.5vw, 2.75rem);
+  line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
 .bc-santander .bc-manifesto__body p {
-  margin: 0 0 1.35rem;
+  margin: 0 0 0.85rem;
   max-width: 46ch;
-  font-size: var(--bc-fs-lead);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
   color: var(--bc-color-text-muted);
 }
 .bc-santander .bc-manifesto__body .bc-cta--text {
-  margin-top: 1.5rem;
+  margin-top: 0.65rem;
 }
 
 /* ==========================================================================
    3. EPISODIOS
    ========================================================================== */
 .bc-santander .bc-episodes {
-  padding-block: var(--bc-space-section);
+  padding-block: clamp(2.5rem, 5.5vw, 4.75rem);
   background-color: var(--bc-color-blue);
   scroll-margin-top: 1rem;
 }
 .bc-santander .bc-episode-featured {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
   align-items: center;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
-  padding: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: clamp(1rem, 2.2vw, 1.65rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
   background: var(--bc-white);
   border: 1px solid var(--bc-color-border);
   border-radius: 10px;
@@ -426,19 +434,19 @@
   border-radius: var(--bc-radius);
 }
 .bc-santander .bc-episode-featured__title {
-  margin: 0.25rem 0 1rem;
+  margin: 0.15rem 0 0.65rem;
   font-size: var(--bc-fs-h3);
   line-height: 1.15;
   font-weight: 800;
 }
 .bc-santander .bc-episode-featured__desc {
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.1rem;
   color: var(--bc-color-text-muted);
 }
 .bc-santander .bc-episode-featured__content {
   display: flex;
   flex-direction: column;
-  min-height: clamp(200px, 22vw, 260px);
+  min-height: 0;
   min-width: 0;
 }
 /* El padre flex estira hijos en el eje cruzado (ancho). Forzar fit-content
@@ -460,6 +468,7 @@
 }
 .bc-santander .bc-cards--episodes {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.6rem, 1.5vw, 1rem);
 }
 .bc-santander .bc-cards--stories {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -476,7 +485,7 @@
   width: 100%;
   height: 100%;
   min-height: 44px;
-  padding: 1.25rem;
+  padding: 1.1rem 1.15rem;
   text-align: left;
   background: var(--bc-color-blue-050);
   border: 1px solid var(--bc-color-border);
@@ -573,6 +582,30 @@
   text-transform: uppercase;
   color: var(--bc-color-text-muted);
 }
+.bc-santander .bc-card__status[hidden] {
+  display: none;
+}
+
+/* Candado (episodios bloqueados + miniaturas de historias) */
+.bc-santander .bc-card__lock {
+  display: none;
+  align-items: center;
+  color: var(--bc-color-lock);
+  margin-top: -0.2rem;
+}
+.bc-santander .bc-card.is-upcoming .bc-card__lock {
+  display: inline-flex;
+}
+.bc-santander .bc-lock {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+}
+.bc-santander .bc-lock--sm {
+  width: 0.95rem;
+  height: 0.95rem;
+}
 
 .bc-santander .bc-card.is-active,
 .bc-santander .bc-card[aria-pressed="true"] {
@@ -591,6 +624,26 @@
   background: var(--bc-color-light-gray);
   border-color: var(--bc-color-border-disabled);
   cursor: default;
+  pointer-events: none;
+}
+.bc-santander .bc-episode-card.is-upcoming {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "num lock"
+    "title title";
+  column-gap: 0.5rem;
+  row-gap: 0.45rem;
+  align-items: start;
+}
+.bc-santander .bc-episode-card.is-upcoming .bc-card__num { grid-area: num; }
+.bc-santander .bc-episode-card.is-upcoming .bc-card__lock {
+  grid-area: lock;
+  margin-top: 0.2rem;
+}
+.bc-santander .bc-episode-card.is-upcoming .bc-card__title { grid-area: title; }
+.bc-santander .bc-episode-card.is-upcoming .bc-card__status {
+  display: none;
 }
 .bc-santander .bc-card.is-upcoming:hover {
   border-color: var(--bc-color-border-disabled);
@@ -599,11 +652,25 @@
 .bc-santander .bc-card.is-upcoming .bc-card__title {
   color: var(--bc-color-text-muted);
 }
-.bc-santander .bc-card.is-upcoming .bc-card__media {
+.bc-santander .bc-card.is-upcoming .bc-card__media:not(.bc-card__media--locked) {
   opacity: 0.72;
 }
 .bc-santander .bc-card.is-upcoming .bc-card__status {
   color: var(--bc-color-text-muted);
+}
+
+/* Miniatura bloqueada: conserva tamaño, sin foto fake */
+.bc-santander .bc-card__media--locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bc-color-upcoming);
+  border: 1px solid var(--bc-color-border-disabled);
+  color: var(--bc-color-lock);
+  opacity: 1;
+}
+.bc-santander .bc-card.is-upcoming .bc-card__media--locked {
+  opacity: 1;
 }
 
 /* ==========================================================================
@@ -669,7 +736,7 @@
 
 .bc-santander .bc-stories__layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+  grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
   gap: clamp(1.5rem, 3vw, 2.75rem);
   align-items: start;
 }
@@ -677,7 +744,7 @@
 /* Destacada: [foto | texto] en desktop; sticky solo ≥1024 */
 .bc-santander .bc-story-featured {
   display: grid;
-  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
   gap: clamp(1rem, 2vw, 1.5rem);
   align-items: center;
   margin: 0;
@@ -724,7 +791,7 @@
    ========================================================================== */
 .bc-santander .bc-academy {
   padding-block: var(--bc-space-section);
-  background: var(--bc-color-light-gray);
+  background: #f6f6f6;
   color: var(--bc-color-text);
 }
 .bc-santander .bc-academy__inner {
@@ -745,7 +812,7 @@
    ========================================================================== */
 .bc-santander .bc-season1 {
   position: relative;
-  padding-block: var(--bc-space-section);
+  padding-block: clamp(2.5rem, 5.5vw, 4.75rem);
   color: var(--bc-white);
   overflow: hidden;
 }
@@ -771,15 +838,22 @@
 }
 .bc-santander .bc-season1 .bc-eyebrow { color: var(--bc-white); }
 .bc-santander .bc-season1__title {
-  margin: 0 0 1rem;
-  font-size: var(--bc-fs-h2);
-  line-height: 1.08;
+  margin: 0 0 0.7rem;
+  /* Un peldaño bajo --bc-fs-h2: sección secundaria, no hero */
+  font-size: clamp(1.65rem, 3.2vw, 2.55rem);
+  line-height: 1.1;
   font-weight: 800;
 }
 .bc-santander .bc-season1__text {
-  margin: 0 0 2rem;
-  font-size: var(--bc-fs-lead);
+  margin: 0 0 1.25rem;
+  font-size: clamp(1rem, 1.35vw, 1.175rem);
+  line-height: 1.5;
   max-width: 38ch;
+}
+.bc-santander .bc-season1 .bc-cta--ghost-light {
+  min-height: 44px;
+  padding: 0.55rem 1.05rem;
+  font-size: 0.9375rem;
 }
 .bc-santander .bc-season1__portraits {
   display: grid;

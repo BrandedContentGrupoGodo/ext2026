@@ -9,8 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
+  <!-- PREVIEW ONLY: quita el margin por defecto del <body> en la página standalone.
+       No incluir en el fragmento de Xalok. -->
+  <style>
+    .bc-preview-page {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
-<body>
+<body class="bc-preview-page">
   <div class="bc-santander" data-bc-project="santander">
 
     <!-- Símbolo SVG reutilizable: persona (decorativo, usado en estadísticas) -->
@@ -137,37 +145,61 @@
           <li class="reveal">
             <button type="button" class="bc-card bc-episode-card" data-index="0" aria-pressed="true">
               <span class="bc-card__num">01</span>
-              <span class="bc-card__title">Las habilidades que pide el nuevo mercado laboral: por qué será clave aprender a aprender</span>
+              <span class="bc-card__title">El futuro ya está aquí: cómo el 'reskilling' o reciclaje profesional ayuda a adaptarse a la era de la IA</span>
             </button>
           </li>
           <li class="reveal">
             <button type="button" class="bc-card bc-episode-card" data-index="1" aria-pressed="false">
               <span class="bc-card__num">02</span>
-              <span class="bc-card__title">Tu próximo ascenso puede empezar con una nueva habilidad: así funciona el ‘upskilling’</span>
+              <span class="bc-card__title">Las competencias que te ayudarán a crecer en tu puesto de trabajo antes de 2030</span>
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card" data-index="2" aria-pressed="false">
+            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="2" disabled aria-disabled="true" tabindex="-1">
               <span class="bc-card__num">03</span>
-              <span class="bc-card__title">Cómo aprender a trabajar con la inteligencia artificial en el día a día</span>
+              <span class="bc-card__lock" aria-hidden="true">
+                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
+                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                </svg>
+              </span>
+              <span class="bc-card__title">Próximamente: episodio 3 con Silvia Leal</span>
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card" data-index="3" aria-pressed="false">
+            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="3" disabled aria-disabled="true" tabindex="-1">
               <span class="bc-card__num">04</span>
-              <span class="bc-card__title">¿Jefe o líder? Estas son las habilidades que debe tener un buen 'manager' de equipo</span>
+              <span class="bc-card__lock" aria-hidden="true">
+                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
+                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                </svg>
+              </span>
+              <span class="bc-card__title">Próximamente: episodio 4 con Silvia Leal</span>
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card" data-index="4" aria-pressed="false">
+            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="4" disabled aria-disabled="true" tabindex="-1">
               <span class="bc-card__num">05</span>
-              <span class="bc-card__title">Por qué la formación online gratuita es tu llave para acceder a un empleo mejor</span>
+              <span class="bc-card__lock" aria-hidden="true">
+                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
+                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                </svg>
+              </span>
+              <span class="bc-card__title">Próximamente: episodio 5 con Silvia Leal</span>
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card" data-index="5" aria-pressed="false">
+            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="5" disabled aria-disabled="true" tabindex="-1">
               <span class="bc-card__num">06</span>
-              <span class="bc-card__title">¿Quieres cambiar de sector en mitad te carrera? Cómo adquirir nuevas habilidades</span>
+              <span class="bc-card__lock" aria-hidden="true">
+                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
+                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                </svg>
+              </span>
+              <span class="bc-card__title">Próximamente: episodio 6 con Silvia Leal</span>
             </button>
           </li>
         </ul>
@@ -271,7 +303,7 @@
                   <img src="assets/img/story-01.webp" alt="" width="110" height="140" decoding="async">
                 </span>
                 <span class="bc-card__num">01</span>
-                <span class="bc-card__title">¿Cómo pasar de gestor a líder? La fórmula de Eva para crecer en su trabajo</span>
+                <span class="bc-card__title">De dirigir RRHH a reinventarse como consultora: María y la importancia de seguir aprendiendo</span>
               </button>
             </li>
             <li class="reveal">
@@ -280,43 +312,55 @@
                   <img src="assets/img/story-02.webp" alt="" width="110" height="140" decoding="async">
                 </span>
                 <span class="bc-card__num">02</span>
-                <span class="bc-card__title">Del miedo a la confianza: el camino de Mario hacia el liderazgo</span>
+                <span class="bc-card__title">¿Qué puede aprender un ingeniero aeroespacial de un diplomático? Esta es la experiencia de Juan</span>
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card" data-index="2" aria-pressed="false">
-                <span class="bc-card__media">
-                  <img src="assets/img/story-03.webp" alt="" width="110" height="140" decoding="async">
+              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="2" disabled aria-disabled="true" tabindex="-1">
+                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
+                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                  </svg>
                 </span>
                 <span class="bc-card__num">03</span>
-                <span class="bc-card__title">De Humanidades a la programación: el ‘bootcamp’ con el que Irene reinventó su carrera</span>
+                <span class="bc-card__title">Próximamente: la historia de Eva</span>
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card" data-index="3" aria-pressed="false">
-                <span class="bc-card__media">
-                  <img src="assets/img/story-04.webp" alt="" width="110" height="140" decoding="async">
+              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="3" disabled aria-disabled="true" tabindex="-1">
+                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
+                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                  </svg>
                 </span>
                 <span class="bc-card__num">04</span>
-                <span class="bc-card__title">Antonio, el arquitecto que cambió los planos por el aula para enseñar de forma diferente</span>
+                <span class="bc-card__title">Próximamente: la historia de María Cudeiro</span>
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card" data-index="4" aria-pressed="false">
-                <span class="bc-card__media">
-                  <img src="assets/img/story-05.webp" alt="" width="110" height="140" decoding="async">
+              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="4" disabled aria-disabled="true" tabindex="-1">
+                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
+                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                  </svg>
                 </span>
                 <span class="bc-card__num">05</span>
-                <span class="bc-card__title">La beca que abrió nuevas puertas en el futuro de Gisela como escritora</span>
+                <span class="bc-card__title">Próximamente: la historia de Susana</span>
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card" data-index="5" aria-pressed="false">
-                <span class="bc-card__media">
-                  <img src="assets/img/story-06.webp" alt="" width="110" height="140" decoding="async">
+              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="5" disabled aria-disabled="true" tabindex="-1">
+                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
+                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
+                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
+                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
+                  </svg>
                 </span>
                 <span class="bc-card__num">06</span>
-                <span class="bc-card__title">Aprender para enseñar mejor: Christa y su viaje hacia la innovación educativa</span>
+                <span class="bc-card__title">Próximamente: la historia de Javier</span>
               </button>
             </li>
           </ul>
