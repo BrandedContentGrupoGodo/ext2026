@@ -39,7 +39,7 @@
       title: "Las competencias que te ayudarán a crecer en tu puesto de trabajo antes de 2030",
       description: "Silvia Leal, experta en tendencias de futuro, aconseja aprovechar la formación online para aprender idiomas, habilidades digitales o inteligencia artificial",
       image: "assets/img/episode-02-silvia.webp",
-      href: "#",
+      href: "https://www.lavanguardia.com/economia/20260929/11625483/competencias-te-ayudaran-crecer-puesto-trabajo-2030-brl.html",
       available: true
     },
     {
@@ -91,7 +91,7 @@
       description: "El Curso Santander | Jóvenes Líderes Iberoamericanos permitió a Juan Garrido salir de su entorno técnico y compartir experiencias con profesionales de otras disciplinas",
       image: "assets/img/story-02.webp",
       href: "#",
-      available: true
+      available: false
     },
     {
       number: "03",
@@ -387,13 +387,40 @@
   const portraits = Array.from(root.querySelectorAll(".bc-portrait"));
 
   portraits.forEach(function (portrait) {
+    const type = portrait.getAttribute("data-type");
+    const targetId = portrait.getAttribute("data-target");
+    const index = parseInt(portrait.getAttribute("data-index"), 10) || 0;
+    const ctrl = type === "story" ? storyCtrl : episodeCtrl;
+
+    if (!ctrl.isAvailable(index)) {
+      portrait.classList.add("is-upcoming");
+      portrait.disabled = true;
+      portrait.setAttribute("aria-disabled", "true");
+      portrait.setAttribute("tabindex", "-1");
+
+      const play = portrait.querySelector(".bc-play");
+      if (play) play.hidden = true;
+
+      if (!portrait.querySelector(".bc-portrait__lock")) {
+        portrait.insertAdjacentHTML(
+          "beforeend",
+          '<span class="bc-portrait__lock" aria-hidden="true">' +
+            '<svg class="bc-lock" viewBox="0 0 24 24" focusable="false">' +
+            '<path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>' +
+            '<rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>' +
+            "</svg>" +
+            "</span>"
+        );
+      }
+
+      const label = portrait.querySelector(".bc-visually-hidden");
+      if (label) {
+        label.textContent = "Contenido próximamente disponible";
+      }
+      return;
+    }
+
     portrait.addEventListener("click", function () {
-      const type = portrait.getAttribute("data-type");
-      const targetId = portrait.getAttribute("data-target");
-      const index = parseInt(portrait.getAttribute("data-index"), 10) || 0;
-
-      const ctrl = type === "story" ? storyCtrl : episodeCtrl;
-
       if (!ctrl.isAvailable(index)) return;
 
       ctrl.select(index, { animate: true });

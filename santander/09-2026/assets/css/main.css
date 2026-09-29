@@ -357,6 +357,43 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
+.bc-santander .bc-portrait.is-upcoming {
+  cursor: default;
+  pointer-events: none;
+}
+.bc-santander .bc-portrait.is-upcoming:hover .bc-portrait__img,
+.bc-santander .bc-portrait.is-upcoming:focus-visible .bc-portrait__img {
+  transform: none;
+  box-shadow: none;
+}
+.bc-santander .bc-portrait.is-upcoming .bc-play {
+  display: none;
+}
+
+/* Candado en retratos bloqueados (misma posición que el play) */
+.bc-santander .bc-portrait__lock {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 3.2vw, 40px);
+  height: clamp(32px, 3.2vw, 40px);
+  color: var(--bc-white);
+  background: rgba(33, 37, 41, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.bc-santander .bc-portrait.is-upcoming .bc-portrait__lock {
+  display: inline-flex;
+}
+.bc-santander .bc-portrait__lock .bc-lock {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 /* Play: círculo transparente, borde blanco, triángulo blanco */
 .bc-santander .bc-play {
   position: absolute;
