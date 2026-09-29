@@ -18,7 +18,7 @@
   const SWAP_MS = 90;
 
   /* Base de imágenes a partir de la URL real de este script
-     (.../assets/js/scripts.js → .../assets/img/).
+     (.../assets/js/scripts.js → .../https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/).
      Funciona en GitHub Pages y cuando el documento es lavanguardia.com. */
   function resolveImgBase() {
     const nodes = document.querySelectorAll("script[src]");
@@ -30,7 +30,7 @@
       match = src.match(/^(.*\/assets\/)js\/scripts\.js(?:\?.*)?(?:#.*)?$/i);
       if (match) return match[1] + "img/";
     }
-    return "assets/img/";
+    return "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/";
   }
 
   const IMG_BASE = resolveImgBase();
@@ -44,7 +44,7 @@
   /* ----------------------------------------------------------------------
      DATOS
      Estados de publicación editables aquí (available: true/false).
-     Rutas de imagen relativas a assets/img/; se resuelven con IMG_BASE.
+     Rutas de imagen relativas a https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/; se resuelven con IMG_BASE.
      ---------------------------------------------------------------------- */
 
   const episodes = [
@@ -52,7 +52,7 @@
       number: "01",
       title: "El futuro ya está aquí: cómo el 'reskilling' o reciclaje profesional ayuda a adaptarse a la era de la IA",
       description: "Silvia Leal aconseja identificar las tareas que la inteligencia artificial ya está transformando, aprender nuevas herramientas y apostar por la formación continua.",
-      image: "assets/img/episode-01-silvia.webp",
+      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/episode-01-silvia.webp",
       href: "https://www.lavanguardia.com/economia/20260915/11624779/futuro-esta-como-reskilling-reciclaje-profesional-ayuda-adaptarse-inteligencia-artificial-brl.html",
       available: true
     },
@@ -60,7 +60,7 @@
       number: "02",
       title: "Las competencias que te ayudarán a crecer en tu puesto de trabajo antes de 2030",
       description: "Silvia Leal, experta en tendencias de futuro, aconseja aprovechar la formación online para aprender idiomas, habilidades digitales o inteligencia artificial",
-      image: "assets/img/episode-02-silvia.webp",
+      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/episode-02-silvia.webp",
       href: "https://www.lavanguardia.com/economia/20260929/11625483/competencias-te-ayudaran-crecer-puesto-trabajo-2030-brl.html",
       available: true
     },
@@ -103,7 +103,7 @@
       number: "01",
       title: "De dirigir RRHH a reinventarse como consultora: María y la importancia de seguir aprendiendo",
       description: "María es un ejemplo de cómo el aprendizaje constante permite rediseñar la propia carrera profesional ante el cambio de paradigma actual",
-      image: "assets/img/story-01.webp",
+      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/story-01.webp",
       href: "https://www.lavanguardia.com/vida/20260922/11635295/dirigir-recursos-humanos-reinventarse-consultora-maria-llosent-importancia-seguir-aprendiendo-brl.html",
       available: true
     },
@@ -111,7 +111,7 @@
       number: "02",
       title: "¿Qué puede aprender un ingeniero aeroespacial de un diplomático? Esta es la experiencia de Juan",
       description: "El Curso Santander | Jóvenes Líderes Iberoamericanos permitió a Juan Garrido salir de su entorno técnico y compartir experiencias con profesionales de otras disciplinas",
-      image: "assets/img/story-02.webp",
+      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/story-02.webp",
       href: "#",
       available: false
     },
@@ -119,7 +119,7 @@
       number: "03",
       title: "Próximamente: la historia de Eva",
       description: "",
-      image: "assets/img/story-03.webp",
+      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/story-03.webp",
       href: "#",
       available: false
     },

@@ -927,6 +927,7 @@
 .bc-santander .bc-closing {
   padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
   text-align: center;
+  background-color: var(--bc-white);
 }
 .bc-santander .bc-logo {
   display: inline-block;
