@@ -10,8 +10,6 @@
 
   if (!root) return;
 
-  console.log("Santander Hub inicializado correctamente.");
-
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
@@ -19,10 +17,34 @@
   const UPCOMING_LABEL = "PRÓXIMAMENTE";
   const SWAP_MS = 90;
 
+  /* Base de imágenes a partir de la URL real de este script
+     (.../assets/js/scripts.js → .../assets/img/).
+     Funciona en GitHub Pages y cuando el documento es lavanguardia.com. */
+  function resolveImgBase() {
+    const nodes = document.querySelectorAll("script[src]");
+    let i;
+    let src;
+    let match;
+    for (i = 0; i < nodes.length; i++) {
+      src = nodes[i].src || "";
+      match = src.match(/^(.*\/assets\/)js\/scripts\.js(?:\?.*)?(?:#.*)?$/i);
+      if (match) return match[1] + "img/";
+    }
+    return "assets/img/";
+  }
+
+  const IMG_BASE = resolveImgBase();
+
+  function imgUrl(path) {
+    if (!path) return null;
+    if (/^https?:\/\//i.test(path)) return path;
+    return IMG_BASE + String(path).replace(/^.*\//, "");
+  }
+
   /* ----------------------------------------------------------------------
      DATOS
      Estados de publicación editables aquí (available: true/false).
-     `href` sigue como placeholder hasta URLs reales de lavanguardia.com.
+     Rutas de imagen relativas a assets/img/; se resuelven con IMG_BASE.
      ---------------------------------------------------------------------- */
 
   const episodes = [
@@ -126,6 +148,13 @@
       available: false
     }
   ];
+
+  episodes.forEach(function (item) {
+    item.image = imgUrl(item.image);
+  });
+  stories.forEach(function (item) {
+    item.image = imgUrl(item.image);
+  });
 
   /* ----------------------------------------------------------------------
      Microfade al cambiar contenido del destacado (episodios / historias).
