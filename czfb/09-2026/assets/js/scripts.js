@@ -2,18 +2,10 @@
   "use strict";
 
   /**
-   * ========================================================================
-   * BLOQUEO DE PUBLICACIÓN — Capítulo 02
-   * ------------------------------------------------------------------------
-   * Punto único para la URL definitiva del capítulo 02.
-   * Provisional: "#" — la tarjeta se comporta como disponible (enlace,
-   * hover, foco, cursor), pero la navegación se bloquea para no saltar
-   * al inicio. Sustituir "#" por la URL absoluta confirmada antes del
-   * lanzamiento; entonces navegará con normalidad.
-   * No mostrar este aviso al lector.
-   * ========================================================================
+   * Capítulo 02 — URL definitiva (mantener coherente con el href del HTML).
    */
-  var BC_CZFB_CHAPTER_02_URL = "#";
+  var BC_CZFB_CHAPTER_02_URL =
+    "https://www.lavanguardia.com/dinero/20261007/11649354/nuevas-profesiones-abren-paso-industria-4-0-oficios-nueva-industria-brl.html";
 
   function boot() {
     var root = document.querySelector(".bc-czfb");
@@ -21,45 +13,17 @@
     if (root.getAttribute("data-bc-czfb-init") === "1") return;
     root.setAttribute("data-bc-czfb-init", "1");
 
-    enhanceChapter02(root);
+    syncChapter02(root);
     initMotion(root);
     initSmoothScroll(root);
   }
 
-  function enhanceChapter02(root) {
-    var card = root.querySelector(".bc-czfb-chapter--cap-02");
-    if (!card) return;
-
+  function syncChapter02(root) {
+    var link = root.querySelector(".bc-czfb-chapter--cap-02 .bc-czfb-chapter__link");
+    if (!link) return;
     var url = typeof BC_CZFB_CHAPTER_02_URL === "string" ? BC_CZFB_CHAPTER_02_URL.trim() : "";
-    if (!url) {
-      card.classList.add("bc-czfb-chapter--awaiting-url");
-      return;
-    }
-
-    card.classList.remove("bc-czfb-chapter--awaiting-url");
-
-    var surface = card.querySelector(".bc-czfb-chapter__surface");
-    if (!surface) return;
-
-    var link = document.createElement("a");
-    link.className = "bc-czfb-chapter__link";
-    link.href = url;
-    link.setAttribute(
-      "aria-labelledby",
-      "bc-czfb-cap-02-label bc-czfb-cap-02-title bc-czfb-cap-02-cta"
-    );
-
-    while (surface.firstChild) {
-      link.appendChild(surface.firstChild);
-    }
-
-    surface.parentNode.replaceChild(link, surface);
-
-    /* Provisional "#": evita salto al inicio; URL real navega normal */
-    if (url === "#") {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-      });
+    if (url) {
+      link.setAttribute("href", url);
     }
   }
 
