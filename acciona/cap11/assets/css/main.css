@@ -1,0 +1,433 @@
+/* Código Cero — ACCIONA capítulo 11
+   Estilos limitados al contenedor .bc-acciona */
+
+.bc-acciona {
+  --acciona-white-color: #fff;
+  --acciona-text-color-dark: #24281b;
+  --acciona-accent-color: #fc0000;
+  --acciona-light-gray-color: #f4f3f0;
+  --acciona-line-gray-color: #e4e1d9;
+  --acciona-font-sans: "Inter", sans-serif;
+  --acciona-quote-meta: #24281b9e;
+  --acciona-pad-x: clamp(24px, 6vw, 64px);
+  --acciona-block-gap: 44px;
+  color: var(--acciona-text-color-dark);
+  background-color: var(--acciona-white-color);
+  font-family: var(--acciona-font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.bc-acciona *,
+.bc-acciona *::before,
+.bc-acciona *::after {
+  box-sizing: border-box;
+}
+
+.bc-acciona img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bc-acciona a {
+  color: inherit;
+}
+
+.bc-acciona__skip {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--acciona-accent-color);
+  color: var(--acciona-white-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 3;
+}
+
+.bc-acciona__skip:focus {
+  left: 12px;
+  top: 12px;
+}
+
+.bc-acciona a:focus-visible {
+  outline: 3px solid var(--acciona-accent-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Navegación propia. Sticky respecto al scroll de la página;
+   el fragmento de Xalok deja visible el article para que no quede atrapada. */
+.bc-acciona__nav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: clamp(10px, 3vw, 14px) clamp(20px, 5vw, 30px);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.bc-acciona__nav-inner {
+  max-width: 1400px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.bc-acciona__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--acciona-text-color-dark);
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.bc-acciona__brand:hover {
+  opacity: 0.7;
+}
+
+.bc-acciona__brand-icon {
+  flex-shrink: 0;
+  width: clamp(16px, 2.5vw, 18px);
+  height: clamp(16px, 2.5vw, 18px);
+}
+
+.bc-acciona__partner {
+  color: var(--acciona-accent-color);
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid var(--acciona-accent-color);
+  padding-bottom: 4px;
+}
+
+.bc-acciona__partner:hover {
+  opacity: 0.7;
+}
+
+.bc-acciona__hero,
+.bc-acciona__prose,
+.bc-acciona__figure,
+.bc-acciona__infographic,
+.bc-acciona__logo {
+  padding-inline: var(--acciona-pad-x);
+}
+
+.bc-acciona__hero {
+  padding-top: clamp(28px, 4vw, 40px);
+}
+
+/* Un solo margen entre bloques. Los márgenes verticales contiguos no se acumulan. */
+.bc-acciona main > * + * {
+  margin-top: var(--acciona-block-gap);
+}
+
+.bc-acciona__hero-inner,
+.bc-acciona__prose-inner,
+.bc-acciona__infographic-inner {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.bc-acciona__hero-inner {
+  max-width: 1340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-acciona__title {
+  margin: 0 0 clamp(20px, 2.4vw, 28px);
+  max-width: min(980px, 100%);
+  min-width: 0;
+  color: var(--acciona-text-color-dark);
+  font-family: var(--acciona-font-sans);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bc-acciona__video {
+  width: 100%;
+  margin: 0 0 clamp(24px, 4vw, 32px);
+}
+
+.bc-acciona__video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: var(--acciona-light-gray-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.bc-acciona__video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+}
+
+.bc-acciona__video-note {
+  margin: 0;
+  padding: clamp(16px, 3vw, 24px);
+  color: var(--acciona-text-color-dark);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.bc-acciona__lead {
+  margin: 0;
+  max-width: 90%;
+  color: var(--acciona-text-color-dark);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.bc-acciona__rule {
+  width: 100%;
+  height: 2px;
+  margin-top: clamp(20px, 3vw, 28px);
+  border: 0;
+  border-radius: 2px;
+  background-color: var(--acciona-accent-color);
+}
+
+.bc-acciona__prose-inner {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.bc-acciona__prose p,
+.bc-acciona__heading {
+  margin: 0;
+  color: var(--acciona-text-color-dark);
+  font-family: var(--acciona-font-sans);
+}
+
+.bc-acciona__prose p {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.bc-acciona__prose i {
+  font-style: italic;
+}
+
+.bc-acciona__heading {
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bc-acciona__quote {
+  margin: 0 clamp(24px, 6vw, 64px);
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 4vw, 40px);
+  background-color: var(--acciona-light-gray-color);
+  text-align: center;
+}
+
+.bc-acciona__quote p,
+.bc-acciona__quote footer {
+  max-width: 1200px;
+  margin-inline: auto;
+  font-family: var(--acciona-font-sans);
+}
+
+.bc-acciona__quote p {
+  margin-bottom: clamp(10px, 3vw, 12px);
+  color: var(--acciona-accent-color);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bc-acciona__quote footer {
+  color: var(--acciona-quote-meta);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.bc-acciona__figure {
+  margin: 0;
+}
+
+.bc-acciona__photo {
+  display: block;
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.bc-acciona__infographic-inner {
+  max-width: 1100px;
+}
+
+.bc-acciona__infographic-title {
+  margin: 0 0 clamp(16px, 2.5vw, 24px);
+  color: var(--acciona-text-color-dark);
+  font-family: var(--acciona-font-sans);
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bc-acciona__infographic-frame {
+  display: block;
+}
+
+.bc-acciona__infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+}
+
+.bc-acciona__logo {
+  padding-bottom: clamp(20px, 2.5vw, 28px);
+  border-top: 1px solid var(--acciona-line-gray-color);
+  text-align: center;
+}
+
+.bc-acciona__logo a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.bc-acciona__logo img {
+  width: min(210px, 70vw);
+  height: auto;
+}
+
+.bc-acciona__logo a:hover {
+  opacity: 0.85;
+}
+
+.bc-acciona__credits {
+  margin: 0;
+  padding: 20px;
+  background-color: var(--acciona-light-gray-color);
+  color: #24281b99;
+  font-family: var(--acciona-font-sans);
+  font-size: 0.9em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.bc-acciona__credits p {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .bc-acciona__title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bc-acciona {
+    --acciona-block-gap: 30px;
+  }
+
+  .bc-acciona__nav {
+    padding: 16px 20px;
+  }
+
+  .bc-acciona__nav-inner,
+  .bc-acciona__brand {
+    gap: 12px;
+  }
+
+  .bc-acciona__lead {
+    max-width: 95%;
+  }
+
+  .bc-acciona__video-frame,
+  .bc-acciona__photo {
+    border-radius: 12px;
+  }
+
+  .bc-acciona__quote {
+    margin-inline: 16px;
+  }
+
+  /* Cada WebP vertical lleva el título a una altura distinta.
+     El desplazamiento es un porcentaje del ancho y solo recorta esa franja. */
+  .bc-acciona__infographic-frame {
+    overflow: hidden;
+  }
+
+  .bc-acciona__infographic-frame--obra img {
+    margin-top: -30.625%;
+  }
+
+  .bc-acciona__infographic-frame--claves img {
+    margin-top: -38.125%;
+  }
+}
+
+@media (max-width: 540px) {
+  .bc-acciona {
+    --acciona-pad-x: 16px;
+    --acciona-block-gap: 30px;
+  }
+
+  .bc-acciona__nav {
+    padding: 12px 16px;
+  }
+
+  .bc-acciona__title {
+    margin-bottom: 24px;
+  }
+
+  .bc-acciona__video-frame,
+  .bc-acciona__photo {
+    border-radius: 8px;
+  }
+
+  .bc-acciona__rule {
+    height: 3px;
+    margin-top: 20px;
+  }
+
+  .bc-acciona__quote {
+    padding: 22px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-acciona *,
+  .bc-acciona *::before,
+  .bc-acciona *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
