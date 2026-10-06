@@ -18,7 +18,7 @@
   const SWAP_MS = 90;
 
   /* Base de imágenes a partir de la URL real de este script
-     (.../assets/js/scripts.js → .../https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/).
+     (.../assets/js/scripts.js → .../assets/img/).
      Funciona en GitHub Pages y cuando el documento es lavanguardia.com. */
   function resolveImgBase() {
     const nodes = document.querySelectorAll("script[src]");
@@ -30,7 +30,7 @@
       match = src.match(/^(.*\/assets\/)js\/scripts\.js(?:\?.*)?(?:#.*)?$/i);
       if (match) return match[1] + "img/";
     }
-    return "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/";
+    return "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/";
   }
 
   const IMG_BASE = resolveImgBase();
@@ -44,7 +44,7 @@
   /* ----------------------------------------------------------------------
      DATOS
      Estados de publicación editables aquí (available: true/false).
-     Rutas de imagen relativas a https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/; se resuelven con IMG_BASE.
+     Rutas de imagen relativas a assets/img/; se resuelven con IMG_BASE.
      ---------------------------------------------------------------------- */
 
   const episodes = [
@@ -112,8 +112,8 @@
       title: "¿Qué puede aprender un ingeniero aeroespacial de un diplomático? Esta es la experiencia de Juan",
       description: "El Curso Santander | Jóvenes Líderes Iberoamericanos permitió a Juan Garrido salir de su entorno técnico y compartir experiencias con profesionales de otras disciplinas",
       image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/story-02.webp",
-      href: "#",
-      available: false
+      href: "https://www.lavanguardia.com/economia/20261006/11649440/que-aprender-ingeniero-aeroespacial-diplomatico-experiencia-juan-garrido-brl.html",
+      available: true
     },
     {
       number: "03",
@@ -314,6 +314,37 @@
       }
 
       if (item && item.available) {
+        /* Normalizar card publicada (también si el HTML venía bloqueado). */
+        card.classList.remove("is-upcoming");
+        card.disabled = false;
+        card.removeAttribute("aria-disabled");
+        card.removeAttribute("tabindex");
+        if (!card.hasAttribute("aria-pressed")) {
+          card.setAttribute("aria-pressed", "false");
+        }
+
+        const lockBadge = card.querySelector(".bc-card__lock");
+        if (lockBadge) lockBadge.remove();
+
+        if (media && media.classList.contains("bc-card__media--locked")) {
+          media.classList.remove("bc-card__media--locked");
+          media.removeAttribute("aria-hidden");
+          const lockSvg = media.querySelector(".bc-lock");
+          if (lockSvg) lockSvg.remove();
+          if (item.image) {
+            let img = media.querySelector("img");
+            if (!img) {
+              img = document.createElement("img");
+              img.alt = "";
+              img.width = 110;
+              img.height = 140;
+              img.decoding = "async";
+              media.appendChild(img);
+            }
+            img.src = item.image;
+          }
+        }
+
         status.textContent = "";
         status.hidden = true;
         card.addEventListener("click", function () {
