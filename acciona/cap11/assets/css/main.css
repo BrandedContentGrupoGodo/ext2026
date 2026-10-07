@@ -8,7 +8,6 @@
   --acciona-light-gray-color: #f4f3f0;
   --acciona-line-gray-color: #e4e1d9;
   --acciona-font-sans: "Inter", sans-serif;
-  --acciona-quote-meta: #24281b9e;
   --acciona-pad-x: clamp(24px, 6vw, 64px);
   --acciona-block-gap: 44px;
   color: var(--acciona-text-color-dark);
@@ -247,14 +246,14 @@
   text-align: center;
 }
 
-.bc-acciona__quote p,
-.bc-acciona__quote footer {
+.bc-acciona__quote > p:not(.bc-acciona__attribution),
+.bc-acciona__quote .bc-acciona__attribution {
   max-width: 1200px;
   margin-inline: auto;
   font-family: var(--acciona-font-sans);
 }
 
-.bc-acciona__quote p {
+.bc-acciona__quote > p:not(.bc-acciona__attribution) {
   margin-bottom: clamp(10px, 3vw, 12px);
   color: var(--acciona-accent-color);
   font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -262,11 +261,33 @@
   line-height: 1.3;
 }
 
-.bc-acciona__quote footer {
-  color: var(--acciona-quote-meta);
+/* También cubre el footer genérico por si el CMS aún tiene el HTML anterior. */
+.bc-acciona__quote .bc-acciona__attribution,
+.bc-acciona__quote > footer {
+  margin-block: 0;
+  margin-inline: auto;
+  padding: 0;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  color: #24281b;
+  font-family: var(--acciona-font-sans);
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 400;
   font-style: normal;
   line-height: 1.6;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+}
+
+.bc-acciona__quote .bc-acciona__attribution::before,
+.bc-acciona__quote .bc-acciona__attribution::after,
+.bc-acciona__quote > footer::before,
+.bc-acciona__quote > footer::after {
+  content: none;
+  background-color: transparent;
+  background-image: none;
 }
 
 .bc-acciona__figure {
