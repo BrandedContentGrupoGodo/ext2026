@@ -241,7 +241,8 @@
 
 .bc-acciona__quote {
   margin: 0 clamp(24px, 6vw, 64px);
-  padding: clamp(24px, 3vw, 36px) clamp(20px, 4vw, 40px);
+  padding-block: 40px;
+  padding-inline: clamp(20px, 4vw, 40px);
   background-color: var(--acciona-light-gray-color);
   text-align: center;
 }
@@ -254,6 +255,7 @@
 }
 
 .bc-acciona__quote > p:not(.bc-acciona__attribution) {
+  margin-top: 0;
   margin-bottom: clamp(10px, 3vw, 12px);
   color: var(--acciona-accent-color);
   font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -397,6 +399,7 @@
 
   .bc-acciona__quote {
     margin-inline: 16px;
+    padding-block: 28px;
   }
 
   /* Cada WebP vertical lleva el título a una altura distinta.
@@ -439,7 +442,7 @@
   }
 
   .bc-acciona__quote {
-    padding: 22px 16px;
+    padding-inline: 16px;
   }
 }
 
