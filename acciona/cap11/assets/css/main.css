@@ -9,6 +9,7 @@
   --acciona-line-gray-color: #e4e1d9;
   --acciona-font-sans: "Inter", sans-serif;
   --acciona-pad-x: clamp(24px, 6vw, 64px);
+  --acciona-nav-offset: 0px;
   --acciona-block-gap: 44px;
   color: var(--acciona-text-color-dark);
   background-color: var(--acciona-white-color);
@@ -60,7 +61,7 @@
    el fragmento de Xalok deja visible el article para que no quede atrapada. */
 .bc-acciona__nav {
   position: sticky;
-  top: 0;
+  top: var(--acciona-nav-offset);
   z-index: 2;
   padding: clamp(10px, 3vw, 14px) clamp(20px, 5vw, 30px);
   background-color: rgba(255, 255, 255, 0.95);
