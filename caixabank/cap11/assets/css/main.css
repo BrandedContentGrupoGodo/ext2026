@@ -1,0 +1,862 @@
+.bc-caixabank {
+  --color-bg: #02060E;
+  --color-text: #ffffff;
+  --font-serif: "Crimson Text", serif;
+  --font-sans: "Albert Sans", sans-serif;
+  --max-width: 1200px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header */
+.header-caixa {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header-caixa .collab {
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 127.075%;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding-top: 1rem;
+}
+
+.nav-caixa {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-caixa .nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.nav-caixa .nav-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Hero */
+.hero {
+  /* ACTUALIZAR CON LA URL FINAL DE LA IMAGEN DE FONDO DE LA CABECERA */
+  background: url("../img/fondo-cabecera.png") no-repeat center/cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "col1 col2";
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  flex: 1;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.hero > :first-child {
+  grid-area: col1;
+}
+
+.hero > :last-child {
+  grid-area: col2;
+}
+
+.hero__image {
+  max-width: 540px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+}
+/*ACTUALIZAR CON EL EFECTO DE LA IMAGEN DE LA CABECERA */
+.blend-hard {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: color;
+}
+/*ACTUALIZAR CON EL EFECTO DE LA IMAGEN DE LA CABECERA */
+.blend-sat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.hero__content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  line-height: 93%;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+  max-width: 530px;
+  opacity: 0;
+}
+
+.hero__cta {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.hero__cta:hover {
+  opacity: 1;
+  color: #25447A;
+}
+
+/* Reportaje */
+#bc-caixabank-reportaje {
+  padding: 5rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.constelacion-extra .logo {
+  margin: 50px auto;
+  max-width: 250px;
+  text-align: center;
+}
+
+/* Social Bar */
+.social-bar {
+  width: 100%;
+  max-width: 100%;
+  min-height: 54px;
+  padding: 0.625rem 1rem;
+  background: #091B2B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.social-bar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.social-bar iframe {
+  display: block;
+  margin: 0;
+  border: none;
+}
+
+.social-bar .twitter-share-button {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.social-bar a img {
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-bar a img:hover {
+  transform: scale(1.1);
+}
+
+.social-bar.is-pending .social-bar__item {
+  pointer-events: none;
+}
+
+/* Video Section */
+.video-section {
+  margin-top: 5rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.video-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border-radius: 7px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.video-wrapper iframe,
+.video-wrapper__poster {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.video-wrapper__poster {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: #000;
+  border-radius: inherit;
+  border: 0;
+  appearance: none;
+}
+
+.video-wrapper__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-wrapper__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  background: rgba(230, 33, 23, 0.92);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.video-wrapper__play::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-35%, -50%);
+  border: 10px solid transparent;
+  border-left: 18px solid #fff;
+}
+
+/* Parrafos */
+.reportaje {
+  padding-top: 3rem;
+}
+
+.parrafos-caixa {
+  max-width: 63ch;
+  margin: 0 auto 25px;
+  padding: 16px 32px;
+  font-weight: 400;
+  line-height: 168.8%;
+  font-size: 18px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Image Quote */
+.image-quote__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.image-quote__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-quote__text {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  max-width: 670px;
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 400;
+  line-height: 93%;
+  letter-spacing: -1px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Gallery */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 4rem auto 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 7px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Cards Section */
+.cards-section {
+  position: relative;
+  padding: 5rem 1rem;
+  background-color: #02060E;
+  overflow: hidden;
+  margin: 3rem 0;
+  text-align: left;
+}
+
+.cards-section__bg img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background-color: #222222;
+  border-radius: 7px;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-1 { margin-top: 50px; }
+.card-2 { margin-top: 0; }
+.card-3 { margin-top: 70px; }
+.card-4 { margin-top: 30px; }
+
+.card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 93%;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 168.8%;
+}
+
+/* Highlight Section */
+.highlight {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.highlight__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.highlight__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 990px;
+  padding: 1rem;
+}
+
+.highlight__content p {
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  padding: 1rem;
+  border-radius: 7px;
+}
+
+/* Image Quote Bottom */
+.image-quote-bottom {
+  margin: 3rem 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.image-quote-bottom__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.image-quote-bottom__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.image-quote-bottom__text {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  max-width: 670px;
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+/* Qualifio: mismas medidas que cap10 */
+.iframeQualifio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0;
+  min-height: 670px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+.iframeQualifio iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 550px;
+  border: 1px solid transparent;
+  padding: 20px;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+}
+
+.iframeQualifio span {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 33px;
+}
+
+/* Constelacion Extra */
+.constelacion-extra {
+  text-align: center;
+  margin: 5rem auto;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.constelacion-extra h3 {
+  font-size: 2.3rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 110%;
+  color: #fff;
+  max-width: 800px;
+  margin: 50px auto 20px;
+}
+
+.constelacion-extra .back-btn {
+  margin: 20px auto;
+  padding: 12px 24px;
+  border-radius: 7px;
+  border: 1px solid #1C3257;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.constelacion-extra .back-btn:hover {
+  background: #25447A;
+}
+
+/* Créditos */
+.authorship-f {
+  color: #888;
+  font-size: 0.9em;
+  text-align: center;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.container-fluid-f {
+  width: calc(100% - 40px);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+button:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.no-show {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__image img,
+  .hero__title {
+    opacity: 1;
+  }
+
+  .hero__cta {
+    opacity: 0.8;
+  }
+
+  #bc-caixabank-reportaje {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Facebook widgets */
+.fb_iframe_widget {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.8rem;
+  color: white;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.fb_iframe_widget iframe {
+  max-width: 100%;
+}
+
+.fb-xfbml-parse-ignore,
+._6a ._6b,
+.fb-share-button {
+  color: white;
+}
+
+.blanco {
+  color: #fff;
+}
+
+.social-bar .blanco {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas: "col1" "col2";
+    text-align: center;
+    padding-top: 0;
+  }
+  
+  .parrafos-caixa {
+    padding: 16px 20px;
+  }
+  
+  .image-quote__wrapper {
+    min-height: 420px;
+  }
+
+  .image-quote__img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .image-quote__text {
+    font-size: 22px;
+    max-width: calc(100% - 2rem);
+    right: 1rem;
+    left: 1rem;
+    top: auto;
+    bottom: 1rem;
+    z-index: 3;
+  }
+  
+  .image-quote__wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(2, 6, 14, 0.9) 0%,
+      rgba(2, 6, 14, 0.45) 40%,
+      transparent 65%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+  
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .cards-section {
+    margin: 0;
+    padding: 3rem 1rem;
+  }
+  
+  .card {
+    height: auto;
+  }
+  
+  .image-quote-bottom__wrapper {
+    min-height: 420px;
+  }
+
+  .image-quote-bottom__img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .image-quote-bottom__text {
+    font-size: 22px;
+    max-width: calc(100% - 2rem);
+    right: 1rem;
+    left: 1rem;
+    top: auto;
+    bottom: 1rem;
+    z-index: 3;
+  }
+
+  .image-quote-bottom__wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(2, 6, 14, 0.9) 0%,
+      rgba(2, 6, 14, 0.45) 40%,
+      transparent 65%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .social-bar {
+    gap: 1rem;
+    padding: 0.625rem 1rem;
+    flex-wrap: nowrap;
+  }
+
+  .iframeQualifio {
+    padding: 0 1rem;
+    min-height: 500px;
+  }
+
+  .constelacion-extra h3 {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+  
+  .video-section {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+  }
+  
+  .parrafos-caixa {
+    padding: 16px 16px;
+    font-size: 16px;
+  }
+  
+  .image-quote__wrapper {
+    min-height: 380px;
+  }
+
+  .image-quote__img {
+    min-height: 380px;
+  }
+
+  .image-quote__text {
+    font-size: 18px;
+    padding: 0.5rem;
+    bottom: 0.75rem;
+  }
+  
+  .image-quote-bottom__wrapper {
+    min-height: 380px;
+  }
+
+  .image-quote-bottom__img {
+    min-height: 380px;
+  }
+
+  .image-quote-bottom__text {
+    font-size: 18px;
+    padding: 0.5rem;
+    bottom: 0.75rem;
+  }
+  
+  .constelacion-extra h3 {
+    font-size: 1.5rem;
+  }
+  
+  .social-bar {
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .iframeQualifio {
+    padding: 0 0.5rem;
+    min-height: 400px;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+  .video-wrapper__poster--pending {
+    background: #8d8d8d;
+    cursor: default;
+  }
+}
