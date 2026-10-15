@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    document.documentElement.classList.add("bc-endesa-js");
+    window.addEventListener("load", function () {
+      var root = document.querySelector(".bc-endesa");
+      if (!root || root.getAttribute("data-bc-endesa-init") !== "1") {
+        document.documentElement.classList.remove("bc-endesa-js");
+      }
+    });
+  </script>
+  <title>Sacando a la luz — Endesa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/scripts.js" defer></script>
+</head>
+<body>
+  <!-- Preview local. Bloque integrable: .bc-endesa -->
+  <div class="bc-endesa">
+
+    <section class="bc-endesa-hero" aria-labelledby="bc-endesa-hero-title">
+      <div class="bc-endesa-hero__media" aria-hidden="true">
+        <video
+          class="bc-endesa-hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          disablepictureinpicture
+          tabindex="-1"
+        >
+          <source src="assets/img/hero-endesa.webm" type="video/webm">
+        </video>
+        <div class="bc-endesa-hero__glow">
+          <canvas class="bc-endesa-hero__light"></canvas>
+        </div>
+        <div class="bc-endesa-hero__veil"></div>
+      </div>
+
+      <div class="bc-endesa-hero__inner">
+        <p class="bc-endesa-hero__eyebrow">En colaboración con Endesa</p>
+        <h1 id="bc-endesa-hero-title" class="bc-endesa-hero__title">
+          <span class="bc-endesa-hero__line">Sacando</span>
+          <span class="bc-endesa-hero__line bc-endesa-hero__line--2">A la luz</span>
+        </h1>
+        <p class="bc-endesa-hero__subtitle">Lo que hay detrás de las historias que nos rodean</p>
+        <a class="bc-endesa-hero__cta" href="#bc-endesa-indice">Ver los capítulos</a>
+      </div>
+    </section>
+
+    <section class="bc-endesa-intro" aria-labelledby="bc-endesa-intro-title">
+      <div class="bc-endesa-intro__inner">
+        <div class="bc-endesa-intro__copy">
+          <h2 id="bc-endesa-intro-title" class="bc-endesa-intro__title bc-endesa-reveal">
+            La energía forma parte de nuestra vida incluso cuando no pensamos en ella
+          </h2>
+          <p class="bc-endesa-intro__text bc-endesa-reveal">
+            Cada día, una extensa red de infraestructuras y personas trabaja detrás de algo tan cotidiano como encender una luz. Sacando a la luz se adentra en cinco realidades complejas para conocer sus protagonistas, comprender sus consecuencias y descubrir aquello que normalmente permanece fuera de nuestra mirada.
+          </p>
+        </div>
+        <div class="bc-endesa-intro__photos">
+          <div class="bc-endesa-intro__photo bc-endesa-reveal">
+            <img src="assets/img/endesa-1.jpg" alt="" width="306" height="494" decoding="async">
+          </div>
+          <div class="bc-endesa-intro__photo bc-endesa-intro__photo--tall bc-endesa-reveal">
+            <img src="assets/img/endesa-2.jpg" alt="" width="305" height="572" decoding="async">
+          </div>
+          <div class="bc-endesa-intro__photo bc-endesa-reveal">
+            <img src="assets/img/endesa-3.jpg" alt="" width="306" height="494" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bc-endesa-story">
+    <nav id="bc-endesa-indice" class="bc-endesa-index" aria-label="Índice de capítulos">
+      <ol class="bc-endesa-index__list">
+        <li>
+          <a class="bc-endesa-index__link" href="#capitulo-01">
+            <span class="bc-endesa-index__num">01</span>
+            <span class="bc-endesa-index__label">Avifauna</span>
+          </a>
+        </li>
+        <li>
+          <a class="bc-endesa-index__link" href="#capitulo-02">
+            <span class="bc-endesa-index__num">02</span>
+            <span class="bc-endesa-index__label">Temporales</span>
+          </a>
+        </li>
+        <li>
+          <a class="bc-endesa-index__link" href="#capitulo-03">
+            <span class="bc-endesa-index__num">03</span>
+            <span class="bc-endesa-index__label">Fraude eléctrico</span>
+          </a>
+        </li>
+        <li>
+          <a class="bc-endesa-index__link" href="#capitulo-04">
+            <span class="bc-endesa-index__num">04</span>
+            <span class="bc-endesa-index__label">Energía nuclear</span>
+          </a>
+        </li>
+        <li>
+          <a class="bc-endesa-index__link" href="#capitulo-05">
+            <span class="bc-endesa-index__num">05</span>
+            <span class="bc-endesa-index__label">Phishing</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <section
+      id="capitulo-01"
+      class="bc-endesa-chapter bc-endesa-chapter--available bc-endesa-chapter--photo"
+      aria-labelledby="bc-endesa-cap-01-title"
+    >
+      <div class="bc-endesa-chapter__media" aria-hidden="true">
+        <img class="bc-endesa-chapter__bg" src="assets/img/cap-1.jpg" alt="" width="1449" height="600" decoding="async">
+        <div class="bc-endesa-chapter__shade"></div>
+      </div>
+      <div class="bc-endesa-chapter__inner">
+        <p class="bc-endesa-chapter__num bc-endesa-reveal" aria-hidden="true">01</p>
+        <div class="bc-endesa-chapter__copy">
+          <p class="bc-endesa-chapter__kicker bc-endesa-reveal">Capítulo 01 · Avifauna</p>
+          <h2 id="bc-endesa-cap-01-title" class="bc-endesa-chapter__title bc-endesa-reveal">Un cielo compartido</h2>
+          <p class="bc-endesa-chapter__text bc-endesa-reveal">
+            Cómo se adaptan las redes de distribución para proteger a las aves y hacer posible la convivencia entre infraestructura y naturaleza.
+          </p>
+          <!-- URL pendiente. Sustituir el span por:
+               <a class="bc-endesa-chapter__cta" href="URL_CAPITULO_01"><span>Descubrir la historia</span>…</a>
+               No usar href="#". -->
+          <span class="bc-endesa-chapter__cta bc-endesa-reveal">
+            <span>Descubrir la historia</span>
+            <svg class="bc-endesa-chapter__cta-icon" viewBox="0 0 14 12" width="14" height="12" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 5.25h9.2L6.4 2.45l.85-.85L11.65 6 7.25 10.4l-.85-.85 2.8-2.8H0z"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="capitulo-02"
+      class="bc-endesa-chapter bc-endesa-chapter--available bc-endesa-chapter--photo"
+      aria-labelledby="bc-endesa-cap-02-title"
+    >
+      <div class="bc-endesa-chapter__media" aria-hidden="true">
+        <img class="bc-endesa-chapter__bg" src="assets/img/cap-2.jpg" alt="" width="1449" height="600" decoding="async">
+        <div class="bc-endesa-chapter__shade"></div>
+      </div>
+      <div class="bc-endesa-chapter__inner">
+        <p class="bc-endesa-chapter__num bc-endesa-reveal" aria-hidden="true">02</p>
+        <div class="bc-endesa-chapter__copy">
+          <p class="bc-endesa-chapter__kicker bc-endesa-reveal">Capítulo 02 · Temporales</p>
+          <h2 id="bc-endesa-cap-02-title" class="bc-endesa-chapter__title bc-endesa-reveal">Los que sostienen la red</h2>
+          <p class="bc-endesa-chapter__text bc-endesa-reveal">
+            Cuando el temporal golpea, una red humana trabaja para recuperar algo cuya importancia solo comprendemos cuando desaparece: la electricidad.
+          </p>
+          <!-- URL pendiente. Sustituir el span por:
+               <a class="bc-endesa-chapter__cta" href="URL_CAPITULO_02"><span>Descubrir la historia</span>…</a>
+               No usar href="#". -->
+          <span class="bc-endesa-chapter__cta bc-endesa-reveal">
+            <span>Descubrir la historia</span>
+            <svg class="bc-endesa-chapter__cta-icon" viewBox="0 0 14 12" width="14" height="12" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 5.25h9.2L6.4 2.45l.85-.85L11.65 6 7.25 10.4l-.85-.85 2.8-2.8H0z"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="capitulo-03"
+      class="bc-endesa-chapter bc-endesa-chapter--pending bc-endesa-chapter--grain"
+      aria-labelledby="bc-endesa-cap-03-title"
+    >
+      <div class="bc-endesa-chapter__media" aria-hidden="true">
+        <img class="bc-endesa-chapter__bg" src="assets/img/cap-bloq.jpg" alt="" width="1449" height="600" decoding="async">
+        <div class="bc-endesa-chapter__shade"></div>
+      </div>
+      <div class="bc-endesa-chapter__inner">
+        <p class="bc-endesa-chapter__num bc-endesa-reveal" aria-hidden="true">03</p>
+        <div class="bc-endesa-chapter__copy">
+          <p class="bc-endesa-chapter__kicker bc-endesa-reveal">Capítulo 03 · Fraude eléctrico</p>
+          <h2 id="bc-endesa-cap-03-title" class="bc-endesa-chapter__title bc-endesa-reveal">Cuando el fraude deja a un barrio a oscuras</h2>
+          <p class="bc-endesa-chapter__text bc-endesa-reveal">
+            Los enganches ilegales asociados a plantaciones de marihuana sobrecargan la red y afectan a la seguridad y la vida cotidiana de comunidades enteras.
+          </p>
+          <p class="bc-endesa-chapter__status bc-endesa-reveal">Próximamente</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="capitulo-04"
+      class="bc-endesa-chapter bc-endesa-chapter--pending bc-endesa-chapter--grain"
+      aria-labelledby="bc-endesa-cap-04-title"
+    >
+      <div class="bc-endesa-chapter__media" aria-hidden="true">
+        <img class="bc-endesa-chapter__bg" src="assets/img/cap-bloq.jpg" alt="" width="1449" height="600" decoding="async">
+        <div class="bc-endesa-chapter__shade"></div>
+      </div>
+      <div class="bc-endesa-chapter__inner">
+        <p class="bc-endesa-chapter__num bc-endesa-reveal" aria-hidden="true">04</p>
+        <div class="bc-endesa-chapter__copy">
+          <p class="bc-endesa-chapter__kicker bc-endesa-reveal">Capítulo 04 · Centrales nucleares</p>
+          <h2 id="bc-endesa-cap-04-title" class="bc-endesa-chapter__title bc-endesa-reveal">El futuro de una fuente de energía</h2>
+          <p class="bc-endesa-chapter__text bc-endesa-reveal">
+            ¿Qué implicaciones tendría el cierre progresivo de las centrales nucleares para el sistema energético y la economía española?
+          </p>
+          <p class="bc-endesa-chapter__status bc-endesa-reveal">Próximamente</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="capitulo-05"
+      class="bc-endesa-chapter bc-endesa-chapter--pending bc-endesa-chapter--grain"
+      aria-labelledby="bc-endesa-cap-05-title"
+    >
+      <div class="bc-endesa-chapter__media" aria-hidden="true">
+        <img class="bc-endesa-chapter__bg" src="assets/img/cap-bloq.jpg" alt="" width="1449" height="600" decoding="async">
+        <div class="bc-endesa-chapter__shade"></div>
+      </div>
+      <div class="bc-endesa-chapter__inner">
+        <p class="bc-endesa-chapter__num bc-endesa-reveal" aria-hidden="true">05</p>
+        <div class="bc-endesa-chapter__copy">
+          <p class="bc-endesa-chapter__kicker bc-endesa-reveal">Capítulo 05 · Phishing</p>
+          <h2 id="bc-endesa-cap-05-title" class="bc-endesa-chapter__title bc-endesa-reveal">El engaño detrás de la pantalla</h2>
+          <p class="bc-endesa-chapter__text bc-endesa-reveal">
+            Un experto nos ayuda a reconocer las señales del phishing y explica cómo protegernos frente a uno de los fraudes digitales más extendidos.
+          </p>
+          <p class="bc-endesa-chapter__status bc-endesa-reveal">Próximamente</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="bc-endesa-close" aria-labelledby="bc-endesa-close-title">
+      <div class="bc-endesa-close__inner">
+        <div class="bc-endesa-close__lead">
+          <!-- Lectura visual del canvas, pendiente de contraste en el inspector de Figma. -->
+          <h2 id="bc-endesa-close-title" class="bc-endesa-close__title bc-endesa-reveal">
+            En Endesa sabemos que detrás de cada dato hay personas, decisiones difíciles e historias que rara vez salen a la luz. Por eso hemos querido contarlas tal y como son
+          </h2>
+          <p class="bc-endesa-close__text bc-endesa-reveal">
+            Son varias las personas a las que hemos entrevistado para este proyecto. Con el propósito de aportar una mirada diversa sobre cada uno de los temas, hemos hablado con ingenieros, técnicos, alcaldes y responsables de distintos ámbitos para que nos ayuden a arrojar luz sobre temas complejos y sensibles de cara a las personas.
+          </p>
+          <p class="bc-endesa-close__text bc-endesa-reveal">
+            Gracias a todos los que han formado parte de este proceso, por su generosidad y el conocimiento que nos han transmitido.
+          </p>
+        </div>
+        <div class="bc-endesa-close__quotes">
+          <figure class="bc-endesa-quote">
+            <blockquote class="bc-endesa-quote__text">
+              <p>“Cuando fuimos a la universidad no imaginábamos volver al pueblo”</p>
+            </blockquote>
+            <figcaption class="bc-endesa-quote__by">Ibtissam Mahjouba y Oxana Bonjorn, ingenieras trabajadoras en la central nuclear de Ascó</figcaption>
+          </figure>
+          <figure class="bc-endesa-quote bc-endesa-quote--right">
+            <blockquote class="bc-endesa-quote__text">
+              <p>“Aquí en España viven especies que casi han desaparecido de otros países del continente”</p>
+            </blockquote>
+            <figcaption class="bc-endesa-quote__by">Jordi Prieto, técnico de SEO/Birdlife</figcaption>
+          </figure>
+          <figure class="bc-endesa-quote">
+            <blockquote class="bc-endesa-quote__text">
+              <p>“La electricidad es el pilar del negocio de la marihuana en España”</p>
+            </blockquote>
+            <figcaption class="bc-endesa-quote__by">Ramon Chacón, jefe de la Comisaría General de Investigación Criminal de los Mossos</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bc-endesa-credits">
+      <p class="bc-endesa-credits__text">
+        <span class="bc-endesa-credits__unit">Coordinación: Helena Moreno<span class="bc-endesa-credits__sep" aria-hidden="true"> | </span></span>
+        <span class="bc-endesa-credits__unit">Diseño y maquetación: Alejandra Santander<span class="bc-endesa-credits__sep" aria-hidden="true"> | </span></span>
+        <span class="bc-endesa-credits__unit">Producción audiovisual: Ramen Studio.<span class="bc-endesa-credits__sep" aria-hidden="true"> | </span></span>
+        <span class="bc-endesa-credits__unit">Un proyecto de Brandslab. Godó Nexus.</span>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
