@@ -36,6 +36,7 @@
   --bc-endesa-shift: 1.15rem;
   --bc-endesa-sticky-offset: 0px;
   --bc-endesa-index-space: 3.25rem;
+  --bc-endesa-anchor-offset: calc(var(--bc-endesa-sticky-offset) + var(--bc-endesa-index-space));
 
   box-sizing: border-box;
   width: 100%;
@@ -61,7 +62,9 @@
 .bc-endesa p,
 .bc-endesa ol,
 .bc-endesa blockquote,
-.bc-endesa figure {
+.bc-endesa figure,
+.bc-endesa figcaption,
+.bc-endesa video {
   margin: 0;
 }
 
@@ -294,6 +297,10 @@ html.bc-endesa-js .bc-endesa:not(.is-canvas-failed) .bc-endesa-hero__title {
   line-height: 1.55;
 }
 
+.bc-endesa .bc-endesa-intro__text em {
+  font-style: italic;
+}
+
 .bc-endesa .bc-endesa-intro__photos {
   display: flex;
   align-items: center;
@@ -392,7 +399,7 @@ html.bc-endesa-js .bc-endesa:not(.is-canvas-failed) .bc-endesa-hero__title {
   align-items: center;
   min-height: clamp(26rem, 42vw, 38rem);
   color: #fff;
-  scroll-margin-top: calc(var(--bc-endesa-sticky-offset) + var(--bc-endesa-index-space));
+  scroll-margin-top: var(--bc-endesa-anchor-offset);
 }
 
 .bc-endesa .bc-endesa-chapter__media {
@@ -991,32 +998,4 @@ html.bc-endesa-js .bc-endesa:not(.is-canvas-failed) .bc-endesa-hero__title {
   }
 }
 
-/*
-  Neutraliza los wrappers de Xalok solo cuando el artículo contiene este hub.
-  El !important compite con el margen y el padding que Xalok reaplica al contenedor.
-  No depende de un id de noticia. En el preview local no hay article.visual__story--free,
-  así que estas reglas no afectan a la maqueta.
-*/
-article.visual__story--free:has(.bc-endesa) {
-  overflow: visible !important;
-}
-
-article.visual__story--free:has(.bc-endesa) .container-fluid {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-article.visual__story--free:has(.bc-endesa) .row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-article.visual__story--free:has(.bc-endesa) .visual-article-free.col-12 {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-article.visual__story--free:has(.bc-endesa) .content-free-html {
-  margin: 0 !important;
-}
 

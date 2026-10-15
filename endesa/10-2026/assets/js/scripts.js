@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  var anchorHoldId = "";
+  var anchorHoldTimer = 0;
+
   function boot() {
     var root = document.querySelector(".bc-endesa");
     if (!root) return;
@@ -25,6 +28,7 @@
     }
 
     initIndex(root);
+    initSmoothAnchors(root);
     initQuoteStage(root);
 
     if (reduceQuery) {
@@ -543,6 +547,83 @@
     }
   }
 
+  function initSmoothAnchors(root) {
+    var links = root.querySelectorAll("a.bc-endesa-hero__cta, a.bc-endesa-index__link");
+    var i;
+
+    function reduced() {
+      return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function releaseHold() {
+      anchorHoldId = "";
+      window.clearTimeout(anchorHoldTimer);
+      if (typeof root._bcEndesaSyncIndex === "function") root._bcEndesaSyncIndex();
+    }
+
+    function watchSettle() {
+      var last = window.pageYOffset || window.scrollY || 0;
+      var stable = 0;
+      var ticks = 0;
+
+      function step() {
+        var y = window.pageYOffset || window.scrollY || 0;
+        ticks += 1;
+        if (Math.abs(y - last) < 1) stable += 1;
+        else stable = 0;
+        last = y;
+        if (stable >= 3 || ticks > 60) {
+          releaseHold();
+          return;
+        }
+        anchorHoldTimer = window.setTimeout(step, 70);
+      }
+
+      window.clearTimeout(anchorHoldTimer);
+      anchorHoldTimer = window.setTimeout(step, 70);
+    }
+
+    function onUserMove() {
+      if (anchorHoldId) releaseHold();
+    }
+
+    window.addEventListener("wheel", onUserMove, { passive: true });
+    window.addEventListener("touchstart", onUserMove, { passive: true });
+    window.addEventListener("keydown", function (event) {
+      var key = event.key;
+      if (!anchorHoldId) return;
+      if (key === "ArrowDown" || key === "ArrowUp" || key === "PageDown" || key === "PageUp" || key === "Home" || key === "End" || key === " ") {
+        releaseHold();
+      }
+    });
+
+    for (i = 0; i < links.length; i += 1) {
+      links[i].addEventListener("click", function (event) {
+        var href = this.getAttribute("href") || "";
+        var id;
+        var target;
+        if (href.charAt(0) !== "#") return;
+        id = href.slice(1);
+        target = document.getElementById(id);
+        if (!target || !root.contains(target)) return;
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior: reduced() ? "auto" : "smooth",
+          block: "start"
+        });
+        if (window.history && typeof window.history.pushState === "function") {
+          window.history.pushState(null, "", href);
+        }
+        if (id.indexOf("capitulo-") === 0) {
+          anchorHoldId = id;
+          if (typeof root._bcEndesaSyncIndex === "function") root._bcEndesaSyncIndex();
+          if (reduced()) releaseHold();
+          else watchSettle();
+        }
+      });
+    }
+  }
+
   function initIndex(root) {
     var links = root.querySelectorAll(".bc-endesa-index__link");
     var chapters = root.querySelectorAll(".bc-endesa-chapter");
@@ -623,9 +704,16 @@
     }
 
     function sync() {
-      var current = chapterInFocus();
+      var current;
+      if (anchorHoldId) {
+        setCurrent(anchorHoldId);
+        return;
+      }
+      current = chapterInFocus();
       setCurrent(current ? current.id : "");
     }
+
+    root._bcEndesaSyncIndex = sync;
 
     var observer;
     try {

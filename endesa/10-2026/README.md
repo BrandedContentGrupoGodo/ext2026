@@ -3,7 +3,7 @@
 Landing de branded content para La Vanguardia, en colaboración con Endesa.
 Preview prevista en GitHub Pages. Integración posterior en Xalok.
 
-Fase 2: el preview está en `index.html`, `assets/css/main.css` y `assets/js/scripts.js`. Todavía no hay fragmento de Xalok.
+Preview publicado en GitHub Pages. El fragmento de Xalok está preparado en local y todavía no se ha pegado en el CMS.
 
 ## Objetivo
 
@@ -43,10 +43,10 @@ Reutilizan `fira/09-2026`, `czfb/09-2026` y `santander/09-2026`, más `.cursor/r
 - HTML, CSS y JavaScript vanilla. Sin React, Tailwind, GSAP, npm ni otras librerías salvo autorización.
 - Root único: `.bc-endesa`.
 - Preview: `index.html`, `assets/css/main.css`, `assets/js/scripts.js`, rutas relativas.
-- Fragmento Xalok (cuando toque): solo el bloque, con CSS, JS, fuentes y medios en URLs absolutas de GitHub Pages. Base prevista: `https://brandedcontentgrupogodo.github.io/ext2026/endesa/10-2026/`.
+- Fragmento Xalok: `endesa/10-2026/.cursor/xalok-borrador.html` (local, no versionado). CSS, JS, fuentes y medios en URLs absolutas. Base: `https://brandedcontentgrupogodo.github.io/ext2026/endesa/10-2026/`.
 - Selectores, variables (`--bc-endesa-`), clases, ids y keyframes bajo el root. El reset de `box-sizing` también.
 - Sin estilos sobre `html`, `body` o `:root`.
-- El margen de Xalok se anula solo dentro de `article.visual__story--free:has(.bc-endesa)`. Esas reglas están al final de `main.css`, con `!important` limitado a ese artículo. En el preview no existe ese `article`, así que no se aplican. No usan id de noticia ni `data-wf-page-id`.
+- El margen y el padding de Xalok se anulan solo dentro de `article.visual__story--free:has(.bc-endesa)`, al principio del fragmento, no en el CSS del preview. `overflow: visible !important` va en ese `article` para que el sticky no lo rompa un wrapper con recorte. No usan id de noticia ni `data-wf-page-id`.
 - JavaScript en IIFE. Consultas desde el root. Si no hay root, salir. Guard `data-bc-endesa-init`. Arranque también si el script carga después de `DOMContentLoaded`.
 - Reveals con `IntersectionObserver`, contenido visible si JS falla, `prefers-reduced-motion`, y salvaguarda de scroll rápido / anclas. Sin listeners de scroll continuos para un reveal simple.
 - Capítulos publicados: un enlace real por capítulo, usable sin JS. Pendientes: sin `<a>`, sin `href="#"` y sin control interactivo.
@@ -66,7 +66,7 @@ endesa/10-2026/
     img/                  fotos, fondos de capítulo y hero-endesa.webm
 ```
 
-Cuando haya fragmento, irá en `endesa/10-2026/.cursor/xalok-borrador.html` (local). La auditoría seguirá el patrón de `xalok-audit` de Fira, CZFB y Santander.
+El fragmento está en `endesa/10-2026/.cursor/xalok-borrador.html`. La auditoría estática está en `endesa/10-2026/.cursor/commands/xalok-audit.md`.
 
 ## Qué entra en el fragmento
 
@@ -77,7 +77,7 @@ Orden leído en el frame, de arriba a abajo:
 3. Índice horizontal de cinco capítulos.
 4. Capítulos 01 a 05, a pantalla completa.
 5. Cierre en negro: texto de Endesa a la izquierda y tres citas a la derecha.
-6. Créditos, en una franja blanca encima del footer de LV.
+6. Créditos, sobre el mismo negro del cierre, encima del footer de LV.
 
 ## Qué no entra
 
@@ -103,28 +103,28 @@ Textos tal como se leyeron en el canvas. Pendientes de contraste en Dev Mode.
 ### Introducción
 
 - La energía forma parte de nuestra vida incluso cuando no pensamos en ella
-- Cada día, una extensa red de infraestructuras y personas trabaja detrás de algo tan cotidiano como encender una luz. Sacando a la luz se adentra en cinco realidades complejas para conocer sus protagonistas, comprender sus consecuencias y descubrir aquello que normalmente permanece fuera de nuestra mirada.
+- Cada día, una extensa red de infraestructuras y personas trabaja detrás de algo tan cotidiano como encender una luz. *Sacando a la luz* se adentra en cinco realidades complejas para conocer sus protagonistas, comprender sus consecuencias y descubrir aquello que normalmente permanece fuera de nuestra mirada. En el HTML, solo el nombre del proyecto va en `<em>`.
 - Tres fotos: ave en un cable, torre eléctrica, operario con casco.
 
 ### Índice
 
-- 01 AVIFAUNA
-- 02 TEMPORALES
-- 03 FRAUDE ELÉCTRICO
-- 04 ENERGÍA NUCLEAR
-- 05 PHISHING
+- 01 Avifauna
+- 02 Temporales
+- 03 Fraude eléctrico
+- 04 Energía nuclear
+- 05 Phishing
 
-El índice es `position: sticky` dentro de la zona de capítulos. El offset superior es `--bc-endesa-sticky-offset` (ahora `0px`, para la cabecera de La Vanguardia cuando se integre). El ítem del capítulo visible pasa a azul con IntersectionObserver. Los enlaces funcionan sin JavaScript.
+El índice es `position: sticky` dentro de `.bc-endesa-story`, que envuelve el menú y los capítulos 01–05. Al terminar ese wrapper deja de pegarse. El offset superior es `--bc-endesa-sticky-offset` (ahora `0px`, para la cabecera de La Vanguardia cuando se mida). El destino de cada capítulo usa `--bc-endesa-anchor-offset`, la suma de ese offset y `--bc-endesa-index-space`. «Ver los capítulos» y los ítems del menú hacen scroll suave solo dentro de `.bc-endesa`; con `prefers-reduced-motion` el salto es instantáneo. El ítem del capítulo visible pasa a azul con IntersectionObserver. Durante el scroll suave el capítulo pulsado se mantiene activo hasta que el desplazamiento se detiene. Los enlaces funcionan sin JavaScript.
 
 ### Capítulos
 
 | | Kicker | Título | Estado en el diseño |
 |---|---|---|---|
-| 01 | CAPÍTULO 01 · AVIFAUNA | UN CIELO COMPARTIDO | Botón «Descubrir la historia». Fondo: gaviotas sobre cables. |
-| 02 | CAPÍTULO 02 · TEMPORALES | LOS QUE SOSTIENEN LA RED | Botón «Descubrir la historia». Fondo: paisaje con tendido. |
-| 03 | CAPÍTULO 03 · FRAUDE ELÉCTRICO | CUANDO EL FRAUDE DEJA A UN BARRIO A OSCURAS | PRÓXIMAMENTE |
-| 04 | CAPÍTULO 04 · CENTRALES NUCLEARES | EL FUTURO DE UNA FUENTE DE ENERGÍA | PRÓXIMAMENTE. En el índice la etiqueta es ENERGÍA NUCLEAR. |
-| 05 | CAPÍTULO 05 · PHISHING | EL ENGAÑO DETRÁS DE LA PANTALLA | PRÓXIMAMENTE |
+| 01 | Capítulo 01 · Avifauna | El mismo cielo | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261005/11646741/cielo-como-proteger-aves-pais-clave-biodiversidad-europea-brl.html`. Fondo: gaviotas sobre cables. |
+| 02 | Capítulo 02 · Temporales | Hasta el último tramo | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261019/11658951/ultimo-tramo-trabajo-invisible-luz-apague-brl.html`. Fondo: paisaje con tendido. |
+| 03 | Capítulo 03 · Fraude eléctrico | A oscuras | Próximamente |
+| 04 | Capítulo 04 · Centrales nucleares | A plena luz | Próximamente. En el índice la etiqueta es Energía nuclear. |
+| 05 | Capítulo 05 · Phishing | El anzuelo | Próximamente |
 
 Cuerpos leídos:
 
@@ -134,7 +134,7 @@ Cuerpos leídos:
 - 04. ¿Qué implicaciones tendría el cierre progresivo de las centrales nucleares para el sistema energético y la economía española?
 - 05. Un experto nos ayuda a reconocer las señales del phishing y explica cómo protegernos frente a uno de los fraudes digitales más extendidos.
 
-No hay URLs de artículo en el frame.
+Los capítulos 01 y 02 enlazan a su artículo en La Vanguardia, en la misma pestaña. Los capítulos 03–05 siguen en «Próximamente», sin enlace.
 
 ### Cierre
 
@@ -150,7 +150,7 @@ Párrafos sobre las entrevistas y un agradecimiento a quienes participaron. A la
 
 ### Créditos
 
-Coordinación: Helena Moreno | Diseño y maquetación: Alejandra Santander | Producción audiovisual: Ramen Studio. Un proyecto de Brandslab. Godó Nexus.
+Coordinación: Helena Moreno | Diseño y maquetación: Alejandra Santander | Producción audiovisual: Ramen Production House. Un proyecto de Brandslab. Godó Nexus.
 
 ### Tipografía y color
 
@@ -158,7 +158,7 @@ Anton y Albert Sans están pedidos para producción. El panel de Dev Mode no est
 
 - Anton, en Google Fonts, solo publica el peso 400. Encaja con los titulares condensados (hero, títulos de capítulo, números 01–05).
 - Albert Sans cubriría colaboración, cuerpo, índice, botones, citas y créditos. Pesos concretos: pendientes.
-- Botones azules con texto blanco. Titular del cierre en azul sobre negro. Índice en negro con etiqueta en acento azul. Capítulos con foto a sangre y velo oscuro. Introducción en blanco. Créditos en franja blanca.
+- Botones azules con texto blanco. Titular del cierre en azul sobre negro. Índice en negro con etiqueta en acento azul. Capítulos con foto a sangre y velo oscuro. Introducción en blanco. Créditos en texto gris claro sobre el negro del cierre.
 
 ## Assets en uso
 
@@ -171,7 +171,7 @@ Anton y Albert Sans están pedidos para producción. El panel de Dev Mode no est
 
 - Póster del vídeo, si existe. No hay un archivo de póster en `assets/`.
 - Logo de Endesa, si debe aparecer aparte del texto «EN COLABORACIÓN CON ENDESA». En el diseño aprobado solo se lee ese texto.
-- URLs de los capítulos 01 y 02, si ya están publicados.
+- Ninguna URL pendiente en 01 y 02. Los capítulos 03–05 no tienen artículo todavía.
 
 No exportar el frame como imagen de producción ni enlazar medios temporales de Figma.
 
@@ -179,7 +179,7 @@ No exportar el frame como imagen de producción ni enlazar medios temporales de 
 
 Hay un solo `<video>`. Un canvas copia ese fotograma, un poco más luminoso, y una máscara lo recorta a los glifos. El velo oscuro sigue en otra capa. No hay segunda descarga del WebM. Si JavaScript no corre, el titular se queda en blanco sólido. Con `prefers-reduced-motion`, la máscara aparece completa, sin barrido.
 
-Los capítulos 01 y 02 reservan el CTA como `<span>`. El comentario de al lado indica el `<a href="URL_CAPITULO_01">` o `URL_CAPITULO_02` que hay que poner cuando exista la URL. No hay `href="#"`. Los capítulos 03–05 son texto «Próximamente» sobre `cap-bloq.jpg`.
+Los capítulos 01 y 02 usan un `<a class="bc-endesa-chapter__cta">` con la URL real. No hay `href="#"`. Los capítulos 03–05 son texto «Próximamente» sobre `cap-bloq.jpg`.
 
 El cierre está maquetado con la lectura visual del canvas. No salió del inspector: hay que contrastarlo antes de darlo por cerrado. El comentario HTML lo marca.
 
@@ -188,15 +188,37 @@ Albert Sans se carga en 400, 500 y 700. Anton, en 400. El azul `#1568f0` es prov
 ## Decisiones pendientes
 
 - Pesos de Albert Sans y hex exactos (hace falta Dev Mode o una spec).
-- URLs de «Descubrir la historia» en 01 y 02.
+- URLs de 03–05, cuando se publiquen.
 - Póster del vídeo, si se entrega, y si con `prefers-reduced-motion` el vídeo debe quedar parado en ese póster. Ahora el loop sigue en mute y solo se anula la animación de entrada.
 - Contraste literal del cierre y de las tres citas.
 
+## Integración Xalok
+
+El fragmento local ya se puede pegar. Las reglas de contenedor viven solo ahí:
+
+- `article.visual__story--free:has(.bc-endesa)` con `overflow: visible !important`
+- sin padding en `.container-fluid` ni en `.visual-article-free.col-12`
+- sin margen lateral en `.row`
+- `margin: 0 !important` en `.content-free-html`
+
+El menú sticky está dentro de `.bc-endesa-story` y el texto izquierdo del cierre es sticky dentro de la rejilla de esa sección. Ninguno usa `position: fixed`. Los créditos quedan fuera de ambos contenedores.
+
+## Estado
+
+El hub está cerrado para publicación. El preview quita el margen del navegador solo en `index.html`. El fragmento Xalok, local y no versionado, neutraliza los wrappers con `article.visual__story--free:has(.bc-endesa)`.
+
+- 01 El mismo cielo: enlace real, misma pestaña.
+- 02 Hasta el último tramo: enlace real, misma pestaña.
+- 03 A oscuras, 04 A plena luz y 05 El anzuelo: «Próximamente», sin enlace.
+- Índice interno a `#capitulo-01` … `#capitulo-05`, con sticky y scroll suave.
+- Créditos: Producción audiovisual: Ramen Production House.
+- En la introducción, solo «Sacando a la luz» va en `<em>`.
+
 ## Qué queda
 
-1. Activar los CTA de 01 y 02 con la URL real.
-2. Cerrar hex, pesos y el copy del cierre.
-3. Preparar el fragmento Xalok con rutas absolutas. El ajuste de margen, si hace falta, irá anclado a `.bc-endesa`.
-4. Auditoría estática antes de pegar en el CMS. La prueba dentro de Xalok queda para después de integrar.
+1. Pegar el fragmento en Xalok y comprobar, en desktop y móvil, que no queda marco blanco y que los dos sticky se sueltan al acabar su zona.
+2. Ajustar `--bc-endesa-sticky-offset` a la altura real de la cabecera de La Vanguardia.
+3. Activar 03–05 cuando existan sus URLs.
+4. Cerrar hex y pesos si llega Dev Mode.
 
-No hay commit ni push en esta fase.
+El fragmento y la auditoría no se versionan.
