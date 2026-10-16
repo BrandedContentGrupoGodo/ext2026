@@ -1,10 +1,8 @@
 (function () {
   "use strict";
 
-  // TODO YouTube Historia 11. Dejar vacío hasta tener el ID.
-  // No reutilizar los vídeos de la historia anterior.
-  var YOUTUBE_ID_LV = "";
-  var YOUTUBE_ID_MD = "";
+  var YOUTUBE_ID_LV = "Ti3GqHASakA";
+  var YOUTUBE_ID_MD = "S8TwaQGOIoQ";
 
   // TODO: URLs de publicación. Vacías a propósito.
   // No poner aquí la URL de la historia anterior.

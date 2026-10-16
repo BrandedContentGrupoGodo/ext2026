@@ -2,7 +2,7 @@
 
 Capítulo 11 de Constelaciones. La plantilla técnica es la Historia 10 (`cap10`), reutilizada en `caixabank/cap11`. El texto y la estructura visible siguen el frame de Figma `8234:103`.
 
-No está terminado: faltan los vídeos.
+No está terminado: faltan las URLs de publicación.
 
 ## Origen
 
@@ -56,13 +56,10 @@ Es el componente de cap10: iframe de Facebook a 95×20 y botón de X. El fondo, 
 
 Ninguna de las siete fotografías. Los archivos exportados son PNG y JPG, no WebP.
 
-## TODO YouTube LV
+## YouTube
 
-`YOUTUBE_ID_LV` en `assets/js/scripts.js`. Vacío. El preview muestra un recuadro gris, sin iframe.
-
-## TODO YouTube MD
-
-`YOUTUBE_ID_MD` en el mismo archivo. Vacío. `index-md.html` usa `data-youtube-slot="md"`.
+- LV: `Ti3GqHASakA` en `index.html`
+- MD: `S8TwaQGOIoQ` en `index-md.html`
 
 ## TODO URLs definitivas LV/MD
 
@@ -74,10 +71,14 @@ La flecha «historia anterior» apunta a la Historia 10 ya publicada. «Volver a
 
 El contenido está dentro de `.bc-caixabank`. El CSS no redefine `html`, `body` ni `:root`. El JavaScript consulta y observa ese root.
 
-El ajuste de margen de Xalok no está aplicado: el fragmento todavía no se genera. Irá en `.cursor/xalok-borrador.html`, sin versionar, cuando toque integrarlo.
+Fragmentos locales, sin versionar:
+
+- LV: `caixabank/cap11/.cursor/xalok-borrador.html`
+- MD: `caixabank/cap11/.cursor/xalok-borrador-md.html`
+
+El margen exterior usa `article.visual__story--free:has(.bc-caixabank)`, porque el ID de noticia todavía no está confirmado. Cuando exista, hay que limitarlo a `[data-wf-page-id="ID"]`.
 
 ## Pendientes antes de publicar
 
-1. Rellenar los dos IDs de YouTube.
-2. Rellenar `SHARE_URL_LV` y `SHARE_URL_MD`.
-3. Generar el fragmento Xalok y comprobar el margen en el CMS, en escritorio y en móvil.
+1. Rellenar `SHARE_URL_LV` y `SHARE_URL_MD`.
+2. Confirmar el ID de noticia y comprobar el margen en Xalok, en escritorio y en móvil.
