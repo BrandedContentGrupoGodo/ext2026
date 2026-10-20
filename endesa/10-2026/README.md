@@ -114,7 +114,7 @@ Textos tal como se leyeron en el canvas. Pendientes de contraste en Dev Mode.
 - 04 Energía nuclear
 - 05 Phishing
 
-El índice es `position: sticky` dentro de `.bc-endesa-story`, que envuelve el menú y los capítulos 01–05. Al terminar ese wrapper deja de pegarse. El offset superior es `--bc-endesa-sticky-offset` (ahora `0px`, para la cabecera de La Vanguardia cuando se mida). El destino de cada capítulo usa `--bc-endesa-anchor-offset`, la suma de ese offset y `--bc-endesa-index-space`. «Ver los capítulos» y los ítems del menú hacen scroll suave solo dentro de `.bc-endesa`; con `prefers-reduced-motion` el salto es instantáneo. El ítem del capítulo visible pasa a azul con IntersectionObserver. Durante el scroll suave el capítulo pulsado se mantiene activo hasta que el desplazamiento se detiene. Los enlaces funcionan sin JavaScript.
+El índice es `position: sticky` dentro de `.bc-endesa-story`, que envuelve el menú y los capítulos 01–05. Al terminar ese wrapper deja de pegarse. El offset superior es `--bc-endesa-sticky-offset`: `0px` en el preview y `40px` dentro de `article.visual__story--free:has(.bc-endesa)`, la altura de la cabecera sticky de La Vanguardia. El destino de cada capítulo usa `--bc-endesa-anchor-offset`, la suma de ese offset y `--bc-endesa-index-space`. «Ver los capítulos» y los ítems del menú hacen scroll suave solo dentro de `.bc-endesa`; con `prefers-reduced-motion` el salto es instantáneo. El ítem del capítulo visible pasa a azul con IntersectionObserver. Durante el scroll suave el capítulo pulsado se mantiene activo hasta que el desplazamiento se detiene. Los enlaces funcionan sin JavaScript.
 
 ### Capítulos
 
@@ -217,7 +217,7 @@ El hub está cerrado para publicación. El preview quita el margen del navegador
 ## Qué queda
 
 1. Pegar el fragmento en Xalok y comprobar, en desktop y móvil, que no queda marco blanco y que los dos sticky se sueltan al acabar su zona.
-2. Ajustar `--bc-endesa-sticky-offset` a la altura real de la cabecera de La Vanguardia.
+2. Si La Vanguardia cambia la altura de `.main-header.is-sticky`, actualizar los `40px` de `--bc-endesa-sticky-offset`.
 3. Activar 03–05 cuando existan sus URLs.
 4. Cerrar hex y pesos si llega Dev Mode.
 

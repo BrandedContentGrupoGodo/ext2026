@@ -998,4 +998,10 @@ html.bc-endesa-js .bc-endesa:not(.is-canvas-failed) .bc-endesa-hero__title {
   }
 }
 
+/* Cabecera sticky de La Vanguardia (.main-header.is-sticky, 40px).
+   Solo aplica dentro del artículo. El preview standalone sigue en 0. */
+article.visual__story--free:has(.bc-endesa) .bc-endesa {
+  --bc-endesa-sticky-offset: 40px;
+}
+
 
