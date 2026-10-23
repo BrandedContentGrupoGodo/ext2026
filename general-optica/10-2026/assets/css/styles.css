@@ -36,7 +36,7 @@
   box-sizing: border-box;
 }
 
-.bc-go-hw :where(h1, h2, h3, p, ul, ol, figure, blockquote, footer) {
+.bc-go-hw :where(h1, h2, h3, p, ul, ol, figure, blockquote) {
   margin: 0;
 }
 
@@ -125,10 +125,12 @@
   letter-spacing: -0.5px;
 }
 
-.bc-go-hw-quote footer {
+.bc-go-hw-quote__by {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin: 0;
+  background: transparent;
 }
 
 .bc-go-hw-quote__name {
