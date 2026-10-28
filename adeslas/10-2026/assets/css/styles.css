@@ -1,0 +1,1037 @@
+/* Adeslas · Vivir más y mejor. Estilos encapsulados bajo .bc-adeslas */
+
+.bc-adeslas {
+  --bc-adeslas-bg: #f8f7f5;
+  --bc-adeslas-navy: #001c4c;
+  --bc-adeslas-cyan: #00aeef;
+  --bc-adeslas-guest: #4a6699;
+  --bc-adeslas-line: #8fa3c5;
+  --bc-adeslas-badge: #dbe0e0;
+  --bc-adeslas-credit: #5c6466;
+  --bc-adeslas-credit-line: #d1d1d1;
+  --bc-adeslas-white: #ffffff;
+  --bc-adeslas-serif: "DM Serif Text", "Times New Roman", serif;
+  --bc-adeslas-sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --bc-adeslas-credit-font: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --bc-adeslas-sticky-top: 0px;
+  --bc-adeslas-shadow:
+    0 35px 76px rgba(212, 211, 209, 0.1),
+    0 139px 139px rgba(212, 211, 209, 0.09),
+    0 313px 188px rgba(212, 211, 209, 0.05);
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bc-adeslas-bg);
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-sans);
+  font-weight: 600;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bc-adeslas *,
+.bc-adeslas *::before,
+.bc-adeslas *::after {
+  box-sizing: border-box;
+}
+
+.bc-adeslas h1,
+.bc-adeslas h2,
+.bc-adeslas h3,
+.bc-adeslas p,
+.bc-adeslas ul,
+.bc-adeslas li,
+.bc-adeslas figure {
+  margin: 0;
+  padding: 0;
+}
+
+.bc-adeslas ul {
+  list-style: none;
+}
+
+.bc-adeslas img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.bc-adeslas a,
+.bc-adeslas a:visited,
+.bc-adeslas a:hover,
+.bc-adeslas a:focus,
+.bc-adeslas a:focus-visible,
+.bc-adeslas a:active {
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+}
+
+.bc-adeslas .bc-adeslas-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bc-adeslas .bc-adeslas-shell {
+  width: min(1372px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.bc-adeslas .bc-adeslas-block__title {
+  margin: 0 0 16px;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 32px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  scroll-margin-top: var(--bc-adeslas-sticky-top);
+}
+
+.bc-adeslas .bc-adeslas-block {
+  scroll-margin-top: var(--bc-adeslas-sticky-top);
+}
+
+.bc-adeslas .bc-adeslas-block + .bc-adeslas-block {
+  margin-top: 56px;
+}
+
+.bc-adeslas .bc-adeslas-main {
+  padding-top: 40px;
+}
+
+.bc-adeslas .bc-adeslas-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 127px;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--bc-adeslas-badge);
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-sans);
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ——— Hero ——— */
+
+.bc-adeslas .bc-adeslas-hero__stage {
+  position: relative;
+  overflow: hidden;
+  background: var(--bc-adeslas-bg);
+}
+
+.bc-adeslas .bc-adeslas-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bc-adeslas .bc-adeslas-hero__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 369.23%;
+  height: 206.19%;
+  max-width: none;
+}
+
+.bc-adeslas .bc-adeslas-hero__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 40px 20px 36px;
+}
+
+.bc-adeslas .bc-adeslas-hero__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.bc-adeslas .bc-adeslas-hero__eyebrow {
+  margin: 0;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-sans);
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.86px;
+  text-transform: uppercase;
+}
+
+.bc-adeslas .bc-adeslas-hero__rule {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--bc-adeslas-navy);
+}
+
+.bc-adeslas h1.bc-adeslas-hero__title {
+  margin: 0;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 66px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.8;
+  letter-spacing: -5px;
+}
+
+.bc-adeslas h1.bc-adeslas-hero__title .bc-adeslas-hero__line {
+  display: block;
+}
+
+.bc-adeslas h1.bc-adeslas-hero__title em {
+  color: var(--bc-adeslas-cyan);
+  font-family: var(--bc-adeslas-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -3px;
+}
+
+.bc-adeslas .bc-adeslas-hero__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.bc-adeslas a.bc-adeslas-hero__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+.bc-adeslas a.bc-adeslas-hero__link,
+.bc-adeslas a.bc-adeslas-hero__link:visited,
+.bc-adeslas a.bc-adeslas-hero__link:hover,
+.bc-adeslas a.bc-adeslas-hero__link:focus,
+.bc-adeslas a.bc-adeslas-hero__link:focus-visible,
+.bc-adeslas a.bc-adeslas-hero__link:active {
+  color: var(--bc-adeslas-navy);
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+}
+
+.bc-adeslas a.bc-adeslas-hero__link:focus-visible {
+  outline: 2px solid var(--bc-adeslas-navy);
+  outline-offset: 3px;
+}
+
+.bc-adeslas a.bc-adeslas-hero__link:active,
+.bc-adeslas a.bc-adeslas-hero__link:active .bc-adeslas-hero__link-row {
+  color: var(--bc-adeslas-navy);
+}
+
+.bc-adeslas .bc-adeslas-hero__link-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.14;
+  white-space: nowrap;
+}
+
+.bc-adeslas .bc-adeslas-hero__link--podcast .bc-adeslas-hero__link-row {
+  padding-right: 25px;
+  border-right: 1px solid var(--bc-adeslas-line);
+}
+
+.bc-adeslas a.bc-adeslas-hero__link--articles {
+  padding-left: 25px;
+}
+
+.bc-adeslas a.bc-adeslas-hero__link .bc-adeslas-hero__icon,
+.bc-adeslas a.bc-adeslas-hero__link:hover .bc-adeslas-hero__icon,
+.bc-adeslas a.bc-adeslas-hero__link:focus .bc-adeslas-hero__icon,
+.bc-adeslas a.bc-adeslas-hero__link:focus-visible .bc-adeslas-hero__icon,
+.bc-adeslas a.bc-adeslas-hero__link:active .bc-adeslas-hero__icon {
+  display: block;
+  width: 15px;
+  height: 15px;
+  min-width: 15px;
+  min-height: 15px;
+  flex: 0 0 15px;
+  overflow: visible;
+  color: inherit;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bc-adeslas a.bc-adeslas-hero__link:hover,
+  .bc-adeslas a.bc-adeslas-hero__link:hover .bc-adeslas-hero__link-row {
+    color: var(--bc-adeslas-cyan);
+  }
+}
+
+.bc-adeslas a.bc-adeslas-hero__link:active,
+.bc-adeslas a.bc-adeslas-hero__link:active .bc-adeslas-hero__link-row {
+  color: var(--bc-adeslas-navy);
+}
+
+.bc-adeslas .bc-adeslas-hero__photo {
+  position: relative;
+  aspect-ratio: 390 / 316;
+  overflow: hidden;
+  background: var(--bc-adeslas-bg);
+}
+
+.bc-adeslas .bc-adeslas-hero__photo-image {
+  position: absolute;
+  top: 0;
+  left: -94.55%;
+  width: 194.55%;
+  height: 100%;
+  max-width: none;
+}
+
+/* ——— Último episodio ——— */
+
+.bc-adeslas a.bc-adeslas-feature,
+.bc-adeslas a.bc-adeslas-feature:visited,
+.bc-adeslas a.bc-adeslas-feature:hover,
+.bc-adeslas a.bc-adeslas-feature:focus,
+.bc-adeslas a.bc-adeslas-feature:focus-visible,
+.bc-adeslas a.bc-adeslas-feature:active {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 6px 0;
+  border-radius: 18px;
+  background: var(--bc-adeslas-white);
+  color: var(--bc-adeslas-navy);
+  text-decoration: none;
+  box-shadow: var(--bc-adeslas-shadow);
+}
+
+.bc-adeslas a.bc-adeslas-feature:focus-visible {
+  outline: 2px solid var(--bc-adeslas-navy);
+  outline-offset: 3px;
+}
+
+.bc-adeslas .bc-adeslas-feature__media {
+  position: relative;
+  height: auto;
+  aspect-ratio: 2.45 / 1;
+  min-height: 190px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.bc-adeslas .bc-adeslas-feature__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center top;
+  transition: transform 200ms ease;
+}
+
+.bc-adeslas .bc-adeslas-feature__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+}
+
+.bc-adeslas .bc-adeslas-feature__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 14px 24px;
+}
+
+.bc-adeslas .bc-adeslas-feature__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bc-adeslas .bc-adeslas-feature__kicker {
+  margin: 0;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-sans);
+  font-size: 12px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bc-adeslas h3.bc-adeslas-feature__title {
+  margin: 0;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.bc-adeslas .bc-adeslas-feature__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 50px;
+  border-radius: 50px;
+  background: var(--bc-adeslas-navy);
+  color: var(--bc-adeslas-white);
+  font-family: var(--bc-adeslas-sans);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.14;
+}
+
+.bc-adeslas .bc-adeslas-feature__cta-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  transform: rotate(90deg);
+}
+
+/* ——— Episodios ——— */
+
+.bc-adeslas .bc-adeslas-episodes__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.bc-adeslas .bc-adeslas-episodes__list > li {
+  min-width: 0;
+}
+
+.bc-adeslas a.bc-adeslas-episode,
+.bc-adeslas a.bc-adeslas-episode:visited,
+.bc-adeslas a.bc-adeslas-episode:hover,
+.bc-adeslas a.bc-adeslas-episode:focus,
+.bc-adeslas a.bc-adeslas-episode:focus-visible,
+.bc-adeslas a.bc-adeslas-episode:active,
+.bc-adeslas .bc-adeslas-episode {
+  display: block;
+  height: 100%;
+  padding: 5px;
+  border-radius: 18px;
+  background: var(--bc-adeslas-white);
+  color: var(--bc-adeslas-navy);
+  text-decoration: none;
+}
+
+.bc-adeslas a.bc-adeslas-episode:focus-visible {
+  outline: 2px solid var(--bc-adeslas-navy);
+  outline-offset: 3px;
+}
+
+.bc-adeslas .bc-adeslas-episode--soon {
+  cursor: default;
+}
+
+.bc-adeslas .bc-adeslas-episode__canvas {
+  position: relative;
+  display: flex;
+  min-height: 226px;
+  height: 100%;
+  padding: 43px 16px 20px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.bc-adeslas .bc-adeslas-episode__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 200ms ease;
+}
+
+.bc-adeslas .bc-adeslas-episode--01 .bc-adeslas-episode__photo {
+  object-position: 46% 22%;
+}
+
+.bc-adeslas .bc-adeslas-episode--02 .bc-adeslas-episode__photo {
+  right: auto;
+  width: 124%;
+  object-position: left 40%;
+}
+
+.bc-adeslas .bc-adeslas-episode--03 .bc-adeslas-episode__photo {
+  object-position: 24% 38%;
+}
+
+.bc-adeslas .bc-adeslas-episode--04 .bc-adeslas-episode__photo {
+  object-position: 42% 28%;
+}
+
+.bc-adeslas .bc-adeslas-episode--05 .bc-adeslas-episode__photo {
+  object-position: 36% 26%;
+}
+
+.bc-adeslas .bc-adeslas-episode--06 .bc-adeslas-episode__photo {
+  object-position: 40% 24%;
+}
+
+.bc-adeslas .bc-adeslas-episode--soon .bc-adeslas-episode__photo {
+  filter: grayscale(1);
+  transform: none;
+}
+
+.bc-adeslas .bc-adeslas-episode__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: none;
+  pointer-events: none;
+}
+
+.bc-adeslas .bc-adeslas-episode--soon .bc-adeslas-episode__shade {
+  background: linear-gradient(
+    90deg,
+    rgba(248, 247, 245, 0.78) 0%,
+    rgba(248, 247, 245, 0.46) 34%,
+    rgba(248, 247, 245, 0) 62%
+  );
+}
+
+.bc-adeslas .bc-adeslas-episode:not(.bc-adeslas-episode--soon) .bc-adeslas-episode__shade {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 28, 76, 0.9) 0%,
+    rgba(0, 28, 76, 0.72) 16%,
+    rgba(0, 28, 76, 0.46) 32%,
+    rgba(0, 28, 76, 0.24) 48%,
+    rgba(0, 28, 76, 0.1) 64%,
+    rgba(0, 28, 76, 0.03) 78%,
+    rgba(0, 28, 76, 0) 88%
+  );
+}
+
+.bc-adeslas .bc-adeslas-episode:not(.bc-adeslas-episode--soon) .bc-adeslas-episode__index,
+.bc-adeslas .bc-adeslas-episode:not(.bc-adeslas-episode--soon) h3.bc-adeslas-episode__title {
+  color: var(--bc-adeslas-white);
+}
+
+.bc-adeslas .bc-adeslas-episode:not(.bc-adeslas-episode--soon) .bc-adeslas-episode__guest {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bc-adeslas .bc-adeslas-episode__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.bc-adeslas .bc-adeslas-episode__index {
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 42px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.84;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.bc-adeslas h3.bc-adeslas-episode__title {
+  margin: 0;
+  max-width: 218px;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 20.5px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.bc-adeslas .bc-adeslas-episode--01 h3.bc-adeslas-episode__title {
+  max-width: 183px;
+}
+
+.bc-adeslas .bc-adeslas-episode--02 h3.bc-adeslas-episode__title {
+  max-width: 148px;
+}
+
+.bc-adeslas .bc-adeslas-episode__guest {
+  margin: 0;
+  color: var(--bc-adeslas-guest);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 15px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.1;
+}
+
+.bc-adeslas .bc-adeslas-episode__play {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+}
+
+.bc-adeslas .bc-adeslas-episode .bc-adeslas-badge {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bc-adeslas a.bc-adeslas-feature:hover .bc-adeslas-feature__photo,
+  .bc-adeslas a.bc-adeslas-episode:not(.bc-adeslas-episode--soon):hover .bc-adeslas-episode__photo,
+  .bc-adeslas a.bc-adeslas-story--sleep:hover .bc-adeslas-story__photo {
+    transform: scale(1.03);
+  }
+}
+
+/* ——— Artículos ——— */
+
+.bc-adeslas .bc-adeslas-stories__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.bc-adeslas .bc-adeslas-stories__list > li {
+  min-width: 0;
+}
+
+.bc-adeslas .bc-adeslas-story {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 6px;
+  border-radius: 18px;
+  background: var(--bc-adeslas-white);
+  box-shadow: var(--bc-adeslas-shadow);
+}
+
+.bc-adeslas a.bc-adeslas-story:focus-visible {
+  outline: 2px solid var(--bc-adeslas-navy);
+  outline-offset: 3px;
+}
+
+.bc-adeslas .bc-adeslas-story[aria-disabled="true"] {
+  cursor: default;
+}
+
+.bc-adeslas .bc-adeslas-story[aria-disabled="true"] .bc-adeslas-story__photo {
+  filter: grayscale(1);
+}
+
+.bc-adeslas .bc-adeslas-story[aria-disabled="true"] .bc-adeslas-story__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 28, 76, 0.22);
+  pointer-events: none;
+}
+
+.bc-adeslas .bc-adeslas-story__media {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.bc-adeslas .bc-adeslas-story__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  transition: transform 200ms ease;
+}
+
+.bc-adeslas .bc-adeslas-story--sleep .bc-adeslas-story__photo {
+  object-position: center 42%;
+  transform-origin: center top;
+}
+
+.bc-adeslas .bc-adeslas-story--ride .bc-adeslas-story__photo {
+  object-position: center 42%;
+}
+
+.bc-adeslas .bc-adeslas-story__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 14px 22px;
+}
+
+.bc-adeslas h3.bc-adeslas-story__title {
+  margin: 0;
+  color: var(--bc-adeslas-navy);
+  font-family: var(--bc-adeslas-serif);
+  font-size: 22px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.bc-adeslas .bc-adeslas-story__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--bc-adeslas-badge);
+}
+
+.bc-adeslas .bc-adeslas-badge--light {
+  background: var(--bc-adeslas-white);
+}
+
+/* ——— Marca y créditos ——— */
+
+.bc-adeslas .bc-adeslas-brand {
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 8px;
+}
+
+.bc-adeslas .bc-adeslas-brand img {
+  width: 180px;
+  height: auto;
+}
+
+.bc-adeslas footer.bc-adeslas-credits {
+  margin: 0;
+  padding: 16px 20px;
+  border: 0;
+  border-top: 1px solid var(--bc-adeslas-credit-line);
+  background: transparent;
+  color: var(--bc-adeslas-credit);
+  text-align: center;
+}
+
+.bc-adeslas footer.bc-adeslas-credits p {
+  margin: 0;
+  color: var(--bc-adeslas-credit);
+  font-family: var(--bc-adeslas-credit-font);
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+@media (min-width: 760px) {
+  .bc-adeslas .bc-adeslas-episodes__list,
+  .bc-adeslas .bc-adeslas-stories__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .bc-adeslas {
+    --bc-adeslas-credit-line: #c9c9c9;
+    --bc-adeslas-shadow:
+      0 35px 38px rgba(212, 211, 209, 0.1),
+      0 139px 70px rgba(212, 211, 209, 0.09),
+      0 313px 94px rgba(212, 211, 209, 0.05);
+  }
+
+  .bc-adeslas .bc-adeslas-shell {
+    width: min(1372px, calc(100% - 68px));
+  }
+
+  .bc-adeslas .bc-adeslas-main {
+    padding-top: 44px;
+  }
+
+  .bc-adeslas .bc-adeslas-block__title {
+    margin-bottom: 24px;
+    font-size: 52px;
+  }
+
+  .bc-adeslas .bc-adeslas-block + .bc-adeslas-block {
+    margin-top: 96px;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__stage {
+    overflow: visible;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__media {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__image {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__copy {
+    position: absolute;
+    top: 20.833%;
+    left: 6.111%;
+    z-index: 1;
+    gap: 64px;
+    width: min(550px, 42%);
+    padding: 0;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__intro {
+    gap: 24px;
+  }
+
+  .bc-adeslas .bc-adeslas-hero__eyebrow {
+    font-size: 12px;
+    letter-spacing: 4.08px;
+  }
+
+  .bc-adeslas h1.bc-adeslas-hero__title {
+    font-size: clamp(96px, 8.333vw, 120px);
+  }
+
+  .bc-adeslas .bc-adeslas-hero__photo {
+    display: none;
+  }
+
+  .bc-adeslas a.bc-adeslas-feature,
+  .bc-adeslas a.bc-adeslas-feature:visited,
+  .bc-adeslas a.bc-adeslas-feature:hover,
+  .bc-adeslas a.bc-adeslas-feature:focus,
+  .bc-adeslas a.bc-adeslas-feature:focus-visible,
+  .bc-adeslas a.bc-adeslas-feature:active {
+    flex-direction: row;
+    align-items: center;
+    gap: 54px;
+    min-height: 323px;
+    padding: 12px;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__media {
+    flex: 0 0 auto;
+    width: min(623px, 48%);
+    height: 299px;
+    align-self: center;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__play {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__body {
+    flex: 0 1 571px;
+    gap: 57px;
+    max-width: 571px;
+    padding: 0 12px 0 0;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__copy {
+    gap: 13px;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__kicker {
+    font-size: 14px;
+  }
+
+  .bc-adeslas h3.bc-adeslas-feature__title {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .bc-adeslas .bc-adeslas-feature__cta {
+    justify-content: flex-start;
+    width: auto;
+    align-self: flex-start;
+  }
+
+  .bc-adeslas .bc-adeslas-episodes__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .bc-adeslas a.bc-adeslas-episode,
+  .bc-adeslas a.bc-adeslas-episode:visited,
+  .bc-adeslas a.bc-adeslas-episode:hover,
+  .bc-adeslas a.bc-adeslas-episode:focus,
+  .bc-adeslas a.bc-adeslas-episode:focus-visible,
+  .bc-adeslas a.bc-adeslas-episode:active,
+  .bc-adeslas .bc-adeslas-episode {
+    min-height: 298px;
+    padding: 6px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode__canvas {
+    min-height: 286px;
+    padding: 54px 20px 24px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode__copy {
+    gap: 13px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode__index {
+    font-size: 54px;
+    letter-spacing: 2px;
+  }
+
+  .bc-adeslas h3.bc-adeslas-episode__title {
+    max-width: 277px;
+    font-size: 26px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode--01 h3.bc-adeslas-episode__title {
+    max-width: 232px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode--02 h3.bc-adeslas-episode__title {
+    max-width: 187px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode__guest {
+    font-size: 18px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode__play {
+    right: 20px;
+    bottom: 21px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode .bc-adeslas-badge,
+  .bc-adeslas .bc-adeslas-badge {
+    width: 157px;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .bc-adeslas .bc-adeslas-episode .bc-adeslas-badge {
+    top: 17px;
+    left: 20px;
+  }
+
+  .bc-adeslas .bc-adeslas-stories__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .bc-adeslas .bc-adeslas-story--split {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 14px;
+    min-height: 323px;
+  }
+
+  .bc-adeslas .bc-adeslas-story__media {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 311px;
+  }
+
+  .bc-adeslas .bc-adeslas-story__body {
+    flex: 1 1 0;
+    justify-content: flex-start;
+    gap: 13px;
+    padding: 81px 10px 24px 0;
+  }
+
+  .bc-adeslas h3.bc-adeslas-story__title {
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .bc-adeslas .bc-adeslas-story--empty {
+    min-height: 323px;
+  }
+
+  .bc-adeslas .bc-adeslas-story__placeholder {
+    min-height: 311px;
+  }
+
+  .bc-adeslas .bc-adeslas-brand {
+    padding: 85px 20px 86px;
+  }
+
+  .bc-adeslas .bc-adeslas-brand img {
+    width: 261px;
+  }
+
+  .bc-adeslas footer.bc-adeslas-credits {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 47px;
+    padding: 14px 34px;
+  }
+
+  .bc-adeslas footer.bc-adeslas-credits p {
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-adeslas .bc-adeslas-feature__photo,
+  .bc-adeslas .bc-adeslas-episode__photo,
+  .bc-adeslas .bc-adeslas-story__photo {
+    transition: none;
+  }
+
+  .bc-adeslas a.bc-adeslas-feature:hover .bc-adeslas-feature__photo,
+  .bc-adeslas a.bc-adeslas-episode:hover .bc-adeslas-episode__photo,
+  .bc-adeslas a.bc-adeslas-story--sleep:hover .bc-adeslas-story__photo {
+    transform: none;
+  }
+}
