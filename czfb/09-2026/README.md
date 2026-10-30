@@ -6,7 +6,7 @@ Landing branded content (vanilla HTML/CSS/JS). Preview en GitHub Pages; integrac
 
 - Diseño aprobado y validado en preview manual.
 - Assets WebP y textos literales incorporados.
-- Capítulos 01 y 02 con URLs definitivas (tarjeta 02 enlazada también sin JS).
+- Capítulos 01, 02 y 03 con URLs definitivas (enlazados también sin JS).
 - Root: `.bc-czfb`.
 - Fragmento Xalok borrador listo (local, no versionado).
 
@@ -20,15 +20,16 @@ Landing branded content (vanilla HTML/CSS/JS). Preview en GitHub Pages; integrac
 | Regla del proyecto | `.cursor/rules/czfb-09-2026.mdc` (raíz del repo) |
 | Assets producción | `https://brandedcontentgrupogodo.github.io/ext2026/czfb/09-2026/` |
 
-### Capítulo 02
+### Capítulos publicados
 
-- Constante: `BC_CZFB_CHAPTER_02_URL` en `assets/js/scripts.js`
-- Misma URL en el `href` del HTML (preview y fragmento)
+- 01 Talento sénior — URL en HTML
+- 02 Oficios… — HTML + `BC_CZFB_CHAPTER_02_URL`
+- 03 Mujeres de la nueva industria — URL en HTML + mosaico `czfb-cap-03-mujeres.jpg`
 
 ## Pendientes
 
-- Validación visual en Xalok (desktop + móvil) tras pegar el fragmento.
-- Publicación en Xalok cuando esa validación esté OK.
+- Capítulos 04–06.
+- Regenerar/pegar fragmento en Xalok tras cada apertura y validar en CMS.
 
 ## Contenedores Xalok
 
