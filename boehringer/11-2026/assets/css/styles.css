@@ -1,0 +1,1807 @@
+/* Boehringer · Obesidad · v7. Estilos solo bajo .bc-obesidad.
+   Tiempos Headline / Tiempos Text son las familias de producción.
+   Si el medio no las sirve, el fallback temporal es Source Serif 4.
+   Esa sustitución no cierra la comparación tipográfica. */
+
+.bc-obesidad {
+  --bc-obesidad-navy: #001c4c;
+  --bc-obesidad-card: #0b2a5c;
+  --bc-obesidad-ink: #121212;
+  --bc-obesidad-gray: #f1f1f1;
+  --bc-obesidad-line: #d1d1d1;
+  --bc-obesidad-muted: #6f7779;
+  --bc-obesidad-white: #ffffff;
+  --bc-obesidad-host-offset: 0px;
+  --bc-obesidad-nav-height: 80px;
+  --bc-obesidad-pad: clamp(20px, 5vw, 72px);
+  --bc-obesidad-block: clamp(72px, 8.9vw, 128px);
+  --bc-obesidad-display: "Tiempos Headline", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --bc-obesidad-text: "Tiempos Text", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --bc-obesidad-sans: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --bc-obesidad-anchor: calc(var(--bc-obesidad-host-offset) + var(--bc-obesidad-nav-height) + 12px);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-ink);
+  font-family: var(--bc-obesidad-text);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bc-obesidad *,
+.bc-obesidad *::before,
+.bc-obesidad *::after {
+  box-sizing: border-box;
+}
+
+.bc-obesidad :where(h1, h2, h3, p, ul, ol, figure, blockquote) {
+  margin: 0;
+}
+
+.bc-obesidad ul,
+.bc-obesidad ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bc-obesidad img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.bc-obesidad button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.bc-obesidad a,
+.bc-obesidad a:visited,
+.bc-obesidad a:hover,
+.bc-obesidad a:focus,
+.bc-obesidad a:focus-visible,
+.bc-obesidad a:active {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+}
+
+.bc-obesidad a:focus-visible,
+.bc-obesidad button:focus-visible,
+.bc-obesidad summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.bc-obesidad-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bc-obesidad-in {
+  width: min(1440px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--bc-obesidad-pad);
+}
+
+.bc-obesidad-kicker {
+  margin: 0 0 24px;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.08em;
+}
+
+.bc-obesidad-kicker--center {
+  text-align: center;
+}
+
+.bc-obesidad-title {
+  margin: 0;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(40px, 4.45vw, 64px);
+  font-weight: 600;
+  line-height: 1.1875;
+}
+
+.bc-obesidad-title__light {
+  display: block;
+  font-weight: 300;
+}
+
+.bc-obesidad-title--center {
+  text-align: center;
+}
+
+.bc-obesidad-lead {
+  margin: 24px 0 0;
+  font-size: 22px;
+  line-height: 32px;
+}
+
+.bc-obesidad-body {
+  margin: 24px 0 0;
+  max-width: 680px;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+.bc-obesidad-body--center,
+.bc-obesidad-lead--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.bc-obesidad-bridge {
+  margin: 24px 0 0;
+  max-width: 680px;
+  font-family: var(--bc-obesidad-display);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 29px;
+}
+
+.bc-obesidad-bridge--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.bc-obesidad a.bc-obesidad-sup,
+.bc-obesidad a.bc-obesidad-sup:visited,
+.bc-obesidad a.bc-obesidad-sup:hover,
+.bc-obesidad a.bc-obesidad-sup:focus,
+.bc-obesidad a.bc-obesidad-sup:focus-visible,
+.bc-obesidad a.bc-obesidad-sup:active {
+  color: inherit;
+  background: transparent;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 0.62em;
+  font-weight: 400;
+  line-height: 0;
+  vertical-align: super;
+  text-decoration: none;
+}
+
+.bc-obesidad a.bc-obesidad-sup:hover,
+.bc-obesidad a.bc-obesidad-sup:focus-visible {
+  text-decoration: underline;
+}
+
+.bc-obesidad [id] {
+  scroll-margin-top: var(--bc-obesidad-anchor);
+}
+
+.bc-obesidad-ref:target {
+  background: var(--bc-obesidad-gray);
+  outline: 2px solid var(--bc-obesidad-navy);
+  outline-offset: 4px;
+}
+
+/* Barra */
+
+.bc-obesidad-navwrap {
+  position: sticky;
+  top: var(--bc-obesidad-host-offset);
+  z-index: 5;
+  padding: 0;
+  background: #001c4c;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16), 0 6px 14px rgba(0, 8, 24, 0.16);
+}
+
+.bc-obesidad-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: min(1296px, 100%);
+  min-height: 64px;
+  margin-inline: auto;
+  padding: 8px var(--bc-obesidad-pad);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad a.bc-obesidad-nav__index,
+.bc-obesidad a.bc-obesidad-nav__index:visited,
+.bc-obesidad a.bc-obesidad-nav__index:hover,
+.bc-obesidad a.bc-obesidad-nav__index:focus,
+.bc-obesidad a.bc-obesidad-nav__index:focus-visible,
+.bc-obesidad a.bc-obesidad-nav__index:active,
+.bc-obesidad a.bc-obesidad-nav__link,
+.bc-obesidad a.bc-obesidad-nav__link:visited,
+.bc-obesidad a.bc-obesidad-nav__link:hover,
+.bc-obesidad a.bc-obesidad-nav__link:focus,
+.bc-obesidad a.bc-obesidad-nav__link:focus-visible,
+.bc-obesidad a.bc-obesidad-nav__link:active {
+  background: transparent;
+  color: var(--bc-obesidad-white);
+  text-decoration: none;
+}
+
+.bc-obesidad a.bc-obesidad-nav__index {
+  flex: 0 0 112px;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.bc-obesidad a.bc-obesidad-nav__index[aria-current="true"],
+.bc-obesidad a.bc-obesidad-nav__link[aria-current="true"] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.bc-obesidad-nav__list {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.bc-obesidad a.bc-obesidad-nav__link {
+  flex: 1 1 0;
+  min-height: 32px;
+  padding: 6px 4px;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+
+.bc-obesidad a.bc-obesidad-nav__link[aria-current="true"] {
+  font-weight: 700;
+}
+
+.bc-obesidad-nav__toggle {
+  display: none;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid var(--bc-obesidad-white);
+  background: transparent;
+  color: var(--bc-obesidad-white);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+/* Hero */
+
+.bc-obesidad-hero {
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 600px) minmax(0, 640px);
+  gap: 40px;
+  align-items: center;
+  width: min(1440px, 100%);
+  margin-inline: auto;
+  padding: clamp(48px, 6vw, 90px) clamp(20px, 5.56vw, 80px) clamp(48px, 6vw, 90px);
+}
+
+.bc-obesidad-hero__collab {
+  margin: 0 0 24px;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.bc-obesidad-hero__title {
+  margin: 0;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(52px, 7.22vw, 104px);
+  font-weight: 600;
+  line-height: 1.077;
+}
+
+.bc-obesidad-hero__title-light {
+  display: block;
+  margin-top: 0;
+  font-weight: 300;
+  line-height: 0.885;
+}
+
+.bc-obesidad-hero__lead {
+  max-width: 520px;
+  margin: 24px 0 0;
+  font-size: 22px;
+  line-height: 32px;
+}
+
+.bc-obesidad a.bc-obesidad-cta,
+.bc-obesidad a.bc-obesidad-cta:visited,
+.bc-obesidad a.bc-obesidad-cta:hover,
+.bc-obesidad a.bc-obesidad-cta:focus,
+.bc-obesidad a.bc-obesidad-cta:focus-visible,
+.bc-obesidad a.bc-obesidad-cta:active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: 0;
+  background: var(--bc-obesidad-navy);
+  color: var(--bc-obesidad-white);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.bc-obesidad a.bc-obesidad-cta:hover,
+.bc-obesidad a.bc-obesidad-cta:focus-visible {
+  background: var(--bc-obesidad-card);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad a.bc-obesidad-cta:active {
+  background: #001433;
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-hero__eye {
+  position: relative;
+  width: min(640px, 100%);
+  margin-inline: auto;
+}
+
+.bc-obesidad-hero__circle {
+  display: block;
+  width: min(640px, 100%);
+  height: auto;
+}
+
+.bc-obesidad-hero__ring {
+  fill: none;
+  stroke: #001c4c;
+  stroke-width: 2;
+}
+
+.bc-obesidad-hero__iris {
+  position: absolute;
+  top: 30%;
+  left: 14%;
+  width: 72%;
+  transform-origin: center center;
+}
+
+.bc-obesidad-hero__iris img {
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+}
+
+.bc-obesidad.is-motion .bc-obesidad-hero__iris {
+  animation: bc-obesidad-rise 0.8s ease-out both;
+}
+
+@keyframes bc-obesidad-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Índice */
+
+.bc-obesidad-index {
+  background: var(--bc-obesidad-white);
+  padding-block: var(--bc-obesidad-block);
+}
+
+.bc-obesidad-index__label {
+  margin: 0 0 32px;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.bc-obesidad-index__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.bc-obesidad a.bc-obesidad-index__card,
+.bc-obesidad a.bc-obesidad-index__card:visited,
+.bc-obesidad a.bc-obesidad-index__card:hover,
+.bc-obesidad a.bc-obesidad-index__card:focus,
+.bc-obesidad a.bc-obesidad-index__card:focus-visible,
+.bc-obesidad a.bc-obesidad-index__card:active {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 148px;
+  padding: 24px;
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-navy);
+  text-decoration: none;
+}
+
+.bc-obesidad a.bc-obesidad-index__card--navy,
+.bc-obesidad a.bc-obesidad-index__card--navy:visited,
+.bc-obesidad a.bc-obesidad-index__card--navy:hover,
+.bc-obesidad a.bc-obesidad-index__card--navy:focus,
+.bc-obesidad a.bc-obesidad-index__card--navy:focus-visible,
+.bc-obesidad a.bc-obesidad-index__card--navy:active {
+  background: var(--bc-obesidad-navy);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad a.bc-obesidad-index__card:hover,
+.bc-obesidad a.bc-obesidad-index__card:focus-visible {
+  background: #e6e6e6;
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad a.bc-obesidad-index__card--navy:hover,
+.bc-obesidad a.bc-obesidad-index__card--navy:focus-visible {
+  background: var(--bc-obesidad-card);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-index__num {
+  font-family: var(--bc-obesidad-display);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 56px;
+}
+
+.bc-obesidad-index__name {
+  font-family: var(--bc-obesidad-sans);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+/* Capítulos */
+
+.bc-obesidad-chapter {
+  padding-block: var(--bc-obesidad-block);
+}
+
+.bc-obesidad-chapter--navy {
+  background: var(--bc-obesidad-navy);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-chapter--white {
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-chapter--gray {
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-split {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 728px);
+  gap: 48px;
+  align-items: start;
+}
+
+.bc-obesidad-figure {
+  margin: 0;
+}
+
+.bc-obesidad-figure img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+  aspect-ratio: 728 / 410;
+}
+
+.bc-obesidad-caption {
+  margin: 16px 0 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.bc-obesidad a.bc-obesidad-textlink,
+.bc-obesidad a.bc-obesidad-textlink:visited,
+.bc-obesidad a.bc-obesidad-textlink:hover,
+.bc-obesidad a.bc-obesidad-textlink:focus,
+.bc-obesidad a.bc-obesidad-textlink:focus-visible,
+.bc-obesidad a.bc-obesidad-textlink:active {
+  display: inline-block;
+  margin-top: 16px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--bc-obesidad-text);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.bc-obesidad a.bc-obesidad-textlink:hover,
+.bc-obesidad a.bc-obesidad-textlink:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bc-obesidad-people {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 72px;
+}
+
+.bc-obesidad-people img {
+  width: 100%;
+  aspect-ratio: 306 / 408;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.bc-obesidad-people img.bc-obesidad-still--deborah {
+  object-position: center center;
+}
+
+.bc-obesidad-people figcaption {
+  margin-top: 16px;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+/* Citas */
+
+.bc-obesidad-quote {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  margin-top: 72px;
+  padding: 48px;
+  background: var(--bc-obesidad-card);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-quote--paper {
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-quote__mark {
+  display: block;
+  margin: 0 0 8px;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(72px, 8vw, 120px);
+  font-weight: 300;
+  line-height: 0.7;
+}
+
+.bc-obesidad-quote__text {
+  margin: 0;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+.bc-obesidad-quote__by {
+  margin: 24px 0 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+/* Reproductores */
+
+.bc-obesidad-player__stage {
+  position: relative;
+  width: 100%;
+  background: #1a1a1a;
+}
+
+.bc-obesidad-player__stage--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.bc-obesidad-player__stage--wide {
+  aspect-ratio: 4 / 3;
+}
+
+.bc-obesidad-player__stage--film {
+  aspect-ratio: 16 / 9;
+}
+
+.bc-obesidad-player__play {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad img.bc-obesidad-player__still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.bc-obesidad img.bc-obesidad-player__still--deborah {
+  object-position: center 42%;
+}
+
+.bc-obesidad img.bc-obesidad-player__still--ana {
+  object-position: center 22%;
+}
+
+.bc-obesidad img.bc-obesidad-player__still--federico {
+  object-position: 78% center;
+}
+
+.bc-obesidad img.bc-obesidad-player__still--josep {
+  object-position: center 28%;
+}
+
+.bc-obesidad-player__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+}
+
+.bc-obesidad-player__stage--wide .bc-obesidad-player__icon,
+.bc-obesidad-player__stage--film .bc-obesidad-player__icon {
+  width: 72px;
+  height: 72px;
+}
+
+.bc-obesidad-player.is-playing .bc-obesidad-player__play {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bc-obesidad-player__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bc-obesidad-player.is-playing .bc-obesidad-player__frame {
+  pointer-events: auto;
+}
+
+.bc-obesidad-player__frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.bc-obesidad a.bc-obesidad-out,
+.bc-obesidad a.bc-obesidad-out:visited,
+.bc-obesidad a.bc-obesidad-out:hover,
+.bc-obesidad a.bc-obesidad-out:focus,
+.bc-obesidad a.bc-obesidad-out:focus-visible,
+.bc-obesidad a.bc-obesidad-out:active {
+  background: transparent;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bc-obesidad a.bc-obesidad-out:hover,
+.bc-obesidad a.bc-obesidad-out:focus-visible {
+  color: var(--bc-obesidad-card);
+}
+
+.bc-obesidad-quote a.bc-obesidad-out,
+.bc-obesidad-quote a.bc-obesidad-out:visited,
+.bc-obesidad-quote a.bc-obesidad-out:hover,
+.bc-obesidad-quote a.bc-obesidad-out:focus,
+.bc-obesidad-quote a.bc-obesidad-out:focus-visible,
+.bc-obesidad-quote a.bc-obesidad-out:active,
+.bc-obesidad-voices a.bc-obesidad-out,
+.bc-obesidad-voices a.bc-obesidad-out:visited,
+.bc-obesidad-voices a.bc-obesidad-out:hover,
+.bc-obesidad-voices a.bc-obesidad-out:focus,
+.bc-obesidad-voices a.bc-obesidad-out:focus-visible,
+.bc-obesidad-voices a.bc-obesidad-out:active,
+.bc-obesidad-webinar a.bc-obesidad-out,
+.bc-obesidad-webinar a.bc-obesidad-out:visited,
+.bc-obesidad-webinar a.bc-obesidad-out:hover,
+.bc-obesidad-webinar a.bc-obesidad-out:focus,
+.bc-obesidad-webinar a.bc-obesidad-out:focus-visible,
+.bc-obesidad-webinar a.bc-obesidad-out:active {
+  color: var(--bc-obesidad-white);
+  background: transparent;
+}
+
+.bc-obesidad-quote .bc-obesidad-out,
+.bc-obesidad-voices .bc-obesidad-out {
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.bc-obesidad-quote--paper a.bc-obesidad-out,
+.bc-obesidad-quote--paper a.bc-obesidad-out:visited,
+.bc-obesidad-quote--paper a.bc-obesidad-out:hover,
+.bc-obesidad-quote--paper a.bc-obesidad-out:focus,
+.bc-obesidad-quote--paper a.bc-obesidad-out:focus-visible,
+.bc-obesidad-quote--paper a.bc-obesidad-out:active {
+  color: var(--bc-obesidad-navy);
+  background: transparent;
+}
+
+/* IMC */
+
+.bc-obesidad-imc {
+  margin-top: 48px;
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-navy);
+  transition: background-color 0.3s ease;
+}
+
+.bc-obesidad-imc.is-persona {
+  background: var(--bc-obesidad-gray);
+}
+
+.bc-obesidad-imc__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(880px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: clamp(48px, 6vw, 80px);
+  text-align: center;
+}
+
+.bc-obesidad.is-ready .bc-obesidad-imc__stage,
+.bc-obesidad.is-ready .bc-obesidad-factors__panels,
+.bc-obesidad.is-ready .bc-obesidad-voices__stage {
+  display: grid;
+}
+
+.bc-obesidad.is-ready .bc-obesidad-imc__panel,
+.bc-obesidad.is-ready .bc-obesidad-factors__panel,
+.bc-obesidad.is-ready .bc-obesidad-voices__panel {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bc-obesidad.is-ready .bc-obesidad-factors__panel {
+  transition-duration: 0.2s;
+}
+
+.bc-obesidad.is-ready .bc-obesidad-imc__panel.is-active,
+.bc-obesidad.is-ready .bc-obesidad-factors__panel.is-active,
+.bc-obesidad.is-ready .bc-obesidad-voices__panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.bc-obesidad-imc__word {
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(72px, 12.5vw, 180px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.bc-obesidad-imc__sub {
+  margin-top: 24px;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 40px;
+}
+
+.bc-obesidad-imc__note {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+.bc-obesidad-imc__dims {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.bc-obesidad-imc__dims h3 {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.bc-obesidad-imc__dims p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bc-obesidad-seg {
+  display: flex;
+  width: min(400px, 100%);
+}
+
+.bc-obesidad button.bc-obesidad-seg__btn,
+.bc-obesidad button.bc-obesidad-seg__btn:hover,
+.bc-obesidad button.bc-obesidad-seg__btn:focus,
+.bc-obesidad button.bc-obesidad-seg__btn:focus-visible,
+.bc-obesidad button.bc-obesidad-seg__btn:active {
+  flex: 1 1 50%;
+  min-height: 56px;
+  border: 1.5px solid var(--bc-obesidad-navy);
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.bc-obesidad button.bc-obesidad-seg__btn[aria-pressed="true"],
+.bc-obesidad button.bc-obesidad-seg__btn[aria-pressed="true"]:hover,
+.bc-obesidad button.bc-obesidad-seg__btn[aria-pressed="true"]:focus-visible {
+  background: var(--bc-obesidad-navy);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-imc__stage {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .bc-obesidad-imc__inner {
+    justify-content: flex-start;
+  }
+}
+
+/* Vitalidad */
+
+.bc-obesidad-vital {
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-ink);
+  padding-block: clamp(48px, 6vw, 72px);
+}
+
+.bc-obesidad-vital__kicker {
+  margin: 0;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.bc-obesidad-vital__title {
+  max-width: 1152px;
+  margin: 16px 0 0;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.bc-obesidad-vital__title span {
+  font-weight: 300;
+}
+
+.bc-obesidad-vital__intro {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: var(--bc-obesidad-ink);
+  font-size: 18px;
+  line-height: 29px;
+}
+
+.bc-obesidad-dims {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.bc-obesidad-dims article {
+  padding-top: 24px;
+  border-top: 2px solid var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-dims__n {
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-display);
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bc-obesidad-dims h3 {
+  margin: 12px 0 0;
+  color: var(--bc-obesidad-ink);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.bc-obesidad-dims article > p:not(.bc-obesidad-dims__n) {
+  margin: 12px 0 0;
+  color: var(--bc-obesidad-ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.bc-obesidad-clip {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 650px);
+  gap: 20px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.bc-obesidad-clip__play {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.bc-obesidad-clip__play img {
+  width: 56px;
+  height: 56px;
+}
+
+.bc-obesidad-clip__quote {
+  margin: 0;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 33px;
+}
+
+.bc-obesidad-clip__by {
+  margin: 6px 0 0;
+  color: var(--bc-obesidad-ink);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.bc-obesidad-clip.is-playing {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.bc-obesidad-clip.is-playing .bc-obesidad-clip__facade {
+  display: none;
+}
+
+.bc-obesidad-clip__frame {
+  display: none;
+  grid-column: 1 / -1;
+}
+
+.bc-obesidad-clip.is-playing .bc-obesidad-clip__frame {
+  display: block;
+}
+
+.bc-obesidad-clip__frame iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  background: #000;
+}
+
+/* Factores */
+
+.bc-obesidad-factors {
+  display: grid;
+  grid-template-columns: minmax(220px, 400px) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.bc-obesidad-factors__brain {
+  width: min(400px, 100%);
+  margin-inline: auto;
+}
+
+.bc-obesidad-factors__brain img {
+  width: min(350px, 100%);
+  height: auto;
+  margin-inline: auto;
+}
+
+.bc-obesidad-factors__tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 160px));
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.bc-obesidad button.bc-obesidad-factor,
+.bc-obesidad button.bc-obesidad-factor:hover,
+.bc-obesidad button.bc-obesidad-factor:focus,
+.bc-obesidad button.bc-obesidad-factor:focus-visible,
+.bc-obesidad button.bc-obesidad-factor:active {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 160px;
+  min-height: 140px;
+  padding: 16px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  transition: color 180ms ease;
+}
+
+.bc-obesidad button.bc-obesidad-factor::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 132px;
+  border: 1.5px solid var(--bc-obesidad-navy);
+  border-radius: 50%;
+  background: var(--bc-obesidad-white);
+  transform: translate(-50%, -50%);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.bc-obesidad button.bc-obesidad-factor:hover::before,
+.bc-obesidad button.bc-obesidad-factor:focus-visible::before {
+  background: #f1f1f1;
+}
+
+.bc-obesidad button.bc-obesidad-factor:focus-visible::before {
+  box-shadow: 0 0 0 3px var(--bc-obesidad-white), 0 0 0 5px var(--bc-obesidad-navy);
+}
+
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"],
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]:hover,
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]:focus-visible {
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]::before,
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]:hover::before,
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]:focus-visible::before {
+  background: var(--bc-obesidad-navy);
+  border-color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad button.bc-obesidad-factor[aria-selected="true"]:focus-visible::before {
+  box-shadow: 0 0 0 3px var(--bc-obesidad-white), 0 0 0 5px var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-factor span {
+  position: relative;
+  z-index: 1;
+  width: 112px;
+}
+
+.bc-obesidad-factors__panels {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-factors__panel h3 {
+  margin: 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+.bc-obesidad-factors__panel p {
+  max-width: 800px;
+  margin: 16px 0 0;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+/* Cifras */
+
+.bc-obesidad-stats__title {
+  margin: 0 0 32px;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.bc-obesidad-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  text-align: center;
+}
+
+.bc-obesidad-stats__n {
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-display);
+  font-size: 100px;
+  font-weight: 300;
+  line-height: 120px;
+}
+
+.bc-obesidad-stats__n span {
+  font-size: 40px;
+  line-height: 120px;
+}
+
+.bc-obesidad-stats__n a.bc-obesidad-sup,
+.bc-obesidad-dims__n a.bc-obesidad-sup {
+  display: inline-block;
+  position: relative;
+  margin-left: 6px;
+  padding: 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: super;
+}
+
+.bc-obesidad-stats__n a.bc-obesidad-sup::after,
+.bc-obesidad-dims__n a.bc-obesidad-sup::after {
+  content: "";
+  position: absolute;
+  inset: -12px -10px;
+}
+
+.bc-obesidad-stats__grid article > p:not(.bc-obesidad-stats__n) {
+  margin-top: 16px;
+  color: var(--bc-obesidad-ink);
+  font-family: var(--bc-obesidad-text);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Voces ANPO / FEH */
+
+.bc-obesidad-voices {
+  margin-top: 48px;
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--bc-obesidad-navy);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-voices__switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.bc-obesidad button.bc-obesidad-voices__btn,
+.bc-obesidad button.bc-obesidad-voices__btn:hover,
+.bc-obesidad button.bc-obesidad-voices__btn:focus,
+.bc-obesidad button.bc-obesidad-voices__btn:focus-visible,
+.bc-obesidad button.bc-obesidad-voices__btn:active {
+  flex: 1 1 180px;
+  min-height: 56px;
+  border: 1.5px solid var(--bc-obesidad-white);
+  background: transparent;
+  color: var(--bc-obesidad-white);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: center;
+}
+
+.bc-obesidad button.bc-obesidad-voices__btn[aria-pressed="true"],
+.bc-obesidad button.bc-obesidad-voices__btn[aria-pressed="true"]:hover,
+.bc-obesidad button.bc-obesidad-voices__btn[aria-pressed="true"]:focus-visible {
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-voices__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.bc-obesidad-voices__quote {
+  margin: 0;
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(26px, 2.4vw, 32px);
+  font-weight: 300;
+  line-height: 1.35;
+}
+
+.bc-obesidad-voices__by {
+  margin: 24px 0 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.bc-obesidad-acc {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  color: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-acc + .bc-obesidad-acc {
+  margin-top: 16px;
+}
+
+.bc-obesidad-accords {
+  max-width: 1296px;
+  margin-top: 48px;
+}
+
+.bc-obesidad-acc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 75px;
+  color: var(--bc-obesidad-white);
+  font-family: var(--bc-obesidad-sans);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 28px;
+  text-align: left;
+  cursor: pointer;
+  list-style: none;
+}
+
+.bc-obesidad-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+.bc-obesidad-acc summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.bc-obesidad-acc[open] summary::after {
+  content: "−";
+}
+
+.bc-obesidad-acc p {
+  max-width: 800px;
+  margin: 0;
+  padding: 0 48px 24px 0;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+/* Órganos */
+
+.bc-obesidad-liver {
+  display: grid;
+  grid-template-columns: minmax(0, 432px) 32px minmax(0, 448px);
+  gap: 48px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.bc-obesidad-liver__art img {
+  width: min(345px, 100%);
+  height: auto;
+  margin-inline: auto;
+}
+
+.bc-obesidad-liver__spine {
+  position: relative;
+  align-self: stretch;
+  justify-self: center;
+  width: 2px;
+  background: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad-liver__spine img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 32px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  background: var(--bc-obesidad-white);
+}
+
+.bc-obesidad-liver h3 {
+  margin: 0;
+  font-family: var(--bc-obesidad-display);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.bc-obesidad-liver p {
+  margin: 24px 0 0;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+.bc-obesidad-map {
+  position: relative;
+  width: min(1296px, 100%);
+  aspect-ratio: 1296 / 600;
+  margin: 48px auto 0;
+}
+
+.bc-obesidad-map__lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.bc-obesidad-map__item {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.bc-obesidad-map__item img {
+  width: 100%;
+  height: auto;
+}
+
+.bc-obesidad-map__item figcaption,
+.bc-obesidad-map__item span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: center;
+}
+
+.bc-obesidad-map__item--center span {
+  font-family: var(--bc-obesidad-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.bc-obesidad-map__item--heart { left: 16.98%; top: 28.33%; width: 15.12%; }
+.bc-obesidad-map__item--kidney { left: 67.9%; top: 28.33%; width: 15.12%; }
+.bc-obesidad-map__item--liver { left: 42.44%; top: 76.67%; width: 15.12%; }
+.bc-obesidad-map__item--center { left: 36.88%; top: 20%; width: 26.24%; }
+
+/* Ideas y webinar */
+
+.bc-obesidad ul.bc-obesidad-ideas {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 80px;
+}
+
+.bc-obesidad-ideas li {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 18px;
+  border: 1.5px solid var(--bc-obesidad-white);
+  border-radius: 50%;
+  color: var(--bc-obesidad-white);
+  font-family: var(--bc-obesidad-sans);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.bc-obesidad-webinar {
+  width: min(960px, 100%);
+  margin: 56px auto 0;
+}
+
+.bc-obesidad-webinar__note {
+  margin: 16px 0 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+}
+
+.bc-obesidad a.bc-obesidad-cta--light,
+.bc-obesidad a.bc-obesidad-cta--light:visited,
+.bc-obesidad a.bc-obesidad-cta--light:hover,
+.bc-obesidad a.bc-obesidad-cta--light:focus,
+.bc-obesidad a.bc-obesidad-cta--light:focus-visible,
+.bc-obesidad a.bc-obesidad-cta--light:active {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto 0;
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-navy);
+}
+
+.bc-obesidad a.bc-obesidad-cta--light:hover,
+.bc-obesidad a.bc-obesidad-cta--light:focus-visible {
+  background: var(--bc-obesidad-gray);
+  color: var(--bc-obesidad-navy);
+}
+
+/* Fuentes */
+
+.bc-obesidad-sources {
+  background: var(--bc-obesidad-white);
+  color: var(--bc-obesidad-ink);
+  padding-block: var(--bc-obesidad-block);
+}
+
+.bc-obesidad-sources__rule {
+  height: 1px;
+  margin: 0 0 24px;
+  background: var(--bc-obesidad-line);
+  border: 0;
+}
+
+.bc-obesidad-sources__title {
+  margin: 0 0 24px;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 21px;
+}
+
+.bc-obesidad-sources__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(8, auto);
+  grid-auto-flow: column;
+  gap: 16px 24px;
+}
+
+#bc-obesidad-ref-01 { order: 1; }
+#bc-obesidad-ref-02 { order: 2; }
+#bc-obesidad-ref-03 { order: 3; }
+#bc-obesidad-ref-04 { order: 4; }
+#bc-obesidad-ref-05 { order: 5; }
+#bc-obesidad-ref-06 { order: 6; }
+#bc-obesidad-ref-07 { order: 7; }
+#bc-obesidad-ref-08 { order: 8; }
+#bc-obesidad-ref-09 { order: 9; }
+#bc-obesidad-ref-10 { order: 10; }
+#bc-obesidad-ref-11 { order: 11; }
+#bc-obesidad-ref-12 { order: 12; }
+#bc-obesidad-ref-13 { order: 13; }
+#bc-obesidad-ref-14 { order: 14; }
+#bc-obesidad-ref-15 { order: 15; }
+#bc-obesidad-ref-16 { order: 16; }
+
+.bc-obesidad-ref p {
+  margin: 0;
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.bc-obesidad-ref a.bc-obesidad-out {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.bc-obesidad-credits {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--bc-obesidad-line);
+}
+
+.bc-obesidad-credits p {
+  margin: 0;
+  color: var(--bc-obesidad-muted);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.bc-obesidad-credits p.bc-obesidad-credits__sign {
+  margin-top: 48px;
+  color: var(--bc-obesidad-navy);
+  font-family: var(--bc-obesidad-sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+/* Revelados. Visibles hasta que JS añade .is-motion. */
+
+.bc-obesidad.is-motion .bc-obesidad-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.bc-obesidad.is-motion .bc-obesidad-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .bc-obesidad-nav__list {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bc-obesidad-nav.is-open .bc-obesidad-nav__list,
+  .bc-obesidad-nav__list {
+    display: flex;
+  }
+
+  .bc-obesidad.is-ready .bc-obesidad-nav__list {
+    display: none;
+  }
+
+  .bc-obesidad.is-ready .bc-obesidad-nav.is-open .bc-obesidad-nav__list {
+    display: flex;
+  }
+
+  .bc-obesidad.is-ready .bc-obesidad-nav__toggle {
+    display: inline-flex;
+  }
+
+  .bc-obesidad a.bc-obesidad-nav__link {
+    text-align: left;
+  }
+
+  .bc-obesidad-hero__grid,
+  .bc-obesidad-split,
+  .bc-obesidad-quote,
+  .bc-obesidad-factors,
+  .bc-obesidad-voices__panel,
+  .bc-obesidad-liver {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-obesidad-people,
+  .bc-obesidad-dims,
+  .bc-obesidad-stats__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bc-obesidad ul.bc-obesidad-ideas {
+    grid-template-columns: repeat(2, minmax(140px, 220px));
+    justify-content: center;
+  }
+
+  .bc-obesidad-index__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bc-obesidad-stats__n {
+    font-size: 72px;
+    line-height: 84px;
+  }
+
+  .bc-obesidad-stats__n span {
+    font-size: 32px;
+    line-height: 84px;
+  }
+
+  .bc-obesidad-dims__n {
+    font-size: 48px;
+  }
+
+  .bc-obesidad-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .bc-obesidad img.bc-obesidad-map__lines {
+    display: none;
+  }
+
+  .bc-obesidad-map__item,
+  .bc-obesidad-map__item--heart,
+  .bc-obesidad-map__item--kidney,
+  .bc-obesidad-map__item--liver,
+  .bc-obesidad-map__item--center {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(280px, 80%);
+  }
+
+  .bc-obesidad-map__item--center {
+    order: -1;
+    width: min(340px, 88%);
+  }
+
+  .bc-obesidad-liver__spine {
+    width: 2px;
+    height: 48px;
+    justify-self: center;
+  }
+}
+
+@media (min-width: 1101px) {
+  .bc-obesidad-factors__tabs {
+    grid-template-columns: repeat(3, 160px);
+    gap: 16px 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .bc-obesidad-index__grid,
+  .bc-obesidad-imc__dims,
+  .bc-obesidad-stats__grid,
+  .bc-obesidad-dims {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-obesidad-stats__n {
+    font-size: 80px;
+    line-height: 96px;
+  }
+
+  .bc-obesidad-stats__n span {
+    font-size: 36px;
+    line-height: 96px;
+  }
+
+  .bc-obesidad-dims__n {
+    font-size: 56px;
+  }
+
+  .bc-obesidad-sources__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+
+  .bc-obesidad-people {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bc-obesidad button.bc-obesidad-factor {
+    width: 100%;
+    min-height: 132px;
+  }
+
+  .bc-obesidad button.bc-obesidad-factor::before {
+    width: 112px;
+    height: 112px;
+  }
+
+  .bc-obesidad-quote {
+    padding: 24px;
+  }
+
+  .bc-obesidad-clip {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .bc-obesidad-people,
+  .bc-obesidad ul.bc-obesidad-ideas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-obesidad.is-motion .bc-obesidad-reveal,
+  .bc-obesidad.is-motion .bc-obesidad-hero__iris,
+  .bc-obesidad.is-motion .bc-obesidad-hero__ring,
+  .bc-obesidad.is-motion .bc-obesidad-imc,
+  .bc-obesidad.is-motion .bc-obesidad-imc__panel,
+  .bc-obesidad.is-motion .bc-obesidad-factors__panel {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
