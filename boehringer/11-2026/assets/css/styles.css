@@ -1232,8 +1232,23 @@
 .bc-obesidad-stats__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px;
+  column-gap: 32px;
+  row-gap: 32px;
   text-align: center;
+}
+
+@supports (grid-template-rows: subgrid) {
+  .bc-obesidad-stats__grid {
+    row-gap: 0;
+  }
+
+  .bc-obesidad-stats__grid > article {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    align-items: start;
+    margin-bottom: 32px;
+  }
 }
 
 .bc-obesidad-stats__n {
@@ -1250,7 +1265,17 @@
 }
 
 .bc-obesidad-stats__n a.bc-obesidad-sup,
-.bc-obesidad-dims__n a.bc-obesidad-sup {
+.bc-obesidad-stats__n a.bc-obesidad-sup:visited,
+.bc-obesidad-stats__n a.bc-obesidad-sup:hover,
+.bc-obesidad-stats__n a.bc-obesidad-sup:focus,
+.bc-obesidad-stats__n a.bc-obesidad-sup:focus-visible,
+.bc-obesidad-stats__n a.bc-obesidad-sup:active,
+.bc-obesidad-dims__n a.bc-obesidad-sup,
+.bc-obesidad-dims__n a.bc-obesidad-sup:visited,
+.bc-obesidad-dims__n a.bc-obesidad-sup:hover,
+.bc-obesidad-dims__n a.bc-obesidad-sup:focus,
+.bc-obesidad-dims__n a.bc-obesidad-sup:focus-visible,
+.bc-obesidad-dims__n a.bc-obesidad-sup:active {
   display: inline-block;
   position: relative;
   margin-left: 6px;
@@ -1260,6 +1285,7 @@
   font-weight: 600;
   line-height: 1;
   vertical-align: super;
+  transform: none;
 }
 
 .bc-obesidad-stats__n a.bc-obesidad-sup::after,
