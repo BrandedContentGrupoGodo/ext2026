@@ -96,3 +96,38 @@
     });
   }
 })();
+
+// Rellena el articleBody del NewsArticle que genera Xalok con el texto de la maqueta.
+// No crea un segundo bloque de datos estructurados: modifica el que ya existe.
+function bcFillArticleBody(rootSelector) {
+  var root = document.querySelector(rootSelector);
+  if (!root) return;
+
+  // Texto: titulares, párrafos y elementos de lista, en orden.
+  // Excluye lo decorativo (aria-hidden), los créditos y lo marcado con data-bc-nobody.
+  var parts = [];
+  root.querySelectorAll('h2, h3, p, li:not(:has(p))').forEach(function (el) {
+    if (el.closest('[aria-hidden="true"], [data-bc-nobody], .bc-credits, [class*="-credits"]')) return;
+    var t = el.textContent.replace(/\s+/g, ' ').trim();
+    if (t) parts.push(t);
+  });
+  var body = parts.join('\n\n');
+  if (!body) return;
+
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+    var data;
+    try { data = JSON.parse(s.textContent); } catch (e) { return; }
+    var items = Array.isArray(data) ? data : (data['@graph'] || [data]);
+    var changed = false;
+    items.forEach(function (it) {
+      var type = [].concat(it['@type'] || []).join(',');
+      if (/Article/.test(type) && !it.articleBody) {
+        it.articleBody = body;
+        changed = true;
+      }
+    });
+    if (changed) s.textContent = JSON.stringify(data);
+  });
+}
+
+bcFillArticleBody('.bc-go-hw'); // en Nissan, el contenedor de ese proyecto
