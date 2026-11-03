@@ -55,11 +55,14 @@ article.visual__story--free:has(.bc-obesidad) .visual-article-free.col-12 > .con
 </style>
 '@
 
-$fonts = @'
+$fonts = @"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
-'@
+<link rel="preload" href="$base/assets/fonts/tiempos-headline-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="$base/assets/fonts/tiempos-headline-light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="$base/assets/fonts/tiempos-text-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+"@
 
 $links = @"
 <link rel="stylesheet" href="$base/assets/css/styles.css">

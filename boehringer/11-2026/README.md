@@ -24,6 +24,7 @@ boehringer/11-2026/
 ├── assets/
 │   ├── css/styles.css
 │   ├── js/scripts.js
+│   ├── fonts/
 │   └── img/
 └── .cursor/xalok-borrador.html
 ```
@@ -50,9 +51,9 @@ No hay id de noticia confirmado, así que el fragmento no usa `data-wf-page-id`.
 
 ## Tipografía
 
-Producción: Tiempos Headline (titulares, cifras y citas; primera línea SemiBold y segunda Light) y Tiempos Text Regular (cuerpo). UI, navegación, nombres, botones y pies: Open Sans.
+Producción: Tiempos Headline Light (300) y Semibold (600) para titulares, citas, cifras y frases puente; Tiempos Text Regular (400) para el cuerpo. UI, navegación, nombres, botones y pies: Open Sans. No hay negrita ni cursiva de Tiempos Text en el contenido, así que esos archivos no se publican. Headline Regular no forma parte del juego usado: la frase de vitalidad va en Headline Light 300.
 
-En este repositorio no hay archivos ni una URL autorizada de Tiempos. El CSS declara esas familias primero. El fallback temporal de la preview es Source Serif 4, cargada desde Google Fonts, más Open Sans. La comparación tipográfica no está cerrada.
+Los WOFF2 están en `assets/fonts/` y el `@font-face` vive en `styles.css`, con rutas relativas a esa hoja. El fallback, si el archivo no carga, es Georgia. Open Sans sigue viniendo de Google Fonts. Los OTF originales no se versionan.
 
 ## Comportamiento
 
@@ -63,7 +64,6 @@ En este repositorio no hay archivos ni una URL autorizada de Tiempos. El CSS dec
 
 ## Pendientes reales
 
-- Tiempos Headline y Tiempos Text, y el permiso para usarlas en la preview o en GitHub Pages.
 - Fotogramas definitivos 1920×1080. Los actuales salen del frame v7 y varios siguen marcados como provisionales. El de Deborah García Bello llegó a 480×360. El cartel del reproductor completo es la cartela de entrada, con marca, no un plano de la doctora Ana Sánchez Bao.
 - Pasar las fotografías a WebP: en esta máquina no hay ffmpeg, cwebp ni ImageMagick.
 - Revisión de los cortes con el vídeo, al final natural de cada frase.

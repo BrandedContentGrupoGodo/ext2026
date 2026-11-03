@@ -28,15 +28,13 @@
     var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     var blinkTimer = 0;
     var blinkAnim = null;
-    var ringAnim = null;
     var revealObserver = null;
+    var heroPlayed = false;
 
     function clearMotion() {
       window.clearTimeout(blinkTimer);
       if (blinkAnim && blinkAnim.cancel) blinkAnim.cancel();
       blinkAnim = null;
-      if (ringAnim && ringAnim.cancel) ringAnim.cancel();
-      ringAnim = null;
       root.classList.remove("is-motion");
       root.querySelectorAll(".bc-obesidad-reveal").forEach(function (el) {
         el.classList.add("is-in");
@@ -53,33 +51,31 @@
       }
     }
 
-    function drawRing() {
+    function renderedLength(ring) {
+      var geometric = ring.getTotalLength();
+      var svg = ring.ownerSVGElement;
+      var view = svg && svg.viewBox && svg.viewBox.baseVal;
+      var width = svg ? svg.getBoundingClientRect().width : 0;
+      if (!view || !view.width || !width) return geometric;
+      return geometric * (width / view.width);
+    }
+
+    function prepareRing() {
       var ring = root.querySelector(".bc-obesidad-hero__ring");
       if (!ring || ring.getAttribute("data-bc-obesidad-draw") === "1") return;
-      function attempt() {
-        if (reduced() || !ring || ring.getAttribute("data-bc-obesidad-draw") === "1") return;
-        var svg = ring.ownerSVGElement;
-        var box = svg.getBoundingClientRect();
-        var view = svg.viewBox.baseVal.width || box.width || 1;
-        if (!box.width) {
-          window.requestAnimationFrame(attempt);
-          return;
-        }
-        var length = ring.getTotalLength() * (box.width / view);
-        if (!length) return;
-        ring.setAttribute("data-bc-obesidad-draw", "1");
-        ring.style.strokeDasharray = length + "px";
-        ring.style.strokeDashoffset = length + "px";
-        if (!ring.animate) {
-          ring.style.strokeDashoffset = "0px";
-          return;
-        }
-        ringAnim = ring.animate(
-          [{ strokeDashoffset: length + "px" }, { strokeDashoffset: "0px" }],
-          { duration: 1150, easing: "ease-out", fill: "forwards" }
-        );
-      }
-      window.requestAnimationFrame(attempt);
+      var length = renderedLength(ring);
+      if (!length) return;
+      ring.setAttribute("data-bc-obesidad-draw", "1");
+      var px = length + "px";
+      ring.style.setProperty("--bc-obesidad-ring-length", px);
+      ring.style.strokeDasharray = px;
+      ring.style.strokeDashoffset = px;
+      ring.addEventListener("animationend", function done(event) {
+        if (event.animationName !== "bc-obesidad-draw") return;
+        ring.removeEventListener("animationend", done);
+        ring.style.strokeDasharray = "";
+        ring.style.strokeDashoffset = "";
+      });
     }
 
     function armMotion() {
@@ -87,8 +83,11 @@
         clearMotion();
         return;
       }
+      if (!heroPlayed) {
+        heroPlayed = true;
+        prepareRing();
+      }
       root.classList.add("is-motion");
-      drawRing();
       var iris = root.querySelector(".bc-obesidad-hero__iris");
       var eye = iris ? iris.querySelector("img") : null;
       if (eye && iris.getAttribute("data-bc-obesidad-blink") !== "1") {
@@ -127,7 +126,7 @@
     if (motionQuery.addEventListener) {
       motionQuery.addEventListener("change", function () {
         if (reduced()) clearMotion();
-        else armMotion();
+        else if (!heroPlayed) armMotion();
       });
     }
 

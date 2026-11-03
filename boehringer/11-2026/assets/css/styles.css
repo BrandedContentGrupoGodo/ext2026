@@ -1,7 +1,31 @@
 /* Boehringer · Obesidad · v7. Estilos solo bajo .bc-obesidad.
-   Tiempos Headline / Tiempos Text son las familias de producción.
-   Si el medio no las sirve, el fallback temporal es Source Serif 4.
-   Esa sustitución no cierra la comparación tipográfica. */
+   Tiempos se sirve en WOFF2, con el peso real de cada archivo.
+   Las rutas son relativas a este CSS: valen en GitHub Pages y
+   cuando Xalok carga la hoja desde esa URL. */
+
+@font-face {
+  font-family: "Tiempos Headline";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/tiempos-headline-light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Tiempos Headline";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/tiempos-headline-semibold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Tiempos Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/tiempos-text-regular.woff2") format("woff2");
+}
 
 .bc-obesidad {
   --bc-obesidad-navy: #001c4c;
@@ -15,8 +39,8 @@
   --bc-obesidad-nav-height: 80px;
   --bc-obesidad-pad: clamp(20px, 5vw, 72px);
   --bc-obesidad-block: clamp(72px, 8.9vw, 128px);
-  --bc-obesidad-display: "Tiempos Headline", "Source Serif 4", Georgia, "Times New Roman", serif;
-  --bc-obesidad-text: "Tiempos Text", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --bc-obesidad-display: "Tiempos Headline", Georgia, "Times New Roman", serif;
+  --bc-obesidad-text: "Tiempos Text", Georgia, "Times New Roman", serif;
   --bc-obesidad-sans: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --bc-obesidad-anchor: calc(var(--bc-obesidad-host-offset) + var(--bc-obesidad-nav-height) + 12px);
 
@@ -29,8 +53,10 @@
   color: var(--bc-obesidad-ink);
   font-family: var(--bc-obesidad-text);
   font-size: 18px;
+  font-style: normal;
   font-weight: 400;
   line-height: 29px;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -388,6 +414,15 @@
   fill: none;
   stroke: #001c4c;
   stroke-width: 2;
+}
+
+.bc-obesidad.is-motion .bc-obesidad-hero__ring {
+  animation: bc-obesidad-draw 1.15s ease-out both;
+}
+
+@keyframes bc-obesidad-draw {
+  from { stroke-dashoffset: var(--bc-obesidad-ring-length); }
+  to { stroke-dashoffset: 0; }
 }
 
 .bc-obesidad-hero__iris {
@@ -1025,7 +1060,8 @@
   color: var(--bc-obesidad-navy);
   font-family: var(--bc-obesidad-display);
   font-size: 22px;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 300;
   line-height: 33px;
 }
 
