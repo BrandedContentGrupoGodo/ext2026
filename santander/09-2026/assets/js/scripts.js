@@ -66,19 +66,19 @@
     },
     {
       number: "03",
-      title: "Próximamente: episodio 3 con Silvia Leal",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "Cómo incorporar la inteligencia artificial en el trabajo con criterio",
+      description: "Para utilizarla con criterio, conviene contar con formación continua, conocer sus limitaciones y evaluar en qué tareas puede aportar valor.",
+      image: "episode-03-silvia.webp",
+      href: "https://www.lavanguardia.com/economia/20261013/11652636/como-incorporar-inteligencia-artificial-trabajo-criterio-brl.html",
+      available: true
     },
     {
       number: "04",
-      title: "Próximamente: episodio 4 con Silvia Leal",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "¿Te han ascendido? Las habilidades que necesitas para ser un buen líder",
+      description: "Silvia Leal explica que, para ejercer un buen liderazgo, habilidades como la comunicación, la escucha, la gestión de conflictos y el acompañamiento del equipo cobran especial importancia.",
+      image: "episode-04-silvia.webp",
+      href: "https://www.lavanguardia.com/economia/20261027/11665730/te-han-ascendido-habilidades-necesitas-buen-lider-brl.html",
+      available: true
     },
     {
       number: "05",
@@ -117,23 +117,23 @@
     },
     {
       number: "03",
-      title: "Próximamente: la historia de Eva",
-      description: "",
-      image: "https://brandedcontentgrupogodo.github.io/ext2026/santander/09-2026/assets/img/story-03.webp",
-      href: "#",
-      available: false
+      title: "Eva Lain, la biotecnóloga que dejó Cambridge por la mina de Riotinto para cambiar la industria del metal",
+      description: "Su startup fue una de las ganadoras del Santander X Global Challenge | Circular Economy Revolution, entre más de 500 candidaturas de 11 países.",
+      image: "story-03.webp",
+      href: "https://www.lavanguardia.com/economia/20261020/11662596/eva-lain-biotecnologa-dejo-cambridge-mina-riotinto-cambiar-industria-metal-brl.html",
+      available: true
     },
     {
       number: "04",
-      title: "Próximamente: la historia de María Cudeiro",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "De estudiar Medicina a ganar ocho mundiales: el camino al éxito de Susana Rodríguez",
+      description: "Susana Rodríguez Gacio ha ganado en Pontevedra su octavo título mundial de paratriatlón. Antes estudió Fisioterapia y Medicina, con el apoyo de Fundación Universia.",
+      image: "story-04.webp",
+      href: "https://www.lavanguardia.com/vida/20261103/11671301/estudiar-medicina-ganar-ocho-mundiales-camino-exito-susana-rodriguez-brl.html",
+      available: true
     },
     {
       number: "05",
-      title: "Próximamente: la historia de Susana",
+      title: "Próximamente: la historia de María Cudeiro",
       description: "",
       image: null,
       href: "#",
@@ -390,12 +390,28 @@
       }
     });
 
-    const firstAvailable = data.findIndex(function (d) {
-      return d.available;
-    });
-    if (firstAvailable >= 0) select(firstAvailable, { animate: false });
+    /* Episodios: siempre el último disponible. Historias: el primero. */
+    var initialIndex = -1;
+    if (options.initialSelect === "last") {
+      data.forEach(function (d, i) {
+        if (d.available) initialIndex = i;
+      });
+    } else {
+      initialIndex = data.findIndex(function (d) {
+        return d.available;
+      });
+    }
+    if (initialIndex >= 0) select(initialIndex, { animate: false });
 
     return { select: select, isAvailable: isAvailable };
+  }
+
+  function lastAvailableIndex(data) {
+    var last = -1;
+    data.forEach(function (d, i) {
+      if (d.available) last = i;
+    });
+    return last;
   }
 
   const episodeFeatured = root.querySelector(".bc-episode-featured");
@@ -411,6 +427,7 @@
 
   const episodeCtrl = buildSelector(episodes, "ep", ".bc-episode-card", {
     featuredSelector: ".bc-episode-featured",
+    initialSelect: "last",
     afterCardSelect: function () {
       afterFeaturedCardSelect(episodeFeatured);
     }
@@ -442,7 +459,16 @@
 
   /* ----------------------------------------------------------------------
      Retratos del hero: navegación configurable por data-*
+     El retrato de episodio apunta siempre al último capítulo disponible.
      ---------------------------------------------------------------------- */
+
+  const lastEpisodeIndex = lastAvailableIndex(episodes);
+  const heroEpisodePortrait = root.querySelector(
+    '.bc-portrait[data-type="episode"]'
+  );
+  if (heroEpisodePortrait && lastEpisodeIndex >= 0) {
+    heroEpisodePortrait.setAttribute("data-index", String(lastEpisodeIndex));
+  }
 
   const portraits = Array.from(root.querySelectorAll(".bc-portrait"));
 

@@ -54,32 +54,33 @@
         </div>
 
         <div class="bc-hero__portraits">
+          <!-- data-index del episodio: JS sincroniza al último disponible -->
           <button type="button" class="bc-portrait bc-hero-enter"
                   style="--bc-enter-delay: 320ms"
-                  data-target="episodios" data-type="episode" data-index="0">
+                  data-target="episodios" data-type="episode" data-index="3">
             <img class="bc-portrait__img" src="assets/img/hero-silvia.webp" alt="" width="320" height="427" decoding="async">
             <span class="bc-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
             </span>
-            <span class="bc-visually-hidden">Ver el episodio destacado en la sección de nueva temporada</span>
+            <span class="bc-visually-hidden">Ver el último episodio de Silvia Leal</span>
           </button>
           <button type="button" class="bc-portrait bc-hero-enter"
                   style="--bc-enter-delay: 400ms"
-                  data-target="historias" data-type="story" data-index="0">
+                  data-target="historias" data-type="story" data-index="2">
             <img class="bc-portrait__img" src="assets/img/hero-story-01.webp" alt="" width="320" height="427" decoding="async">
             <span class="bc-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
             </span>
-            <span class="bc-visually-hidden">Ver una historia real en la sección de historias</span>
+            <span class="bc-visually-hidden">Ver la historia de Eva Lain</span>
           </button>
           <button type="button" class="bc-portrait bc-hero-enter"
                   style="--bc-enter-delay: 480ms"
-                  data-target="historias" data-type="story" data-index="1">
+                  data-target="historias" data-type="story" data-index="3">
             <img class="bc-portrait__img" src="assets/img/hero-story-02.webp" alt="" width="320" height="427" decoding="async">
             <span class="bc-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
             </span>
-            <span class="bc-visually-hidden">Ver otra historia real en la sección de historias</span>
+            <span class="bc-visually-hidden">Ver la historia de Susana Rodríguez</span>
           </button>
         </div>
       </div>
@@ -143,7 +144,7 @@
 
         <ul class="bc-cards bc-cards--episodes">
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card" data-index="0" aria-pressed="true">
+            <button type="button" class="bc-card bc-episode-card" data-index="0" aria-pressed="false">
               <span class="bc-card__num">01</span>
               <span class="bc-card__title">El futuro ya está aquí: cómo el 'reskilling' o reciclaje profesional ayuda a adaptarse a la era de la IA</span>
             </button>
@@ -155,27 +156,15 @@
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="2" disabled aria-disabled="true" tabindex="-1">
+            <button type="button" class="bc-card bc-episode-card" data-index="2" aria-pressed="false">
               <span class="bc-card__num">03</span>
-              <span class="bc-card__lock" aria-hidden="true">
-                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
-                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
-                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
-                </svg>
-              </span>
-              <span class="bc-card__title">Próximamente: episodio 3 con Silvia Leal</span>
+              <span class="bc-card__title">Cómo incorporar la inteligencia artificial en el trabajo con criterio</span>
             </button>
           </li>
           <li class="reveal">
-            <button type="button" class="bc-card bc-episode-card is-upcoming" data-index="3" disabled aria-disabled="true" tabindex="-1">
+            <button type="button" class="bc-card bc-episode-card" data-index="3" aria-pressed="true">
               <span class="bc-card__num">04</span>
-              <span class="bc-card__lock" aria-hidden="true">
-                <svg class="bc-lock bc-lock--sm" viewBox="0 0 24 24" focusable="false">
-                  <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
-                  <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
-                </svg>
-              </span>
-              <span class="bc-card__title">Próximamente: episodio 4 con Silvia Leal</span>
+              <span class="bc-card__title">¿Te han ascendido? Las habilidades que necesitas para ser un buen líder</span>
             </button>
           </li>
           <li class="reveal">
@@ -316,27 +305,21 @@
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="2" disabled aria-disabled="true" tabindex="-1">
-                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
-                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
-                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
-                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
-                  </svg>
+              <button type="button" class="bc-card bc-story-card" data-index="2" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-03.webp" alt="" width="110" height="140" decoding="async">
                 </span>
                 <span class="bc-card__num">03</span>
-                <span class="bc-card__title">Próximamente: la historia de Eva</span>
+                <span class="bc-card__title">Eva Lain, la biotecnóloga que dejó Cambridge por la mina de Riotinto para cambiar la industria del metal</span>
               </button>
             </li>
             <li class="reveal">
-              <button type="button" class="bc-card bc-story-card is-upcoming" data-index="3" disabled aria-disabled="true" tabindex="-1">
-                <span class="bc-card__media bc-card__media--locked" aria-hidden="true">
-                  <svg class="bc-lock" viewBox="0 0 24 24" focusable="false">
-                    <path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M8 11V8a4 4 0 118 0v3"/>
-                    <rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/>
-                  </svg>
+              <button type="button" class="bc-card bc-story-card" data-index="3" aria-pressed="false">
+                <span class="bc-card__media">
+                  <img src="assets/img/story-04.webp" alt="" width="110" height="140" decoding="async">
                 </span>
                 <span class="bc-card__num">04</span>
-                <span class="bc-card__title">Próximamente: la historia de María Cudeiro</span>
+                <span class="bc-card__title">De estudiar Medicina a ganar ocho mundiales: el camino al éxito de Susana Rodríguez</span>
               </button>
             </li>
             <li class="reveal">
@@ -348,7 +331,7 @@
                   </svg>
                 </span>
                 <span class="bc-card__num">05</span>
-                <span class="bc-card__title">Próximamente: la historia de Susana</span>
+                <span class="bc-card__title">Próximamente: la historia de María Cudeiro</span>
               </button>
             </li>
             <li class="reveal">
