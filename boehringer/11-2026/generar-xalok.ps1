@@ -23,6 +23,8 @@ if ($start -lt 0 -or $end -lt 0 -or $end -le $start) {
 $piece = $index.Substring($start + $startMark.Length, $end - $start - $startMark.Length).Trim()
 $base = $Base.TrimEnd("/")
 $piece = $piece -replace '(?<=["''])assets/', ($base + "/assets/")
+# GitHub Pages usa el h1 del hero. Xalok ya genera el h1 editorial, así que el fragmento repite el titular como párrafo, con la misma clase.
+$piece = [regex]::Replace($piece, '<h1 class="bc-obesidad-hero__title">([\s\S]*?)</h1>', '<p class="bc-obesidad-hero__title">$1</p>', 1)
 
 $outDir = Join-Path $here ".cursor"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
@@ -64,11 +66,83 @@ $fonts = @"
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 "@
 
-$links = @"
-<link rel="stylesheet" href="$base/assets/css/styles.css">
-<script src="$base/assets/js/scripts.js" defer></script>
+$version = "2"
+$css = @"
+<link rel="stylesheet" href="$base/assets/css/styles.css?v=$version">
 "@
 
-$doc = $hostCss + "`r`n" + $fonts + "`r`n" + $links + "`r`n" + "<!-- Fragmento integrable. Sin documento, cabecera ni pie de La Vanguardia. -->" + "`r`n" + $piece + "`r`n"
+$loader = @"
+<script>
+(function () {
+  var src = "$base/assets/js/scripts.js?v=$version";
+  function load() {
+    var root = document.querySelector(".bc-obesidad");
+    if (root && root.getAttribute("data-bc-obesidad-init") === "1") return;
+    if (document.querySelector("script[data-bc-obesidad-src='1']")) return;
+    var script = document.createElement("script");
+    script.src = src;
+    script.async = false;
+    script.setAttribute("data-bc-obesidad-src", "1");
+    document.head.appendChild(script);
+  }
+  function boot() {
+    if (document.documentElement.getAttribute("data-bc-obesidad-boot") === "1") return;
+    document.documentElement.setAttribute("data-bc-obesidad-boot", "1");
+    if (document.querySelector(".bc-obesidad")) { load(); return; }
+    var tries = 0;
+    var timer = window.setInterval(function () {
+      tries += 1;
+      if (document.querySelector(".bc-obesidad")) { window.clearInterval(timer); load(); }
+      else if (tries >= 50) { window.clearInterval(timer); }
+    }, 100);
+  }
+  boot();
+})();
+</script>
+"@
+
+$articleBody = @'
+<script>
+/* articleBody para Google: rellena el NewsArticle que genera Xalok con el texto de la maqueta.
+   Va inline para no depender de GitHub Pages. Solo actúa si articleBody está vacío. */
+(function () {
+  var ROOT = '.bc-obesidad';
+  function fillArticleBody() {
+    var root = document.querySelector(ROOT);
+    if (!root) return;
+    var parts = [];
+    root.querySelectorAll('h2, h3, p, li').forEach(function (el) {
+      if (el.tagName === 'LI' && el.querySelector('p')) return;
+      if (el.closest('[aria-hidden="true"], [data-bc-nobody], [class*="-credits"]')) return;
+      if (el.getAttribute('role') === 'heading' && el.getAttribute('aria-level') === '1') return;
+      var t = el.textContent.replace(/\s+/g, ' ').trim();
+      if (t) parts.push(t);
+    });
+    var body = parts.join('\n\n');
+    if (!body) return;
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var data;
+      try { data = JSON.parse(s.textContent); } catch (e) { return; }
+      var items = Array.isArray(data) ? data : (data['@graph'] || [data]);
+      var changed = false;
+      items.forEach(function (it) {
+        if (/Article/.test([].concat(it['@type'] || []).join(',')) && !it.articleBody) {
+          it.articleBody = body;
+          changed = true;
+        }
+      });
+      if (changed) s.textContent = JSON.stringify(data);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fillArticleBody);
+  } else {
+    fillArticleBody();
+  }
+})();
+</script>
+'@
+
+$doc = $fonts + "`r`n" + $css + "`r`n" + $hostCss + "`r`n" + "<!-- Fragmento integrable. Sin documento, cabecera ni pie de La Vanguardia. -->" + "`r`n" + $piece + "`r`n" + $loader + "`r`n" + $articleBody + "`r`n"
 [System.IO.File]::WriteAllText($out, $doc, [System.Text.UTF8Encoding]::new($false))
 Write-Output $out

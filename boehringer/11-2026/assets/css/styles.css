@@ -83,7 +83,7 @@
   height: auto;
 }
 
-.bc-obesidad button {
+.bc-obesidad button[type="button"] {
   margin: 0;
   padding: 0;
   border: 0;
@@ -94,12 +94,12 @@
   cursor: pointer;
 }
 
-.bc-obesidad a,
-.bc-obesidad a:visited,
-.bc-obesidad a:hover,
-.bc-obesidad a:focus,
-.bc-obesidad a:focus-visible,
-.bc-obesidad a:active {
+.bc-obesidad a[href],
+.bc-obesidad a[href]:visited,
+.bc-obesidad a[href]:hover,
+.bc-obesidad a[href]:focus,
+.bc-obesidad a[href]:focus-visible,
+.bc-obesidad a[href]:active {
   color: inherit;
   background: transparent;
   border: 0;
@@ -144,7 +144,7 @@
   text-align: center;
 }
 
-.bc-obesidad-title {
+.bc-obesidad .bc-obesidad-title {
   margin: 0;
   font-family: var(--bc-obesidad-display);
   font-size: clamp(40px, 4.45vw, 64px);
@@ -342,8 +342,9 @@
   line-height: 22px;
 }
 
-.bc-obesidad-hero__title {
+.bc-obesidad .bc-obesidad-hero__title {
   margin: 0;
+  padding: 0;
   font-family: var(--bc-obesidad-display);
   font-size: clamp(52px, 7.22vw, 104px);
   font-weight: 600;
@@ -461,7 +462,7 @@
   padding-block: var(--bc-obesidad-block);
 }
 
-.bc-obesidad-index__label {
+.bc-obesidad .bc-obesidad-index__label {
   margin: 0 0 32px;
   color: var(--bc-obesidad-navy);
   font-family: var(--bc-obesidad-sans);
@@ -618,7 +619,7 @@
   object-position: center center;
 }
 
-.bc-obesidad-people figcaption {
+.bc-obesidad .bc-obesidad-people figcaption {
   margin-top: 16px;
   font-family: var(--bc-obesidad-sans);
   font-size: 14px;
@@ -653,8 +654,9 @@
   line-height: 0.7;
 }
 
-.bc-obesidad-quote__text {
+.bc-obesidad .bc-obesidad-quote__text {
   margin: 0;
+  padding: 0;
   font-family: var(--bc-obesidad-display);
   font-size: clamp(26px, 2.5vw, 36px);
   font-weight: 300;
@@ -902,7 +904,7 @@
   margin-top: 24px;
 }
 
-.bc-obesidad-imc__dims h3 {
+.bc-obesidad .bc-obesidad-imc__dims h3 {
   margin: 12px 0 0;
   padding-top: 12px;
   border-top: 1px solid var(--bc-obesidad-navy);
@@ -1016,7 +1018,7 @@
   white-space: nowrap;
 }
 
-.bc-obesidad-dims h3 {
+.bc-obesidad .bc-obesidad-dims h3 {
   margin: 12px 0 0;
   color: var(--bc-obesidad-ink);
   font-family: var(--bc-obesidad-sans);
@@ -1055,8 +1057,9 @@
   height: 56px;
 }
 
-.bc-obesidad-clip__quote {
+.bc-obesidad .bc-obesidad-clip__quote {
   margin: 0;
+  padding: 0;
   color: var(--bc-obesidad-navy);
   font-family: var(--bc-obesidad-display);
   font-size: 22px;
@@ -1204,7 +1207,7 @@
   color: var(--bc-obesidad-navy);
 }
 
-.bc-obesidad-factors__panel h3 {
+.bc-obesidad .bc-obesidad-factors__panel h3 {
   margin: 0;
   font-family: var(--bc-obesidad-sans);
   font-size: 18px;
@@ -1221,7 +1224,7 @@
 
 /* Cifras */
 
-.bc-obesidad-stats__title {
+.bc-obesidad .bc-obesidad-stats__title {
   margin: 0 0 32px;
   font-family: var(--bc-obesidad-display);
   font-size: clamp(28px, 2.8vw, 40px);
@@ -1382,7 +1385,7 @@
   margin-top: 48px;
 }
 
-.bc-obesidad-acc summary {
+.bc-obesidad .bc-obesidad-acc summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1398,11 +1401,11 @@
   list-style: none;
 }
 
-.bc-obesidad-acc summary::-webkit-details-marker {
+.bc-obesidad .bc-obesidad-acc summary::-webkit-details-marker {
   display: none;
 }
 
-.bc-obesidad-acc summary::after {
+.bc-obesidad .bc-obesidad-acc summary::after {
   content: "+";
   flex: 0 0 auto;
   font-family: var(--bc-obesidad-sans);
@@ -1411,7 +1414,7 @@
   line-height: 1;
 }
 
-.bc-obesidad-acc[open] summary::after {
+.bc-obesidad .bc-obesidad-acc[open] summary::after {
   content: "−";
 }
 
@@ -1458,7 +1461,7 @@
   background: var(--bc-obesidad-white);
 }
 
-.bc-obesidad-liver h3 {
+.bc-obesidad .bc-obesidad-liver h3 {
   margin: 0;
   font-family: var(--bc-obesidad-display);
   font-size: 32px;
@@ -1499,7 +1502,7 @@
   height: auto;
 }
 
-.bc-obesidad-map__item figcaption,
+.bc-obesidad .bc-obesidad-map__item figcaption,
 .bc-obesidad-map__item span {
   position: absolute;
   inset: 0;
@@ -1599,7 +1602,7 @@
   border: 0;
 }
 
-.bc-obesidad-sources__title {
+.bc-obesidad .bc-obesidad-sources__title {
   margin: 0 0 24px;
   color: var(--bc-obesidad-navy);
   font-family: var(--bc-obesidad-sans);
@@ -1647,13 +1650,13 @@
   margin-top: 8px;
 }
 
-.bc-obesidad-credits {
+.bc-obesidad .bc-obesidad-credits {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--bc-obesidad-line);
 }
 
-.bc-obesidad-credits p {
+.bc-obesidad .bc-obesidad-credits p {
   margin: 0;
   color: var(--bc-obesidad-muted);
   font-family: var(--bc-obesidad-sans);
@@ -1662,7 +1665,7 @@
   line-height: 21px;
 }
 
-.bc-obesidad-credits p.bc-obesidad-credits__sign {
+.bc-obesidad .bc-obesidad-credits p.bc-obesidad-credits__sign {
   margin-top: 48px;
   color: var(--bc-obesidad-navy);
   font-family: var(--bc-obesidad-sans);
