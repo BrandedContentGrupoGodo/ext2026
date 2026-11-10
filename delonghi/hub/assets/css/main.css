@@ -353,6 +353,10 @@ body {
   background-image: url("../img/cap5.jpg");
 }
 
+.eg-delonghi .eg-timeline__media--cap6 {
+  background-image: url("../img/cap6.jpg");
+}
+
 .eg-delonghi .eg-timeline__title {
   margin: 0;
   font-family: var(--font-playfair);
