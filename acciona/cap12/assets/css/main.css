@@ -206,6 +206,16 @@ body:has(> .bc-acciona) {
   border-radius: inherit;
 }
 
+.bc-acciona__video-note {
+  margin: 0;
+  padding: clamp(16px, 3vw, 24px);
+  color: var(--acciona-text-color-dark);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .bc-acciona__lead {
   margin-top: 32px;
   color: var(--acciona-text-color-dark);
