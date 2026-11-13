@@ -37,8 +37,13 @@
   margin-bottom: 27px;
 }
 
-.oe-hub a {
+.oe-hub a,
+.oe-hub a:hover,
+.oe-hub a:focus,
+.oe-hub a:active,
+.oe-hub a:visited {
   color: inherit;
+  text-decoration: none;
 }
 
 .oe-hub a:focus-visible,
