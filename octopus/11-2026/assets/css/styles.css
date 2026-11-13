@@ -213,6 +213,10 @@
   margin: 73px auto 0;
 }
 
+.oe-hub #episodios {
+  scroll-margin-top: 72px;
+}
+
 .oe-block__title {
   color: var(--oe-section);
   font-size: 20px;
