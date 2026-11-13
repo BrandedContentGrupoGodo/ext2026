@@ -1,0 +1,38 @@
+[
+  {
+    "numero": 1,
+    "estado": "publicado",
+    "titulo": "Mariano Peña, más allá de Mauricio",
+    "descripcion": "El actor reflexiona sobre la popularidad, el oficio de actor y la vida después de Aída",
+    "imagen": "assets/img/episodio-01.webp",
+    "alt": "",
+    "url": "TODO"
+  },
+  {
+    "numero": 2,
+    "estado": "proximo",
+    "titulo": "Anabel Alonso",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-02.webp",
+    "alt": "",
+    "url": ""
+  },
+  {
+    "numero": 3,
+    "estado": "proximo",
+    "titulo": "Almudena Cid",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-03.webp",
+    "alt": "",
+    "url": ""
+  },
+  {
+    "numero": 4,
+    "estado": "proximo",
+    "titulo": "Una nueva historia de cambio",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-04.webp",
+    "alt": "",
+    "url": ""
+  }
+]
