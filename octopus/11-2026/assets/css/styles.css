@@ -426,6 +426,18 @@
   cursor: default;
 }
 
+.oe-card--soon .oe-card__media::after {
+  content: none;
+}
+
+.oe-card--soon .oe-card__media picture img {
+  object-position: left center;
+}
+
+.oe-card--soon .oe-card__num {
+  display: none;
+}
+
 .oe-card__media {
   position: relative;
   height: 209px;

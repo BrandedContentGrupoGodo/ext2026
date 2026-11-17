@@ -29,9 +29,36 @@
   {
     "numero": 4,
     "estado": "proximo",
-    "titulo": "Una nueva historia de cambio",
+    "titulo": "Manuela Carmena",
     "descripcion": "",
     "imagen": "assets/img/episodio-04.webp",
+    "alt": "",
+    "url": ""
+  },
+  {
+    "numero": 5,
+    "estado": "proximo",
+    "titulo": "Elvira Lindo",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-05.webp",
+    "alt": "",
+    "url": ""
+  },
+  {
+    "numero": 6,
+    "estado": "proximo",
+    "titulo": "Javier Giner",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-06.webp",
+    "alt": "",
+    "url": ""
+  },
+  {
+    "numero": 7,
+    "estado": "proximo",
+    "titulo": "Joaquín Prat",
+    "descripcion": "",
+    "imagen": "assets/img/episodio-07.webp",
     "alt": "",
     "url": ""
   }
