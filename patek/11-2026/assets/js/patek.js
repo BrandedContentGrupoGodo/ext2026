@@ -189,21 +189,18 @@
   }
 
   var video = root.querySelector("[data-bc-patek-video]");
-  if (video) {
-    var facade = video.querySelector(".bc-patek-video-facade");
-    if (facade) {
-      facade.addEventListener("click", function (event) {
-        event.preventDefault();
-        var id = video.getAttribute("data-youtube-id");
-        if (!id) return;
-        var frame = document.createElement("iframe");
-        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1";
-        frame.title = "Vídeo: Patek Philippe y Unión Suiza";
-        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        frame.setAttribute("allowfullscreen", "");
-        frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-        video.replaceChildren(frame);
-      });
+  if (video && !video.querySelector("iframe")) {
+    var id = video.getAttribute("data-youtube-id");
+    if (id) {
+      var frame = document.createElement("iframe");
+      frame.src = "https://www.youtube-nocookie.com/embed/" + id;
+      frame.title = "Vídeo: Patek Philippe y Unión Suiza";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.setAttribute("allowfullscreen", "");
+      frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      frame.width = "1200";
+      frame.height = "675";
+      video.replaceChildren(frame);
     }
   }
 })();
