@@ -19,9 +19,8 @@ Base pública: `https://brandedcontentgrupogodo.github.io/ext2026/patek/11-2026/
 
 - Pieza completa, sin tabla y sin los enlaces ocultos de Figma.
 - El H2 de la intro está en el HTML y no se muestra.
-- Vídeo provisional, a la espera de la URL final: `JYEZkT3zOCY`.
+- Vídeo definitivo: `3dYB9M4w4Bk`.
 
 ## Pendiente
 
-- Cambiar el vídeo cuando llegue la URL final de YouTube.
-- No está probado en Xalok.
+- No está probado en Xalok. El fragmento actualizado está en `.cursor/xalok-borrador.html` y hay que volver a pegarlo en el HTML libre.
