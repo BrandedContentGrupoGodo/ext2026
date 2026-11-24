@@ -82,19 +82,19 @@
     },
     {
       number: "05",
-      title: "Próximamente: episodio 5 con Silvia Leal",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "¿Solo tienes 20 minutos? Así puedes incorporar la formación online a tu rutina profesional",
+      description: "Silvia Leal explica cómo convertir la formación online en un hábito, aunque el tiempo sea limitado.",
+      image: "episode-05-silvia.webp",
+      href: "https://www.lavanguardia.com/economia/20261110/11675977/tienes-20-minutos-asi-puedes-incorporar-formacion-online-rutina-profesional-brl.html",
+      available: true
     },
     {
       number: "06",
-      title: "Próximamente: episodio 6 con Silvia Leal",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "¿Y si tu próximo paso profesional estuviera en otro sector? Qué habilidades aprender",
+      description: "Silvia Leal recomienda programas de formación diseñados para facilitar la transición a otros sectores.",
+      image: "episode-06-silvia.webp",
+      href: "https://www.lavanguardia.com/economia/20261124/11690941/proximo-paso-profesional-estuviera-sector-que-habilidades-aprender-brl.html",
+      available: true
     }
   ];
 
@@ -133,11 +133,11 @@
     },
     {
       number: "05",
-      title: "Próximamente: la historia de María Cudeiro",
-      description: "",
-      image: null,
-      href: "#",
-      available: false
+      title: "“A liderar también se aprende”: las claves de María Cudeiro para dirigir equipos",
+      description: "Farmacéutica de formación y directora general, cuenta cómo el programa Santander W50 cambió su forma de dirigir equipos.",
+      image: "story-05.webp",
+      href: "https://www.lavanguardia.com/economia/20261117/11682519/liderar-aprende-claves-maria-cudeiro-dirigir-equipos-brl.html",
+      available: true
     },
     {
       number: "06",
