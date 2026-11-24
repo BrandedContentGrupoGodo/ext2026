@@ -6,7 +6,7 @@ Landing branded content (vanilla HTML/CSS/JS). Preview en GitHub Pages; integrac
 
 - Diseño aprobado y validado en preview manual.
 - Assets WebP y textos literales incorporados.
-- Capítulos 01–04 con URLs definitivas (enlazados también sin JS).
+- Capítulos 01–05 con URLs definitivas (enlazados también sin JS).
 - Root: `.bc-czfb`.
 - Fragmento Xalok borrador listo (local, no versionado).
 
@@ -26,10 +26,11 @@ Landing branded content (vanilla HTML/CSS/JS). Preview en GitHub Pages; integrac
 - 02 Oficios… — HTML + `BC_CZFB_CHAPTER_02_URL`
 - 03 Mujeres de la nueva industria — `czfb-cap-03-mujeres.jpg`
 - 04 La IA que no destruyó su empleo… — `czfb-cap-04-ia.jpg`
+- 05 Del taller al robot — `czfb-cap-05-robots.jpg`
 
 ## Pendientes
 
-- Capítulos 05–06.
+- Capítulo 06 (imagen `czfb-cap-06-jovoenes-stem.jpg` ya en assets).
 - Regenerar/pegar fragmento en Xalok tras cada apertura y validar en CMS.
 
 ## Contenedores Xalok
