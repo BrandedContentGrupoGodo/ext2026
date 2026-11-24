@@ -436,7 +436,7 @@ html.bc-endesa-js .bc-endesa:not(.is-canvas-failed) .bc-endesa-hero__title {
 }
 
 .bc-endesa #capitulo-03 .bc-endesa-chapter__bg {
-  object-position: 16% 42%;
+  object-position: center;
   filter: brightness(0.92);
 }
 

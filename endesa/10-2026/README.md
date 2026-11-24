@@ -122,8 +122,8 @@ El índice es `position: sticky` dentro de `.bc-endesa-story`, que envuelve el m
 |---|---|---|---|
 | 01 | Capítulo 01 · Avifauna | El mismo cielo | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261005/11646741/cielo-como-proteger-aves-pais-clave-biodiversidad-europea-brl.html`. Fondo: gaviotas sobre cables. |
 | 02 | Capítulo 02 · Temporales | Hasta el último tramo | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261019/11658951/ultimo-tramo-trabajo-invisible-luz-apague-brl.html`. Fondo: paisaje con tendido. |
-| 03 | Capítulo 03 · Fraude eléctrico | A oscuras | Próximamente |
-| 04 | Capítulo 04 · Centrales nucleares | A plena luz | Próximamente. En el índice la etiqueta es Energía nuclear. |
+| 03 | Capítulo 03 · Fraude eléctrico | A oscuras | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261116/11680159/coste-oculto-plantaciones-ilegales-marihuana-riesgos-toda-red-electrica-brl.html`. Fondo: `cap-3.png`. |
+| 04 | Capítulo 04 · Centrales nucleares | A plena luz | Enlace «Descubrir la historia» a `https://www.lavanguardia.com/vida/20261123/11689182/asco-vemos-pensamos-central-nuclear-brl.html`. Fondo: `cap-4.png`. En el índice la etiqueta es Energía nuclear. |
 | 05 | Capítulo 05 · Phishing | El anzuelo | Próximamente |
 
 Cuerpos leídos:
@@ -134,7 +134,7 @@ Cuerpos leídos:
 - 04. ¿Qué implicaciones tendría el cierre progresivo de las centrales nucleares para el sistema energético y la economía española?
 - 05. Un experto nos ayuda a reconocer las señales del phishing y explica cómo protegernos frente a uno de los fraudes digitales más extendidos.
 
-Los capítulos 01 y 02 enlazan a su artículo en La Vanguardia, en la misma pestaña. Los capítulos 03–05 siguen en «Próximamente», sin enlace.
+Los capítulos 01, 02, 03 y 04 enlazan a su artículo en La Vanguardia, en la misma pestaña. El capítulo 05 sigue en «Próximamente», sin enlace.
 
 ### Cierre
 
@@ -171,7 +171,7 @@ Anton y Albert Sans están pedidos para producción. El panel de Dev Mode no est
 
 - Póster del vídeo, si existe. No hay un archivo de póster en `assets/`.
 - Logo de Endesa, si debe aparecer aparte del texto «EN COLABORACIÓN CON ENDESA». En el diseño aprobado solo se lee ese texto.
-- Ninguna URL pendiente en 01 y 02. Los capítulos 03–05 no tienen artículo todavía.
+- Ninguna URL pendiente en 01, 02, 03 y 04. El capítulo 05 no tiene artículo todavía.
 
 No exportar el frame como imagen de producción ni enlazar medios temporales de Figma.
 
@@ -179,7 +179,7 @@ No exportar el frame como imagen de producción ni enlazar medios temporales de 
 
 Hay un solo `<video>`. Un canvas copia ese fotograma, un poco más luminoso, y una máscara lo recorta a los glifos. El velo oscuro sigue en otra capa. No hay segunda descarga del WebM. Si JavaScript no corre, el titular se queda en blanco sólido. Con `prefers-reduced-motion`, la máscara aparece completa, sin barrido.
 
-Los capítulos 01 y 02 usan un `<a class="bc-endesa-chapter__cta">` con la URL real. No hay `href="#"`. Los capítulos 03–05 son texto «Próximamente» sobre `cap-bloq.jpg`.
+Los capítulos 01 a 04 usan un `<a class="bc-endesa-chapter__cta">` con la URL real. No hay `href="#"`. El 03 usa `cap-3.png` y el 04 `cap-4.png`. El capítulo 05 es texto «Próximamente» sobre `cap-bloq.jpg`.
 
 El cierre está maquetado con la lectura visual del canvas. No salió del inspector: hay que contrastarlo antes de darlo por cerrado. El comentario HTML lo marca.
 
@@ -188,7 +188,7 @@ Albert Sans se carga en 400, 500 y 700. Anton, en 400. El azul `#1568f0` es prov
 ## Decisiones pendientes
 
 - Pesos de Albert Sans y hex exactos (hace falta Dev Mode o una spec).
-- URLs de 03–05, cuando se publiquen.
+- URL del 05, cuando se publique.
 - Póster del vídeo, si se entrega, y si con `prefers-reduced-motion` el vídeo debe quedar parado en ese póster. Ahora el loop sigue en mute y solo se anula la animación de entrada.
 - Contraste literal del cierre y de las tres citas.
 
@@ -209,7 +209,9 @@ El hub está cerrado para publicación. El preview quita el margen del navegador
 
 - 01 El mismo cielo: enlace real, misma pestaña.
 - 02 Hasta el último tramo: enlace real, misma pestaña.
-- 03 A oscuras, 04 A plena luz y 05 El anzuelo: «Próximamente», sin enlace.
+- 03 A oscuras: enlace real. Fondo `cap-3.png`.
+- 04 A plena luz: enlace real. Fondo `cap-4.png`.
+- 05 El anzuelo: «Próximamente», sin enlace.
 - Índice interno a `#capitulo-01` … `#capitulo-05`, con sticky y scroll suave.
 - Créditos: Producción audiovisual: Ramen Production House.
 - En la introducción, solo «Sacando a la luz» va en `<em>`.
@@ -218,7 +220,7 @@ El hub está cerrado para publicación. El preview quita el margen del navegador
 
 1. Pegar el fragmento en Xalok y comprobar, en desktop y móvil, que no queda marco blanco y que los dos sticky se sueltan al acabar su zona.
 2. Si La Vanguardia cambia la altura de `.main-header.is-sticky`, actualizar los `40px` de `--bc-endesa-sticky-offset`.
-3. Activar 03–05 cuando existan sus URLs.
+3. Activar el 05 cuando exista su URL.
 4. Cerrar hex y pesos si llega Dev Mode.
 
 El fragmento y la auditoría no se versionan.
