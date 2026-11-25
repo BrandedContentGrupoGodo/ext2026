@@ -1,0 +1,340 @@
+<!-- FRAGMENTO XALOK &middot; GENCAT Turisme &middot; Pirineos de Catalunya &middot; Lugares de Nieve 2026-2027 -->
+<!-- Sin <html>, <head> ni <body>. CSS y JS acotados bajo .bc-gencat. ASSET_BASE https://gencat-pirineos.pages.dev/gencat -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@300;400;700&display=swap">
+<style>
+  article.visual__story--free:has(.bc-gencat) { overflow: visible !important; }
+  article.visual__story--free:has(.bc-gencat) .container-fluid { padding-left: 0; padding-right: 0; }
+  article.visual__story--free:has(.bc-gencat) .row { margin-left: 0; margin-right: 0; }
+  article.visual__story--free:has(.bc-gencat) .visual-article-free.col-12 { padding-left: 0; padding-right: 0; }
+  article.visual__story--free:has(.bc-gencat) .visual-article-free.col-12 > .content-free-html { margin: 0 !important; }
+
+  .bc-gencat {
+    --cian: #64C4F0; --azul: #1479B8; --rojo: #E51448; --texto: #231F20;
+    --fondo: #EAF6FD; --noche: #0E2A3F; --lv: #EAEDE2; --gris: #6b6b6b; --linea: #dfe3e6;
+    font-family: "Hepta Slab", Georgia, serif; color: var(--texto); background: #fff;
+    -webkit-font-smoothing: antialiased; line-height: 1.5; text-align: left;
+  }
+  .bc-gencat *, .bc-gencat *::before, .bc-gencat *::after { box-sizing: border-box; }
+  .bc-gencat p, .bc-gencat h2, .bc-gencat h3, .bc-gencat ul, .bc-gencat figure { margin: 0; padding: 0; }
+  .bc-gencat ul { list-style: none; }
+  .bc-gencat img { display: block; max-width: 100%; height: auto; }
+  .bc-gencat a { color: var(--azul); text-decoration: underline; text-underline-offset: 2px; }
+  .bc-gencat a:hover { color: var(--noche); }
+  .bc-gencat em { font-style: italic; }
+
+  .bc-gencat-wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  .bc-gencat-col { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+  /* Banda "En colaboracion con" */
+  .bc-gencat-collab { background: var(--lv); text-align: center; font-size: 13px; padding: 9px 20px; }
+
+  /* Etiqueta roja con doble chevron */
+  .bc-gencat-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .bc-gencat-label span { background: var(--rojo); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 8px; line-height: 1.3; }
+  .bc-gencat-label svg { width: 20px; height: 14px; color: var(--rojo); }
+
+  /* Hero */
+  .bc-gencat-hero { position: relative; min-height: 720px; display: flex; align-items: flex-end; color: #fff; background: #4a5866; overflow: hidden; }
+  .bc-gencat-hero-media { position: absolute; inset: 0; }
+  .bc-gencat-hero-media picture { display: block; height: 100%; }
+  .bc-gencat-hero-media img, .bc-gencat-hero-media .bc-gencat-ph { width: 100%; height: 100%; object-fit: cover; object-position: 65% 50%; }
+  .bc-gencat-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,42,63,.88) 0%, rgba(14,42,63,.72) 45%, rgba(14,42,63,.2) 72%, rgba(14,42,63,0) 85%), linear-gradient(0deg, rgba(14,42,63,.45) 0%, rgba(14,42,63,0) 40%); }
+  .bc-gencat-hero-copy { position: relative; z-index: 1; width: 100%; max-width: 1040px; margin: 0 auto; padding: 120px 20px 72px; }
+  .bc-gencat-title { font-size: 64px; line-height: 72px; font-weight: 700; max-width: 680px; margin-bottom: 20px !important; color: #fff; }
+  .bc-gencat-lead { font-size: 19px; line-height: 30px; font-weight: 300; max-width: 600px; }
+  .bc-gencat-hero-credit { position: absolute; z-index: 1; right: 20px; bottom: 14px; font-size: 12px; opacity: .85; }
+
+  /* Datos clave */
+  .bc-gencat-data { background: var(--fondo); padding: 44px 0; }
+  .bc-gencat-data ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .bc-gencat-data strong { display: block; color: var(--azul); font-size: 44px; line-height: 1.1; font-weight: 700; }
+  .bc-gencat-data strong::after { content: ""; display: block; width: 28px; height: 3px; background: var(--rojo); margin: 10px 0 10px; }
+  .bc-gencat-data li span { display: block; font-size: 14px; line-height: 20px; }
+
+  /* Texto */
+  .bc-gencat-body { padding: 56px 0 8px; }
+  .bc-gencat-txt p { font-size: 19px; line-height: 32px; font-weight: 300; margin-bottom: 22px; }
+  .bc-gencat-txt h2 { font-size: 30px; line-height: 38px; font-weight: 700; margin: 48px 0 18px; }
+  .bc-gencat-n { display: block; color: var(--rojo); font-size: 15px; line-height: 1; letter-spacing: .08em; margin-bottom: 10px; }
+  .bc-gencat-txt strong { font-weight: 700; }
+
+  /* Galeria */
+  .bc-gencat-gallery { padding: 24px 0 16px; }
+  .bc-gencat-gallery ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .bc-gencat-gallery figure { margin: 0; }
+  .bc-gencat-gallery .bc-gencat-ph, .bc-gencat-gallery img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+  .bc-gencat figcaption { font-size: 13px; line-height: 18px; color: var(--gris); margin-top: 8px; }
+
+  .bc-gencat-photo { margin: 8px 0 30px !important; }
+  .bc-gencat-photo img { width: 100%; }
+  .bc-gencat-gallery img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+  /* Marcador de foto (provisional) */
+  .bc-gencat-ph { display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; background: #d3d9df; color: #5d6670; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+  .bc-gencat-hero .bc-gencat-ph { background: linear-gradient(160deg, #9fb3c4, #4a5866); color: rgba(255,255,255,.75); align-items: flex-start; padding-top: 120px; }
+
+  /* Destacado */
+  .bc-gencat-quote { margin: 44px 0 !important; }
+  .bc-gencat-quote svg { width: 30px; height: 20px; color: var(--cian); margin-bottom: 10px; }
+  .bc-gencat-quote p { color: var(--azul); font-size: 28px; line-height: 36px; font-weight: 700; margin: 0; }
+
+  /* Estacion destacada */
+  .bc-gencat-feature { margin: 40px auto 32px; }
+  .bc-gencat-feature-box { background: var(--noche); color: #fff; }
+  .bc-gencat-feature-copy { padding: 40px 40px 40px; }
+  .bc-gencat-feature-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+  .bc-gencat-feature-photos img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .bc-gencat-kicker { color: var(--cian); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px !important; }
+  .bc-gencat-feature h3 { font-size: 34px; line-height: 40px; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .bc-gencat-feature-copy p { font-size: 16px; line-height: 26px; font-weight: 300; }
+  .bc-gencat-feature-copy a { color: #fff; }
+  .bc-gencat-feature-stats { display: flex; gap: 36px; margin-top: 24px; }
+  .bc-gencat-feature-stats strong { display: block; color: var(--cian); font-size: 30px; line-height: 1.1; font-weight: 700; }
+  .bc-gencat-feature-stats span { font-size: 13px; color: rgba(255,255,255,.75); }
+
+  /* Agenda */
+  .bc-gencat-agenda { margin: 48px 0 40px; }
+  .bc-gencat-agenda h3 { font-size: 30px; line-height: 38px; font-weight: 700; margin-bottom: 18px; }
+  .bc-gencat-agenda li { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--linea); }
+  .bc-gencat-agenda li:first-child { border-top: 1px solid var(--linea); }
+  .bc-gencat-date { color: var(--rojo); font-size: 14px; font-weight: 700; text-transform: uppercase; }
+  .bc-gencat-event { font-size: 17px; line-height: 24px; }
+  .bc-gencat-event small { display: block; font-size: 13px; line-height: 19px; color: var(--gris); font-weight: 300; margin-top: 2px; }
+  .bc-gencat-place { font-size: 13px; color: var(--gris); text-align: right; }
+
+  /* Cierre y CTA */
+  .bc-gencat-cta { display: flex; gap: 24px; align-items: center; background: var(--fondo); padding: 28px; margin: 8px 0 64px; }
+  .bc-gencat-logo { flex: 0 0 110px; display: block; }
+  .bc-gencat-logo img { width: 110px; height: 110px; }
+  .bc-gencat .bc-gencat-cta-t { font-size: 22px; line-height: 28px; color: var(--rojo); font-size: 22px; line-height: 28px; font-weight: 700; margin-bottom: 6px !important; }
+  .bc-gencat-cta p.bc-gencat-cta-x { font-size: 16px; line-height: 24px; font-weight: 300; margin-bottom: 16px; }
+  .bc-gencat-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--rojo); color: #fff !important; text-decoration: none !important; font-size: 15px; font-weight: 700; padding: 12px 18px; line-height: 1.2; }
+  .bc-gencat-btn:hover { background: #c20f3c; }
+  .bc-gencat-btn svg { width: 16px; height: 16px; flex: none; }
+
+  /* Creditos */
+  .bc-gencat-credits { border-top: 1px solid var(--linea); padding: 18px 0 56px; }
+  .bc-gencat .bc-gencat-credits p { font-size: 13px; line-height: 20px; color: var(--gris); font-weight: 400; margin: 0; }
+
+  /* Mobile first fino: tablet y movil */
+  @media (max-width: 900px) {
+    .bc-gencat-data ul { grid-template-columns: repeat(2, 1fr); gap: 24px 20px; }
+    .bc-gencat-hero::after { background: linear-gradient(90deg, rgba(14,42,63,.9) 0%, rgba(14,42,63,.75) 50%, rgba(14,42,63,.2) 85%); }
+    }
+  @media (max-width: 640px) {
+    .bc-gencat-hero { display: block; min-height: 0; background: var(--noche); }
+    .bc-gencat-hero::after { display: none; }
+    .bc-gencat-hero-media { position: relative; aspect-ratio: 4 / 3; }
+    .bc-gencat-hero-copy { padding: 36px 20px 36px; }
+    .bc-gencat-title, .bc-gencat-lead { max-width: none; }
+    .bc-gencat-hero-credit { bottom: auto; top: calc(75vw - 28px); text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+    .bc-gencat-title { font-size: 34px; line-height: 40px; }
+    .bc-gencat-lead { font-size: 16px; line-height: 25px; }
+    .bc-gencat-data { padding: 32px 0; }
+    .bc-gencat-data strong { font-size: 32px; }
+    .bc-gencat-data li span { font-size: 13px; line-height: 18px; }
+    .bc-gencat-body { padding-top: 36px; }
+    .bc-gencat-txt p { font-size: 17px; line-height: 28px; }
+    .bc-gencat-txt h2 { font-size: 24px; line-height: 30px; margin-top: 40px; }
+    .bc-gencat-gallery { padding-left: 0; padding-right: 0; }
+    .bc-gencat-gallery ul { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding: 0 20px 6px; -webkit-overflow-scrolling: touch; }
+    .bc-gencat-gallery li { flex: 0 0 78%; scroll-snap-align: start; }
+    .bc-gencat-quote p { font-size: 22px; line-height: 30px; }
+    .bc-gencat-feature { padding: 0; }
+    .bc-gencat-feature-photos { gap: 8px; margin-top: 22px; }
+    .bc-gencat-feature-copy { padding: 28px 20px 32px; }
+    .bc-gencat-feature h3 { font-size: 26px; line-height: 32px; }
+    .bc-gencat-agenda h3 { font-size: 24px; line-height: 30px; }
+    .bc-gencat-agenda li { grid-template-columns: 1fr; gap: 2px; }
+    .bc-gencat-place { text-align: left; }
+    .bc-gencat-cta { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
+    .bc-gencat-logo { flex-basis: auto; }
+    .bc-gencat-logo img { width: 80px; height: 80px; }
+  }
+</style>
+
+<div class="bc-gencat">
+  <p class="bc-gencat-collab" data-bc-nobody>En colaboraci&oacute;n con Pirineus de Catalunya</p>
+
+  <!-- HERO -->
+  <header class="bc-gencat-hero">
+    <div class="bc-gencat-hero-media">
+      <picture><source media="(max-width: 640px)" type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-2x.avif 2x"><source media="(max-width: 640px)" type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-2x.webp 2x"><source media="(max-width: 640px)" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-m-2x.jpg 2x"><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/hero-boi-taull-2x.jpg 2x" width="1440" height="810" alt="Una snowboarder desciende por una pista de Bo&iacute; Ta&uuml;ll con las cumbres nevadas al fondo" fetchpriority="high"></picture>
+    </div>
+    <div class="bc-gencat-hero-copy">
+      <p class="bc-gencat-label" data-bc-nobody><span>Pirineos de Catalunya</span><svg viewBox="0 0 20 14" aria-hidden="true"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+      <p class="bc-gencat-title" role="heading" aria-level="1">Cinco maneras de vivir el invierno en los Pirineos de Catalunya</p>
+      <p class="bc-gencat-lead">Familias, esquiadores exigentes y amantes del esqu&iacute; de fondo. Todos pueden encontrar su plan en las 15 estaciones de los Pirineos de Catalunya, que estrenan temporada con nuevos remontes, pistas y propuestas de ocio y restauraci&oacute;n. Alrededor de las estaciones, valles con pueblos con historia, naturaleza y buena mesa</p>
+    </div>
+    <p class="bc-gencat-hero-credit" data-bc-nobody>Bo&iacute; Ta&uuml;ll</p>
+  </header>
+
+  <!-- DATOS CLAVE -->
+  <section class="bc-gencat-data" aria-label="Datos clave de la temporada">
+    <div class="bc-gencat-wrap">
+      <ul>
+        <li><strong>15</strong><span>estaciones de esqu&iacute; alpino y n&oacute;rdico en los Pirineos de Catalunya</span></li>
+        <li><strong>189 km</strong><span>esquiables en las seis estaciones de Pirineu365</span></li>
+        <li><strong>10 km</strong><span>de esqu&iacute; nocturno en Masella, el mayor dominio de noche de los Pirineos</span></li>
+        <li><strong>7</strong><span>estaciones de esqu&iacute; de fondo y raquetas en Tot N&ograve;rdic</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="bc-gencat-body">
+    <!-- INTRO -->
+    <div class="bc-gencat-col bc-gencat-txt">
+      <p><strong>Todo, muy cerca.</strong> Catalunya es un destino de turismo de invierno con una ventaja clara. Hay mucha variedad de propuestas a poca distancia entre ellas. En un mismo fin de semana caben en tus planes una bajada por una pista roja reci&eacute;n abierta, una excursi&oacute;n con raquetas al atardecer y una cena con men&uacute; de alta monta&ntilde;a. Las 15 estaciones de esqu&iacute; alpino y n&oacute;rdico de los Pirineos de Catalunya se reparten de la Val d'Aran a la Vall de Camprodon, donde Vallter tiene vistas a la Costa Brava, y todas abren la temporada 2026-2027 con nuevos remontes, m&aacute;s nieve producida y nuevos espacios de ocio y restauraci&oacute;n.</p>
+      <p>Pero para elegir estaci&oacute;n, lo primero es decidir qu&eacute; tipo de invierno apetece:</p>
+    </div>
+
+    <!-- GALER&Iacute;A (en mobile, carrusel horizontal) -->
+    <section class="bc-gencat-gallery bc-gencat-wrap" aria-label="Galer&iacute;a de fotos">
+      <ul>
+        <li><figure><picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-baqueira-2x.jpg 2x" width="680" height="510" alt="Esquiadores en la pista junto al telecabina de Baqueira, con el telesilla y el bosque nevado al fondo" loading="lazy" decoding="async"></picture><figcaption>Baqueira Beret, en la Val d'Aran</figcaption></figure></li>
+        <li><figure><picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-tot-nordic-2x.jpg 2x" width="680" height="510" alt="Dos esquiadores de fondo en un circuito entre abetos nevados" loading="lazy" decoding="async"></picture><figcaption>Esqu&iacute; de fondo en Tot N&ograve;rdic</figcaption></figure></li>
+        <li><figure><picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/galeria-vall-de-nuria-2x.jpg 2x" width="680" height="510" alt="El tren cremallera de Vall de N&uacute;ria sube entre el bosque nevado" loading="lazy" decoding="async"></picture><figcaption>Vall de N&uacute;ria, a la que solo se llega en tren cremallera</figcaption></figure></li>
+      </ul>
+    </section>
+
+    <!-- 1 -->
+    <div class="bc-gencat-col bc-gencat-txt">
+      <h2><span class="bc-gencat-n" data-bc-nobody>01</span>Para quien busca pendiente y nieve t&eacute;cnica</h2>
+      <p>El gran estreno de la temporada est&aacute; en la Val d'Aran. <a href="https://www.baqueira.es" target="_blank" rel="noopener">Baqueira Beret</a> ha invertido 24 millones de euros en transformar la cota 1800. La pieza central es el nuevo telesilla desembragable Mirador, de seis plazas, que sustituye al de 1990 y sube hasta los 2.469 metros. En Era Coma se abren dos pistas rojas, Chic&ograve;ia y Parpalh&ograve;la, y para vivir el <em>apr&egrave;s-ski</em>, el nuevo sello Baqueira Music programa conciertos y sesiones de DJ.</p>
+      <p>En <a href="https://pirineu365.cat/es/boitaull/inicio/" target="_blank" rel="noopener">Bo&iacute; Ta&uuml;ll</a>, la estaci&oacute;n m&aacute;s alta de los Pirineos de Catalunya, las pistas Boulevard y Gran Diagonal mejoran su trazado y su producci&oacute;n de nieve.</p>
+      <figure class="bc-gencat-photo"><picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/esqui-pista-1x.avif 1x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/esqui-pista-1x.webp 1x"><img src="https://gencat-pirineos.pages.dev/gencat/img/esqui-pista-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/esqui-pista-1x.jpg 1x" width="760" height="506" alt="Un esquiador traza un giro en una pista pisada" loading="lazy" decoding="async"></picture></figure>
+    </div>
+
+    <!-- ESTACI&Oacute;N DESTACADA -->
+    <section class="bc-gencat-feature bc-gencat-col" aria-labelledby="bc-gencat-masella">
+      <div class="bc-gencat-feature-box">
+        <div class="bc-gencat-feature-copy">
+          <p class="bc-gencat-kicker" data-bc-nobody>Esqu&iacute; nocturno</p>
+          <h3 id="bc-gencat-masella">Masella, cuando el sol se va</h3>
+          <p>En <a href="https://www.masella.com" target="_blank" rel="noopener">Masella</a>, en la Cerdanya, la jornada sigue cuando se pone el sol: su esqu&iacute; nocturno ilumina 10 kil&oacute;metros en 13 pistas, casi todas entre el bosque, y es el mayor dominio de esqu&iacute; de noche de los Pirineos. Adem&aacute;s, los telesillas TGV, Masella Jet y Coma Oriola reorganizan sus zonas de embarque para reducir paradas y colas.</p>
+          <div class="bc-gencat-feature-stats" data-bc-nobody>
+            <p><strong>10 km</strong><span>iluminados</span></p>
+            <p><strong>13</strong><span>pistas de noche</span></p>
+          </div>
+          <div class="bc-gencat-feature-photos">
+            <picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-1-2x.jpg 2x" width="460" height="306" alt="Esquiadores en una pista iluminada de Masella por la noche" loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/masella-noche-2-2x.jpg 2x" width="460" height="307" alt="Pistas de Masella iluminadas entre el bosque durante una nevada nocturna" loading="lazy" decoding="async"></picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bc-gencat-col bc-gencat-txt">
+      <!-- 2 -->
+      <h2><span class="bc-gencat-n" data-bc-nobody>02</span>En familia: primeras bajadas, trineos y tirolina</h2>
+      <p>Las familias encuentran este invierno m&aacute;s espacio para aprender sin estr&eacute;s y con todos los servicios. Baqueira estrena una zona de debutantes en Baqueira 1800, con dos cintas dobles y una cinta peatonal con galer&iacute;a, y en Beret suma otra cinta y abre la pista Gireta. En el Pla de Masella, el nuevo Miniclub del AlpHotel cuida y entretiene a ni&ntilde;os de 3 a 6 a&ntilde;os los fines de semana y festivos.</p>
+      <p>Para los que ya se defienden, <a href="https://pirineu365.cat/es/vallter/inicio/" target="_blank" rel="noopener">Vallter</a>, a 2.500 metros sobre la Vall de Camprodon, estrena el itinerario Freeride J&uacute;nior El Bosquet, una primera toma de contacto con el <em>freeride</em> en un espacio habilitado. La Molina ampl&iacute;a la pista de trineos de Coll Sis&egrave;.</p>
+      <p><a href="https://portdelcomte.net" target="_blank" rel="noopener">Port del Comte</a>, en el Solson&egrave;s, es la nieve m&aacute;s cercana a Barcelona y mantiene el car&aacute;cter familiar que tiene desde 1973, con <em>tubbies</em>, parque de aventura y pista de trineos. En <a href="https://pirineu365.cat/es/boitaull/inicio/" target="_blank" rel="noopener">Bo&iacute; Ta&uuml;ll</a>, la tirolina doble m&aacute;s larga de Catalunya tambi&eacute;n funciona en invierno.</p>
+
+      <!-- 3 -->
+      <h2><span class="bc-gencat-n" data-bc-nobody>03</span>A tu ritmo: esqu&iacute; de fondo, raquetas y miradores</h2>
+      <p>La nieve no siempre pide velocidad. Para quien prefiere vivirla sin prisas, Catalunya ofrece siete estaciones que forman Tot N&ograve;rdic: Guils Fontanera, Lles de Cerdanya y Aransa, en la Cerdanya; Sant Joan de l'Erm y Tuixent-la Vansa, en el Alt Urgell, y Tavascan y Vir&oacute;s-Vallferrera, en el Pallars Sobir&agrave;. Sus circuitos de esqu&iacute; de fondo y raquetas atraviesan bosques, para avanzar en silencio y al propio ritmo. Esta temporada estrenan web, <a href="https://www.totnordic.com/es/" target="_blank" rel="noopener">totnordic.com</a>, que re&uacute;ne el estado de los circuitos, las tarifas y el <em>forfait</em> de temporada de las siete.</p>
+      <p>Un cl&aacute;sico para disfrutar de una estaci&oacute;n con tranquilidad es <a href="https://pirineu365.cat/es/valldenuria/estacion/la-estacion/" target="_blank" rel="noopener">Vall de N&uacute;ria</a>. Aqu&iacute; solo se llega en tren cremallera, desde Ribes de Freser y Queralbs, y eso ya marca que es una estaci&oacute;n con su propio <em>tempo</em>. Este invierno gana actividades de tarde y de noche: salidas nocturnas, astronom&iacute;a, excursiones con raquetas hasta el nuevo mirador del lago y salidas en m&aacute;quina pisanieves.</p>
+      <p>Otras opciones para vivir la nieve de manera m&aacute;s contemplativa son las que ofrece Port del Comte, que desde el Mirador del Querol, a 2.110 metros y con rampa adaptada, permite ver quebrantahuesos, buitres y &aacute;guilas y, los d&iacute;as claros, la silueta de Montserrat. Por su parte, Bo&iacute; Ta&uuml;ll estrena el telescopio panor&aacute;mico del Mirador de Vaques.</p>
+      <figure class="bc-gencat-photo"><picture><source type="image/avif" srcset="https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-1x.avif 1x, https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-2x.avif 2x"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-1x.jpg" srcset="https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-1x.jpg 1x, https://gencat-pirineos.pages.dev/gencat/img/port-del-comte-atardecer-2x.jpg 2x" width="760" height="507" alt="Pinos nevados al atardecer en Port del Comte" loading="lazy" decoding="async"></picture><figcaption>Atardecer en Port del Comte</figcaption></figure>
+
+      <!-- DESTACADO -->
+      <blockquote class="bc-gencat-quote" data-bc-nobody>
+        <svg viewBox="0 0 30 20" aria-hidden="true"><path d="M3 3l7 7-7 7M15 3l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Cada estaci&oacute;n es la puerta de entrada a un valle que se vive tambi&eacute;n sin esqu&iacute;s</p>
+      </blockquote>
+
+      <!-- 4 -->
+      <h2><span class="bc-gencat-n" data-bc-nobody>04</span>Entre semana y en tren: el invierno con menos colas</h2>
+      <p>Esta temporada, esquiar entre semana sale m&aacute;s a cuenta. Las seis estaciones de FGC agrupadas bajo la marca <a href="https://pirineu365.cat" target="_blank" rel="noopener">Pirineu365</a> (La Molina, Vall de N&uacute;ria, Vallter, Espot, Port Ain&eacute; y Bo&iacute; Ta&uuml;ll) estrenan el D&iacute;a del Esquiador: los mi&eacute;rcoles, el <em>forfait</em> cuesta la mitad con FlexiPass. Este pase funciona como un telepeaje: da acceso directo a las pistas de las seis estaciones y se cobra despu&eacute;s de cada jornada. Cuantos m&aacute;s d&iacute;as se esqu&iacute;a, mayor es el descuento, hasta el 25 %, y a partir del d&iacute;a 17 el esqu&iacute; es gratis. Entre las seis suman cerca de 189 kil&oacute;metros esquiables y abren del 4 de diciembre al 4 de abril.</p>
+      <p>Enero, febrero y marzo son buenos meses para alargar una escapada. Quien no puede desconectar del todo tiene sitio en <a href="https://pirineu365.cat/es/espotesqui/inicio/" target="_blank" rel="noopener">Espot</a>, que abre un espacio de <em>coworking</em> en la cafeter&iacute;a de la cota 2.000, frente al Parc Nacional d'Aig&uuml;estortes i Estany de Sant Maurici. Es un buen plan, ma&ntilde;ana de trabajo y tarde de esqu&iacute;. O al rev&eacute;s.</p>
+      <p>Liberarse del coche y de los atascos es tambi&eacute;n una buena opci&oacute;n para disfrutar m&aacute;s de la escapada a la nieve. La <a href="https://rodalies.gencat.cat" target="_blank" rel="noopener">l&iacute;nea R3 de Rodalies</a> llega a Puigcerd&agrave;, conectada con La Molina, y el cremallera sube hasta Vall de N&uacute;ria. Otra opci&oacute;n es llegar en tren a Lleida y seguir en autob&uacute;s hasta Vielha o hasta Espot y Port Ain&eacute;. El autob&uacute;s no circula todos los d&iacute;as, as&iacute; que conviene consultar los horarios antes.</p>
+
+      <!-- 5 -->
+      <h2><span class="bc-gencat-n" data-bc-nobody>05</span>M&aacute;s all&aacute; de las pistas: valles, pueblos y buena mesa</h2>
+      <p>Cada estaci&oacute;n es la puerta de entrada a un valle que se vive tambi&eacute;n sin esqu&iacute;s, y la cocina de monta&ntilde;a sube de cota este invierno. En <a href="https://pirineu365.cat/es/lamolina/inicio/" target="_blank" rel="noopener">La Molina</a>, el Niu de l'&Agrave;liga termina su reforma a 2.537 metros, en el Parc Natural del Cad&iacute;-Moixer&oacute;. En el puerto de la Bonaigua, a 2.072 metros, el antiguo Refugi San Miguel reabre como Xalet d'&Agrave;neu, con una carta que va de la cazuela de jud&iacute;as con confit de pato a las tapas y el vermut. Vallter ampl&iacute;a la terraza de la Braseria Les Marmotes con un balc&oacute;n sobre las pistas. Bo&iacute; Ta&uuml;ll estrena barra exterior en La Carlina, a 2.170 metros, y Port Ain&eacute; celebra 40 a&ntilde;os con La Pica, un nuevo espacio gastron&oacute;mico en el Hotel Port Ain&eacute;.</p>
+      <p>Valle abajo esperan las <a href="https://whc.unesco.org/es/list/988" target="_blank" rel="noopener">iglesias rom&aacute;nicas de la Vall de Bo&iacute;</a>, patrimonio mundial de la Unesco, los lagos de Aig&uuml;estortes o los pueblos de comarcas como la Cerdanya, el Pallars Sobir&agrave;, el Pallars Juss&agrave; o el Ripoll&egrave;s. Las estaciones tambi&eacute;n cuidan el territorio que las rodea: Vallter acaba de recibir el distintivo internacional Biosphere Committed por su compromiso con la sostenibilidad.</p>
+
+      <!-- AGENDA -->
+      <section class="bc-gencat-agenda" aria-labelledby="bc-gencat-agenda-t">
+        <p class="bc-gencat-label" data-bc-nobody><span>Calendario internacional</span><svg viewBox="0 0 20 14" aria-hidden="true"><path d="M2 2l5 5-5 5M10 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        <h3 id="bc-gencat-agenda-t">El invierno tambi&eacute;n tiene calendario de competici&oacute;n</h3>
+        <ul>
+          <li><span class="bc-gencat-date">16-21 ene</span><span class="bc-gencat-event"><a href="https://www.freerideworldtour.com" target="_blank" rel="noopener">Freeride World Tour</a><small>Vuelve a la cara noroeste del Baciver</small></span><span class="bc-gencat-place">Baqueira</span></li>
+          <li><span class="bc-gencat-date">30-31 ene</span><span class="bc-gencat-event"><a href="https://www.ismf-ski.org" target="_blank" rel="noopener">Copa del Mundo de esqu&iacute; de monta&ntilde;a</a><small>Despu&eacute;s del debut ol&iacute;mpico de esta disciplina en Milano-Cortina</small></span><span class="bc-gencat-place">Bo&iacute; Ta&uuml;ll</span></li>
+          <li><span class="bc-gencat-date">1-2 feb</span><span class="bc-gencat-event"><a href="https://www.lamolina.cat" target="_blank" rel="noopener">Doble Copa de Europa de gigante</a></span><span class="bc-gencat-place">La Molina</span></li>
+          <li><span class="bc-gencat-date">4-5 feb</span><span class="bc-gencat-event"><a href="https://www.baqueira.es" target="_blank" rel="noopener">Copa de Europa FIS de eslalon</a></span><span class="bc-gencat-place">Baqueira</span></li>
+          <li><span class="bc-gencat-date">7 feb</span><span class="bc-gencat-event"><a href="https://www.marxaberet.com" target="_blank" rel="noopener">47.&ordf; Marxa Beret</a></span><span class="bc-gencat-place">Baqueira Beret</span></li>
+          <li><span class="bc-gencat-date">3-7 mar</span><span class="bc-gencat-event"><a href="https://www.ismf-ski.org" target="_blank" rel="noopener">Mundial j&uacute;nior de esqu&iacute; de monta&ntilde;a</a></span><span class="bc-gencat-place">La Molina</span></li>
+        </ul>
+      </section>
+
+      <!-- CIERRE -->
+      <p><strong>Todo, muy cerca.</strong> &ldquo;Pirineos de Catalunya. Abierto 365&rdquo; es el lema de un territorio que se visita en cualquier &eacute;poca del a&ntilde;o y que este invierno lo tiene todo para descubrirlo con nieve.</p>
+
+      <aside class="bc-gencat-cta" aria-label="M&aacute;s informaci&oacute;n">
+        <picture class="bc-gencat-logo"><source type="image/webp" srcset="https://gencat-pirineos.pages.dev/gencat/img/logo-pirineus-1x.webp 1x, https://gencat-pirineos.pages.dev/gencat/img/logo-pirineus-2x.webp 2x"><img src="https://gencat-pirineos.pages.dev/gencat/img/logo-pirineus-1x.png" srcset="https://gencat-pirineos.pages.dev/gencat/img/logo-pirineus-1x.png 1x, https://gencat-pirineos.pages.dev/gencat/img/logo-pirineus-2x.png 2x" width="110" height="110" alt="Pirineos de Catalunya" loading="lazy" decoding="async"></picture>
+        <div>
+          <p class="bc-gencat-cta-t">M&aacute;s informaci&oacute;n</p>
+          <p class="bc-gencat-cta-x">En la <a href="https://www.visitpirineus.com/es/nieve-y-esqui" target="_blank" rel="noopener">secci&oacute;n de nieve de visitpirineus.com</a> encontrar&aacute;s toda la informaci&oacute;n para preparar el viaje. El invierno es tuyo.</p>
+          <a class="bc-gencat-btn" href="https://www.visitpirineus.com/es/nieve-y-esqui" target="_blank" rel="noopener" data-bc-nobody>Prepara tu viaje <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ROOT = '.bc-gencat';
+  var SEL = 'h2, h3, p, li, figcaption';
+  var SKIP = '[aria-hidden="true"], [data-bc-nobody], [class*="-credits"]';
+  function clean(s) { return s.replace(/\s+/g, ' ').trim(); }
+  function text(node) {
+    var c = node.cloneNode(true);
+    c.querySelectorAll(SKIP).forEach(function (n) { n.parentNode.removeChild(n); });
+    return clean(c.textContent);
+  }
+  function liText(li) {
+    var parts = [].map.call(li.children, function (c) {
+      return [].map.call(c.childNodes, function (n) {
+        return n.nodeType === 1 ? text(n) : clean(n.textContent);
+      }).filter(Boolean).join('. ');
+    }).filter(Boolean);
+    return li.closest('.bc-gencat-data') ? parts.join(' ') : parts.join(' | ');
+  }
+  function fillArticleBody() {
+    var root = document.querySelector(ROOT);
+    if (!root) return;
+    var parts = [];
+    root.querySelectorAll(SEL).forEach(function (el) {
+      if (el.closest(SKIP)) return;
+      if (el.getAttribute('role') === 'heading' && el.getAttribute('aria-level') === '1') return;
+      if (el.querySelector(SEL)) return;
+      var t = el.tagName === 'LI' ? liText(el) : text(el);
+      if (t) parts.push(t);
+    });
+    var body = parts.join('\n\n');
+    if (!body) return;
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var data;
+      try { data = JSON.parse(s.textContent); } catch (e) { return; }
+      var items = Array.isArray(data) ? data : (data['@graph'] || [data]);
+      var changed = false;
+      items.forEach(function (it) {
+        if (/Article/.test([].concat(it['@type'] || []).join(',')) && !it.articleBody) {
+          it.articleBody = body;
+          changed = true;
+        }
+      });
+      if (changed) s.textContent = JSON.stringify(data);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fillArticleBody);
+  } else {
+    fillArticleBody();
+  }
+})();
+</script>
