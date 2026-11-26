@@ -1,0 +1,61 @@
+/* Hacer empresa · datos de la serie
+   Este es el archivo que se edita al publicar un capítulo.
+   Un episodio está publicado solo si ya llegó su hora de salida
+   y `url` tiene la dirección del capítulo en La Vanguardia.
+   Con la fecha cumplida y `url` vacía sigue en «Próximamente».
+
+   El reloj de prueba (?fecha=, ?sinurl= y los enlaces del pie) solo
+   corre en local y en github.io. En lavanguardia.com se ignora.
+   - sin ?fecha, simula el lanzamiento: 30 nov 2026, 09:00 (Europe/Madrid)
+   - ?fecha=2026-12-28T09:00  (también vale ?fecha=2026-12-28)
+   - ?sinurl=1  no usa los enlaces de maqueta; solo cuenta `url`
+   En local y en github.io, 01 y 02 enlazan a su HTML de maqueta aunque `url` esté vacía.
+   En La Vanguardia ese respaldo no existe: sin URL no hay enlace.
+
+   Imagen: primero `img` / `imgMini`. Si faltan y hay `youtubeId`, la miniatura de YouTube.
+   Los campos marcados como provisionales puede cambiarlos el cliente.
+*/
+window.HACER_EMPRESA = {
+  hub: "",
+  episodios: [
+    {
+      n: "01",
+      empresa: "NOX",
+      sale: "2026-11-30T08:00:00+01:00",
+      url: "",
+      titular: "Emprender a los 40 años en un negocio donde pocos veían oportunidades",
+      entradilla: "Jesús Ballvé, fundador de NOX, recuerda los errores que casi acabaron con su empresa y las decisiones que le permitieron seguir adelante",
+      titularCorto: "Emprender a los 40 y desafiar las dudas", /* provisional */
+      img: "img/nox.webp",
+      imgSrcset: "img/nox-800.webp 800w, img/nox-1280.webp 1280w, img/nox.webp 1920w",
+      imgMini: "img/nox-mini.webp",
+      imgAlt: "Jesús Ballvé, Alfonso Bastida, Paula Ballvé y Miguel Lamperti en la conversación de Hacer empresa",
+      imgMiniAlt: "Jesús Ballvé, fundador y CEO de NOX",
+      youtubeId: "",
+      decision: "Viajar a China con una pala y una última oportunidad", /* provisional */
+      cita: "“Los fallos habían sido nuestros y estaba en nuestra mano rectificar y aprender, y volver a hacerlo bien”", /* provisional */
+      autorCita: "Jesús Ballvé, fundador y CEO de NOX"
+    },
+    {
+      n: "02",
+      empresa: "VICIO",
+      sale: "2026-12-28T08:00:00+01:00",
+      url: "",
+      titular: "“Elegir es renunciar”: la decisión que ayudó a transformar una pequeña empresa en una marca de éxito",
+      /* El Figma no trae un titular corto distinto. Se usa el titular completo. */
+      titularCorto: "“Elegir es renunciar”: la decisión que ayudó a transformar una pequeña empresa en una marca de éxito",
+      entradilla: "VICIO empezó vendiendo pizzas y hamburguesas hasta que decidió concentrarse en un solo producto. Banco Sabadell recupera esta historia de decisiones y aprendizajes en su serie Hacer empresa",
+      img: "",
+      imgAlt: "",
+      imgMiniAlt: "",
+      youtubeId: "",
+      decision: "Dejar las pizzas para centrarse solo en las hamburguesas",
+      cita: "Elegir es renunciar, y cuando eliges algo estás dispuesto a asumir la peor de las consecuencias de la decisión que no has tomado",
+      autorCita: "Oriol de Pablo, CEO & Co-Founder de VICIO"
+    },
+    { n: "03", sale: "2027-01-11T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "04", sale: "2027-01-25T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "05", sale: "2027-02-08T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "06", sale: "2027-02-22T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" }
+  ]
+};
