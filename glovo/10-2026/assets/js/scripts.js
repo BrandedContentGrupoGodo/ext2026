@@ -4,11 +4,12 @@
   /*
    * Único punto para actualizar las historias publicadas.
    * Una URL http(s) abre el artículo en la misma pestaña.
-   * Con "" el clic no navega. Las tres «Próximamente» no tienen entrada aquí.
+   * Con "" el clic no navega. Las «Próximamente» no tienen entrada aquí.
    */
   var STORY_URLS = {
     gastronomia: "https://www.lavanguardia.com/comer/20261028/11593743/nietos-bulli-nueva-cocina-catalana-asi-cuece-futuro-gastronomico-barcelona-brl.html",
-    arquitectura: "https://www.lavanguardia.com/vida/20261031/11664765/barcelona-futuro-como-cambiara-ciudad-habitamos-brl.html"
+    arquitectura: "https://www.lavanguardia.com/vida/20261031/11664765/barcelona-futuro-como-cambiara-ciudad-habitamos-brl.html",
+    movilidad: "https://www.lavanguardia.com/vida/20261127/11693105/circularan-coches-conductor-barcelona-asi-sera-movilidad-futuro-brl.html"
   };
 
   function isRealUrl(value) {
