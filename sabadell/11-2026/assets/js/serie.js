@@ -1,7 +1,23 @@
 /* Hacer empresa · pinta el hub y los capítulos a partir de episodios.js */
 (function () {
   var LOCAL_PAGES = { "01": "01-nox.html", "02": "02-vicio.html" };
+  var PREVIEW_DAYS = [
+    { n: "01", label: "30 nov", fecha: "2026-11-30T09:00", page: "01-nox.html" },
+    { n: "02", label: "28 dic", fecha: "2026-12-28T09:00", page: "02-vicio.html" },
+    { n: "03", label: "11 ene", fecha: "2027-01-11T09:00", page: "plantilla-capitulo.html?ep=03" },
+    { n: "04", label: "25 ene", fecha: "2027-01-25T09:00", page: "plantilla-capitulo.html?ep=04" },
+    { n: "05", label: "8 feb", fecha: "2027-02-08T09:00", page: "plantilla-capitulo.html?ep=05" },
+    { n: "06", label: "22 feb", fecha: "2027-02-22T09:00", page: "plantilla-capitulo.html?ep=06" }
+  ];
+  var LOREM = {
+    titular: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    titularCorto: "Lorem ipsum dolor sit amet",
+    entradilla: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    decision: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    cita: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+  };
   var BASE = "";
+  var fechaQuery = "";
   var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   var MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   var TOTAL = 6;
@@ -19,35 +35,47 @@
     var params = local ? new URLSearchParams(window.location.search) : new URLSearchParams();
     var sinurl = local && params.get("sinurl") === "1";
     var now = resolveNow(local, params);
+    fechaQuery = "";
+    if (local) {
+      var rawFecha = params.get("fecha");
+      fechaQuery = rawFecha ? String(rawFecha).trim() : "2026-11-30T09:00";
+    }
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     root.classList.add(reduce ? "is-reduced" : "is-motion");
 
     var eps = data.episodios.map(function (ep) {
+      var n = ep.n || "";
+      var fill = local && !sinurl && !(ep.url && String(ep.url).trim()) && /^0[3-6]$/.test(n);
       var href = resolveHref(ep, local, sinurl);
       return {
         raw: ep,
-        n: ep.n || "",
-        empresa: ep.empresa || "",
+        n: n,
+        empresa: fill ? "Empresa " + n : (ep.empresa || ""),
         sale: ep.sale || "",
-        titular: ep.titular || "",
-        titularCorto: ep.titularCorto || ep.titular || "",
-        entradilla: ep.entradilla || "",
+        titular: fill ? LOREM.titular : (ep.titular || ""),
+        titularCorto: fill ? LOREM.titularCorto : (ep.titularCorto || ep.titular || ""),
+        entradilla: fill ? LOREM.entradilla : (ep.entradilla || ""),
         img: ep.img || "",
         imgSrcset: ep.imgSrcset || "",
         imgMini: ep.imgMini || "",
         imgAlt: ep.imgAlt || "",
         imgMiniAlt: ep.imgMiniAlt || "",
         youtubeId: (ep.youtubeId || "").trim(),
-        decision: ep.decision || "",
-        cita: ep.cita || "",
-        autorCita: ep.autorCita || "",
+        decision: fill ? LOREM.decision : (ep.decision || ""),
+        cita: fill ? LOREM.cita : (ep.cita || ""),
+        autorCita: fill ? "Lorem ipsum" : (ep.autorCita || ""),
         href: href,
+        preview: fill,
         publicado: !!(href && ep.sale && now.getTime() >= new Date(ep.sale).getTime())
       };
     });
 
     var pieza = root.getAttribute("data-hacer-empresa");
-    var hubHref = (data.hub && String(data.hub).trim()) || (local ? "index.html" : "");
+    if (local && pieza === "00") {
+      var asked = (params.get("ep") || "").trim();
+      if (/^0[3-6]$/.test(asked)) pieza = asked;
+    }
+    var hubHref = (data.hub && String(data.hub).trim()) || (local ? withFecha("index.html") : "");
     applyHubLinks(root, hubHref);
 
     if (pieza === "hub") renderHub(root, eps, now);
@@ -58,7 +86,7 @@
     bindFloat(root, reduce);
     bindAncla(root, reduce);
     bindReading(root, reduce);
-    if (local) renderSim(root, now, params, sinurl);
+    if (local) renderSim(root, now, root.getAttribute("data-hacer-empresa") === "hub");
     return true;
   }
 
@@ -88,10 +116,17 @@
     return isNaN(d.getTime()) ? null : d;
   }
 
+  function withFecha(href) {
+    if (!fechaQuery || !href || /^(https?:|mailto:|#)/.test(href) || /[?&]fecha=/.test(href)) return href;
+    return href + (href.indexOf("?") >= 0 ? "&" : "?") + "fecha=" + fechaQuery;
+  }
+
   function resolveHref(ep, local, sinurl) {
     var url = ep.url && String(ep.url).trim();
     if (url) return url;
-    if (local && !sinurl && ep.n && LOCAL_PAGES[ep.n]) return LOCAL_PAGES[ep.n];
+    if (!(local && !sinurl && ep.n)) return "";
+    if (LOCAL_PAGES[ep.n]) return withFecha(LOCAL_PAGES[ep.n]);
+    if (/^0[3-6]$/.test(ep.n)) return withFecha("plantilla-capitulo.html?ep=" + ep.n);
     return "";
   }
 
@@ -302,13 +337,7 @@
       }
     }
     var nota = root.querySelector("[data-bc-sabadell-rango]");
-    if (nota && eps.length) {
-      var primero = eps[0];
-      var ultimo = eps[eps.length - 1];
-      if (primero.sale && ultimo.sale) {
-        nota.textContent = eps.length + " episodios · del " + fechaLarga(primero.sale) + " al " + fechaLarga(ultimo.sale);
-      }
-    }
+    if (nota && eps.length) nota.textContent = eps.length + " episodios";
   }
 
   function featurePublicado(ep) {
@@ -412,6 +441,8 @@
       if (next) html += tarjetaNav(next, "next");
       nav.innerHTML = html;
     }
+
+    if (actual && actual.preview && root.getAttribute("data-hacer-empresa") === "00") paintPreviewChapter(root, actual);
 
     if (actual) {
       var stage = root.querySelector("[data-youtube-id]");
@@ -601,27 +632,42 @@
     if (reduce) bar.style.transition = "none";
   }
 
-  function renderSim(root, now, params, sinurl) {
-    if (root.querySelector(".bc-sabadell-sim")) return;
-    var p = madrid(now.toISOString()) || madrid("2026-11-30T09:00:00+01:00");
-    var file = (window.location.pathname.split("/").pop() || "index.html").split("?")[0] || "index.html";
-    function q(fecha, extra) {
-      var s = file + "?fecha=" + fecha;
-      if (extra) s += "&" + extra;
-      return s;
+  function sameDay(now, fecha) {
+    var parsed = parseFecha(fecha);
+    if (!parsed) return false;
+    var a = madrid(now.toISOString());
+    var b = madrid(parsed.toISOString());
+    return !!(a && b && a.day === b.day && a.month === b.month && a.year === b.year);
+  }
+
+  function paintPreviewChapter(root, ep) {
+    var badge = root.querySelector(".bc-sabadell-badge");
+    if (badge) badge.textContent = "Episodio " + ep.n;
+    var series = root.querySelector(".bc-sabadell-mast-series");
+    if (series) series.textContent = "Hacer empresa · " + ep.empresa;
+    var title = root.querySelector(".bc-sabadell-chapter-title");
+    if (title) title.textContent = ep.titular;
+    var lead = root.querySelector(".bc-sabadell-chapter-lead");
+    if (lead) lead.textContent = ep.entradilla;
+    var meta = root.querySelector(".bc-sabadell-meta");
+    if (meta) {
+      meta.innerHTML = '<time datetime="' + esc(ep.sale) + '">' + esc(fechaCorta(ep.sale)) + "</time> · 6 min de lectura";
     }
+  }
+
+  function renderSim(root, now, onHub) {
+    if (root.querySelector(".bc-sabadell-sim")) return;
+    var links = PREVIEW_DAYS.map(function (item) {
+      var base = onHub ? "index.html" : item.page;
+      var href = base + (base.indexOf("?") >= 0 ? "&" : "?") + "fecha=" + item.fecha;
+      var label = sameDay(now, item.fecha) ? "<strong>" + esc(item.label) + "</strong>" : esc(item.label);
+      return '<a href="' + esc(href) + '">' + label + "</a>";
+    }).join(" · ");
     var nota = document.createElement("div");
     nota.className = "bc-sabadell-sim";
     nota.setAttribute("data-bc-nobody", "");
-    nota.innerHTML = "<p>Previsualización local · " + esc(fechaCorta(now.toISOString()))
-      + (sinurl ? " · sin enlaces de maqueta" : "")
-      + (params.get("fecha") ? "" : " · lanzamiento")
-      + "</p><p>"
-      + '<a href="' + q("2026-11-30T09:00") + '">30 nov</a> · '
-      + '<a href="' + q("2026-12-28T09:00") + '">28 dic</a> · '
-      + '<a href="' + q("2027-02-22T09:00") + '">22 feb</a> · '
-      + '<a href="' + q("2026-12-28T09:00", "sinurl=1") + '">28 dic sin URL</a>'
-      + "</p>";
+    nota.innerHTML = "<p>Versión de prueba · Ver la serie el: " + links
+      + ' · <a href="' + esc("index.html?fecha=" + fechaQuery) + '">Ver hub</a></p>';
     root.appendChild(nota);
   }
 

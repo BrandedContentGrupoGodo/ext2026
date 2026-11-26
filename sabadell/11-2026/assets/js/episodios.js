@@ -10,6 +10,7 @@
    - ?fecha=2026-12-28T09:00  (también vale ?fecha=2026-12-28)
    - ?sinurl=1  no usa los enlaces de maqueta; solo cuenta `url`
    En local y en github.io, 01 y 02 enlazan a su HTML de maqueta aunque `url` esté vacía.
+   Los episodios 03 a 06 no llevan `url`: el relleno de prueba lo aplica serie.js, no este archivo.
    En La Vanguardia ese respaldo no existe: sin URL no hay enlace.
 
    Imagen: primero `img` / `imgMini`. Si faltan y hay `youtubeId`, la miniatura de YouTube.
