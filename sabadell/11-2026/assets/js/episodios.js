@@ -1,8 +1,11 @@
 /* Hacer empresa · datos de la serie
    Este es el archivo que se edita al publicar un capítulo.
-   Un episodio está publicado solo si ya llegó su hora de salida
-   y `url` tiene la dirección del capítulo en La Vanguardia.
-   Con la fecha cumplida y `url` vacía sigue en «Próximamente».
+   Un episodio está publicado si `url` tiene la dirección en La Vanguardia
+   y ya llegó su hora de salida (05:00, Europe/Madrid, en Xalok).
+   El 01 lleva `lanzamiento: true`: con `url` está publicado siempre,
+   sin mirar la fecha. En admin.lavanguardia.com, cualquiera con `url`
+   cuenta como publicado para poder revisarlo el día antes.
+   En www.lavanguardia.com se aplica la hora. Sin `url`, «Próximamente».
 
    El reloj de prueba (?fecha=, ?sinurl= y los enlaces del pie) solo
    corre en local y en github.io. En lavanguardia.com se ignora.
@@ -17,12 +20,13 @@
    Los campos marcados como provisionales puede cambiarlos el cliente.
 */
 window.HACER_EMPRESA = {
-  hub: "",
+  hub: "https://www.lavanguardia.com/economia/20261130/11694871/hacer-empresa-decisiones-cambian-rumbo-empresa-sabadell-brl.html",
   episodios: [
     {
       n: "01",
       empresa: "NOX",
       sale: "2026-11-30T08:00:00+01:00",
+      lanzamiento: true,
       url: "https://www.lavanguardia.com/economia/20261130/11694860/hacer-empresa-decisiones-cambian-rumbo-empresa-sabadell-nox-brl.html",
       titular: "Emprender a los 40 años en un negocio donde pocos veían oportunidades",
       entradilla: "Jesús Ballvé, fundador de NOX, recuerda los errores que casi acabaron con su empresa y las decisiones que le permitieron seguir adelante",
@@ -40,7 +44,7 @@ window.HACER_EMPRESA = {
     {
       n: "02",
       empresa: "VICIO",
-      sale: "2026-12-28T08:00:00+01:00",
+      sale: "2026-12-28T05:00:00+01:00",
       url: "",
       titular: "“Elegir es renunciar”: la decisión que ayudó a transformar una pequeña empresa en una marca de éxito",
       /* El Figma no trae un titular corto distinto. Se usa el titular completo. */
@@ -54,9 +58,9 @@ window.HACER_EMPRESA = {
       cita: "Elegir es renunciar, y cuando eliges algo estás dispuesto a asumir la peor de las consecuencias de la decisión que no has tomado",
       autorCita: "Oriol de Pablo, CEO & Co-Founder de VICIO"
     },
-    { n: "03", sale: "2027-01-11T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
-    { n: "04", sale: "2027-01-25T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
-    { n: "05", sale: "2027-02-08T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
-    { n: "06", sale: "2027-02-22T08:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" }
+    { n: "03", sale: "2027-01-11T05:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "04", sale: "2027-01-25T05:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "05", sale: "2027-02-08T05:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" },
+    { n: "06", sale: "2027-02-22T05:00:00+01:00", youtubeId: "", imgAlt: "", imgMiniAlt: "" }
   ]
 };

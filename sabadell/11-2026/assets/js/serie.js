@@ -35,6 +35,7 @@
     BASE = detectBase();
 
     var local = previewClock();
+    var admin = adminHost();
     var params = local ? new URLSearchParams(window.location.search) : new URLSearchParams();
     var sinurl = local && params.get("sinurl") === "1";
     var now = resolveNow(local, params);
@@ -69,7 +70,7 @@
         autorCita: fill ? "Lorem ipsum" : (ep.autorCita || ""),
         href: href,
         preview: fill,
-        publicado: !!(href && ep.sale && now.getTime() >= new Date(ep.sale).getTime())
+        publicado: isPublicado(ep, now, admin)
       };
     });
 
@@ -81,7 +82,7 @@
     var hubHref = (data.hub && String(data.hub).trim()) || (local ? withFecha("index.html") : "");
     applyHubLinks(root, hubHref);
 
-    if (pieza === "hub") renderHub(root, eps, now);
+    if (pieza === "hub") renderHub(root, eps);
     else renderCapitulo(root, pieza, eps, hubHref);
 
     bindVideo(root);
@@ -93,9 +94,26 @@
     return true;
   }
 
+  function pageHost() {
+    try { return String(window.location.hostname || "").toLowerCase(); } catch (e) { return ""; }
+  }
+
+  function adminHost() {
+    return pageHost() === "admin.lavanguardia.com";
+  }
+
+  function episodeUrl(ep) {
+    return ep.url && String(ep.url).trim();
+  }
+
+  function isPublicado(ep, now, admin) {
+    if (!episodeUrl(ep)) return false;
+    if (ep.lanzamiento || admin) return true;
+    return !!(ep.sale && now.getTime() >= new Date(ep.sale).getTime());
+  }
+
   function previewClock() {
-    var host = "";
-    try { host = String(window.location.hostname || "").toLowerCase(); } catch (e) { host = ""; }
+    var host = pageHost();
     if (/(^|\.)lavanguardia\.com$/.test(host)) return false;
     if (/(^|\.)github\.io$/.test(host)) return true;
     return host === "" || host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]";
@@ -315,13 +333,6 @@
     return last;
   }
 
-  function siguientePendiente(eps) {
-    for (var i = 0; i < eps.length; i++) {
-      if (!eps[i].publicado) return eps[i];
-    }
-    return null;
-  }
-
   function applyHubLinks(root, hubHref) {
     if (!hubHref) return;
     root.querySelectorAll("[data-bc-sabadell-hub]").forEach(function (a) {
@@ -329,21 +340,16 @@
     });
   }
 
-  function renderHub(root, eps, now) {
+  function renderHub(root, eps) {
     var feature = root.querySelector("[data-bc-sabadell-feature]");
     var list = root.querySelector("[data-bc-sabadell-index]");
     var decision = root.querySelector("[data-bc-sabadell-decision]");
     var destacado = ultimoPublicado(eps);
-    if (feature) feature.innerHTML = destacado ? featurePublicado(destacado) : featureVacio(siguientePendiente(eps), now);
+    if (feature && destacado) feature.innerHTML = featurePublicado(destacado);
     if (list) list.innerHTML = eps.map(fila).join("");
-    if (decision) {
-      if (destacado && (destacado.decision || destacado.cita)) {
-        decision.hidden = false;
-        decision.innerHTML = decisionHtml(destacado, true, true);
-      } else {
-        decision.hidden = true;
-        decision.innerHTML = "";
-      }
+    if (decision && destacado && (destacado.decision || destacado.cita)) {
+      decision.hidden = false;
+      decision.innerHTML = decisionHtml(destacado, true, true);
     }
     var nota = root.querySelector("[data-bc-sabadell-rango]");
     if (nota && eps.length) nota.textContent = eps.length + " episodios";
@@ -366,21 +372,6 @@
       + "</div>"
       + '<a class="bc-sabadell-btn" href="' + esc(ep.href) + '" data-track="hub-cta-episodio" data-bc-nobody>'
       + "<span>Ver el episodio</span><span aria-hidden=\"true\">→</span></a>";
-  }
-
-  function featureVacio(ep, now) {
-    if (!ep) {
-      return '<p class="bc-sabadell-feature-lead">Los episodios se irán publicando a lo largo de la serie</p>';
-    }
-    var pasado = ep.sale && now.getTime() >= new Date(ep.sale).getTime();
-    var cuando = pasado
-      ? "Pendiente de publicación · " + esc(fechaCorta(ep.sale))
-      : 'Se publica el <time datetime="' + esc(ep.sale) + '">' + esc(fechaLarga(ep.sale)) + "</time>";
-    return ''
-      + '<div class="bc-sabadell-feature-tag"><p class="bc-sabadell-badge">Próximamente</p>'
-      + '<p class="bc-sabadell-feature-ep">Episodio ' + esc(ep.n) + "</p></div>"
-      + '<div class="bc-sabadell-cover is-static">' + still(ep, "cover", true) + "</div>"
-      + '<p class="bc-sabadell-feature-lead">' + cuando + "</p>";
   }
 
   function fila(ep) {
