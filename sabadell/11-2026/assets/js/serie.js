@@ -17,6 +17,9 @@
     cita: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
   };
   var BASE = "";
+  var SCRIPT_SRC = "";
+  try { SCRIPT_SRC = (document.currentScript && document.currentScript.src) || ""; } catch (e) { SCRIPT_SRC = ""; }
+  var PUBLIC_BASE = "https://brandedcontentgrupogodo.github.io/ext2026/sabadell/11-2026/";
   var fechaQuery = "";
   var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   var MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
@@ -131,19 +134,27 @@
   }
 
   function detectBase() {
-    var s = document.querySelector("script[src*='serie.js']");
-    if (!s) return "";
+    var src = SCRIPT_SRC;
+    if (!src) {
+      var s = document.querySelector("script[src*='serie.js']");
+      if (s) src = s.src;
+    }
     try {
-      return new URL("../../", new URL(s.src, window.location.href)).href;
+      return new URL("../../", src || PUBLIC_BASE).href;
     } catch (e) {
-      return "";
+      return PUBLIC_BASE;
     }
   }
 
   function asset(path) {
     if (!path) return "";
-    if (/^(https?:|data:|\.\.\/|\.\/)/.test(path)) return path;
-    return BASE + String(path).replace(/^\//, "");
+    var value = String(path).trim();
+    if (/^(https?:|data:|blob:)/i.test(value)) return value;
+    try {
+      return new URL(value.replace(/^\//, ""), BASE || PUBLIC_BASE).href;
+    } catch (e) {
+      return (BASE || PUBLIC_BASE) + value.replace(/^\//, "");
+    }
   }
 
   function esc(s) {

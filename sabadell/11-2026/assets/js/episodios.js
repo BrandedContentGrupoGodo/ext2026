@@ -23,7 +23,7 @@ window.HACER_EMPRESA = {
       n: "01",
       empresa: "NOX",
       sale: "2026-11-30T08:00:00+01:00",
-      url: "",
+      url: "https://www.lavanguardia.com/economia/20261130/11694860/hacer-empresa-decisiones-cambian-rumbo-empresa-sabadell-nox-brl.html",
       titular: "Emprender a los 40 años en un negocio donde pocos veían oportunidades",
       entradilla: "Jesús Ballvé, fundador de NOX, recuerda los errores que casi acabaron con su empresa y las decisiones que le permitieron seguir adelante",
       titularCorto: "Emprender a los 40 y desafiar las dudas", /* provisional */
