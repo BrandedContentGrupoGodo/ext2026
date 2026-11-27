@@ -105,6 +105,29 @@
   text-underline-offset: 3px;
 }
 
+.bc-sabadell a.bc-sabadell-utm {
+  color: inherit;
+  font-style: italic;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.bc-sabadell a.bc-sabadell-utm:hover,
+.bc-sabadell a.bc-sabadell-utm:focus,
+.bc-sabadell a.bc-sabadell-utm:focus-visible {
+  color: var(--bc-sabadell-azul);
+  font-style: italic;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.bc-sabadell a.bc-sabadell-utm em {
+  color: inherit;
+  font-style: italic;
+}
+
 .bc-sabadell a.bc-sabadell-btn:hover,
 .bc-sabadell a.bc-sabadell-btn:focus-visible {
   color: var(--bc-sabadell-negro);

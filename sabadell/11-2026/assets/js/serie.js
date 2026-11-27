@@ -476,6 +476,24 @@
     if (decision && actual && (actual.decision || actual.cita)) {
       decision.innerHTML = decisionHtml(actual, false, false);
     }
+    applyCampaignLinks(root, actual);
+  }
+
+  function applyCampaignLinks(root, ep) {
+    var raw = ep && ep.raw;
+    var href = raw && raw.enlaceCampaña && String(raw.enlaceCampaña).trim();
+    root.querySelectorAll("a.bc-sabadell-utm").forEach(function (a) {
+      if (!href) {
+        var parent = a.parentNode;
+        if (!parent) return;
+        while (a.firstChild) parent.insertBefore(a.firstChild, a);
+        parent.removeChild(a);
+        return;
+      }
+      a.setAttribute("href", href);
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "sponsored noopener");
+    });
   }
 
   function punto(ep, i, idx) {

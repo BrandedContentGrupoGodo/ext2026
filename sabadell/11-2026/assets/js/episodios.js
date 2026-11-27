@@ -15,6 +15,8 @@
    - ?fecha=2026-12-28T09:00  (también vale ?fecha=2026-12-28)
    - ?sinurl=1  usa `url` y `hub` también en la maqueta
    En lavanguardia.com el reloj de prueba se ignora.
+   `enlaceCampaña`, si existe, enlaza el nombre «Hacer empresa» en el capítulo.
+   Sin ese campo no se pinta ningún enlace de campaña.
 
    Imagen: primero `img` / `imgMini`. Si faltan y hay `youtubeId`, la miniatura de YouTube.
    Los campos marcados como provisionales puede cambiarlos el cliente.
@@ -39,6 +41,7 @@ window.HACER_EMPRESA = {
       imgAlt: "Jesús Ballvé, Alfonso Bastida, Paula Ballvé y Miguel Lamperti en la conversación de Hacer empresa",
       imgMiniAlt: "Jesús Ballvé, fundador y CEO de NOX",
       youtubeId: "Q5CPpiYf7tk",
+      enlaceCampaña: "https://www.bancsabadell.com/bsnacional/es/empresas/hub-empresa/hacer-empresa/nox/?dlink=mc-spo:nf-la_vanguardia:nc-zzzz_brn_brd_not_punct_hacerempresacomms:c-nox:f-art%C3%ADculo_:tp-all:sp-tradicional",
       decision: "Viajar a China con una pala y una última oportunidad", /* provisional */
       cita: "“Los fallos habían sido nuestros y estaba en nuestra mano rectificar y aprender, y volver a hacerlo bien”", /* provisional */
       autorCita: "Jesús Ballvé, fundador y CEO de NOX"
