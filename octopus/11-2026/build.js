@@ -29,7 +29,7 @@ function escapeAttr(value) {
 }
 
 function jpgOf(imagen) {
-  return String(imagen).replace(/\.webp$/i, ".jpg");
+  return String(imagen).replace(/\.webp(?=\?|$)/i, ".jpg");
 }
 
 function hasUrl(episodio) {

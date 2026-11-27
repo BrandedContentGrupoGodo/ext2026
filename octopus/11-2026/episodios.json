@@ -10,12 +10,12 @@
   },
   {
     "numero": 2,
-    "estado": "proximo",
-    "titulo": "Anabel Alonso",
-    "descripcion": "",
-    "imagen": "assets/img/episodio-02.webp",
+    "estado": "publicado",
+    "titulo": "Anabel Alonso: “Estoy buscando a propósito los papeles que nadie me daría”",
+    "descripcion": "La actriz repasa sus inicios, su llegada tardía a la maternidad y el precio de decir lo que piensa",
+    "imagen": "assets/img/episodio-02.webp?v=20261127",
     "alt": "",
-    "url": ""
+    "url": "https://www.lavanguardia.com/vida/20261127/11692914/anabel-alonso-quiere-acomodarse-buscando-proposito-papeles-nadie-me-daria-brl.html"
   },
   {
     "numero": 3,
