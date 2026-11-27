@@ -32,7 +32,7 @@ window.HACER_EMPRESA = {
       imgMini: "img/nox-mini.webp",
       imgAlt: "Jesús Ballvé, Alfonso Bastida, Paula Ballvé y Miguel Lamperti en la conversación de Hacer empresa",
       imgMiniAlt: "Jesús Ballvé, fundador y CEO de NOX",
-      youtubeId: "",
+      youtubeId: "Q5CPpiYf7tk",
       decision: "Viajar a China con una pala y una última oportunidad", /* provisional */
       cita: "“Los fallos habían sido nuestros y estaba en nuestra mano rectificar y aprender, y volver a hacerlo bien”", /* provisional */
       autorCita: "Jesús Ballvé, fundador y CEO de NOX"

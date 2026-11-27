@@ -206,10 +206,8 @@
 
   function sources(ep, mini) {
     var own = mini ? (ep.imgMini || ep.img) : ep.img;
-    var urls = [];
-    if (own) urls.push(asset(own));
-    youtubeList(ep).forEach(function (url) { urls.push(url); });
-    return urls;
+    if (own) return [asset(own)];
+    return youtubeList(ep);
   }
 
   function srcsetValue(ep) {
@@ -447,7 +445,10 @@
     if (actual) {
       var stage = root.querySelector("[data-youtube-id]");
       if (stage) {
-        if (actual.youtubeId) stage.setAttribute("data-youtube-id", actual.youtubeId);
+        if (actual.youtubeId) {
+          stage.setAttribute("data-youtube-id", actual.youtubeId);
+          stage.setAttribute("data-video-title", "Hacer empresa · Episodio " + actual.n + " · " + (actual.empresa || ""));
+        }
         var existing = stage.querySelector(".bc-sabadell-still");
         var ph = stage.querySelector(".bc-sabadell-ph");
         var img = still(actual, "stage");
@@ -516,6 +517,7 @@
       var facade = stage.querySelector(".bc-sabadell-facade");
       if (!id || !facade || facade.getAttribute("data-bc-sabadell-video") === "1") return;
       facade.setAttribute("data-bc-sabadell-video", "1");
+      if (!facade.getAttribute("data-track")) facade.setAttribute("data-track", "capitulo-play");
       if (facade.tagName === "A" && !facade.getAttribute("href")) {
         facade.setAttribute("href", "https://www.youtube.com/watch?v=" + encodeURIComponent(id));
       }
@@ -523,12 +525,16 @@
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1) return;
         event.preventDefault();
         var iframe = document.createElement("iframe");
-        iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1";
+        iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
         iframe.title = stage.getAttribute("data-video-title") || "Vídeo de la conversación";
-        iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; web-share");
+        iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
         iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+        iframe.setAttribute("tabindex", "0");
         stage.replaceChildren(iframe);
+        iframe.addEventListener("load", function () {
+          iframe.focus();
+        });
       });
     });
   }
