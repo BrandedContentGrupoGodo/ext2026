@@ -1,6 +1,5 @@
 /* Hacer empresa · pinta el hub y los capítulos a partir de episodios.js */
 (function () {
-  var LOCAL_PAGES = { "01": "01-nox.html", "02": "02-vicio.html" };
   var PREVIEW_DAYS = [
     { n: "01", label: "30 nov", fecha: "2026-11-30T09:00", page: "01-nox.html" },
     { n: "02", label: "28 dic", fecha: "2026-12-28T09:00", page: "02-vicio.html" },
@@ -49,7 +48,7 @@
 
     var eps = data.episodios.map(function (ep) {
       var n = ep.n || "";
-      var fill = local && !sinurl && !(ep.url && String(ep.url).trim()) && /^0[3-6]$/.test(n);
+      var fill = local && !sinurl && /^0[3-6]$/.test(n) && fechaCumplida(ep, now);
       var href = resolveHref(ep, local, sinurl);
       return {
         raw: ep,
@@ -70,7 +69,7 @@
         autorCita: fill ? "Lorem ipsum" : (ep.autorCita || ""),
         href: href,
         preview: fill,
-        publicado: isPublicado(ep, now, admin)
+        publicado: isPublicado(ep, now, admin, local)
       };
     });
 
@@ -79,7 +78,9 @@
       var asked = (params.get("ep") || "").trim();
       if (/^0[3-6]$/.test(asked)) pieza = asked;
     }
-    var hubHref = (data.hub && String(data.hub).trim()) || (local ? withFecha("index.html") : "");
+    var hubHref = local && !sinurl
+      ? withFecha((data.hubPrueba && String(data.hubPrueba).trim()) || "index.html")
+      : ((data.hub && String(data.hub).trim()) || "");
     applyHubLinks(root, hubHref);
 
     if (pieza === "hub") renderHub(root, eps);
@@ -106,10 +107,15 @@
     return ep.url && String(ep.url).trim();
   }
 
-  function isPublicado(ep, now, admin) {
+  function fechaCumplida(ep, now) {
+    return !!(ep.sale && now.getTime() >= new Date(ep.sale).getTime());
+  }
+
+  function isPublicado(ep, now, admin, local) {
+    if (local) return !!(ep.lanzamiento || fechaCumplida(ep, now));
     if (!episodeUrl(ep)) return false;
     if (ep.lanzamiento || admin) return true;
-    return !!(ep.sale && now.getTime() >= new Date(ep.sale).getTime());
+    return fechaCumplida(ep, now);
   }
 
   function previewClock() {
@@ -143,12 +149,11 @@
   }
 
   function resolveHref(ep, local, sinurl) {
-    var url = ep.url && String(ep.url).trim();
-    if (url) return url;
-    if (!(local && !sinurl && ep.n)) return "";
-    if (LOCAL_PAGES[ep.n]) return withFecha(LOCAL_PAGES[ep.n]);
-    if (/^0[3-6]$/.test(ep.n)) return withFecha("plantilla-capitulo.html?ep=" + ep.n);
-    return "";
+    if (local && !sinurl) {
+      var prueba = ep.urlPrueba && String(ep.urlPrueba).trim();
+      return prueba ? withFecha(prueba) : "";
+    }
+    return episodeUrl(ep) || "";
   }
 
   function detectBase() {
@@ -665,8 +670,13 @@
 
   function renderSim(root, now, onHub) {
     if (root.querySelector(".bc-sabadell-sim")) return;
+    var data = window.HACER_EMPRESA || {};
+    var byN = {};
+    (data.episodios || []).forEach(function (ep) { byN[ep.n] = ep; });
+    var hub = (data.hubPrueba && String(data.hubPrueba).trim()) || "index.html";
     var links = PREVIEW_DAYS.map(function (item) {
-      var base = onHub ? "index.html" : item.page;
+      var prueba = byN[item.n] && byN[item.n].urlPrueba && String(byN[item.n].urlPrueba).trim();
+      var base = onHub ? hub : (prueba || item.page);
       var href = base + (base.indexOf("?") >= 0 ? "&" : "?") + "fecha=" + item.fecha;
       var label = sameDay(now, item.fecha) ? "<strong>" + esc(item.label) + "</strong>" : esc(item.label);
       return '<a href="' + esc(href) + '">' + label + "</a>";
@@ -675,7 +685,7 @@
     nota.className = "bc-sabadell-sim";
     nota.setAttribute("data-bc-nobody", "");
     nota.innerHTML = "<p>Versión de prueba · Ver la serie el: " + links
-      + ' · <a href="' + esc("index.html?fecha=" + fechaQuery) + '">Ver hub</a></p>';
+      + ' · <a href="' + esc(withFecha(hub)) + '">Ver hub</a></p>';
     root.appendChild(nota);
   }
 
